@@ -36,6 +36,8 @@ boots
 variables
     sizes
 
+readme
+
 
 -----------------
 
