@@ -1,8 +1,11 @@
 khanom hojjatzadeh:
 
-components
-spaces
-style
+layouts
+    displays
+    orders
+    index
+mixins
+    index
 
 
 -----------------
@@ -10,9 +13,16 @@ style
 
 hossein:
 
-responsive
-tags
-resets
+variables
+    index
+    responsive
+
+functions
+    responsive
+
+layouts
+    flex
+
 
 
 ----------------
@@ -20,8 +30,11 @@ resets
 
 saeed:
 
-colors
-layout
+boots
+    index
+
+variables
+    sizes
 
 
 -----------------
@@ -29,5 +42,10 @@ layout
 
 mobin:
 
-typography
-variables
+functions
+    index
+    spaces
+
+layout
+    grid
+    z-index
