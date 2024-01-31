@@ -1,14 +1,29 @@
-@function generate-responsive-classes($prefix , $count){
-    $list:();
-    @for $i from 1 through length($break-points){
-        $base:unquote("." + $prefix + "-" + nth($break-points , $i));
+// @function generate-responsive-classes($prefix , $count){
+//     $list:();
+//     @for $i from 1 through length($break-points){
+//         $base:unquote("." + $prefix + "-" + nth($break-points , $i));
         
-        @for $j from 1 through $count{
-            $total:$base + "-" + $j;
-            $list:append($list , $total , comma);
+//         @for $j from 1 through $count{
+//             $total:$base + "-" + $j;
+//             $list:append($list , $total , comma);
+//         }
+//     }
+//     @return $list;
+// }
+
+
+@use 'sass:map';
+
+
+
+
+$map:('sm' : 100, 'lg' : 200);
+
+@each $key, $value in $map{
+    @media screen and (max-width : $value) {
+        body{
+            color : red;
+            background-color : blue;
         }
     }
-    @return $list;
 }
-
-@debug generate-responsive-classes(col , 12);
