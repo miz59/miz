@@ -1,1 +1,14 @@
+@function generate-responsive-classes($prefix , $count){
+    $list:();
+    @for $i from 1 through length($break-points){
+        $base:unquote("." + $prefix + "-" + nth($break-points , $i));
+        
+        @for $j from 1 through $count{
+            $total:$base + "-" + $j;
+            $list:append($list , $total , comma);
+        }
+    }
+    @return $list;
+}
 
+@debug generate-responsive-classes(col , 12);
