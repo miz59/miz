@@ -15,11 +15,26 @@
 @use 'sass:map';
 
 
+// (
+// name:(col-sm-12),
+// property-key:(width),
+// property-value:(100px)
+// )
+
+
+// (
+// name:(gap-sm-12),
+// property-key:(gap),
+// property-value:(15px)
+// )
+
+
 
 
 $map:('sm' : 100, 'lg' : 200);
 
-@each $key, $value in $map{
+$list:('.col-sm-1','.col-sm-2','.col-lg-1','.col-lg-2');
+@each $key , $value in $map{
     @media screen and (max-width : $value) {
         body{
             color : red;
