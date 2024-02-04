@@ -1,7 +1,10 @@
+@use "sass:map";
+@use "../variables";
+
 // @function generate-responsive-classes($prefix , $count){
 //     $list:();
-//     @for $i from 1 through length($break-points){
-//         $base:unquote("." + $prefix + "-" + nth($break-points , $i));
+//     @for $i from 1 through length(variables.$break-points){
+//         $base:unquote("." + $prefix + "-" + nth(variables.$break-points , $i));
         
 //         @for $j from 1 through $count{
 //             $total:$base + "-" + $j;
@@ -12,7 +15,8 @@
 // }
 
 
-@use 'sass:map';
+// @debug generate-responsive-classes(col,12);
+
 
 
 // (
@@ -27,18 +31,3 @@
 // property-key:(gap),
 // property-value:(15px)
 // )
-
-
-
-
-$map:('sm' : 100, 'lg' : 200);
-
-$list:('.col-sm-1','.col-sm-2','.col-lg-1','.col-lg-2');
-@each $key , $value in $map{
-    @media screen and (max-width : $value) {
-        body{
-            color : red;
-            background-color : blue;
-        }
-    }
-}
