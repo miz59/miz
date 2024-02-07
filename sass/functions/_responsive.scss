@@ -28,12 +28,6 @@ $structure-gaps:(
 );
 
 
-
-// hh
-
-// $perfixes:
-
-
 @function generate-responsive-classes($prefix , $count){
     $list:();
     
