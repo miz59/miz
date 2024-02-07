@@ -1,9 +1,29 @@
-$break-points:(sm : 100, lg: 200 ,xl:300);
+
+// config
+
+$break-points:( sm: 100, lg: 200 ,xl:300);
 
 $cols:(
     count:12,
-
+    prefix:col,
+    factor:1,
+    unit:px
 );
+
+$grids:(
+    count:12,
+    prefix:g
+);
+
+$structure-gaps:(
+    count:25,
+    prefix:gap,
+    factor:1,
+    unit:px
+);
+
+
+
 
 
 // $perfixes:
@@ -11,8 +31,10 @@ $cols:(
 
 @function generate-responsive-classes($prefix , $count){
     $list:();
-    @for $i from 1 through length($break-points){
-        $base:unquote("." + $prefix + "-" + nth($break-points , $i));
+    
+@each $key , $value in $break-points{
+
+        $base:unquote("." + $prefix + "-" + $key);
         
         @for $j from 1 through $count{
             $total:$base + "-" + $j;
@@ -21,6 +43,7 @@ $cols:(
     }
     @return $list;
 }
+
 
 
 @function list-generator($property , $count){
@@ -35,7 +58,37 @@ $cols:(
     $map:(
         name: nth($name-list,$i),
         propertyKey:($property),
-        propertyValue:((100*$i)px)
+        propertyValue:unquote((100*$i)+"px")
+    );
+    $list:append($list ,$map);
+                
+            }
+
+            @return $list;
+    
+}
+
+@function list-generator2($map,$function){
+
+    
+    $name-list:generate-responsive-classes($prefix,$count);
+    $list:();
+
+    $prefix : map.get($map,'prefix');
+    $count : map.get($map,'count');
+    $factor : map.get($map,'factor');
+    $unit : map.get($map,'unit');
+    
+
+    
+    @for $i from 1 through length($name-list){
+    
+        
+
+    $map:(
+        name: nth($name-list,$i),
+        propertyKey:($property),
+        propertyValue:unquote((100*$i)+"px")
     );
     $list:append($list ,$map);
                 
@@ -55,39 +108,82 @@ $cols:(
 
 
 
-$list:list-generator(width,12);
+
+//$list:list-generator(width,15);
 
 
 
-// @debug $list;
+$list1:list-generator2(width,15);
+$list2:list-generator2(height,20);
+
+
+
+$totalist : $gaps,$list2;
 
 @each $key , $value in $break-points{
 
     @media screen and (max-width : $value) {
-        
-        @for $i from 1 through length($list){
+
+        @for $x from 1 through length($totalist){
+
+            @for $i from 1 through length(nth($totalist,$x)){
 
 
-            $name:map.get(nth($list,$i),name);
-            $property-key:map.get(nth($list,$i),propertyKey);
-            $property-value:map.get(nth($list,$i),propertyValue);
-
-
-        
-                    @if(string.index($name,("-"+$key))!=null){
-
-                           #{$name } {
-                            #{$property-key }: $property-value;
-                                 
-                              
+                $name:map.get(nth(nth($totalist,$x),$i),name);
+                $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+                $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+    
+    
+            
+                        @if(string.index($name,("-"+$key))!=null){
+    
+                             #{$name } {
+                                #{$property-key }: $property-value;
+                                     
+                                  
+                                }
                             }
-                        }
-                    
-                }
+                        
+                    }
+
+        }
+        
+
 
     }
    
 }
+
+
+// @debug $list;
+
+// @each $key , $value in $break-points{
+
+//     @media screen and (max-width : $value) {
+        
+//         @for $i from 1 through length($list){
+
+
+//             $name:map.get(nth($list,$i),name);
+//             $property-key:map.get(nth($list,$i),propertyKey);
+//             $property-value:map.get(nth($list,$i),propertyValue);
+
+
+        
+//                     @if(string.index($name,("-"+$key))!=null){
+
+//                          #{$name } {
+//                             #{$property-key }: $property-value;
+                                 
+                              
+//                             }
+//                         }
+                    
+//                 }
+
+//     }
+   
+// }
 
 // $string: 'sallam donya <img src="a.png "/>chetori <p>khobid</p>sallamatid<span>khodahafez</span>';
 
