@@ -3,16 +3,21 @@
 
 $break-points:( sm: 100, lg: 200 ,xl:300);
 
+// count:25,
+// prefix:gap,
+// factor:1,
+// unit:px
+
 $cols:(
     count:12,
     prefix:col,
-    factor:1,
-    unit:px
+    factor:1
 );
 
 $grids:(
     count:12,
-    prefix:g
+    prefix:g,
+    fa
 );
 
 $structure-gaps:(
