@@ -2,11 +2,13 @@
 @use 'sass:string';
 @use 'sass:list';
 
+@import "../config";
 @import "variables";
 @import "mixins";
 @import "functions";
 @import "boots";
 @import "layouts";
+
 
 
 
