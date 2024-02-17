@@ -1,4 +1,4 @@
-/*$totalist : $gaps $cols;
+$totalist :  $flex-cols;
 
 
 @each $key , $value in $break-points{
@@ -34,4 +34,3 @@
     }
    
 }
-*/
