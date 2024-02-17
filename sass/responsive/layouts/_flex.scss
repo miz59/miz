@@ -1,1 +1,8 @@
 @import "../functions/responsive";
+// @import "../../config";
+
+$cols:(
+    count:12,
+);
+
+$names:generate-responsive-classes(col , map.get($cols,count));

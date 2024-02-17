@@ -1,0 +1,35 @@
+$totalist : $gaps,$cols;
+
+@each $key , $value in $break-points{
+
+    @media screen and (max-width : $value) {
+
+        @for $x from 1 through length($totalist){
+
+            @for $i from 1 through length(nth($totalist,$x)){
+
+
+                $name:map.get(nth(nth($totalist,$x),$i),name);
+                $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+                $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+    
+    
+            
+                        @if(string.index($name,("-"+$key))!=null){
+    
+                             #{$name } {
+                                #{$property-key }: $property-value;
+                                     
+                                  
+                                }
+                            }
+                        
+                    }
+
+        }
+        
+
+
+    }
+   
+}
