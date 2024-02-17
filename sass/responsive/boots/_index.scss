@@ -1,4 +1,4 @@
-$totalist : $gaps,$cols;
+$totalist : ($gaps,$cols);
 
 @each $key , $value in $break-points{
 
