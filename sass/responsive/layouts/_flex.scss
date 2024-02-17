@@ -1,8 +1,17 @@
 @import "../functions/responsive";
-// @import "../../config";
+@import "../../config";
 
 $cols:(
     count:12,
 );
 
 $names:generate-responsive-classes(col , map.get($cols,count));
+
+@for $i from 1 through length($names){
+    $name:nth($names,$i);
+    $name-list:string.split($name,"-");
+    $num:nth($name-list,length($name-list));
+    #{$name}{
+        width: calc((100% / map.get($cols,count)) * $num);;                 
+    }    
+}
