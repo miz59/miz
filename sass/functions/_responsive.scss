@@ -69,8 +69,8 @@ $structure-gaps:(
 @function list-generator2($map,$function){
 
     
-    $name-list:generate-responsive-classes($prefix,$count);
-    $list:();
+
+    
 
     $prefix : map.get($map,'prefix');
     $count : map.get($map,'count');
