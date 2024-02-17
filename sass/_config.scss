@@ -1,24 +1,23 @@
-$cols:(
-    count:12,
-    factor:1,
+$conf-cols:(
+    count:12
 );
 
-$grids:(
+$conf-grids:(
     count:12,
     unit:px,
 );
 
-$gaps:(
+$conf-gaps:(
     count:30,
     unit:rem,
     factor:0.5
 );
-$paddings:(
+$conf-paddings:(
     count:20,
     unit:rem,
     factor:0.5
 );
-$margins:(
+$conf-margins:(
     count:40,
     unit:rem,
     factor:0.5
