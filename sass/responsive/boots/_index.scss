@@ -18,8 +18,8 @@ $totalist :  $flex-cols;
             
                         @if(string.index($name,("-"+$key))!=null){
     
-                             {$name } {
-                                {$property-key }: $property-value;
+                             #{$name } {
+                                #{$property-key }: $property-value;
                                      
                                   
                                 }
