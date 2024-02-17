@@ -9,21 +9,7 @@ $prefix:gap;
 // factor:1,
 // unit:px
 
-$structure-cols:(
-    count:12,
-    factor:1,
-);
 
-$grids:(
-    count:12,
-    unit:px,
-);
-
-$structure-gaps:(
-    count:25,
-    factor:1,
-    unit:px
-);
 
 
 @function generate-responsive-classes($prefix , $count){
@@ -40,7 +26,6 @@ $structure-gaps:(
     }
     @return $list;
 }
-
 
 
 @function list-generator($property , $count){
@@ -64,6 +49,7 @@ $structure-gaps:(
             @return $list;
     
 }
+
 
 @function list-generator2($perfix,$property,$map){
 
