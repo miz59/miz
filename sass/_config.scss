@@ -1,4 +1,4 @@
-$structure-cols:(
+$cols:(
     count:12,
     factor:1,
 );
@@ -8,9 +8,20 @@ $grids:(
     unit:px,
 );
 
-$structure-gaps:(
-    count:25,
-    factor:1,
-    unit:px
+$gaps:(
+    count:30,
+    unit:rem,
+    factor:0.5
 );
+$paddings:(
+    count:20,
+    unit:rem,
+    factor:0.5
+);
+$margins:(
+    count:40,
+    unit:rem,
+    factor:0.5
+)
+
 
