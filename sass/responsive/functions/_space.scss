@@ -1,0 +1,31 @@
+@function list-generator2($perfix,$property,$map){
+
+
+    $count : map.get($map,'count');
+    $factor : map.get($map,'factor');
+    $unit : map.get($map,'unit');
+    
+    
+    $name-list:generate-responsive-classes($prefix,$count);
+    $list:();
+
+
+
+    
+    @for $i from 1 through length($name-list){
+    
+        
+
+    $map:(
+        name: nth($name-list,$i),
+        propertyKey:($property),
+        propertyValue:unquote((100*$i)+"px")
+    );
+    $list:append($list ,$map);
+                
+            } 
+
+            @return $list;
+    
+}
+@debug list-generator2('p', padding, $gaps)
