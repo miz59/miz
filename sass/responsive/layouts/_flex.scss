@@ -1,17 +1,34 @@
 @import "../functions/responsive";
 @import "../../config";
 
-$cols:(
-    count:12,
-);
 
-$names:generate-responsive-classes(col , map.get($cols,count));
 
-@for $i from 1 through length($names){
-    $name:nth($names,$i);
-    $name-list:string.split($name,"-");
-    $num:nth($name-list,length($name-list));
-    #{$name}{
-        width: calc((100% / map.get($cols,count)) * $num);;                 
-    }    
+@function flex-cols-generator(){
+
+    $names:generate-responsive-classes(col , map.get($conf-cols,count));
+
+    $list:();
+
+    @for $i from 1 through length($names){
+        $name:nth($names,$i);
+        $name-list:string.split($name,"-");
+        $num:nth($name-list,length($name-list));
+
+        
+
+    $map:(
+        name: nth($names,$i),
+        propertyKey:width,
+        propertyValue:(100% / 12) * $num
+    );
+
+    $list:append($list ,$map);
+
+          
+    }
+
+    @return $list;
 }
+
+$flex-cols:flex-cols-generator();
+
