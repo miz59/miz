@@ -35,7 +35,8 @@ boots
 
 variables
     sizes
-
+    
+config
 readme
 
 
