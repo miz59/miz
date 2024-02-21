@@ -80,3 +80,10 @@ $gap-list : g;
     }
     @return $list;
 }
+
+
+
+$p : padding-generator($paddings-list ,padding, $conf-paddings) ;
+$m : margin-generator($margins-list ,margin, $conf-margins) ;
+$g : gap-generator($gap-list ,gap, $conf-gaps) ;
+
