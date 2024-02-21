@@ -10,7 +10,7 @@
 
 @function flex-cols-generator(){
 
-    $names:generate-responsive-classes(col , map.get($conf-cols,count));
+    $names:generate-responsive-classes(col , map.get($conf-cols , count));
 
     $list:();
 
@@ -24,7 +24,7 @@
     $map:(
         name: nth($names,$i),
         propertyKey:width,
-        propertyValue:calc((100% / 12) * $num)
+        propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
     );
 
     $list:append($list ,$map);
