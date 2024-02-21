@@ -4,7 +4,6 @@ $conf-cols:(
 
 $conf-grids:(
     count:12,
-    unit:px,
 );
 
 $conf-gaps:(
@@ -21,6 +20,8 @@ $conf-margins:(
     count:40,
     unit:rem,
     factor:0.5
-)
+);
 
-
+$conf-order:(
+    count:12
+);
