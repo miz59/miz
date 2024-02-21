@@ -29,4 +29,3 @@ $grid-list : g;
     @return $list;
 }   
 $g : grid-generator($grid-list ,grid-template-columns, $conf-grids) ;
-@debug $g;
