@@ -1,7 +1,3 @@
-.d-grid{
-    display: grid;
-}
-
 $grid-list : g;
 @function grid-generator($perfix,$property,$map){
 
