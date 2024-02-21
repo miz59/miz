@@ -1,4 +1,4 @@
-$totalist :  $flex-cols;
+$totalist :  $flex-cols,;
 
 
 @each $key , $value in $break-points{
@@ -9,7 +9,7 @@ $totalist :  $flex-cols;
 
             @for $i from 1 through length(nth($totalist,$x)){
 
-                @debug map.get($totalist,nth($totalist,$x));
+
                 $name:map.get(nth(nth($totalist,$x),$i),name);
                 $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
                 $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);

@@ -1,8 +1,38 @@
 @import "../functions/responsive";
-// @import "../../config";
+@import "../../config";
 
-$cols:(
-    count:12,
-);
+.row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
-$names:generate-responsive-classes(col , map.get($cols,count));
+@function flex-cols-generator(){
+
+    $names:generate-responsive-classes(col , map.get($conf-cols,count));
+
+    $list:();
+
+    @for $i from 1 through length($names){
+        $name:nth($names,$i);
+        $name-list:string.split($name,"-");
+        $num:nth($name-list,length($name-list));
+
+        
+
+    $map:(
+        name: nth($names,$i),
+        propertyKey:width,
+        propertyValue:calc((100% / 12) * $num)
+    );
+
+    $list:append($list ,$map);
+
+          
+    }
+
+    @return $list;
+}
+
+$flex-cols:flex-cols-generator();
