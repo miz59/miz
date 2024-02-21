@@ -1,5 +1,4 @@
-$totalist :  $flex-cols,$p,$m,$g,;
-
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
 
 @each $key , $value in $break-points{
 
