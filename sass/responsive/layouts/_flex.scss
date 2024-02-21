@@ -36,10 +36,6 @@
 }
 $flex-cols:flex-cols-generator();
 
-.d-flex{
-    display: flex;
-}
-
 // flex-direction
 
 .flex-row{
@@ -311,3 +307,10 @@ $flex-orders:flex-orders-generator();
 }
 $flex-grows:flex-grows-generator();
 
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.flex-nowrap{
+    flex-wrap: nowrap;
+}
