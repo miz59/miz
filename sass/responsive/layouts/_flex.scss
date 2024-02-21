@@ -252,57 +252,37 @@ $flex-cols:flex-cols-generator();
 }
 
 @function flex-orders-generator(){
-    
     $names:generate-responsive-classes(order , map.get($conf-order , count));
-
     $list:();
-
     @for $i from 1 through length($names){
         $name:nth($names,$i);
         $name-list:string.split($name,"-");
         $num:nth($name-list,length($name-list));
-
-        
-
-    $map:(
-        name: nth($names,$i),
-        propertyKey:order,
-        propertyValue:$num
-    );
-
-    $list:append($list ,$map);
-
-          
+        $map:(
+            name: nth($names,$i),
+            propertyKey:order,
+            propertyValue:$num
+        );
+        $list:append($list ,$map);
     }
-
     @return $list;
 }
 $flex-orders:flex-orders-generator();
 
 @function flex-grows-generator(){
-    
     $names:generate-responsive-classes(grow , map.get($conf-grow , count));
-
     $list:();
-
     @for $i from 1 through length($names){
         $name:nth($names,$i);
         $name-list:string.split($name,"-");
         $num:nth($name-list,length($name-list));
-
-        
-
-    $map:(
-        name: nth($names,$i),
-        propertyKey:flex-grow,
-        propertyValue:$num
-    );
-
-    $list:append($list ,$map);
-
-          
+        $map:(
+            name: nth($names,$i),
+            propertyKey:flex-grow,
+            propertyValue:$num
+        );
+        $list:append($list ,$map);     
     }
-
     @return $list;
 }
 $flex-grows:flex-grows-generator();
@@ -313,4 +293,137 @@ $flex-grows:flex-grows-generator();
 
 .flex-nowrap{
     flex-wrap: nowrap;
+}
+
+// justify-content
+
+@function generate-responsive-justify-content-classes($prefix){
+    $list:();
+    @each $key , $value in $break-points{
+        $base:unquote(".justify-content" + "-" + $key + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-content,
+            propertyValue:$prefix
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+
+$justify-content-value-list:(start , center , end);
+$justify-content-list:();
+@for $i from 1 through length($justify-content-value-list){
+    $justify-content-list:generate-responsive-justify-content-classes(nth($justify-content-value-list , $i));
+}
+
+// justify-self
+
+@function generate-responsive-justify-self-classes($prefix){
+    $list:();
+    @each $key , $value in $break-points{
+
+        $base:unquote(".justify-self" + "-" + $key + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-self,
+            propertyValue:$prefix
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+
+$justify-self-value-list:(start , center , end);
+$justify-self-list:();
+@for $i from 1 through length($justify-self-value-list){
+    $justify-self-list:generate-responsive-justify-self-classes(nth($justify-self-value-list , $i));
+}
+
+// justify-items
+
+@function generate-responsive-justify-items-classes($prefix){
+    $list:();
+    @each $key , $value in $break-points{
+        $base:unquote(".justify-items" + "-" + $key + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-items,
+            propertyValue:$prefix
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+
+$justify-items-value-list:(start , center , end);
+$justify-items-list:();
+@for $i from 1 through length($justify-items-value-list){
+    $justify-items-list:generate-responsive-justify-items-classes(nth($justify-items-value-list , $i));
+}
+
+// align-content
+
+@function generate-responsive-align-content-classes($prefix){
+    $list:();
+    @each $key , $value in $break-points{
+        $base:unquote(".align-content" + "-" + $key + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-content,
+            propertyValue:$prefix
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+
+$align-content-value-list:(start , center , end);
+$align-content-list:();
+@for $i from 1 through length($align-content-value-list){
+    $align-content-list:generate-responsive-align-content-classes(nth($align-content-value-list , $i));
+}
+
+// align-self
+
+@function generate-responsive-align-self-classes($prefix){
+    $list:();
+    @each $key , $value in $break-points{
+        $base:unquote(".align-self" + "-" + $key + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-self,
+            propertyValue:$prefix
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+
+$align-self-value-list:(start , center , end);
+$align-self-list:();
+@for $i from 1 through length($align-self-value-list){
+    $align-self-list:generate-responsive-align-self-classes(nth($align-self-value-list , $i));
+}
+
+// align-items
+
+@function generate-responsive-align-items-classes($prefix){
+    $list:();
+    @each $key , $value in $break-points{
+        $base:unquote(".align-items" + "-" + $key + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-items,
+            propertyValue:$prefix
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+
+$align-items-value-list:(start , center , end);
+$align-items-list:();
+@for $i from 1 through length($align-items-value-list){
+    $align-items-list:generate-responsive-align-items-classes(nth($align-items-value-list , $i));
 }
