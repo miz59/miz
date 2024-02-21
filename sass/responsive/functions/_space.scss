@@ -8,17 +8,22 @@ $paddings-list : p,pb,pt,pr,pl,px,py;
     $factor : map.get($map,'factor');
     $unit : map.get($map,'unit');
     $list : ();
+    $k:1;
     @for $i from 1 through length($paddings-list){
 
         $name-list:generate-responsive-classes(nth($paddings-list, $i),$count);
 
-        @for $i from 1 through length($name-list){
+        @for $j from 1 through length($name-list){
+            @if $k==$count+1{
+                $k:1;
+            } 
             $map:(
-                name: nth($name-list,$i),
+                name: nth($name-list,$j),
                 propertyKey:($property),
-                propertyValue:unquote(($factor*$i)+$unit)
+                propertyValue:unquote(($factor*$k)+$unit)
             );
-            $list:append($list ,$map,comma);            
+            $list:append($list ,$map,comma);
+            $k:$k+1;
         } 
     }
     @return $list;
@@ -38,17 +43,22 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
     $factor : map.get($map,'factor');
     $unit : map.get($map,'unit');
     $list : ();
+    $k:1;
     @for $i from 1 through length($margins-list){
 
         $name-list:generate-responsive-classes(nth($margins-list, $i),$count);
 
-        @for $i from 1 through length($name-list){
+        @for $j from 1 through length($name-list){
+            @if $k==$count+1{
+                $k:1;
+            } 
             $map:(
-                name: nth($name-list,$i),
+                name: nth($name-list,$j),
                 propertyKey:($property),
-                propertyValue:unquote(($factor*$i)+$unit)
+                propertyValue:unquote(($factor*$k)+$unit)
             );
-            $list:append($list ,$map,comma);            
+            $list:append($list ,$map,comma); 
+            $k:$k+1;          
         } 
     }
     @return $list;
@@ -56,7 +66,7 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
 
 
 
-$gap-list : g;
+$gap-list : gap;
 @function gap-generator($perfix,$property,$map){
 
     
@@ -65,18 +75,29 @@ $gap-list : g;
     $factor : map.get($map,'factor');
     $unit : map.get($map,'unit');
     $list : ();
+    $k:1;
     @for $i from 1 through length($gap-list){
 
         $name-list:generate-responsive-classes(nth($gap-list, $i),$count);
 
-        @for $i from 1 through length($name-list){
+        @for $j from 1 through length($name-list){
+            @if $k==$count+1{
+                $k:1;
+            } 
             $map:(
-                name: nth($name-list,$i),
+                name: nth($name-list,$j),
                 propertyKey:($property),
-                propertyValue:unquote(($factor*$i)+$unit)
+                propertyValue:unquote(($factor*$k)+$unit)
             );
-            $list:append($list ,$map,comma);            
+            $list:append($list ,$map,comma);   
+            $k:$k+1;        
         } 
     }
     @return $list;
 }
+
+
+
+$p : padding-generator($paddings-list ,padding, $conf-paddings) ;
+$m : margin-generator($margins-list ,margin, $conf-margins) ;
+$gap : gap-generator($gap-list ,gap, $conf-gaps) ;

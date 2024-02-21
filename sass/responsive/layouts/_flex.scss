@@ -10,7 +10,7 @@
 
 @function flex-cols-generator(){
 
-    $names:generate-responsive-classes(col , map.get($conf-cols,count));
+    $names:generate-responsive-classes(col , map.get($conf-cols , count));
 
     $list:();
 
@@ -24,7 +24,7 @@
     $map:(
         name: nth($names,$i),
         propertyKey:width,
-        propertyValue:calc((100% / 12) * $num)
+        propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
     );
 
     $list:append($list ,$map);
@@ -36,3 +36,251 @@
 }
 
 $flex-cols:flex-cols-generator();
+
+.d-flex{
+    display: flex;
+}
+
+// flex-direction
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-row-reverse{
+    flex-direction: row-reverse;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.flex-column-reverse{
+    flex-direction: column-reverse;
+}
+
+// justify-content
+
+.justify-content-start{
+    justify-content: start;
+}
+
+.justify-content-flex-start{
+    justify-content: flex-start;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.justify-content-end{
+    justify-content: end;
+}
+
+.justify-content-flex-end{
+    justify-content: flex-end;
+}
+
+.justify-content-stretch{
+    justify-content: stretch;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.justify-content-around{
+    justify-content: space-around;
+}
+
+.justify-content-evenly{
+    justify-content: space-evenly;
+}
+
+// justify-self
+
+.justify-self-start{
+    justify-self: start;
+}
+
+.justify-self-center{
+    justify-self: center;
+}
+
+.justify-self-end{
+    justify-self: end;
+}
+
+.justify-self-right{
+    justify-self: right;
+}
+
+.justify-self-left{
+    justify-self: left;
+}
+
+.justify-self-stretch{
+    justify-self: stretch;
+}
+
+.justify-self-baseline{
+    justify-self: baseline;
+}
+
+// justify-items
+
+.justify-items-start{
+    justify-items: start;
+}
+
+.justify-items-center{
+    justify-items: center;
+}
+
+.justify-items-end{
+    justify-items: end;
+}
+
+.justify-items-right{
+    justify-items: right;
+}
+
+.justify-items-left{
+    justify-items: left;
+}
+
+
+.justify-items-stretch{
+    justify-items: stretch;
+}
+
+.justify-items-baseline{
+    justify-items: baseline;
+}
+
+// align-contents
+
+.align-content-start{
+    align-content: start;
+}
+
+.align-content-flex-start{
+    align-content: flex-start;
+}
+
+.align-content-center{
+    align-content: center;
+}
+
+.align-content-end{
+    align-content: end;
+}
+
+.align-content-flex-end{
+    align-content: flex-end;
+}
+
+.align-content-stretch{
+    align-content: stretch;
+}
+
+.align-content-between{
+    align-content: space-between;
+}
+
+.align-content-around{
+    align-content: space-around;
+}
+
+.align-content-evenly{
+    align-content: space-evenly;
+}
+
+//align-self
+
+.align-self-start{
+    align-self: start;
+}
+
+.align-self-flex-start{
+    align-self: flex-start;
+}
+
+.align-self-center{
+    align-self: center;
+}
+
+.align-self-end{
+    align-self: end;
+}
+
+.align-self-flex-end{
+    align-self: flex-end;
+}
+
+.align-self-stretch{
+    align-self: stretch;
+}
+
+.align-self-baseline{
+    align-self: baseline;
+}
+
+//align-items
+
+.align-items-start{
+    align-items: start;
+}
+
+.align-items-flex-start{
+    align-items: flex-start;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.align-items-end{
+    align-items: end;
+}
+
+.align-items-flex-end{
+    align-items: flex-end;
+}
+
+.align-items-stretch{
+    align-items: stretch;
+}
+
+.align-items-baseline{
+    align-items: baseline;
+}
+
+@function flex-orders-generator(){
+    
+    $names:generate-responsive-classes(order , map.get($conf-order , count));
+
+    $list:();
+
+    @for $i from 1 through length($names){
+        $name:nth($names,$i);
+        $name-list:string.split($name,"-");
+        $num:nth($name-list,length($name-list));
+
+        
+
+    $map:(
+        name: nth($names,$i),
+        propertyKey:order,
+        propertyValue:$num
+    );
+
+    $list:append($list ,$map);
+
+          
+    }
+
+    @return $list;
+}
+
+$flex-orders:flex-orders-generator();
