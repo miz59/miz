@@ -9,6 +9,7 @@ $totalist :  $flex-cols,;
 
             @for $i from 1 through length(nth($totalist,$x)){
 
+
                 $name:map.get(nth(nth($totalist,$x),$i),name);
                 $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
                 $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
