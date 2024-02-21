@@ -1,5 +1,9 @@
-$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
-
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders;
+@function get-greatest-breakpoints(){
+    @each $key , $value in $break-points{
+        
+    }
+}
 @each $key , $value in $break-points{
 
     @media screen and (max-width : $value) {
