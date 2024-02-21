@@ -1,15 +1,10 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <style>
-        .parent{
-
-            display: flex;
-            flex-direction: row;
-            justify-content: start;
-            flex-wrap: wrap;
-        }
         [class*="col-"]{
+            
             background-color: red;
             border: 1px solid black;
             box-sizing:border-box;
@@ -18,12 +13,11 @@
     </style>
 </head>
 <body>
-    <div class="parent">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-6"></div>
-        <div class="col-lg-3"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-12"></div>
+    <div class="row">
+        <div class="child col-md-2 col-xxl-1 col-xl-3 col-lg-4 col-sm-12"></div>
+        <div class="child col-md-2 col-xxl-1 col-xl-3 col-lg-4 col-sm-3"></div>
+        <div class="child col-md-2 col-xxl-1 col-xl-3 col-lg-4 col-sm-5"></div>
+        <div class="child col-md-6 col-xxl-1 col-xl-3 col-lg-4 col-sm-1"></div>
     </div>
 </body>
 </html>

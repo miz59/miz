@@ -1,7 +1,12 @@
 @import "../functions/responsive";
 @import "../../config";
 
-
+.row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
 @function flex-cols-generator(){
 
@@ -19,7 +24,7 @@
     $map:(
         name: nth($names,$i),
         propertyKey:width,
-        propertyValue:(100% / 12) * $num
+        propertyValue:calc((100% / 12) * $num)
     );
 
     $list:append($list ,$map);
@@ -31,4 +36,3 @@
 }
 
 $flex-cols:flex-cols-generator();
-
