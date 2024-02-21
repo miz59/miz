@@ -1,3 +1,31 @@
 .d-grid{
     display: grid;
 }
+
+$grid-list : g;
+@function grid-generator($perfix,$property,$map){
+
+    $name-list : ();
+    $count : map.get($map,'count');
+    $list : ();
+    $k:1;
+    @for $i from 1 through length($paddings-list){
+
+        $name-list:generate-responsive-classes(nth($paddings-list, $i),$count);
+
+        @for $j from 1 through length($name-list){
+            @if $k==$count+1{
+                $k:1;
+            } 
+            $map:(
+                name: nth($name-list,$j),
+                propertyKey:($property),
+                propertyValue:(repeat($k, 1fr))
+            );
+            $list:append($list ,$map,comma);
+            $k:$k+1;
+        } 
+    }
+    @return $list;
+}   
+$g : grid-generator($grid-list ,grid-template-columns, $conf-grids) ;
