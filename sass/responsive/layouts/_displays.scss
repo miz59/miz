@@ -1,0 +1,54 @@
+
+.d-block{
+
+    display: block;
+}
+
+.d-flex{
+
+    display: flex;
+}
+
+.d-grid{
+
+    display: grid;
+}
+
+.d-none{
+
+    display: none;
+}
+
+.d-inline-block{
+
+    display: inline-block;
+}
+
+.d-inline{
+    display: inline;
+}
+
+@function generate-responsive-display-classes($prefix){
+    $list:();
+    
+@each $key , $value in $break-points{
+
+        $base:unquote(".d" + "-" + $key + "-" + $prefix );
+
+        $map:(
+            name: $base,
+            propertyKey:display,
+            propertyValue:$prefix
+        );
+        
+        $list:append($list , $map);
+    }
+   
+    @return $list;
+}
+
+$d-block-list:generate-responsive-display-classes(block);
+$d-none-list:generate-responsive-display-classes(none);
+$d-flex-list:generate-responsive-display-classes(flex);
+$d-grid-list:generate-responsive-display-classes(grid);
+
