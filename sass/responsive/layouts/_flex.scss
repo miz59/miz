@@ -8,284 +8,442 @@
     flex-wrap: wrap;
 }
 
-@function flex-cols-generator(){
-
-    $names:generate-responsive-classes(col , map.get($conf-cols , count));
-
+@function generate-flex-cols(){
     $list:();
-
-    @for $i from 1 through length($names){
-        $name:nth($names,$i);
+    $base:'';
+    $default-base:'';
+    $names:'';
+    @for $i from 1 through map.get($conf-cols , count){
+        $base:unquote(".col" + "-" + $i);
+        $name:$base;
         $name-list:string.split($name,"-");
         $num:nth($name-list,length($name-list));
-
-        
-
-    $map:(
-        name: nth($names,$i),
-        propertyKey:width,
-        propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
-    );
-
-    $list:append($list ,$map);
-
-          
+        $map:(
+            name: $base,
+            propertyKey:width,
+            propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
+            );
+        $list:append($list , $map);
+        @if map.get($conf-cols , responsive) == true{
+            @each $key , $value in $break-points{
+                $base:unquote(".col" + "-"+ $key + "-" + $i);
+                $name:$base;
+                $name-list:string.split($name,"-");
+                $num:nth($name-list,length($name-list));
+                $map:(
+                    name: $base,
+                    propertyKey:col,
+                    propertyValue:$num
+                    );
+                $list:append($list , $map);
+            }
+        }
+        @else{
+            $base:unquote(".col" + "-" + $i);
+            $name:$base;
+            $name-list:string.split($name,"-");
+            $num:nth($name-list,length($name-list));
+            $map:(
+                name: $base,
+                propertyKey:width,
+                propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
+                );
+            $list:append($list , $map);
+        }
     }
-
     @return $list;
 }
-$flex-cols:flex-cols-generator();
+$flex-cols:generate-flex-cols();
+
+@function generate-flex-orders(){
+    $list:();
+    $base:'';
+    $default-base:'';
+    $names:'';
+    @for $i from 1 through map.get($conf-orders , count){
+        $base:unquote(".order" + "-" + $i);
+        $name:$base;
+        $name-list:string.split($name,"-");
+        $num:nth($name-list,length($name-list));
+        $map:(
+            name: $base,
+            propertyKey:width,
+            propertyValue:calc((100% / map.get($conf-orders , count)) * $num)
+            );
+        $list:append($list , $map);
+        @if map.get($conf-orders , responsive) == true{
+            @each $key , $value in $break-points{
+                $base:unquote(".order" + "-"+ $key + "-" + $i);
+                $name:$base;
+                $name-list:string.split($name,"-");
+                $num:nth($name-list,length($name-list));
+                $map:(
+                    name: $base,
+                    propertyKey:order,
+                    propertyValue:$num
+                    );
+                $list:append($list , $map);
+            }
+        }
+        @else{
+            $base:unquote(".order" + "-" + $i);
+            $name:$base;
+            $name-list:string.split($name,"-");
+            $num:nth($name-list,length($name-list));
+            $map:(
+                name: $base,
+                propertyKey:width,
+                propertyValue:calc((100% / map.get($conf-orders , count)) * $num)
+                );
+            $list:append($list , $map);
+        }
+    }
+    @return $list;
+}
+$flex-orders:generate-flex-orders();
+
+@function generate-flex-grows(){
+    $list:();
+    $base:'';
+    $default-base:'';
+    $names:'';
+    @for $i from 1 through map.get($conf-grows , count){
+        $base:unquote(".grow" + "-" + $i);
+        $name:$base;
+        $name-list:string.split($name,"-");
+        $num:nth($name-list,length($name-list));
+        $map:(
+            name: $base,
+            propertyKey:width,
+            propertyValue:calc((100% / map.get($conf-grows , count)) * $num)
+            );
+        $list:append($list , $map);
+        @if map.get($conf-grows , responsive) == true{
+            @each $key , $value in $break-points{
+                $base:unquote(".grow" + "-"+ $key + "-" + $i);
+                $name:$base;
+                $name-list:string.split($name,"-");
+                $num:nth($name-list,length($name-list));
+                $map:(
+                    name: $base,
+                    propertyKey:grow,
+                    propertyValue:$num
+                    );
+                $list:append($list , $map);
+            }
+        }
+        @else{
+            $base:unquote(".grow" + "-" + $i);
+            $name:$base;
+            $name-list:string.split($name,"-");
+            $num:nth($name-list,length($name-list));
+            $map:(
+                name: $base,
+                propertyKey:width,
+                propertyValue:calc((100% / map.get($conf-grows , count)) * $num)
+                );
+            $list:append($list , $map);
+        }
+    }
+    @return $list;
+}
+$flex-grows:generate-flex-grows();
 
 // flex-direction
 
-.flex-row{
-    flex-direction: row;
+@function generate-flex-direction-classes($property-value){
+    $list:();
+    $prefix:$property-value;
+    @if map.get($conf-flex-direction , responsive) == true{
+        $base:unquote(".flex" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:flex-direction,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".flex" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:flex-direction,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".flex" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:flex-direction,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
 }
 
-.flex-row-reverse{
-    flex-direction: row-reverse;
-}
-
-.flex-column{
-    flex-direction: column;
-}
-
-.flex-column-reverse{
-    flex-direction: column-reverse;
+$flex-direction-value-list:(row , row-reverse , column , column-reverse);
+$flex-direction-list:();
+@for $i from 1 through length($flex-direction-value-list){
+    $function-flex-direction:generate-flex-direction-classes(nth($flex-direction-value-list , $i));
+    $flex-direction-list:append($flex-direction-list , $function-flex-direction , comma);
 }
 
 // justify-content
 
-.justify-content-start{
-    justify-content: start;
+@function generate-justify-content-classes($property-value){
+    $list:();
+    $prefix:$property-value;
+    @if map.get($conf-justify-content , responsive) == true{
+        $base:unquote(".justify-content" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-content,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".justify-content" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:justify-content,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".justify-content" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-content,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
 }
 
-.justify-content-flex-start{
-    justify-content: flex-start;
-}
-
-.justify-content-center{
-    justify-content: center;
-}
-
-.justify-content-end{
-    justify-content: end;
-}
-
-.justify-content-flex-end{
-    justify-content: flex-end;
-}
-
-.justify-content-stretch{
-    justify-content: stretch;
-}
-
-.justify-content-between{
-    justify-content: space-between;
-}
-
-.justify-content-around{
-    justify-content: space-around;
-}
-
-.justify-content-evenly{
-    justify-content: space-evenly;
+$justify-content-value-list:(row , row-reverse , column , column-reverse);
+$justify-content-list:();
+@for $i from 1 through length($justify-content-value-list){
+    $function-justify-content:generate-justify-content-classes(nth($justify-content-value-list , $i));
+    $justify-content-list:append($justify-content-list , $function-justify-content , comma);
 }
 
 // justify-self
 
-.justify-self-start{
-    justify-self: start;
+@function generate-justify-self-classes($property-value){
+    $list:();
+    $prefix:$property-value;
+    @if map.get($conf-justify-self , responsive) == true{
+        $base:unquote(".justify-self" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-self,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".justify-self" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:justify-self,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".justify-self" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-self,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
 }
 
-.justify-self-center{
-    justify-self: center;
-}
-
-.justify-self-end{
-    justify-self: end;
-}
-
-.justify-self-right{
-    justify-self: right;
-}
-
-.justify-self-left{
-    justify-self: left;
-}
-
-.justify-self-stretch{
-    justify-self: stretch;
-}
-
-.justify-self-baseline{
-    justify-self: baseline;
+$justify-self-value-list:(row , row-reverse , column , column-reverse);
+$justify-self-list:();
+@for $i from 1 through length($justify-self-value-list){
+    $function-justify-self:generate-justify-self-classes(nth($justify-self-value-list , $i));
+    $justify-self-list:append($justify-self-list , $function-justify-self , comma);
 }
 
 // justify-items
 
-.justify-items-start{
-    justify-items: start;
+@function generate-justify-items-classes($property-value){
+    $list:();
+    $prefix:$property-value;
+    @if map.get($conf-justify-items , responsive) == true{
+        $base:unquote(".justify-items" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-items,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".justify-items" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:justify-items,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".justify-items" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:justify-items,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
 }
 
-.justify-items-center{
-    justify-items: center;
-}
-
-.justify-items-end{
-    justify-items: end;
-}
-
-.justify-items-right{
-    justify-items: right;
-}
-
-.justify-items-left{
-    justify-items: left;
-}
-
-
-.justify-items-stretch{
-    justify-items: stretch;
-}
-
-.justify-items-baseline{
-    justify-items: baseline;
+$justify-items-value-list:(row , row-reverse , column , column-reverse);
+$justify-items-list:();
+@for $i from 1 through length($justify-items-value-list){
+    $function-justify-items:generate-justify-items-classes(nth($justify-items-value-list , $i));
+    $justify-items-list:append($justify-items-list , $function-justify-items , comma);
 }
 
 // align-contents
 
-.align-content-start{
-    align-content: start;
+@function generate-align-content-classes($property-value){
+    $list:();
+    $prefix:$property-value;
+    @if map.get($conf-align-content , responsive) == true{
+        $base:unquote(".align-content" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-content,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".align-content" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:align-content,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".align-content" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-content,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
 }
 
-.align-content-flex-start{
-    align-content: flex-start;
-}
-
-.align-content-center{
-    align-content: center;
-}
-
-.align-content-end{
-    align-content: end;
-}
-
-.align-content-flex-end{
-    align-content: flex-end;
-}
-
-.align-content-stretch{
-    align-content: stretch;
-}
-
-.align-content-between{
-    align-content: space-between;
-}
-
-.align-content-around{
-    align-content: space-around;
-}
-
-.align-content-evenly{
-    align-content: space-evenly;
+$align-content-value-list:(row , row-reverse , column , column-reverse);
+$align-content-list:();
+@for $i from 1 through length($align-content-value-list){
+    $function-align-content:generate-align-content-classes(nth($align-content-value-list , $i));
+    $align-content-list:append($align-content-list , $function-align-content , comma);
 }
 
 //align-self
 
-.align-self-start{
-    align-self: start;
+@function generate-align-self-classes($property-value){
+    $list:();
+    $prefix:$property-value;
+    @if map.get($conf-align-self , responsive) == true{
+        $base:unquote(".align-self" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-self,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".align-self" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:align-self,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".align-self" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-self,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
 }
 
-.align-self-flex-start{
-    align-self: flex-start;
-}
-
-.align-self-center{
-    align-self: center;
-}
-
-.align-self-end{
-    align-self: end;
-}
-
-.align-self-flex-end{
-    align-self: flex-end;
-}
-
-.align-self-stretch{
-    align-self: stretch;
-}
-
-.align-self-baseline{
-    align-self: baseline;
+$align-self-value-list:(row , row-reverse , column , column-reverse);
+$align-self-list:();
+@for $i from 1 through length($align-self-value-list){
+    $function-align-self:generate-align-self-classes(nth($align-self-value-list , $i));
+    $align-self-list:append($align-self-list , $function-align-self , comma);
 }
 
 //align-items
 
-.align-items-start{
-    align-items: start;
-}
-
-.align-items-flex-start{
-    align-items: flex-start;
-}
-
-.align-items-center{
-    align-items: center;
-}
-
-.align-items-end{
-    align-items: end;
-}
-
-.align-items-flex-end{
-    align-items: flex-end;
-}
-
-.align-items-stretch{
-    align-items: stretch;
-}
-
-.align-items-baseline{
-    align-items: baseline;
-}
-
-@function flex-orders-generator(){
-    $names:generate-responsive-classes(order , map.get($conf-order , count));
+@function generate-align-self-classes($property-value){
     $list:();
-    @for $i from 1 through length($names){
-        $name:nth($names,$i);
-        $name-list:string.split($name,"-");
-        $num:nth($name-list,length($name-list));
+    $prefix:$property-value;
+    @if map.get($conf-align-self , responsive) == true{
+        $base:unquote(".align-self" + "-" + $prefix);
         $map:(
-            name: nth($names,$i),
-            propertyKey:order,
-            propertyValue:$num
+            name: $base,
+            propertyKey:align-self,
+            propertyValue:$property-value
         );
-        $list:append($list ,$map);
+        $list:append($list , $map);
+        @each $key , $value in $break-points{
+            $base:unquote(".align-self" + "-"+ $key + "-" + $prefix);
+            $map:(
+                name: $base,
+                propertyKey:align-self,
+                propertyValue:$property-value
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:unquote(".align-self" + "-" + $prefix);
+        $map:(
+            name: $base,
+            propertyKey:align-self,
+            propertyValue:$property-value
+        );
+        $list:append($list , $map);
     }
     @return $list;
 }
-$flex-orders:flex-orders-generator();
 
-@function flex-grows-generator(){
-    $names:generate-responsive-classes(grow , map.get($conf-grow , count));
-    $list:();
-    @for $i from 1 through length($names){
-        $name:nth($names,$i);
-        $name-list:string.split($name,"-");
-        $num:nth($name-list,length($name-list));
-        $map:(
-            name: nth($names,$i),
-            propertyKey:flex-grow,
-            propertyValue:$num
-        );
-        $list:append($list ,$map);     
-    }
-    @return $list;
+$align-self-value-list:(row , row-reverse , column , column-reverse);
+$align-self-list:();
+@for $i from 1 through length($align-self-value-list){
+    $function-align-self:generate-align-self-classes(nth($align-self-value-list , $i));
+    $align-self-list:append($align-self-list , $function-align-self , comma);
 }
-$flex-grows:flex-grows-generator();
+
+// flex-warp
 
 .flex-wrap{
     flex-wrap: wrap;
@@ -293,137 +451,4 @@ $flex-grows:flex-grows-generator();
 
 .flex-nowrap{
     flex-wrap: nowrap;
-}
-
-// justify-content
-
-@function generate-responsive-justify-content-classes($prefix){
-    $list:();
-    @each $key , $value in $break-points{
-        $base:unquote(".justify-content" + "-" + $key + "-" + $prefix);
-        $map:(
-            name: $base,
-            propertyKey:justify-content,
-            propertyValue:$prefix
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
-
-$justify-content-value-list:(start , center , end);
-$justify-content-list:();
-@for $i from 1 through length($justify-content-value-list){
-    $justify-content-list:generate-responsive-justify-content-classes(nth($justify-content-value-list , $i));
-}
-
-// justify-self
-
-@function generate-responsive-justify-self-classes($prefix){
-    $list:();
-    @each $key , $value in $break-points{
-
-        $base:unquote(".justify-self" + "-" + $key + "-" + $prefix);
-        $map:(
-            name: $base,
-            propertyKey:justify-self,
-            propertyValue:$prefix
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
-
-$justify-self-value-list:(start , center , end);
-$justify-self-list:();
-@for $i from 1 through length($justify-self-value-list){
-    $justify-self-list:generate-responsive-justify-self-classes(nth($justify-self-value-list , $i));
-}
-
-// justify-items
-
-@function generate-responsive-justify-items-classes($prefix){
-    $list:();
-    @each $key , $value in $break-points{
-        $base:unquote(".justify-items" + "-" + $key + "-" + $prefix);
-        $map:(
-            name: $base,
-            propertyKey:justify-items,
-            propertyValue:$prefix
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
-
-$justify-items-value-list:(start , center , end);
-$justify-items-list:();
-@for $i from 1 through length($justify-items-value-list){
-    $justify-items-list:generate-responsive-justify-items-classes(nth($justify-items-value-list , $i));
-}
-
-// align-content
-
-@function generate-responsive-align-content-classes($prefix){
-    $list:();
-    @each $key , $value in $break-points{
-        $base:unquote(".align-content" + "-" + $key + "-" + $prefix);
-        $map:(
-            name: $base,
-            propertyKey:align-content,
-            propertyValue:$prefix
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
-
-$align-content-value-list:(start , center , end);
-$align-content-list:();
-@for $i from 1 through length($align-content-value-list){
-    $align-content-list:generate-responsive-align-content-classes(nth($align-content-value-list , $i));
-}
-
-// align-self
-
-@function generate-responsive-align-self-classes($prefix){
-    $list:();
-    @each $key , $value in $break-points{
-        $base:unquote(".align-self" + "-" + $key + "-" + $prefix);
-        $map:(
-            name: $base,
-            propertyKey:align-self,
-            propertyValue:$prefix
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
-
-$align-self-value-list:(start , center , end);
-$align-self-list:();
-@for $i from 1 through length($align-self-value-list){
-    $align-self-list:generate-responsive-align-self-classes(nth($align-self-value-list , $i));
-}
-
-// align-items
-
-@function generate-responsive-align-items-classes($prefix){
-    $list:();
-    @each $key , $value in $break-points{
-        $base:unquote(".align-items" + "-" + $key + "-" + $prefix);
-        $map:(
-            name: $base,
-            propertyKey:align-items,
-            propertyValue:$prefix
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
-
-$align-items-value-list:(start , center , end);
-$align-items-list:();
-@for $i from 1 through length($align-items-value-list){
-    $align-items-list:generate-responsive-align-items-classes(nth($align-items-value-list , $i));
 }
