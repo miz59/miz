@@ -1,17 +1,45 @@
-$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,;
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
 @function get-greatest-breakpoints(){
+    $max-size:0;
     @each $key , $value in $break-points{
-        @for $i from 1 through $value{
-
+        @if map.get($break-points, $key) > $max-size{
+            $max-size : map.get($break-points, $key);
         }
     }
+    @return $max-size;
 }
+$max-break-point:get-greatest-breakpoints();
 @each $key , $value in $break-points{
+    @if($value != $max-break-point){
+        @media screen and (max-width : $value) {
 
-    @media screen and (max-width : $value) {
-
+            @for $x from 1 through length($totalist){
+    
+                @for $i from 1 through length(nth($totalist,$x)){
+    
+    
+                    $name:map.get(nth(nth($totalist,$x),$i),name);
+                    $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+                    $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+        
+        
+                
+                            @if(string.index($name,("-"+$key))!=null){
+        
+                                 #{$name } {
+                                    #{$property-key }: $property-value;
+                                         
+                                      
+                                    }
+                                }
+                            
+                        }
+            }
+        }
+    }  
+    @else{
         @for $x from 1 through length($totalist){
-
+    
             @for $i from 1 through length(nth($totalist,$x)){
 
 
@@ -31,11 +59,6 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,;
                             }
                         
                     }
-
         }
-        
-
-
-    }
-   
+    } 
 }
