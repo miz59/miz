@@ -1,4 +1,4 @@
-$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-direction-list,$justify-content-list,$justify-self-list,$justify-items-list,$align-content-list,$align-self-list,$align-items-list;
 @function check-config-count($i){
     @if length(nth($totalist,$i))!=0{
         @return true;
