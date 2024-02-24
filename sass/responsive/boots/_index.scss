@@ -1,23 +1,31 @@
 $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
-
+@function check-config-count($i){
+    @if length(nth($totalist,$i))!=0{
+        @return true;
+    }
+    @return false;
+}
 @mixin class-generator-with-media($key){
     @for $x from 1 through length($totalist){
         @for $i from 1 through length(nth($totalist,$x)){
-        $name:map.get(nth(nth($totalist,$x),$i),name);
-        $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
-        $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
-            @if(string.index($name,("-"+$key))!=null){
-                #{$name} {
-                    #{$property-key}: $property-value;
+            @if (check-config-count($x)){
+                $name:map.get(nth(nth($totalist,$x),$i),name);
+                $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+                $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+                    @if(string.index($name,("-"+$key))!=null){
+                        #{$name} {
+                            #{$property-key}: $property-value;
+                        }
+                    }
                 }
             }
-        }
     }
 }
 
 @mixin class-generator-out-media($key){
     @for $x from 1 through length($totalist){
         @for $i from 1 through length(nth($totalist,$x)){
+            @if (check-config-count($x)){
             $name:map.get(nth(nth($totalist,$x),$i),name);
             $test:string.split($name,"-#{$max-break-point-key}");
             $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
@@ -28,6 +36,7 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
                         #{$property-key}: $property-value;
                     }
                 }
+            }
         }
     }
 }
