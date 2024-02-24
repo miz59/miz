@@ -5,6 +5,9 @@ $grid-list : g;
     $count : map.get($map,'count');
     $list : ();
     $k:1;
+    @if $count == 0{
+        @return ();
+    }
     @for $i from 1 through length($grid-list){
 
         $name-list:generate-responsive-classes(nth($grid-list, $i),$count);

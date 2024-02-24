@@ -1,10 +1,6 @@
 $conf-cols:(
-    count:16,
-    // count:2,
-    // responsive:true,
-);
-$conf-orders:(
-    count:1,
+    count:0,
+    responsive:false
 );
 
 $conf-grids:(
@@ -17,7 +13,7 @@ $conf-gaps:(
     factor:0.5
 );
 $conf-paddings:(
-    count:20,
+    count:0,
     unit:rem,
     factor:0.5
 );

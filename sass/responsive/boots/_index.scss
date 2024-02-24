@@ -1,5 +1,37 @@
 $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
 
+@mixin class-generator-with-media($key){
+    @for $x from 1 through length($totalist){
+        @for $i from 1 through length(nth($totalist,$x)){
+        $name:map.get(nth(nth($totalist,$x),$i),name);
+        $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+        $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+            @if(string.index($name,("-"+$key))!=null){
+                #{$name} {
+                    #{$property-key}: $property-value;
+                }
+            }
+        }
+    }
+}
+
+@mixin class-generator-out-media($key){
+    @for $x from 1 through length($totalist){
+        @for $i from 1 through length(nth($totalist,$x)){
+            $name:map.get(nth(nth($totalist,$x),$i),name);
+            $test:string.split($name,"-#{$max-break-point-key}");
+            $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+            $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+                @if(string.index($name,("-"+$key))!=null){
+                    $test2:nth($test, 1 )+nth($test,2);
+                    #{$name} {
+                        #{$property-key}: $property-value;
+                    }
+                }
+        }
+    }
+}
+
 @function get-greatest-breakpoints(){
     @each $key , $value in $break-points{
         @for $i from 1 through $value{
@@ -34,35 +66,11 @@ $responsive-values:($responsive-col,$responsive-grid,$responsive-gap,$responsive
 @each $key , $value in $break-points{
     @if($value != $max-break-point){
         @media screen and (max-width : $value) {
-            @for $x from 1 through length($totalist){
-                @for $i from 1 through length(nth($totalist,$x)){
-                $name:map.get(nth(nth($totalist,$x),$i),name);
-                $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
-                $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
-                    @if(string.index($name,("-"+$key))!=null){
-                        #{$name} {
-                            #{$property-key}: $property-value;
-                        }
-                    }
-                }
-                
-            }
+            @include class-generator-with-media($key);
         }
     }  
     @else{
-        @for $x from 1 through length($totalist){
-            @for $i from 1 through length(nth($totalist,$x)){
-                $name:map.get(nth(nth($totalist,$x),$i),name);
-                $test:string.split($name,"-#{$max-break-point-key}");
-                $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
-                $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
-                    @if(string.index($name,("-"+$key))!=null){
-                        $test2:nth($test, 1 )+nth($test,2);
-                        #{$name} {
-                            #{$property-key}: $property-value;
-                        }
-                    }
-            }
-        }
+        @include class-generator-out-media($key);
     } 
 }
+
