@@ -38,6 +38,7 @@ variables
     
 config
 readme
+gitignore
 
 
 -----------------

@@ -13,45 +13,50 @@
     $base:'';
     $default-base:'';
     $names:'';
-    @for $i from 1 through map.get($conf-cols , count){
-        $base:unquote(".col" + "-" + $i);
-        $name:$base;
-        $name-list:string.split($name,"-");
-        $num:nth($name-list,length($name-list));
-        $map:(
-            name: $base,
-            propertyKey:width,
-            propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
-            );
-        $list:append($list , $map);
-        @if map.get($conf-cols , responsive) == true{
-            @each $key , $value in $break-points{
-                $base:unquote(".col" + "-"+ $key + "-" + $i);
+    @if map.get($conf-cols , count) == 0{
+        @return ();
+    }
+    @else{
+        @for $i from 1 through map.get($conf-cols , count){
+            @if map.get($conf-cols , responsive) == true{
+                $base:unquote(".col" + "-" + $i);
                 $name:$base;
                 $name-list:string.split($name,"-");
                 $num:nth($name-list,length($name-list));
                 $map:(
                     name: $base,
-                    propertyKey:col,
-                    propertyValue:$num
+                    propertyKey:width,
+                    propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
+                    );
+                $list:append($list , $map);
+                @each $key , $value in $break-points{
+                    $base:unquote(".col" + "-"+ $key + "-" + $i);
+                    $name:$base;
+                    $name-list:string.split($name,"-");
+                    $num:nth($name-list,length($name-list));
+                    $map:(
+                        name: $base,
+                        propertyKey:width,
+                        propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
+                        );
+                    $list:append($list , $map);
+                }
+            }
+            @else{
+                $base:unquote(".col" + "-" + $i);
+                $name:$base;
+                $name-list:string.split($name,"-");
+                $num:nth($name-list,length($name-list));
+                $map:(
+                    name: $base,
+                    propertyKey:width,
+                    propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
                     );
                 $list:append($list , $map);
             }
         }
-        @else{
-            $base:unquote(".col" + "-" + $i);
-            $name:$base;
-            $name-list:string.split($name,"-");
-            $num:nth($name-list,length($name-list));
-            $map:(
-                name: $base,
-                propertyKey:width,
-                propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
-                );
-            $list:append($list , $map);
-        }
+        @return $list;
     }
-    @return $list;
 }
 $flex-cols:generate-flex-cols();
 
@@ -61,17 +66,17 @@ $flex-cols:generate-flex-cols();
     $default-base:'';
     $names:'';
     @for $i from 1 through map.get($conf-orders , count){
-        $base:unquote(".order" + "-" + $i);
-        $name:$base;
-        $name-list:string.split($name,"-");
-        $num:nth($name-list,length($name-list));
-        $map:(
-            name: $base,
-            propertyKey:width,
-            propertyValue:calc((100% / map.get($conf-orders , count)) * $num)
-            );
-        $list:append($list , $map);
         @if map.get($conf-orders , responsive) == true{
+            $base:unquote(".order" + "-" + $i);
+            $name:$base;
+            $name-list:string.split($name,"-");
+            $num:nth($name-list,length($name-list));
+            $map:(
+                name: $base,
+                propertyKey:width,
+                propertyValue:calc((100% / map.get($conf-orders , count)) * $num)
+                );
+            $list:append($list , $map);
             @each $key , $value in $break-points{
                 $base:unquote(".order" + "-"+ $key + "-" + $i);
                 $name:$base;
@@ -108,17 +113,17 @@ $flex-orders:generate-flex-orders();
     $default-base:'';
     $names:'';
     @for $i from 1 through map.get($conf-grows , count){
-        $base:unquote(".grow" + "-" + $i);
-        $name:$base;
-        $name-list:string.split($name,"-");
-        $num:nth($name-list,length($name-list));
-        $map:(
-            name: $base,
-            propertyKey:width,
-            propertyValue:calc((100% / map.get($conf-grows , count)) * $num)
-            );
-        $list:append($list , $map);
         @if map.get($conf-grows , responsive) == true{
+            $base:unquote(".grow" + "-" + $i);
+            $name:$base;
+            $name-list:string.split($name,"-");
+            $num:nth($name-list,length($name-list));
+            $map:(
+                name: $base,
+                propertyKey:width,
+                propertyValue:calc((100% / map.get($conf-grows , count)) * $num)
+                );
+            $list:append($list , $map);
             @each $key , $value in $break-points{
                 $base:unquote(".grow" + "-"+ $key + "-" + $i);
                 $name:$base;

@@ -1,5 +1,10 @@
 $conf-cols:(
-    count:16
+    count:0,
+    // count:2,
+    // responsive:true,
+);
+$conf-orders:(
+    count:1,
 );
 
 $conf-grids:(
@@ -21,11 +26,27 @@ $conf-margins:(
     unit:rem,
     factor:0.5
 );
-
-$conf-order:(
-    count:12
+$conf-grows:(
+    count:5
 );
-
-$conf-grow:(
+$conf-flex-direction:(
+    count:5
+);
+$conf-justify-content:(
+    count:5
+);
+$conf-justify-items:(
+    count:5
+);
+$conf-justify-self:(
+    count:5
+);
+$conf-align-content:(
+    count:5
+);
+$conf-align-items:(
+    count:5
+);
+$conf-align-self:(
     count:5
 );

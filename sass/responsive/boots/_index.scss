@@ -1,4 +1,4 @@
-$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,;
+$totalist :  $flex-cols,;
 @function get-greatest-breakpoints(){
     @each $key , $value in $break-points{
         @for $i from 1 through $value{
