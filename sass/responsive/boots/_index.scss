@@ -42,13 +42,11 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-direction-l
 }
 
 @function get-greatest-breakpoints(){
-    $max-size:0;
     @each $key , $value in $break-points{
-        @if map.get($break-points, $key) > $max-size{
-            $max-size : map.get($break-points, $key);
+        @for $i from 1 through $value{
+
         }
     }
-    @return $max-size;
 }
 
 @function get-greatest-breakpoints-key(){

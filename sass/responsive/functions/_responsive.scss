@@ -1,54 +1,21 @@
-
-// config
-
-// $break-points:(sm:478px , md:767px , lg:1024px , xl:1280px , xxl:1920px);
 $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
-
-$prefix:gap;
-// count:25,
-// prefix:gap,
-// factor:1,
-// unit:px
-
-
-
 
 @function generate-responsive-classes($prefix , $count){
     $list:();
-    
-@each $key , $value in $break-points{
-
-        $base:unquote("." + $prefix + "-" + $key);
-        
-        @for $j from 1 through $count{
-            $total:$base + "-" + $j;
-            $list:append($list , $total , comma);
+    @each $key , $value in $break-points{
+        @for $i from 1 through $count{
+            $base:unquote("." + $prefix + "-" + $key + "-" + $i);
+            $list:append($list , $base , comma);
         }
     }
     @return $list;
 }
 
-
-@function list-generator($property , $count){
-
-    $name-list:generate-responsive-classes("col",$count);
+@function generate-classes($prefix , $count){
     $list:();
-    
-    @for $i from 1 through length($name-list){
-    
-
-
-    $map:(
-        name: nth($name-list,$i),
-        propertyKey:($property),
-        propertyValue:unquote((100*$i)+"px")
-    );
-    $list:append($list ,$map);
-                
-            }
-
+    @for $i from 1 through $count{
+        $base:unquote("." + $prefix + "-" + $i);
+        $list:append($list , $base , comma);
+    }
     @return $list;
-    
 }
-
-
