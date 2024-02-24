@@ -408,32 +408,32 @@ $align-self-list:();
 
 //align-items
 
-@function generate-align-self-classes($property-value){
+@function generate-align-items-classes($property-value){
     $list:();
     $prefix:$property-value;
-    @if map.get($conf-align-self , responsive) == true{
-        $base:unquote(".align-self" + "-" + $prefix);
+    @if map.get($conf-align-items , responsive) == true{
+        $base:unquote(".align-items" + "-" + $prefix);
         $map:(
             name: $base,
-            propertyKey:align-self,
+            propertyKey:align-items,
             propertyValue:$property-value
         );
         $list:append($list , $map);
         @each $key , $value in $break-points{
-            $base:unquote(".align-self" + "-"+ $key + "-" + $prefix);
+            $base:unquote(".align-items" + "-"+ $key + "-" + $prefix);
             $map:(
                 name: $base,
-                propertyKey:align-self,
+                propertyKey:align-items,
                 propertyValue:$property-value
             );
             $list:append($list , $map);
         }
     }
     @else{
-        $base:unquote(".align-self" + "-" + $prefix);
+        $base:unquote(".align-items" + "-" + $prefix);
         $map:(
             name: $base,
-            propertyKey:align-self,
+            propertyKey:align-items,
             propertyValue:$property-value
         );
         $list:append($list , $map);
@@ -441,11 +441,11 @@ $align-self-list:();
     @return $list;
 }
 
-$align-self-value-list:(row , row-reverse , column , column-reverse);
-$align-self-list:();
-@for $i from 1 through length($align-self-value-list){
-    $function-align-self:generate-align-self-classes(nth($align-self-value-list , $i));
-    $align-self-list:append($align-self-list , $function-align-self , comma);
+$align-items-value-list:(row , row-reverse , column , column-reverse);
+$align-items-list:();
+@for $i from 1 through length($align-items-value-list){
+    $function-align-items:generate-align-items-classes(nth($align-items-value-list , $i));
+    $align-items-list:append($align-items-list , $function-align-items , comma);
 }
 
 // flex-warp
