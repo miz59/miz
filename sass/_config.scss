@@ -1,31 +1,38 @@
 $conf-cols:(
-    count:16
+    count:12,
+    responsive:false
 );
 
 $conf-grids:(
-    count:12,
+    count:0,
+    responsive:true
 );
 
 $conf-gaps:(
     count:30,
     unit:rem,
-    factor:0.5
+    factor:0.5,
+    responsive:true
 );
 $conf-paddings:(
     count:20,
     unit:rem,
-    factor:0.5
+    factor:0.5,
+    responsive:true
 );
 $conf-margins:(
     count:40,
     unit:rem,
-    factor:0.5
+    factor:0.5,
+    responsive:true
 );
 
 $conf-order:(
-    count:12
+    count:12,
+    responsive:true
 );
 
 $conf-grow:(
-    count:5
+    count:5,
+    responsive:true
 );
