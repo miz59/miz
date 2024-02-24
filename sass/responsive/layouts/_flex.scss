@@ -9,6 +9,7 @@
 }
 
 @function generate-flex-cols(){
+    // $count:map.get($conf-cols,count);
     $list:();
     $base:'';
     $default-base:'';
@@ -16,11 +17,9 @@
     @if map.get($conf-cols , count) == 0{
         @return ();
     }
-    @else{
         @for $i from 1 through map.get($conf-cols , count){
             @if map.get($conf-cols , responsive) == true{
-                $base:nth(generate-responsive-classes(col , $i) , $i);
-                @debug $base;
+                $base:nth(generate-classes(col , $i) , $i);
                 // $base:unquote(".col" + "-" + $i);
                 // $name:$base;
                 // $name-list:string.split($name,"-");
@@ -30,39 +29,47 @@
                     name: $base,
                     propertyKey:width,
                     propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
-                    );
+                );
                 $list:append($list , $map);
-                @debug $list;
                 @each $key , $value in $break-points{
-                    $base:unquote(".col" + "-"+ $key + "-" + $i);
-                    $name:$base;
-                    $name-list:string.split($name,"-");
-                    $num:nth($name-list,length($name-list));
+                    // $base:unquote(".col" + "-"+ $key + "-" + $i);
+                    // $name:$base;
+                    // $name-list:string.split($name,"-");
+                    // $num:nth($name-list,length($name-list));
+                    // @each $key , $value in $break-points{
+                    //     @for $j from 1 through $count{
+                    //         $base:unquote("." + $prefix + "-" + $key + "-" + $j);
+                    //         // $list:append($list , $base , comma);
+                    //     }
+                    // }
+                    $name:generate-responsive-classes(col , $i);
+                    $base:nth($base , $i);
+                    $num:$i;
                     $map:(
-                        name: $base,
+                        name: $name,
                         propertyKey:width,
                         propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
-                        );
+                    );
+                    @debug map.get($map , name);
                     $list:append($list , $map);
                 }
             }
             @else{
-                $base:unquote(".col" + "-" + $i);
-                $name:$base;
-                $name-list:string.split($name,"-");
-                $num:nth($name-list,length($name-list));
+                $base:nth(generate-classes(col , $i) , $i);
+                $num:$i;
                 $map:(
                     name: $base,
                     propertyKey:width,
                     propertyValue:calc((100% / map.get($conf-cols , count)) * $num)
-                    );
+                );
                 $list:append($list , $map);
             }
         }
         @return $list;
-    }
 }
 $flex-cols:generate-flex-cols();
+// @debug type-of($flex-cols);
+@debug generate-flex-cols();
 
 @function generate-flex-orders(){
     $list:();
