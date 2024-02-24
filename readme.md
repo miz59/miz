@@ -27,6 +27,9 @@ structure
     colors
     typography
 
+common 
+    position 
+    z-index
 
 
 ----------------
