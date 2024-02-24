@@ -2,9 +2,11 @@
 @use "sass:string";
 
 
+
+
 $paddings-list : p,pb,pt,pr,pl,px,py;
 
-@function padding-generator($perfix,$property,$map){
+@function padding-generator($prefix,$property,$map){
 
     $name-list : ();
     $count : map.get($map,'count');
@@ -87,7 +89,7 @@ $paddings-list : p,pb,pt,pr,pl,px,py;
 
 $margins-list : m,mb,mt,mr,ml,mx,my;
 
-@function margin-generator($perfix,$property,$map){
+@function margin-generator($prefix,$property,$map){
 
     
     $name-list : ();
@@ -167,7 +169,7 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
 
 
 $gap-list : gap;
-@function gap-generator($perfix,$property,$map){
+@function gap-generator($prefix,$property,$map){
 
     
     $name-list : ();
