@@ -12,6 +12,9 @@ $paddings-list : p,pb,pt,pr,pl,px,py;
     $unit : map.get($map,'unit');
     $list : ();
     $k:1;
+    @if $count == 0 {
+        @return ();
+    }
     @for $i from 1 through length($paddings-list){
 
         $name-list:generate-responsive-classes(nth($paddings-list, $i),$count);
@@ -83,6 +86,7 @@ $paddings-list : p,pb,pt,pr,pl,px,py;
 
 
 $margins-list : m,mb,mt,mr,ml,mx,my;
+
 @function margin-generator($perfix,$property,$map){
 
     
@@ -92,12 +96,15 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
     $unit : map.get($map,'unit');
     $list : ();
     $k:1;
+    @if $count == 0 {
+        @return ();
+    }
     @for $i from 1 through length($margins-list){
 
         $name-list:generate-responsive-classes(nth($margins-list, $i),$count);
 
         @for $j from 1 through length($name-list){
-            
+
             @if $k==$count+1{
                 $k:1;
             } 
@@ -169,6 +176,9 @@ $gap-list : gap;
     $unit : map.get($map,'unit');
     $list : ();
     $k:1;
+    @if $count == 0 {
+        @return ();
+    }
     @for $i from 1 through length($gap-list){
 
         $name-list:generate-responsive-classes(nth($gap-list, $i),$count);
@@ -194,4 +204,3 @@ $gap-list : gap;
 $p : padding-generator($paddings-list ,padding, $conf-paddings) ;
 $m : margin-generator($margins-list ,margin, $conf-margins) ;
 $gap : gap-generator($gap-list ,gap, $conf-gaps) ;
-
