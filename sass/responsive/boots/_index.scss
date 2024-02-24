@@ -1,4 +1,5 @@
-$totalist :  $flex-cols,;
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,;
+
 @function get-greatest-breakpoints(){
     @each $key , $value in $break-points{
         @for $i from 1 through $value{
@@ -6,36 +7,62 @@ $totalist :  $flex-cols,;
         }
     }
 }
+
+@function get-greatest-breakpoints-key(){
+    $max-size-key:"";
+    $max-size:0;
+    @each $key , $value in $break-points{
+        @if map.get($break-points, $key) > $max-size{
+            $max-size : map.get($break-points, $key);
+            $max-size-key: $key;
+        }
+    }
+    @return $max-size-key;
+}
+
+$max-break-point:get-greatest-breakpoints();
+$max-break-point-key: get-greatest-breakpoints-key();
+
+$responsive-col:map.get($conf-cols,"responsive");
+$responsive-grid:map.get($conf-grids,"responsive");
+$responsive-gap:map.get($conf-gaps,"responsive");
+$responsive-padding:map.get($conf-paddings,"responsive");
+$responsive-margin:map.get($conf-margins,"responsive");
+$responsive-order:map.get($conf-order,"responsive");
+$responsive-grow:map.get($conf-grow,"responsive");
+$responsive-values:($responsive-col,$responsive-grid,$responsive-gap,$responsive-padding,$responsive-margin,$responsive-order,$responsive-grow);
 @each $key , $value in $break-points{
-
-    @media screen and (max-width : $value) {
-
-        @for $x from 1 through length($totalist){
-
-            @for $i from 1 through length(nth($totalist,$x)){
-
-
+    @if($value != $max-break-point){
+        @media screen and (max-width : $value) {
+            @for $x from 1 through length($totalist){
+                @for $i from 1 through length(nth($totalist,$x)){
                 $name:map.get(nth(nth($totalist,$x),$i),name);
                 $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
                 $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
-    
-    
-            
-                        @if(string.index($name,("-"+$key))!=null){
-    
-                             #{$name } {
-                                #{$property-key }: $property-value;
-                                     
-                                  
-                                }
-                            }
-                        
+                    @if(string.index($name,("-"+$key))!=null){
+                        #{$name} {
+                            #{$property-key}: $property-value;
+                        }
                     }
-
+                }
+                
+            }
         }
-        
-
-
-    }
-   
+    }  
+    @else{
+        @for $x from 1 through length($totalist){
+            @for $i from 1 through length(nth($totalist,$x)){
+                $name:map.get(nth(nth($totalist,$x),$i),name);
+                $test:string.split($name,"-#{$max-break-point-key}");
+                $property-key:map.get(nth(nth($totalist,$x),$i),propertyKey);
+                $property-value:map.get(nth(nth($totalist,$x),$i),propertyValue);
+                    @if(string.index($name,("-"+$key))!=null){
+                        $test2:nth($test, 1 )+nth($test,2);
+                        #{$name} {
+                            #{$property-key}: $property-value;
+                        }
+                    }
+            }
+        }
+    } 
 }
