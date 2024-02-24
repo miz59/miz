@@ -22,6 +22,10 @@ functions
 
 layouts
     flex
+structure
+    border
+    colors
+    typography
 
 
 
@@ -39,6 +43,10 @@ variables
 config
 readme
 gitignore
+
+structure
+    index
+    layouts
 
 
 -----------------
