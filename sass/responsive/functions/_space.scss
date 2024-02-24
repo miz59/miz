@@ -1,6 +1,9 @@
 @use "sass:map";
+@use "sass:string";
+
 
 $paddings-list : p,pb,pt,pr,pl,px,py;
+
 @function padding-generator($perfix,$property,$map){
 
     $name-list : ();
@@ -17,12 +20,57 @@ $paddings-list : p,pb,pt,pr,pl,px,py;
             @if $k==$count+1{
                 $k:1;
             } 
-            $map:(
-                name: nth($name-list,$j),
-                propertyKey:($property),
-                propertyValue:unquote(($factor*$k)+$unit)
-            );
-            $list:append($list ,$map,comma);
+            @if string.slice(nth($name-list,$j),3 , 3) == 'b'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-bottom',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 't'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-top',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'l'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-left',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'r'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-right',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'x'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) ,
+                    propertyValue:unquote( '0 ' + ($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'y'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) ,
+                    propertyValue:unquote(($factor*$k)+$unit + ' 0')
+                );
+                $list:append($list ,$map,comma);
+            }@else{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property),
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }
+         
             $k:$k+1;
         } 
     }
@@ -49,15 +97,60 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
         $name-list:generate-responsive-classes(nth($margins-list, $i),$count);
 
         @for $j from 1 through length($name-list){
+            
             @if $k==$count+1{
                 $k:1;
             } 
-            $map:(
-                name: nth($name-list,$j),
-                propertyKey:($property),
-                propertyValue:unquote(($factor*$k)+$unit)
-            );
-            $list:append($list ,$map,comma); 
+            @if string.slice(nth($name-list,$j),3 , 3) == 'b'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-bottom',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 't'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-top',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'l'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-left',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'r'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) + '-right',
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'x'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) ,
+                    propertyValue:unquote( '0 ' + ($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }@else if string.slice(nth($name-list,$j),3 , 3) == 'y'{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property) ,
+                    propertyValue:unquote(($factor*$k)+$unit + ' 0')
+                );
+                $list:append($list ,$map,comma);
+            }@else{
+                $map:(
+                    name: nth($name-list,$j),
+                    propertyKey:($property),
+                    propertyValue:unquote(($factor*$k)+$unit)
+                );
+                $list:append($list ,$map,comma);
+            }
             $k:$k+1;          
         } 
     }
@@ -101,3 +194,4 @@ $gap-list : gap;
 $p : padding-generator($paddings-list ,padding, $conf-paddings) ;
 $m : margin-generator($margins-list ,margin, $conf-margins) ;
 $gap : gap-generator($gap-list ,gap, $conf-gaps) ;
+
