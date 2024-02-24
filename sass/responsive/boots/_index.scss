@@ -42,11 +42,13 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-direction-l
 }
 
 @function get-greatest-breakpoints(){
+    $max-size:0;
     @each $key , $value in $break-points{
-        @for $i from 1 through $value{
-
+        @if map.get($break-points, $key) > $max-size{
+            $max-size : map.get($break-points, $key);
         }
     }
+    @return $max-size;
 }
 
 @function get-greatest-breakpoints-key(){
@@ -64,14 +66,6 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-direction-l
 $max-break-point:get-greatest-breakpoints();
 $max-break-point-key: get-greatest-breakpoints-key();
 
-$responsive-col:map.get($conf-cols,"responsive");
-$responsive-grid:map.get($conf-grids,"responsive");
-$responsive-gap:map.get($conf-gaps,"responsive");
-$responsive-padding:map.get($conf-paddings,"responsive");
-$responsive-margin:map.get($conf-margins,"responsive");
-$responsive-order:map.get($conf-order,"responsive");
-$responsive-grow:map.get($conf-grow,"responsive");
-$responsive-values:($responsive-col,$responsive-grid,$responsive-gap,$responsive-padding,$responsive-margin,$responsive-order,$responsive-grow);
 @each $key , $value in $break-points{
     @if($value != $max-break-point){
         @media screen and (max-width : $value) {
