@@ -19,3 +19,13 @@ $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
     }
     @return $list;
 }
+
+@function generate-classes-responsive-on-value($prefix,$break-point , $value){
+    $base:unquote("." + $prefix + "-"+ $break-point + "-" + $value);
+    @return $base;
+}
+
+@function generate-classes-on-value($prefix , $value){
+    $base:unquote("." + $prefix + "-" + $value);
+    @return $base;
+}
