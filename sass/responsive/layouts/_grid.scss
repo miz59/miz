@@ -1,5 +1,5 @@
 $grid-list : g;
-@function grid-generator($perfix,$property,$map){
+@function generate-grid($perfix,$property,$map){
 
     $name-list : ();
     $count : map.get($map,'count');
@@ -27,4 +27,4 @@ $grid-list : g;
     }
     @return $list;
 }   
-$g : grid-generator($grid-list ,grid-template-columns, $conf-grids) ;
+$g : generate-grid($grid-list ,grid-template-columns, $conf-grids) ;
