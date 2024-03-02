@@ -192,8 +192,6 @@ $flex-list:();
     $flex-list:join($flex-list , $value);
 }
 
-// flex-warp
-
 .flex-wrap{
     flex-wrap: wrap;
 }
