@@ -8,6 +8,35 @@
     flex-wrap: wrap;
 }
 
+@function check-need-responsive(){
+      @for $i from 1 through map.get($conf-grows , count){
+        @if map.get($conf-grows , responsive) == true{
+            $j:0;
+            @each $key , $value in $break-points{
+                $j:$j+1;
+                $name:generate-responsive-classes(grow , $i);
+                $num:$i;
+                $map:(
+                    name: nth($name , ($j * $i)),
+                    propertyKey:flex-grow,
+                    propertyValue:$i
+                );
+                $list:append($list , $map);
+            }
+        }
+        @else{
+            $base:nth(generate-classes(grow , $i) , $i);
+            $num:$i;
+            $map:(
+                name: $base,
+                propertyKey:flex-grow,
+                propertyValue:$i
+            );
+            $list:append($list , $map);
+        }
+    }
+}
+
 @function generate-flex-cols(){
     $list:();
     $base:'';
