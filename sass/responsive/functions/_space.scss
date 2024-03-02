@@ -2,11 +2,65 @@
 @use "sass:string";
 
 
-
-
 $paddings-list : p,pb,pt,pr,pl,px,py;
+$gap-list : gap;
+$margins-list : m,mb,mt,mr,ml,mx,my;
 
-@function padding-generator($prefix,$property,$map){
+@mixin check-key-type{
+    $key-type-list : ();
+    @if string.slice(nth($name-list,$j),3 , 3) == 'b'{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property) + '-bottom',
+            propertyValue:unquote(($factor*$k)+$unit)
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }@else if string.slice(nth($name-list,$j),3 , 3) == 't'{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property) + '-top',
+            propertyValue:unquote(($factor*$k)+$unit)
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }@else if string.slice(nth($name-list,$j),3 , 3) == 'l'{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property) + '-left',
+            propertyValue:unquote(($factor*$k)+$unit)
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }@else if string.slice(nth($name-list,$j),3 , 3) == 'r'{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property) + '-right',
+            propertyValue:unquote(($factor*$k)+$unit)
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }@else if string.slice(nth($name-list,$j),3 , 3) == 'x'{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property) ,
+            propertyValue:unquote( '0 ' + ($factor*$k)+$unit)
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }@else if string.slice(nth($name-list,$j),3 , 3) == 'y'{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property) ,
+            propertyValue:unquote(($factor*$k)+$unit + ' 0')
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }@else{
+        $map:(
+            name: nth($name-list,$j),
+            propertyKey:($property),
+            propertyValue:unquote(($factor*$k)+$unit)
+        );
+        $key-type-list:append($key-type-list ,$map,comma);
+    }
+}
+
+@function generate-paddings($prefix,$property,$map){
 
     $name-list : ();
     $count : map.get($map,'count');
@@ -75,21 +129,17 @@ $paddings-list : p,pb,pt,pr,pl,px,py;
                 );
                 $list:append($list ,$map,comma);
             }
-         
+            
+            @return $list;
             $k:$k+1;
         } 
     }
-    @return $list;
-
 
 }   
 
 
 
-
-$margins-list : m,mb,mt,mr,ml,mx,my;
-
-@function margin-generator($prefix,$property,$map){
+@function generate-margins($prefix,$property,$map){
 
     
     $name-list : ();
@@ -168,8 +218,7 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
 
 
 
-$gap-list : gap;
-@function gap-generator($prefix,$property,$map){
+@function generate-gaps($prefix,$property,$map){
 
     
     $name-list : ();
@@ -203,6 +252,8 @@ $gap-list : gap;
 
 
 
-$p : padding-generator($paddings-list ,padding, $conf-paddings) ;
-$m : margin-generator($margins-list ,margin, $conf-margins) ;
-$gap : gap-generator($gap-list ,gap, $conf-gaps) ;
+$p : generate-paddings($paddings-list ,padding, $conf-paddings) ;
+$m : generate-margins($margins-list ,margin, $conf-margins) ;
+$gap : generate-gaps($gap-list ,gap, $conf-gaps) ;
+
+
