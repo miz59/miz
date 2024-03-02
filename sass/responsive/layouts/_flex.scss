@@ -112,147 +112,79 @@ $key-list:(
     align-items ,
 );
 
-@function check-flex-responsive-classes(){
-    
-    @if map.get($conf-list , nth($property-key-list , $c)) == true{
-        @each $key , $value in $break-points{
-            $base:generate-classes-responsive-on-value(nth($property-key-list , $c) , $key , nth($property-value-list , $i));
-            $list-del-text:"space" , "flex" , "direction";
-            $base:"";
-            $list-null:();
-            @for $h from 1 through length($list-del-text){
-                @if string.index($base , "-#{nth($list-del-text , $h)}-"){
-                    $split:string.split($base , "-");
-                    $nth-del:index($split , nth($list-del-text , $h));
-                    @for $n from 1 through length($split){
-                        @if $n != $nth-del{
-                            $list-null:append($list-null,nth($split,$n),comma);
-                        }
-                    }
-                    @for $t from 1 through length($list-null){
-                        @if $t == length($list-null){
-                            $base:$base + "#{nth($list-null , $t)}";
-                        }
-                        @else{
-                            $base:$base + "#{nth($list-null , $t)}-";
-                        }
-                    }
-                }
-            }
-            $map:(
-                name: $base,
-                propertyKey:nth($property-key-list , $c),
-                propertyValue:nth($property-value-list , $i)
-            );
-            $list:append($list , $map);
-        }
-        @return $list;
-    }
-    @else{
-        $base:generate-classes-on-value(nth($property-key-list , $c) , nth($property-value-list , $i));
-        $list-del-text:"space" , "flex" , "direction";
-        $base:"";
-        $list-null:();
-        @for $h from 1 through length($list-del-text){
-            @if string.index($base , "-#{nth($list-del-text , $h)}-"){
-                $split:string.split($base , "-");
-                $nth-del:index($split , nth($list-del-text , $h));
-                @for $n from 1 through length($split){
-                    @if $n != $nth-del{
-                        $list-null:append($list-null,nth($split,$n),comma);
-                    }
-                }
-                @for $t from 1 through length($list-null){
-                    @if $t == length($list-null){
-                        $base:$base + "#{nth($list-null , $t)}";
-                    }
-                    @else{
-                        $base:$base + "#{nth($list-null , $t)}-";
-                    }
-                }
-            }
-        }
-        $map:(
-            name: $base,
-            propertyKey:nth($property-key-list , $c),
-            propertyValue:nth($property-value-list , $i)
-        );
-        $list:append($list , $map);
-    }
-}
-
 @function generate-flex-classes($property-key-list , $property-value-list){
     $list:();
     @for $c from 1 through length($property-key-list){
         @for $i from 1 through length($property-value-list){
-            // @if map.get($conf-list , nth($property-key-list , $c)) == true{
-            //     @each $key , $value in $break-points{
-            //         $base:generate-classes-responsive-on-value(nth($property-key-list , $c) , $key , nth($property-value-list , $i));
-            //         $list-del-text:"space" , "flex" , "direction";
-            //         $base:"";
-            //         $list-null:();
-            //         @for $h from 1 through length($list-del-text){
-            //             @if string.index($base , "-#{nth($list-del-text , $h)}-"){
-            //                 $split:string.split($base , "-");
-            //                 $nth-del:index($split , nth($list-del-text , $h));
-            //                 @for $n from 1 through length($split){
-            //                     @if $n != $nth-del{
-            //                         $list-null:append($list-null,nth($split,$n),comma);
-            //                     }
-            //                 }
-            //                 @for $t from 1 through length($list-null){
-            //                     @if $t == length($list-null){
-            //                         $base:$base + "#{nth($list-null , $t)}";
-            //                     }
-            //                     @else{
-            //                         $base:$base + "#{nth($list-null , $t)}-";
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //         $map:(
-            //             name: $base,
-            //             propertyKey:nth($property-key-list , $c),
-            //             propertyValue:nth($property-value-list , $i)
-            //         );
-            //         $list:append($list , $map);
-            //     }
-            // }
-            // @else{
-            //     $base:generate-classes-on-value(nth($property-key-list , $c) , nth($property-value-list , $i));
-            //     $list-del-text:"space" , "flex" , "direction";
-            //     $base:"";
-            //     $list-null:();
-            //     @for $h from 1 through length($list-del-text){
-            //         @if string.index($base , "-#{nth($list-del-text , $h)}-"){
-            //             $split:string.split($base , "-");
-            //             $nth-del:index($split , nth($list-del-text , $h));
-            //             @for $n from 1 through length($split){
-            //                 @if $n != $nth-del{
-            //                     $list-null:append($list-null,nth($split,$n),comma);
-            //                 }
-            //             }
-            //             @for $t from 1 through length($list-null){
-            //                 @if $t == length($list-null){
-            //                     $base:$base + "#{nth($list-null , $t)}";
-            //                 }
-            //                 @else{
-            //                     $base:$base + "#{nth($list-null , $t)}-";
-            //                 }
-            //             }
-            //         }
-            //     }
-            //     $map:(
-            //         name: $base,
-            //         propertyKey:nth($property-key-list , $c),
-            //         propertyValue:nth($property-value-list , $i)
-            //     );
-            //     $list:append($list , $map);
-            // }
+            @if map.get($conf-list , nth($property-key-list , $c)) == true{
+                @each $key , $value in $break-points{
+                    $base:generate-classes-responsive-on-value(nth($property-key-list , $c) , $key , nth($property-value-list , $i));
+                    $list-del-text:"space" , "flex" , "direction";
+                    $base:"";
+                    $list-null:();
+                    @for $h from 1 through length($list-del-text){
+                        @if string.index($base , "-#{nth($list-del-text , $h)}-"){
+                            $split:string.split($base , "-");
+                            $nth-del:index($split , nth($list-del-text , $h));
+                            @for $n from 1 through length($split){
+                                @if $n != $nth-del{
+                                    $list-null:append($list-null,nth($split,$n),comma);
+                                }
+                            }
+                            @for $t from 1 through length($list-null){
+                                @if $t == length($list-null){
+                                    $base:$base + "#{nth($list-null , $t)}";
+                                }
+                                @else{
+                                    $base:$base + "#{nth($list-null , $t)}-";
+                                }
+                            }
+                        }
+                    }
+                    $map:(
+                        name: $base,
+                        propertyKey:nth($property-key-list , $c),
+                        propertyValue:nth($property-value-list , $i)
+                    );
+                    $list:append($list , $map);
+                }
+            }
+            @else{
+                $base:generate-classes-on-value(nth($property-key-list , $c) , nth($property-value-list , $i));
+                $list-del-text:"space" , "flex" , "direction";
+                $base:"";
+                $list-null:();
+                @for $h from 1 through length($list-del-text){
+                    @if string.index($base , "-#{nth($list-del-text , $h)}-"){
+                        $split:string.split($base , "-");
+                        $nth-del:index($split , nth($list-del-text , $h));
+                        @for $n from 1 through length($split){
+                            @if $n != $nth-del{
+                                $list-null:append($list-null,nth($split,$n),comma);
+                            }
+                        }
+                        @for $t from 1 through length($list-null){
+                            @if $t == length($list-null){
+                                $base:$base + "#{nth($list-null , $t)}";
+                            }
+                            @else{
+                                $base:$base + "#{nth($list-null , $t)}-";
+                            }
+                        }
+                    }
+                }
+                $map:(
+                    name: $base,
+                    propertyKey:nth($property-key-list , $c),
+                    propertyValue:nth($property-value-list , $i)
+                );
+                $list:append($list , $map);
+            }
         }
     }
     @return $list;
 }
+
 
 $flex-list:();
 @for $i from 1 through length($key-list){
