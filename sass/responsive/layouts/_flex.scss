@@ -12,10 +12,11 @@
 
 @function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
     $list:();
-    @if map.get($conf-map , responsive) == true{
+    @if map.get($conf-map , responsive) {
         $j:0;
         @each $key , $value in $break-points{
             $j:$j+1;
+            $name:generate-responsive-classes($prefix, $number);
             $name:generate-responsive-classes($prefix, $number);
             $map:(
                 name: nth($name , ($j * $number)),
@@ -33,6 +34,7 @@
             propertyValue:$number
         );
         $list:append($list , $map);
+       
     }
     @return $list;
 }
@@ -52,13 +54,17 @@
 @function generate-flex-grows(){
     $list:();
     $base:'';
+    $a : ();
     @if map.get($conf-grows , count) == 0{
         @return ();
     }
     @for $i from 1 through map.get($conf-grows , count){
-        $list:prepare-responsive-list($conf-cols , flex-grow , grow , $i);
+        $list:prepare-responsive-list($conf-grows , flex-grow , grow , $i);
+        $a : append($a, $list, comma);
     }
-    @return $list;
+    
+
+    @return $a;
 }
 
 @function generate-flex-orders(){
@@ -68,7 +74,7 @@
         @return ();
     }
     @for $i from 1 through map.get($conf-orders , count){
-        $list:prepare-responsive-list($conf-cols , flex-order , flex-order , $i);
+        $list:prepare-responsive-list($conf-orders , flex-order , flex-order , $i);
     }
 
     @return $list;
@@ -207,3 +213,4 @@ $flex-cols:generate-flex-cols();
 $flex-grows:generate-flex-grows();
 $flex-orders:generate-flex-orders();
 
+@debug $flex-grows;
