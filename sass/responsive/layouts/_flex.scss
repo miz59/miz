@@ -12,11 +12,11 @@
 
 @function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
     $list:();
-    @if map.get($conf-map , responsive) == true{
+    @if map.get($conf-map , responsive){
         $j:0;
         @each $key , $value in $break-points{
             $j:$j+1;
-            $name:generate-responsive-classes($prefix, $num);
+            $name:generate-responsive-classes($prefix, $number);
             $map:(
                 name: nth($name , ($j * $number)),
                 propertyKey:$property-key,
@@ -43,9 +43,10 @@
     @if map.get($conf-cols , count) == 0{
         @return ();
     }
-    @for $i from 1 through map.get($conf-cols , count){
-        $list:prepare-responsive-list($conf-cols , width , col , $i);
+    @for $i from 1 through 10{
+        $list:prepare-responsive-list($conf-cols , width , col , 10);
     }
+    @debug $list;
     @return $list;
 }
 
@@ -56,6 +57,7 @@
         @return ();
     }
     @for $i from 1 through map.get($conf-grows , count){
+        @debug $i;
         $list:prepare-responsive-list($conf-cols , flex-grow , grow , $i);
     }
     @return $list;
