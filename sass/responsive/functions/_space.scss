@@ -234,6 +234,7 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
         $name-list:generate-responsive-classes(nth($gap-list, $i),$count);
 
         @for $j from 1 through length($name-list){
+            
             @if $k==$count+1{
                 $k:1;
             }
