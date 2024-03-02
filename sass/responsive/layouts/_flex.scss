@@ -12,7 +12,7 @@
 
 @function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
     $list:();
-    @if map.get($conf-map , responsive){
+    @if map.get($conf-map , responsive) == true{
         $j:0;
         @each $key , $value in $break-points{
             $j:$j+1;
@@ -43,10 +43,9 @@
     @if map.get($conf-cols , count) == 0{
         @return ();
     }
-    @for $i from 1 through 10{
-        $list:prepare-responsive-list($conf-cols , width , col , 10);
+    @for $i from 1 through map.get($conf-cols , count){
+        $list:prepare-responsive-list($conf-cols , width , col , $i);
     }
-    @debug $list;
     @return $list;
 }
 
@@ -57,7 +56,6 @@
         @return ();
     }
     @for $i from 1 through map.get($conf-grows , count){
-        @debug $i;
         $list:prepare-responsive-list($conf-cols , flex-grow , grow , $i);
     }
     @return $list;
@@ -72,6 +70,7 @@
     @for $i from 1 through map.get($conf-orders , count){
         $list:prepare-responsive-list($conf-cols , flex-order , flex-order , $i);
     }
+
     @return $list;
 }
 
@@ -126,7 +125,7 @@ $key-list:(
                     $list-null:();
                     @for $h from 1 through length($list-del-text){
                         @if string.index($base , "-#{nth($list-del-text , $h)}-"){
-                            $split:string.split($base , "-");
+$split:string.split($base , "-");
                             $nth-del:index($split , nth($list-del-text , $h));
                             @for $n from 1 through length($split){
                                 @if $n != $nth-del{
@@ -207,3 +206,4 @@ $flex-list:();
 $flex-cols:generate-flex-cols();
 $flex-grows:generate-flex-grows();
 $flex-orders:generate-flex-orders();
+
