@@ -1,4 +1,4 @@
-$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-direction-list,$justify-content-list,$justify-self-list,$justify-items-list,$align-content-list,$align-self-list,$align-items-list;
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-list;
 @function check-config-count($i){
     @if length(nth($totalist,$i))!=0{
         @return true;
@@ -7,10 +7,11 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-direction-l
 }
 @mixin generate-style-property($i,$j){
     @if (check-config-count($i)){
-        $name:map.get(nth(nth($totalist,$i),$j),name);
-        $property-key:map.get(nth(nth($totalist,$i),$j),propertyKey);
-        $property-value:map.get(nth(nth($totalist,$i),$j),propertyValue);
-        @if(string.index($name,("-"+$key))!=null){
+        $total-list-number:nth($totalist,$i);
+        $name:map.get(nth($total-list-number,$j),name);
+        $property-key:map.get(nth($total-list-number,$j),propertyKey);
+        $property-value:map.get(nth($total-list-number,$j),propertyValue);
+        @if(string.index($name,("-"+$property-key))!=null){
             #{$name} {
                 #{$property-key}: $property-value;
             }
