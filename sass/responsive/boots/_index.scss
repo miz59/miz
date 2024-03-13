@@ -1,4 +1,4 @@
-$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-list;
+$totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,;
 @function check-config-count($i){
     @if length(nth($totalist,$i))!=0{
         @return true;
@@ -33,6 +33,7 @@ $totalist :  $flex-cols,$p,$m,$gap,$g,$flex-orders,$flex-grows,$flex-list;
             $max-size : map.get($break-points, $key);
         }
     }
+   
     @return $max-size;
 }
 

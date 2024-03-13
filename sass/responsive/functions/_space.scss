@@ -253,6 +253,5 @@ $margins-list : m,mb,mt,mr,ml,mx,my;
 
 
 $p : generate-paddings($paddings-list ,padding, $conf-paddings) ;
-@debug $p;
 $m : generate-margins($margins-list ,margin, $conf-margins) ;
 $gap : generate-gaps($gap-list ,gap, $conf-gaps) ;
