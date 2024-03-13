@@ -1,143 +1,120 @@
-$paddings-list : p,pb,pt,pr,pl,px,py;
-$gap-list : gap;
-$margins-list : m,mb,mt,mr,ml,mx,my;
+$paddings-list:px,py;
+// $paddings-list:p,pt,pb,pl,pr,px,py;
+$margins-list:m,mt,mb,ml,mr,mx,my;
+$gap-list:gap,;
 
-@function choose-direction($name-list , $name-list-number , $step , $property , $factor , $unit){
-    $list:();
-    @if string.slice(nth($name-list,$name-list-number),3 , 3) == 'b'{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property) + '-bottom',
-            propertyValue:unquote(($factor*$step)+$unit)
-        );
-        $list:append($list ,$map,comma);
-    }@else if string.slice(nth($name-list,$name-list-number),3 , 3) == 't'{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property) + '-top',
-            propertyValue:unquote(($factor*$step)+$unit)
-        );
-        $list:append($list ,$map,comma);
-    }@else if string.slice(nth($name-list,$name-list-number),3 , 3) == 'l'{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property) + '-left',
-            propertyValue:unquote(($factor*$step)+$unit)
-        );
-        $list:append($list ,$map,comma);
-    }@else if string.slice(nth($name-list,$name-list-number),3 , 3) == 'r'{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property) + '-right',
-            propertyValue:unquote(($factor*$step)+$unit)
-        );
-        $list:append($list ,$map,comma);
-    }@else if string.slice(nth($name-list,$name-list-number),3 , 3) == 'x'{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property) ,
-            propertyValue:unquote( '0 ' + ($factor*$step)+$unit)
-        );
-        $list:append($list ,$map,comma);
-    }@else if string.slice(nth($name-list,$name-list-number),3 , 3) == 'y'{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property) ,
-            propertyValue:unquote(($factor*$step)+$unit + ' 0')
-        );
-        $list:append($list ,$map,comma);
-    }@else{
-        $map:(
-            name: nth($name-list,$name-list-number),
-            propertyKey:($property),
-            propertyValue:unquote(($factor*$step)+$unit)
-        );
-        $list:append($list ,$map,comma);
-    }
-    @return $list;
+$conf-paddings: (
+    count:1,
+    unit:rem,
+    factor:0.5,
+    responsive:true
+);
+$conf-margins: (
+    count:1,
+    unit:rem,
+    factor:0.5,
+    responsive:true
+);
+
+$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom));
+$map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom));
+$map-gap:(gap:gap);
+
+@function check-responsive-status($map-config, $status-responsive) {
+    $status: map.get($map-config , $status-responsive);
+    @return $status;
 }
 
-@function generate-paddings($prefix,$property,$map){
-    $name-list : ();
-    $count : map.get($map,'count');
-    $factor : map.get($map,'factor');
-    $unit : map.get($map,'unit');
-    $merg-list : ();
-    $k:1;
-    @if $count == 0 {
-        @return ();
-    }
-    @for $i from 1 through length($paddings-list){
+@function generate-class-name-list($name-list, $map-config) {
+    $is-responsive: check-responsive-status($map-config, responsive);
+    $class-name-list: ();
+    $count:map.get($map-config , count);
 
-        $name-list:generate-responsive-classes(nth($paddings-list, $i),$count);
-
-        @for $j from 1 through length($name-list){
-            $k:reset-count($k , $count);
-            $list:choose-direction($name-list , $j , $k , $property , $factor , $unit);
-            $merg-list:join($merg-list , $list);
-        } 
-    }
-    @return $merg-list;
-}   
-
-
-
-@function generate-margins($prefix,$property,$map){
-    $name-list : ();
-    $count : map.get($map,'count');
-    $factor : map.get($map,'factor');
-    $unit : map.get($map,'unit');
-    $merg-list : ();
-    $k:1;
-    @if $count == 0 {
-        @return ();
-    }
-    @for $i from 1 through length($margins-list){
-
-        $name-list:generate-responsive-classes(nth($margins-list, $i),$count);
-
-        @for $j from 1 through length($name-list){
-            $k:reset-count($k , $count);
-            $list:choose-direction($name-list , $j , $k , $property , $factor , $unit);
-            $merg-list:join($merg-list , $list);
-        } 
-    }
-    @return $merg-list;
-}
-
-@function generate-gaps($prefix,$property,$map){
-
-    
-    $name-list : ();
-    $count : map.get($map,'count');
-    $factor : map.get($map,'factor');
-    $unit : map.get($map,'unit');
-    $list : ();
-    $k:1;
-    @if $count == 0 {
-        @return ();
-    }
-    @for $i from 1 through length($gap-list){
-
-        $name-list:generate-responsive-classes(nth($gap-list, $i),$count);
-
-        @for $j from 1 through length($name-list){
-            
-            $k:reset-count($k , $count);
-            $map:(
-                name: nth($name-list,$j),
-                propertyKey:($property),
-                propertyValue:unquote(($factor*$k)+$unit)
-            );
-            $list:append($list ,$map,comma);   
-            $k:$k+1;  
+    @if($is-responsive) {
+        @for $i from 1 through length($name-list) {
+            $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count));
         }
     }
+
+    @else {
+        @for $i from 1 through length($name-list) {
+            $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count));
+        }
+    }
+    @return $class-name-list;
+}
+
+@function cast-string-number($string) {
+    // Matrices
+    $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
+    $numbers: 0 1 2 3 4 5 6 7 8 9;
+  
+    // Result
+    $result: 0;
+  
+    // Looping through all characters
+    @for $i from 1 through str-length($string) {
+        $character: str-slice($string, $i, $i);
+        $index: index($strings, $character);
+        @if not $index {
+            @warn "Unknown character #{$character}.";
+            @return false;
+        }
+        $number: nth($numbers, $index);
+        $result: $result * 10 + $number;
+    }
+  
+    @return $result;
+}
+
+@function generate-key($name , $map-property){
+    $split-dot:string.split($name , ".");
+    $split-class:string.split(nth($split-dot , length($split-dot)) , "-");
+    $prefix:nth($split-class , 1);
+    $key:map.get($map-property , $prefix);
+    @return $key;
+}
+
+@function generate-value($name , $map-config , $map-property){
+    $factor:map.get($map-config , factor);
+    $unit:map.get($map-config , unit);
+    // $split-class:string.split($name , "-");
+    // $prefix:nth($split-class , 1);
+    // $key:map.get($map-property , $prefix);
+    $key:generate-key($name , $map-property);
+    $split-class:string.split($name , "-");
+    $number:nth($split-class , length($split-class));
+    $value:$factor * cast-string-number($number);
+    $value:$value + $unit;
+    $value-list:();
+
+    @if type-of($key) == list{
+        @for $i from 1 through length($key){
+            $value-list:list.append($value-list,$value , comma);
+        }
+        @return $value-list;
+    }
+    @return $value;
+}
+
+@function generate-total-map-list($name-list , $map-property , $map-config){
+    $list:();
+    $map:();
+    $class-name-list:generate-class-name-list($name-list, $map-config);
+    @for $i from 1 through length($class-name-list){
+        $class-item:nth($class-name-list , $i);
+        $map:(
+            className:$class-item,
+            propertyKeys:generate-key($class-item , $map-property),
+            propertyValues:generate-value($class-item , $map-config , $map-property)
+        );
+        $list:append($list , $map , comma);
+        // $list:join($list , $map , comma);
+    }
     @return $list;
 }
 
 
-
-$p : generate-paddings($paddings-list ,padding, $conf-paddings) ;
-$m : generate-margins($margins-list ,margin, $conf-margins) ;
-$gap : generate-gaps($gap-list ,gap, $conf-gaps) ;
+$p : generate-total-map-list($paddings-list , $map-padding , $conf-paddings);
+$m : generate-total-map-list($margins-list , $map-margin , $conf-margins);
+$gap : generate-total-map-list($gap-list , $map-gap , $conf-gaps);
