@@ -143,7 +143,7 @@ $key-list:(
             propertyKeys:$property-key-list,
             propertyValues:nth($property-value-list , $i)
         );
-        $list:append($list , $map);
+        $list:join($list , $map);
     }
     @return $list;
 }
@@ -171,12 +171,6 @@ $key-list:(
     @return $flex-list;
 }
 
-@debug generate-flex-list();
-
-
-
-
-// flex-warp
 
 .flex-wrap{
     flex-wrap: wrap;
@@ -186,8 +180,7 @@ $key-list:(
     flex-wrap: nowrap;
 }
 
+$flex-type : generate-flex-list();
 $flex-cols:generate-flex-cols();
 $flex-grows:generate-flex-grows();
 $flex-orders:generate-flex-orders();
-
-// @debug $flex-cols;

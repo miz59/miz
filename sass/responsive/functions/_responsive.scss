@@ -36,7 +36,6 @@ $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
     @return $k;
 }
 
-
 @function check-responsive-status($map-config,$status-responsive){
     $status:map.get($map-config , $status-responsive);
     @return $status;
@@ -63,7 +62,7 @@ $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
             propertyKeys:($property),
             propertyValues:set-property-values($counter-reset,$type)
         );
-        $list:append($list ,$conf-map,comma);
+        $list:append($list ,$conf-map,comma);   
         $counter-reset:$counter-reset+1;
     }
     @return $list;
