@@ -20,12 +20,51 @@ $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
     @return $list;
 }
 
-@function generate-classes-responsive-on-value($prefix , $break-point , $value){
+@function create-responsive-classes-name($prefix , $break-point , $value){
     $base:unquote("." + $prefix + "-"+ $break-point + "-" + $value);
     @return $base;
 }
 
-@function generate-classes-on-value($prefix , $value){
+@function create-classes-name($prefix , $value){
     $base:unquote("." + $prefix + "-" + $value);
     @return $base;
+}
+@function reset-count($k , $count){
+    @if $k==$count+1{
+        $k:1;
+    }
+    @return $k;
+}
+
+
+@function check-responsive-status($map-config,$status-responsive){
+    $status:map.get($map-config , $status-responsive);
+    @return $status;
+}
+
+@function set-property-values($counter-reset,$type){
+
+    @if $type==col{
+        @return calc(100%/$counter-reset);
+    }
+    @else if $type==grow or $type==order{
+        @return $counter-reset;
+    }
+}
+
+@function generate-properties($map-list,$conf-map,$property,$type){
+    $count : map.get($conf-map,'count');
+    $counter-reset:1;
+    $list : ();
+    @for $j from 1 through length($map-list){
+        $counter-reset:reset-count($counter-reset,$count);
+        $conf-map:(
+            className: nth($map-list,$j),
+            propertyKeys:($property),
+            propertyValues:set-property-values($counter-reset,$type)
+        );
+        $list:append($list ,$conf-map,comma);
+        $counter-reset:$counter-reset+1;
+    }
+    @return $list;
 }
