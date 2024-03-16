@@ -139,6 +139,30 @@ $key-list:(
     }
     @return $list;
 }
+
+@function generate-classes-items($prefix,$property,$conf-map){
+    $name-list : ();
+    $count : map.get($conf-map,'count');
+    $unit : map.get($conf-map,'unit');
+    $list : ();
+    @if $count == 0 {
+        @return ();
+    }
+    @if check-responsive-status($conf-map,responsive){
+        @for $i from 1 through length($prefix){
+            $name-list:generate-responsive-classes(nth($prefix,$i),$count);
+            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+        }
+    }
+    @else{
+        @for $i from 1 through length($prefix){
+            $name-list:generate-classes(nth($prefix,$i),$count);
+            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+        }
+    }
+    @return $list;
+}
+
 @function generate-flex-classes($property-key-list , $property-value-list){
     $list : ();
     $count : ();
