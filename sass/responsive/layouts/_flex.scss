@@ -186,7 +186,12 @@ $key-list:(
     }
     @return $flex-list;
 }
-
+.flex-wrap{
+    flex-wrap:wrap;
+}
+.flex-nowrap{
+    flex-wrap: nowrap;
+}
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
 $flex-orders:generate-classes-items($order-list,order,$conf-orders);
 $flex-grows:generate-classes-items($grow-list,flex-grow,$conf-grows);
