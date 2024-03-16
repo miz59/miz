@@ -2,13 +2,17 @@
 @import "../../config";
 
 // giving to parent class [row] for cols
-
-
 .row{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.flex-wrap{
+    flex-wrap:wrap;
+}
+.flex-nowrap{
+    flex-wrap: nowrap;
 }
 $col-list:col;
 $order-list:order;
@@ -22,7 +26,6 @@ $conf-list:(
     align-self:map.get($conf-align-self , responsive) , 
     align-items:map.get($conf-align-items , responsive) , 
 );
-
 $flex-direction-value-list:(row , row-reverse , column , column-reverse);
 $justify-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
 $justify-self-value-list:(start , center , end ,  left , right , stretch);
@@ -30,8 +33,6 @@ $justify-items-value-list:(start , center , end ,  left , right , stretch);
 $align-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
 $align-self-value-list:(flex-start , center , flex-end , baseline , stretch);
 $align-items-value-list:(flex-start , center , flex-end , stretch , start , end , baseline);
-
-
 $value-list:(
     $flex-direction-value-list ,
     $justify-content-value-list ,
@@ -50,9 +51,6 @@ $key-list:(
     align-self ,
     align-items ,
 );
-
-
-
 $conf-list:(
     flex-direction:map.get($conf-flex-direction , responsive) ,
     justify-content:map.get($conf-justify-content , responsive) ,
@@ -62,7 +60,6 @@ $conf-list:(
     align-self:map.get($conf-align-self , responsive) , 
     align-items:map.get($conf-align-items , responsive) , 
 );
-
 $flex-direction-value-list:(row , row-reverse , column , column-reverse);
 $justify-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
 $justify-self-value-list:(start , center , end ,  left , right , stretch);
@@ -70,8 +67,6 @@ $justify-items-value-list:(start , center , end ,  left , right , stretch);
 $align-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
 $align-self-value-list:(flex-start , center , flex-end , baseline , stretch);
 $align-items-value-list:(flex-start , center , flex-end , stretch , start , end , baseline);
-
-
 $value-list:(
     $flex-direction-value-list ,
     $justify-content-value-list ,
@@ -90,9 +85,6 @@ $key-list:(
     align-self ,
     align-items ,
 );
-
-
-
 @function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
     $list:();
     @if map.get($conf-map , responsive) {
@@ -120,7 +112,6 @@ $key-list:(
     }
     @return $list;
 }
-
 @function get-flex-break-points-classes($break-points-key,$property-key-list , $property-value-list){
     $list : ();
     $base : ();
@@ -139,7 +130,6 @@ $key-list:(
     }
     @return $list;
 }
-
 @function generate-classes-items($prefix,$property,$conf-map){
     $name-list : ();
     $count : map.get($conf-map,'count');
@@ -162,7 +152,6 @@ $key-list:(
     }
     @return $list;
 }
-
 @function generate-flex-classes($property-key-list , $property-value-list){
     $list : ();
     $count : ();
@@ -176,7 +165,6 @@ $key-list:(
    
     @return $list;
 }
-
 @function generate-flex-list(){
     $flex-list:();
 
@@ -185,12 +173,6 @@ $key-list:(
         $flex-list:join($flex-list , $value);
     }
     @return $flex-list;
-}
-.flex-wrap{
-    flex-wrap:wrap;
-}
-.flex-nowrap{
-    flex-wrap: nowrap;
 }
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
 $flex-orders:generate-classes-items($order-list,order,$conf-orders);
