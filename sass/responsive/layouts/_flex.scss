@@ -3,6 +3,7 @@
 
 // giving to parent class [row] for cols
 
+
 .row{
     width: 100%;
     display: flex;
@@ -50,25 +51,72 @@ $key-list:(
     align-items ,
 );
 
-@function generate-classes-items($prefix,$property,$conf-map){
-    $name-list : ();
-    $count : map.get($conf-map,'count');
-    $unit : map.get($conf-map,'unit');
-    $list : ();
-    @if $count == 0 {
-        @return ();
-    }
-    @if check-responsive-status($conf-map,responsive){
-        @for $i from 1 through length($prefix){
-            $name-list:generate-responsive-classes(nth($prefix,$i),$count);
-            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+
+
+$conf-list:(
+    flex-direction:map.get($conf-flex-direction , responsive) ,
+    justify-content:map.get($conf-justify-content , responsive) ,
+    justify-self:map.get($conf-justify-self , responsive) ,
+    justify-items:map.get($conf-justify-items , responsive) , 
+    align-content:map.get($conf-align-content , responsive) , 
+    align-self:map.get($conf-align-self , responsive) , 
+    align-items:map.get($conf-align-items , responsive) , 
+);
+
+$flex-direction-value-list:(row , row-reverse , column , column-reverse);
+$justify-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$justify-self-value-list:(start , center , end ,  left , right , stretch);
+$justify-items-value-list:(start , center , end ,  left , right , stretch);
+$align-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$align-self-value-list:(flex-start , center , flex-end , baseline , stretch);
+$align-items-value-list:(flex-start , center , flex-end , stretch , start , end , baseline);
+
+
+$value-list:(
+    $flex-direction-value-list ,
+    $justify-content-value-list ,
+    $justify-self-value-list ,
+    $justify-items-value-list ,
+    $align-content-value-list ,
+    $align-self-value-list ,
+    $align-items-value-list ,
+);
+$key-list:(
+    flex-direction ,
+    justify-content ,
+    justify-self ,
+    justify-items ,
+    align-content ,
+    align-self ,
+    align-items ,
+);
+
+
+
+@function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
+    $list:();
+    @if map.get($conf-map , responsive) {
+        $j:0;
+        @each $key , $value in $break-points{
+            $j:$j+1;
+            $name:generate-responsive-classes($prefix, $number);
+            $map:(
+                name: nth($name , ($j * $number)),
+                propertyKey:$property-key,
+                propertyValue:$number
+            );
+            $list:append($list , $map);
         }
     }
     @else{
-        @for $i from 1 through length($prefix){
-            $name-list:generate-classes(nth($prefix,$i),$count);
-            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
-        }
+        $base:nth(generate-classes($prefix , $number) , $number);
+        $map:(
+            name: $base,
+            propertyKey:$property-key,
+            propertyValue:$number
+        );
+        $list:append($list , $map);
+       
     }
     @return $list;
 }
