@@ -1,0 +1,247 @@
+// $paddings-list : p,pb,pt,pr,pl,px,py;
+// $gap-list : gap;
+// $margins-list : m,mb,mt,mr,ml,mx,my,mis,mie;
+// $map-direction:(top:"t" , bottom:"b" , left:"l" , right:"r" , inline-start:"is" , inline-end:"ie" , (left , right):"x" , (top , bottom):"y");
+
+
+// $conf-paddings:(
+//     count:2,
+//     unit:rem,
+//     factor:0.5,
+//     responsive:true
+// );
+
+
+
+
+
+
+// @function reset-count($k , $count){
+//     @if $k==$count+1{
+//         $k:1;
+//     }
+//     @return $k;
+// }
+
+// $name:pt;
+
+// @function check-responsive-status($map-config,$status-responsive){
+//     $status:map.get($map-config , $status-responsive);
+//     @return $status;
+// } 
+
+// @function generate-responsive-class-list($conf-map,$name){
+
+//     $count : map.get($conf-map,'count');
+
+//     $name-list:();
+//     $class-name:$name;
+
+
+//     @each $key , $value in $break-points{
+
+//         @for $j from 1 through count{
+            
+//             $class-name:"."+$class-name+"-"+$key +"-"+$j;
+//             $name-list:append($name-list ,$class-name,comma);
+//         }
+
+//     }
+
+//     @return $name-list;
+// }
+
+// @function generate-no-responsive-class-list($conf-map,$name){
+
+//     $count : map.get($conf-map,'count');
+
+//     $name-list:();
+//     $class-name:$name;
+
+
+//         @for $j from 1 through count{
+            
+//             $class-name:"."+$class-name +"-"+$j;
+//             $name-list:append($name-list ,$class-name,comma);
+//         }
+
+//     @return $name-list;
+// }
+
+// @function generate-class-name-list($name,$map-config,$status-responsive){
+
+//    $is-responsive: check-responsive-status($map-config,$name-list);
+
+//    $class-name-list:();
+   
+
+//    @for $j from 1 through length($name-list){
+
+//     @if($is-responsive){
+//         $class-name-list:list.append( $class-name-list,generate-break-point-class-list($conf-map,$name)) ;
+//    }@else{
+//     $class-name-list:list.append( $class-name-list,generate-no-break-point-class-list($conf-map,$name));
+//    }
+
+//    }
+
+//  @return $class-name-list;
+   
+// }
+
+// @function generate-classes-item($map-list,$conf-map,$property){
+//     $count : map.get($conf-map,'count');
+//     $counter-reset:1;
+//     $list : ();
+//     @for $j from 1 through length($map-list){
+//         $counter-reset:reset-count($counter-reset,$count);
+//         $conf-map:(
+//             className: nth($map-list,$j),
+//             propertyKeys:($property),
+//             propertyValues:$counter-reset
+//         );
+//         $list:append($list ,$conf-map,comma);
+//         $counter-reset:$counter-reset+1;
+//     }
+//     @return $list;
+// }
+
+
+
+// @function generate-style-list-map($input-list,$key-direction-number){
+//     $key-direction:nth($input-list , 1);
+//     $generate-key:nth($input-list , 2);
+//     $generate-value:nth($input-list , 3);
+//     $list-values-append:nth($input-list , 4);
+//     $factor:nth($input-list , 6);
+//     $step:nth($input-list , 7);
+//     $unit:nth($input-list , 8);
+//     $list-keys-append:nth($input-list , 5);
+//     $property:nth($input-list , 9);
+//     $name-list:nth($input-list , 10);
+//     $name-list-number:nth($input-list , 11);
+//     $map:();
+
+//     @for $j from 1 through length(nth($key-direction , $key-direction-number)){
+//         @if $j > 1{
+//             $generate-key:$property + "-#{nth(nth($key-direction , $key-direction-number),$j+0)}";
+//             $generate-value:unquote(($factor*$step)+$unit);
+//             $list-values-append:append($list-values-append , $generate-value , comma);
+//         }
+//         @else if $j == 1{
+//             $generate-key:$property + "-#{nth(nth($key-direction , $key-direction-number),1)}";
+//             $list-values-append:unquote(($factor*$step)+$unit);
+//         }
+//         $list-keys-append:append($list-keys-append , $generate-key , comma);
+//         $map:(
+//             className: nth($name-list,$name-list-number),
+//             propertyKeys:($list-keys-append),
+//             propertyValues:($list-values-append),
+//         );
+//     }
+
+//     @return $map;
+// }
+
+// @function decide-map-list-or-unique($input-list,$input-single-list ,$key-direction-number){
+
+//     $name-list:nth($input-single-list , 1);
+//     $name-list-number:nth($input-single-list , 2);
+//     $property:nth($input-single-list , 3);
+//     $factor:nth($input-single-list , 4);
+//     $step:nth($input-single-list , 5);
+//     $unit:nth($input-single-list , 6);
+//     $key-direction:nth($input-single-list , 7);
+//     $map:();
+
+//     @if type-of(nth($key-direction , $key-direction-number)) == list{
+//         $map:generate-style-list-map($input-list,$key-direction-number);
+//     }
+//     @else{
+//         $map:(
+//             className: nth($name-list,$name-list-number),
+//             propertyKeys:($property + '-#{nth($key-direction , $key-direction-number)}'),
+//             propertyValues:unquote(($factor * $step) + $unit)
+//         );
+//     }
+
+//     @return $map;
+// }
+
+// @function check-property-condition($list-name , $map-direction){
+//     $name-list:nth($list-name , 1);
+//     $name-list-number:nth($list-name , 2);
+//     $step:nth($list-name , 3);
+//     $property:nth($list-name , 4);
+//     $factor:nth($list-name , 5);
+//     $unit:nth($list-name , 6);
+//     $list:();
+//     $generate-key:();
+//     $generate-value:();
+//     $list-keys-append:();
+//     $list-values-append:();
+//     $key-direction:map.keys($map-direction);
+//     @for $i from 1 through length($key-direction){
+//         @if string.slice(nth($name-list,$name-list-number),3 , 2 + string.length(map.get($map-direction , nth($key-direction , $i)))) == '#{map.get($map-direction , nth($key-direction , $i))}'{
+//             $map:();
+//             $input-list:($key-direction,$generate-key,$generate-value,$list-values-append,$list-keys-append,$factor,$step,$unit,$property,$name-list,$name-list-number);
+//             $input-single-list:( $name-list,$name-list-number,$property,$factor,$step,$unit,$key-direction);
+    
+//             $map:decide-map-list-or-unique($input-list, $input-single-list,$i);
+//             $list:append($list,$map,comma);
+//         }
+//     }
+//     @if string.slice(nth($name-list,$name-list-number),3 , 3) == "-" or string.slice(nth($name-list,$name-list-number),1 , 4) == "gap"{
+//         $map:(
+//             className: nth($name-list,$name-list-number),
+//             propertyKeys:($property+""),
+//             propertyValues:unquote(($factor*$step)+$unit)
+//         );
+//         $list:append($list,$map,comma);
+//     }
+//     @return $merg-list;
+// }
+
+// @function choose-direction($input-list){
+//     $name-list:nth($input-list , 1);
+//     $name-list-number:nth($input-list , 2);
+//     $step:nth($input-list , 3);
+//     $property:nth($input-list , 4);
+//     $factor:nth($input-list , 5);
+//     $unit:nth($input-list , 6);
+//     $list:check-property-condition($input-list , $map-direction);
+//     @return $list;
+// }
+
+// @function generate-spaces($prefix,$property,$map){
+//     $name-list : ();
+//     $count : map.get($map,'count');
+//     $factor : map.get($map,'factor');
+//     $unit : map.get($map,'unit');
+//     $responsive : map.get($map,'responsive');
+//     $merge-list : ();
+//     $k:1;
+//     @if $count == 0 {
+//         @return ();
+//     }
+//     @for $i from 1 through length($prefix){
+//         @if $responsive == true{
+//             $name-list:generate-responsive-classes(nth($prefix, $i),$count);
+//         }
+//         @else{
+//             $name-list:generate-classes(nth($prefix, $i),$count);
+//         }
+//         @for $j from 1 through length($name-list){
+//             $k:reset-count($k , $count);
+//             $input-list:($name-list , $j , $k , $property , $factor , $unit);
+//             $list:choose-direction($input-list);
+//             $merge-list:join($merge-list , $list);
+//             $k:$k+1;
+//         } 
+//     }
+//     @return $merge-list;
+// }
+
+// $p : generate-spaces($paddings-list ,padding, $conf-paddings) ;
+// $m : generate-spaces($margins-list ,margin, $conf-margins) ;
+// $gap : generate-spaces($gap-list ,gap, $conf-gaps) ;
