@@ -37,7 +37,7 @@ $conf-grows:(
     responsive:true
 );
 $conf-flex-direction:(
-    count:5,
+    count:2,
     responsive:true
 );
 $conf-justify-content:(
@@ -58,7 +58,7 @@ $conf-align-content:(
 );
 $conf-align-self:(
     count:5,
-    responsive:true
+    responsive:false
 );
 $conf-align-items:(
     count:5,
