@@ -3,14 +3,10 @@
 
 $display-value-list:(block,none,flex,grid);
 $display-list:();
-
 @function generate-responsive-display-classes($prefix){
     $list:();
-    
     @each $key , $value in $break-points{
-
         $base:unquote(".d" + "-" + $key + "-" + $prefix );
-
         $map:(
             name: $base,
             propertyKey:display,
@@ -19,15 +15,10 @@ $display-list:();
         
         $list:append($list , $map);
     }
-   
     @return $list;
 }
-
-
 @for $i from 1 through length($display-value-list){
-
     $display-list:generate-responsive-display-classes(nth($display-value-list , $i));
-
 }
 
 // @debug $display-list;
