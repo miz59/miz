@@ -1,0 +1,180 @@
+@import "../functions/responsive";
+// @import "../../config";
+
+// giving to parent class [row] for cols
+.row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.flex-wrap{
+    flex-wrap:wrap;
+}
+.flex-nowrap{
+    flex-wrap: nowrap;
+}
+$col-list:col;
+$order-list:order;
+$grow-list:grow;
+$conf-list:(
+    flex-direction:map.get($conf-flex-direction , responsive) ,
+    justify-content:map.get($conf-justify-content , responsive) ,
+    justify-self:map.get($conf-justify-self , responsive) ,
+    justify-items:map.get($conf-justify-items , responsive) , 
+    align-content:map.get($conf-align-content , responsive) , 
+    align-self:map.get($conf-align-self , responsive) , 
+    align-items:map.get($conf-align-items , responsive) , 
+);
+$flex-direction-value-list:(row , row-reverse , column , column-reverse);
+$justify-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$justify-self-value-list:(start , center , end ,  left , right , stretch);
+$justify-items-value-list:(start , center , end ,  left , right , stretch);
+$align-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$align-self-value-list:(flex-start , center , flex-end , baseline , stretch);
+$align-items-value-list:(flex-start , center , flex-end , stretch , start , end , baseline);
+$value-list:(
+    $flex-direction-value-list ,
+    $justify-content-value-list ,
+    $justify-self-value-list ,
+    $justify-items-value-list ,
+    $align-content-value-list ,
+    $align-self-value-list ,
+    $align-items-value-list ,
+);
+$key-list:(
+    flex-direction ,
+    justify-content ,
+    justify-self ,
+    justify-items ,
+    align-content ,
+    align-self ,
+    align-items ,
+);
+$conf-list:(
+    flex-direction:map.get($conf-flex-direction , responsive) ,
+    justify-content:map.get($conf-justify-content , responsive) ,
+    justify-self:map.get($conf-justify-self , responsive) ,
+    justify-items:map.get($conf-justify-items , responsive) , 
+    align-content:map.get($conf-align-content , responsive) , 
+    align-self:map.get($conf-align-self , responsive) , 
+    align-items:map.get($conf-align-items , responsive) , 
+);
+$flex-direction-value-list:(row , row-reverse , column , column-reverse);
+$justify-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$justify-self-value-list:(start , center , end ,  left , right , stretch);
+$justify-items-value-list:(start , center , end ,  left , right , stretch);
+$align-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$align-self-value-list:(flex-start , center , flex-end , baseline , stretch);
+$align-items-value-list:(flex-start , center , flex-end , stretch , start , end , baseline);
+$value-list:(
+    $flex-direction-value-list ,
+    $justify-content-value-list ,
+    $justify-self-value-list ,
+    $justify-items-value-list ,
+    $align-content-value-list ,
+    $align-self-value-list ,
+    $align-items-value-list ,
+);
+$key-list:(
+    flex-direction ,
+    justify-content ,
+    justify-self ,
+    justify-items ,
+    align-content ,
+    align-self ,
+    align-items ,
+);
+@function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
+    $list:();
+    @if map.get($conf-map , responsive) {
+        $j:0;
+        @each $key , $value in $break-points{
+            $j:$j+1;
+            $name:generate-responsive-classes($prefix, $number);
+            $map:(
+                name: nth($name , ($j * $number)),
+                propertyKey:$property-key,
+                propertyValue:$number
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:nth(generate-classes($prefix , $number) , $number);
+        $map:(
+            name: $base,
+            propertyKey:$property-key,
+            propertyValue:$number
+        );
+        $list:append($list , $map);
+       
+    }
+    @return $list;
+}
+@function get-flex-break-points-classes($break-points-key,$property-key-list , $property-value-list){
+    $list : ();
+    $base : ();
+    @for $i from 1 through length($property-value-list){
+        @if check-responsive-status($conf-list, $property-key-list){
+            $base:generate-classes-responsive-on-value($property-key-list , $break-points-key , nth($property-value-list , $i));
+        }@else{
+            $base:generate-classes-on-value($property-key-list  ,nth($property-value-list , $i));
+        }
+        $map:(
+            className: $base,
+            propertyKeys:$property-key-list,
+            propertyValues:nth($property-value-list , $i)
+        );
+        $list:join($list , $map);
+    }
+    @return $list;
+}
+@function generate-classes-items($prefix,$property,$conf-map){
+    $name-list : ();
+    $count : map.get($conf-map,'count');
+    $unit : map.get($conf-map,'unit');
+    $list : ();
+    @if $count == 0 {
+        @return ();
+    }
+    @if check-responsive-status($conf-map,responsive){
+        @for $i from 1 through length($prefix){
+            $name-list:generate-responsive-classes(nth($prefix,$i),$count);
+            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+        }
+    }
+    @else{
+        @for $i from 1 through length($prefix){
+            $name-list:generate-classes(nth($prefix,$i),$count);
+            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+        }
+    }
+    @return $list;
+}
+@function generate-flex-classes($property-key-list , $property-value-list){
+    $list : ();
+    $count : ();
+    @if check-responsive-status($conf-list, $property-key-list){
+        @each $key , $value in $break-points{
+            $list:append($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list));
+        }
+    }@else{
+        $list:append($list , get-flex-break-points-classes(null,$property-key-list , $property-value-list));   
+    }
+   
+    @return $list;
+}
+@function generate-flex-list(){
+    $flex-list:();
+
+    @for $i from 1 through length($key-list){
+        $value:generate-flex-classes(nth($key-list , $i), nth($value-list , $i));
+        $flex-list:join($flex-list , $value);
+    }
+    @return $flex-list;
+}
+$flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
+$flex-orders:generate-classes-items($order-list,order,$conf-orders);
+$flex-grows:generate-classes-items($grow-list,flex-grow,$conf-grows);
+$flex-type : generate-flex-list();

@@ -1,35 +1,19 @@
-$paddings-list:px,py;
-// $paddings-list:p,pt,pb,pl,pr,px,py;
+$paddings-list:p,pt,pb,pl,pr,px,py;
 $margins-list:m,mt,mb,ml,mr,mx,my;
 $gap-list:gap,;
 
-$conf-paddings: (
-    count:1,
-    unit:rem,
-    factor:0.5,
-    responsive:true
-);
-$conf-margins: (
-    count:1,
-    unit:rem,
-    factor:0.5,
-    responsive:true
-);
-
-$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom));
+$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom , padding-ho));
 $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom));
 $map-gap:(gap:gap);
 
-@function check-responsive-status($map-config, $status-responsive) {
-    $status: map.get($map-config , $status-responsive);
-    @return $status;
-}
-
 @function generate-class-name-list($name-list, $map-config) {
-    $is-responsive: check-responsive-status($map-config, responsive);
+    $is-responsive: check-responsive-status($map-config , responsive);
     $class-name-list: ();
     $count:map.get($map-config , count);
 
+    @if $count == 0 {
+        @return ();
+    }
     @if($is-responsive) {
         @for $i from 1 through length($name-list) {
             $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count));
@@ -45,14 +29,10 @@ $map-gap:(gap:gap);
 }
 
 @function cast-string-number($string) {
-    // Matrices
     $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
     $numbers: 0 1 2 3 4 5 6 7 8 9;
-  
-    // Result
     $result: 0;
-  
-    // Looping through all characters
+
     @for $i from 1 through str-length($string) {
         $character: str-slice($string, $i, $i);
         $index: index($strings, $character);
@@ -63,7 +43,6 @@ $map-gap:(gap:gap);
         $number: nth($numbers, $index);
         $result: $result * 10 + $number;
     }
-  
     @return $result;
 }
 
@@ -78,9 +57,6 @@ $map-gap:(gap:gap);
 @function generate-value($name , $map-config , $map-property){
     $factor:map.get($map-config , factor);
     $unit:map.get($map-config , unit);
-    // $split-class:string.split($name , "-");
-    // $prefix:nth($split-class , 1);
-    // $key:map.get($map-property , $prefix);
     $key:generate-key($name , $map-property);
     $split-class:string.split($name , "-");
     $number:nth($split-class , length($split-class));
@@ -101,6 +77,9 @@ $map-gap:(gap:gap);
     $list:();
     $map:();
     $class-name-list:generate-class-name-list($name-list, $map-config);
+    @if length($class-name-list) == 0 {
+        @return ();
+    }
     @for $i from 1 through length($class-name-list){
         $class-item:nth($class-name-list , $i);
         $map:(
@@ -109,12 +88,10 @@ $map-gap:(gap:gap);
             propertyValues:generate-value($class-item , $map-config , $map-property)
         );
         $list:append($list , $map , comma);
-        // $list:join($list , $map , comma);
     }
     @return $list;
 }
 
-
 $p : generate-total-map-list($paddings-list , $map-padding , $conf-paddings);
 $m : generate-total-map-list($margins-list , $map-margin , $conf-margins);
-$gap : generate-total-map-list($gap-list , $map-gap , $conf-gaps);
+$gaps : generate-total-map-list($gap-list , $map-gap , $conf-gaps);

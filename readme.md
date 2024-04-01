@@ -64,3 +64,6 @@ functions
 layout
     grid
     z-index
+
+config
+        path
