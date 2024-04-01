@@ -45,7 +45,6 @@ $map-gap:(gap:gap);
     }
     @return $result;
 }
-
 @function generate-key($name , $map-property){
     $split-dot:string.split($name , ".");
     $split-class:string.split(nth($split-dot , length($split-dot)) , "-");
