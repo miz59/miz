@@ -1,0 +1,86 @@
+$totalist : $flex-type,$flex-cols;
+
+@function check-config-count($totalist-item){
+    @if length(nth($totalist,$totalist-item))!=0{
+        @return true;
+    }
+    @return false;
+}
+
+@mixin generate-classes($value){
+    @for $i from 1 through length($totalist){
+        @for $j from 1 through length(nth($totalist,$i)){
+            @include generate-style-property($i,$j,$value);
+        }
+    }
+}
+
+@function break-point($class-name){
+    $result:();
+    $i:1;
+    @each $key , $value in $break-points{
+        @if string.index($class-name , $key) != null{
+            $result:$value;
+            @return $value;
+        }
+        @if $i == 1{
+            $result:$value;
+        }
+        $i:$i+1;
+    }
+    @return $result;
+}
+
+@mixin generate-style-property($totalist-item,$total-list-member-item,$break-point-value){
+    $total-list-member:nth($totalist,$totalist-item);
+    @if (check-config-count($totalist-item)){
+        $class-name:map.get(nth($total-list-member,$total-list-member-item),className);
+        $property-keys:map.get(nth($total-list-member,$total-list-member-item),propertyKeys);
+        $property-break-point:break-point($class-name);
+        $property-values:map.get(nth($total-list-member,$total-list-member-item),propertyValues);
+        $property-list:($property-keys,$property-values);
+        @if($break-point-value==$property-break-point){
+            #{$class-name}{
+                @for $k from 1 through length($property-keys){
+                    #{nth(nth($property-list,1),$k)}: nth(nth($property-list,2),$k);
+                }
+            }
+        }
+    }
+}
+
+@function get-greatest-breakpoint(){
+    $max-size:0;
+    @each $key , $value in $break-points{
+        @if map.get($break-points, $key) > $max-size{
+            $max-size : map.get($break-points, $key);
+        }
+    }
+    @return $max-size;
+}
+@function get-greatest-breakpoint-key(){
+    $max-size-key:"";
+    $max-size:0;
+    @each $key , $value in $break-points{
+        @if map.get($break-points, $key) > $max-size{
+            $max-size : map.get($break-points, $key);
+            $max-size-key: $key;
+        }
+    }
+    @return $max-size-key;
+}
+@mixin check-break-point(){
+    @each $key , $value in $break-points{
+        $max-break-point:get-greatest-breakpoint();
+        $max-break-point-key: get-greatest-breakpoint-key();
+        @if($value != $max-break-point){
+            @media screen and (max-width : $value) {
+                @include generate-classes($value);
+            }
+        }  
+        @else{
+            @include generate-classes($value);
+        } 
+    }
+}
+@include check-break-point();
