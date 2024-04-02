@@ -1,0 +1,31 @@
+$display-value-list:(block,none,flex,grid,inline-block);
+$display-list:();
+@function generate-responsive-display-classes($prefix){
+    $list:();
+    @if check-responsive-status($conf-display,responsive){
+        @each $key , $value in $break-points{
+            $base:unquote(".d" + "-" + $key + "-" + $prefix );
+            $conf-map:(
+                className: $base,
+                propertyKeys:display,
+                propertyValues:$prefix
+            );
+            $list:append($list , $conf-map,comma);
+        }
+    }
+    @else{
+        $base:unquote(".d"+"-"+$prefix );
+        $conf-map:(
+            className: $base,
+            propertyKeys:display,
+            propertyValues:$prefix
+        );
+        $list:append($list , $conf-map,comma);
+    }
+    @return $list;
+}
+@for $i from 1 through length($display-value-list){
+    $display-child:generate-responsive-display-classes(nth($display-value-list , $i));
+    $display-list:join($display-list,$display-child,comma);
+}
+$display-values:$display-list;

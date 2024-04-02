@@ -9,13 +9,13 @@ $conf-grids:(
 );
 
 $conf-gaps:(
-    count:0,
+    count:20,
     unit:rem,
     factor:0.5,
     responsive:true
 );
 $conf-paddings:(
-    count:0,
+    count:10,
     unit:rem,
     factor:0.5,
     responsive:true
@@ -24,14 +24,16 @@ $conf-margins:(
     count:40,
     unit:rem,
     factor:0.5,
-    responsive:true
+    responsive:false
 );
 
 $conf-orders:(
     count:12,
     responsive:true
 );
-
+$conf-display:(
+    responsive:false
+);
 $conf-grows:(
     count:5,
     responsive:true
@@ -42,7 +44,7 @@ $conf-flex-direction:(
 );
 $conf-justify-content:(
     count:5,
-    responsive:true
+    responsive:false
 );
 $conf-justify-self:(
     count:5,
@@ -58,10 +60,9 @@ $conf-align-content:(
 );
 $conf-align-self:(
     count:5,
-    responsive:false
+    responsive:true
 );
 $conf-align-items:(
     count:5,
-    responsive:true
+    responsive:false
 );
-
