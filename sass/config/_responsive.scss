@@ -18,13 +18,13 @@ $conf-paddings:(
     count:10,
     unit:rem,
     factor:0.5,
-    responsive:false
+    responsive:true
 );
 $conf-margins:(
     count:40,
     unit:rem,
     factor:0.5,
-    responsive:true
+    responsive:false
 );
 
 $conf-orders:(
@@ -44,7 +44,7 @@ $conf-flex-direction:(
 );
 $conf-justify-content:(
     count:5,
-    responsive:true
+    responsive:false
 );
 $conf-justify-self:(
     count:5,
@@ -60,9 +60,9 @@ $conf-align-content:(
 );
 $conf-align-self:(
     count:5,
-    responsive:false
+    responsive:true
 );
 $conf-align-items:(
     count:5,
-    responsive:true
+    responsive:false
 );

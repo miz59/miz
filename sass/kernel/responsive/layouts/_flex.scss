@@ -64,8 +64,8 @@ $key-list:(
             className: $base,
             propertyKeys:$property-key-list,
             propertyValues:nth($property-value-list , $i)
-        );
-        $list:join($list , $map);
+);
+        $list:append($list , $map);
     }
     @return $list;
 }
@@ -74,14 +74,15 @@ $key-list:(
     $count : ();
     @if check-responsive-status($conf-list, $property-key-list){
         @each $key , $value in $break-points{
-            $list:append($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list));
+            $list:join($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list));
         }
     }@else{
-        $list:append($list , get-flex-break-points-classes(null,$property-key-list , $property-value-list));   
+        $list:join($list , get-flex-break-points-classes(null,$property-key-list , $property-value-list));   
     }
    
     @return $list;
 }
+
 @function generate-flex-list(){
     $flex-list:();
 
@@ -91,6 +92,7 @@ $key-list:(
     }
     @return $flex-list;
 }
+
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
 $flex-orders:generate-classes-items($order-list,order,$conf-orders);
 $flex-grows:generate-classes-items($grow-list,flex-grow,$conf-grows);
