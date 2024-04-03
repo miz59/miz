@@ -1,5 +1,3 @@
-$break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
-
 @function generate-responsive-classes($prefix , $count){
     $list:();
     @each $key , $value in $break-points{
