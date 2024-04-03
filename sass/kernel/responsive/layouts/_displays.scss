@@ -1,64 +1,31 @@
-
-
-
-$display-value-list:(block,none,flex,grid);
+$display-value-list:(block,none,flex,grid,inline-block);
 $display-list:();
-
 @function generate-responsive-display-classes($prefix){
     $list:();
-    
-    @each $key , $value in $break-points{
-
-        $base:unquote(".d" + "-" + $key + "-" + $prefix );
-
-        $map:(
-            name: $base,
-            propertyKey:display,
-            propertyValue:$prefix
-        );
-        
-        $list:append($list , $map);
+    @if check-responsive-status($conf-display,responsive){
+        @each $key , $value in $break-points{
+            $base:unquote(".d" + "-" + $key + "-" + $prefix );
+            $conf-map:(
+                className: $base,
+                propertyKeys:display,
+                propertyValues:$prefix
+            );
+            $list:append($list , $conf-map,comma);
+        }
     }
-   
+    @else{
+        $base:unquote(".d"+"-"+$prefix );
+        $conf-map:(
+            className: $base,
+            propertyKeys:display,
+            propertyValues:$prefix
+        );
+        $list:append($list , $conf-map,comma);
+    }
     @return $list;
 }
-
-
 @for $i from 1 through length($display-value-list){
-
-    $display-list:generate-responsive-display-classes(nth($display-value-list , $i));
-
+    $display-child:generate-responsive-display-classes(nth($display-value-list , $i));
+    $display-list:join($display-list,$display-child,comma);
 }
-
-// @debug $display-list;
-
-
-
-.d-block{
-
-    display: block;
-}
-
-.d-flex{
-
-    display: flex;
-}
-
-.d-grid{
-
-    display: grid;
-}
-
-.d-none{
-
-    display: none;
-}
-
-.d-inline-block{
-
-    display: inline-block;
-}
-
-.d-inline{
-    display: inline;
-}
+$display-values:$display-list;

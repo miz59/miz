@@ -1,9 +1,5 @@
 @import "../functions/responsive";
-<<<<<<< HEAD
-// @import "../../config";
-=======
-@import "../../../config";
->>>>>>> 585f81c425ad377652b1831d09d2b7ea0b773beb
+@import "../../config";
 
 // giving to parent class [row] for cols
 .row{
@@ -18,9 +14,12 @@
 .flex-nowrap{
     flex-wrap: nowrap;
 }
+
 $col-list:col;
 $order-list:order;
 $grow-list:grow;
+
+
 $conf-list:(
     flex-direction:map.get($conf-flex-direction , responsive) ,
     justify-content:map.get($conf-justify-content , responsive) ,
@@ -55,6 +54,63 @@ $key-list:(
     align-self ,
     align-items ,
 );
+
+
+
+@function prepare-responsive-list($conf-map,$property-key,$prefix,$number){
+    $list:();
+    @if map.get($conf-map , responsive) {
+        $j:0;
+        @each $key , $value in $break-points{
+            $j:$j+1;
+            $name:generate-responsive-classes($prefix, $number);
+            $map:(
+                name: nth($name , ($j * $number)),
+                propertyKey:$property-key,
+                propertyValue:$number
+            );
+            $list:append($list , $map);
+        }
+    }
+    @else{
+        $base:nth(generate-classes($prefix , $number) , $number);
+        $map:(
+            name: $base,
+            propertyKey:$property-key,
+            propertyValue:$number
+        );
+        $list:append($list , $map);
+       
+    }
+    @return $list;
+}
+
+
+@function generate-classes-items($prefix,$property,$conf-map){
+    $name-list : ();
+    $count : map.get($conf-map,'count');
+    $unit : map.get($conf-map,'unit');
+    $list : ();
+    @if $count == 0 {
+        @return ();
+    }
+    @if check-responsive-status($conf-map,responsive){
+        @for $i from 1 through length($prefix){
+            $name-list:generate-responsive-classes(nth($prefix,$i),$count);
+            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+        }
+    }
+    @else{
+        @for $i from 1 through length($prefix){
+            $name-list:generate-classes(nth($prefix,$i),$count);
+            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
+        }
+    }
+    @return $list;
+}
+
+
+
 @function get-flex-break-points-classes($break-points-key,$property-key-list , $property-value-list){
     $list : ();
     $base : ();
@@ -68,7 +124,7 @@ $key-list:(
             className: $base,
             propertyKeys:$property-key-list,
             propertyValues:nth($property-value-list , $i)
-);
+        );
         $list:append($list , $map);
     }
     @return $list;
@@ -96,6 +152,8 @@ $key-list:(
     }
     @return $flex-list;
 }
+
+
 
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
 $flex-orders:generate-classes-items($order-list,order,$conf-orders);
