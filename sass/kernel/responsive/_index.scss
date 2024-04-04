@@ -3,11 +3,12 @@
 @use 'sass:list';
 
 @import "../../config";
-@import "variables";
-@import "mixins";
-@import "functions";
-@import "layouts";
-@import "boots";
+@import "./variables";
+@import "./mixins";
+@import "./functions";
+@import "./layouts";
+@import "./boots";
+
 
 
 
