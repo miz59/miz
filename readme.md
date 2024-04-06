@@ -7,6 +7,9 @@ layouts
 mixins
     index
 
+kernel
+    index
+
 
 -----------------
 
@@ -23,8 +26,6 @@ functions
 layouts
     flex
 structure
-    border
-    colors
     typography
 
 common 
@@ -67,3 +68,7 @@ layout
 
 config
         path
+
+structures
+    border
+    colors

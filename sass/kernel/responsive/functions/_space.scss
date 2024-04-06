@@ -2,7 +2,7 @@ $paddings-list:p,pt,pb,pl,pr,px,py;
 $margins-list:m,mt,mb,ml,mr,mx,my;
 $gap-list:gap,;
 
-$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom , padding-ho));
+$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom));
 $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom));
 $map-gap:(gap:gap);
 
@@ -15,35 +15,17 @@ $map-gap:(gap:gap);
         @return ();
     }
     @if($is-responsive) {
-        @for $i from 1 through length($name-list) {
+        @for $i from 1 through length($name-list){
             $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count));
         }
     }
 
     @else {
-        @for $i from 1 through length($name-list) {
+        @for $i from 1 through length($name-list){
             $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count));
         }
     }
     @return $class-name-list;
-}
-
-@function cast-string-number($string) {
-    $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
-    $numbers: 0 1 2 3 4 5 6 7 8 9;
-    $result: 0;
-
-    @for $i from 1 through str-length($string) {
-        $character: str-slice($string, $i, $i);
-        $index: index($strings, $character);
-        @if not $index {
-            @warn "Unknown character #{$character}.";
-            @return false;
-        }
-        $number: nth($numbers, $index);
-        $result: $result * 10 + $number;
-    }
-    @return $result;
 }
 
 @function generate-key($name , $map-property){
