@@ -55,5 +55,23 @@ $font-weight : '';
         }
     }
 }
+@function generate-font-size-classes(){
+    $list : ();
+    $base : ();
+
+        @for $i from 1 through $break-points{
+            @each $name, $size in $font-size{
+                $base:generate-classes-responsive-on-value($font-prefix , nth($break-points, $i) , $name);
+                $map:(
+                    className: $base,
+                    propertyKeys:'font-size',
+                    propertyValues:$size
+                );
+                $list:append($list , $map);
+            }
+        }
+    @return $list;
+}
+$font-size : generate-font-size-classes();
 @include make-font-face;
 @include make-font-classes;
