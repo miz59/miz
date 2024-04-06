@@ -2,28 +2,25 @@
 
 $font-weight : '';
 
-@function font-weight-connection($font-weight){
-    @if $font-weight == 'bolds'{
+@function font-weight-connection($font-weight-name){
+    @if $font-weight-name == 'bold'{
         @return  bold;
     }
-    @if $font-weight == 'blacks'{
+    @if $font-weight-name == 'black'{
         @return  800;
     }
-    @if $font-weight == 'lights'{
+    @if $font-weight-name == 'light'{
         @return  300;
     }
-    @if $font-weight == 'media'{
+    @if $font-weight-name == 'medium'{
         @return  500;
     }
-    @if $font-weight == 'regulars'{
+    @if $font-weight-name == 'regular'{
         @return  400;
     }
-    @if $font-weight == 'thins'{
+    @if $font-weight-name == 'thin'{
         @return  100;
     }
-}
-@mixin font-face-style{
-   
 }
 @mixin make-font-face{
     @each $font-name, $font-details in $fonts {
@@ -48,12 +45,12 @@ $font-weight : '';
 @mixin make-font-classes{
     $fonts-primary : map-get($fonts, 'primary');
     $font-type : map-get($fonts-primary, 'font-types');
-    $font-name : map-get($fonts-primary, 'name');
+    $class-name : map-get($fonts-primary, 'name');
     
     @each $font-name, $font-file in $font-type{
         $font-weight : font-weight-connection($font-name);
-        .#{$font-name}{
-            font-family : $font-name;
+        .#{$class-name}-#{$font-name}{
+            font-family : map-get($fonts-primary, 'name');
             font-weight: $font-weight;
         }
     }
