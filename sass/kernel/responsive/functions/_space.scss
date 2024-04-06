@@ -9,42 +9,25 @@ $map-gap:(gap:gap);
 @function generate-class-name-list($name-list, $map-config) {
     $is-responsive: check-responsive-status($map-config , responsive);
     $class-name-list: ();
-    $count:map.get($map-config , count);
+    $count:map.get($map-config , count) + 1;
 
-    @if $count == 0 {
+    @if $count == 1 {
         @return ();
     }
     @if($is-responsive) {
-        @for $i from 1 through length($name-list) {
-            $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count));
+        @for $i from 1 through length($name-list){
+            $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count , true));
         }
     }
 
     @else {
-        @for $i from 1 through length($name-list) {
-            $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count));
+        @for $i from 1 through length($name-list){
+            $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count , true));
         }
     }
     @return $class-name-list;
 }
 
-@function cast-string-number($string) {
-    $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
-    $numbers: 0 1 2 3 4 5 6 7 8 9;
-    $result: 0;
-
-    @for $i from 1 through str-length($string) {
-        $character: str-slice($string, $i, $i);
-        $index: index($strings, $character);
-        @if not $index {
-            @warn "Unknown character #{$character}.";
-            @return false;
-        }
-        $number: nth($numbers, $index);
-        $result: $result * 10 + $number;
-    }
-    @return $result;
-}
 @function generate-key($name , $map-property){
     $split-dot:string.split($name , ".");
     $split-class:string.split(nth($split-dot , length($split-dot)) , "-");
