@@ -16,11 +16,14 @@
     @return $result;
 }
 
-@function generate-responsive-classes($prefix , $count){
+@function generate-responsive-classes($prefix , $count , $is-space:false){
     $list:();
     @each $key , $value in $break-points{
         @for $i from 1 through $count{
-            $value:$i - 1;
+            $value:$i;
+            @if $is-space {
+                $value:$i - 1;    
+            }
             $base:unquote("." + $prefix + "-" + $key + "-" + $value);
             $list:append($list , $base , comma);
         }
@@ -28,10 +31,13 @@
     @return $list;
 }
 
-@function generate-classes($prefix , $count){
+@function generate-classes($prefix , $count , $is-space:false){
     $list:();
     @for $i from 1 through $count{
-        $value:$i - 1;
+        $value:$i;
+        @if $is-space {
+            $value:$i - 1;
+        }
         $base:unquote("." + $prefix + "-" + $value);
         $list:append($list , $base , comma);
     }

@@ -1,16 +1,25 @@
 .section{
-
+    display: flex;
+    flex-direction: row;
+    align-items:start;
+    width: 100%;
+}
+.container{
+    display:flex;
+    flex-direction: row;
+    align-items: start;
+    width: 100%;
+}
+.block{
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+.div{
+    display:flex;
 }
 
 .section.boxed{
-    
-}
-.container{
-
-}
-.block{
-
-}
-.div{
 
 }

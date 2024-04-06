@@ -1,0 +1,86 @@
+$fonts: (
+  "primary": (
+    "name": "Vazir",
+    "folder": "vazir",
+    "font-types": (
+      "blacks": (
+        "Vazir-Black-FD.woff2",
+        "Vazir-Black-FD.woff",
+        "Vazir-Black-FD.ttf",
+        "Vazir-Black-FD.eot"
+      ),
+      "bolds": (
+        "Vazir-Bold-FD.woff2",
+        "Vazir-Bold-FD.woff",
+        "Vazir-Bold-FD.ttf",
+        "Vazir-Bold-FD.eot"
+      ),
+      "lights": (
+        "Vazir-Light-FD.woff2",
+        "Vazir-Light-FD.woff",
+        "Vazir-Light-FD.ttf",
+        "Vazir-Light-FD.eot"
+      ),
+      "media": (
+        "Vazir-Medium-FD.woff2",
+        "Vazir-Medium-FD.woff",
+        "Vazir-Medium-FD.ttf",
+        "Vazir-Medium-FD.eot"
+      ),
+      "regulars": (
+        "Vazir-Regular-FD.woff2",
+        "Vazir-Regular-FD.woff",
+        "Vazir-Regular-FD.ttf",
+        "Vazir-Regular-FD.eot"
+      ),
+      "thins": (
+        "Vazir-Thin-FD.woff2",
+        "Vazir-Thin-FD.woff",
+        "Vazir-Bold-FD.ttf",
+        "Vazir-Thin-FD.eot"
+      )
+    )
+  )
+);
+
+$font-weight : '';
+@each $font-name, $font-details in $fonts {
+  $font-folder: map-get($font-details, "folder");
+  @each $font-type, $font-files in map-get($font-details, "font-types") {
+    @if $font-type == 'bolds'{
+      $font-weight : bold;
+    }
+    @else if $font-type == 'blacks'{
+      $font-weight : 800;
+    }
+    @else if $font-type == 'lights'{
+      $font-weight : 300;
+    }
+    @else if $font-type == 'media'{
+      $font-weight : 500;
+    }
+    @else if $font-type == 'regulars'{
+      $font-weight : 400;
+    }
+    @else if $font-type == 'thins'{
+      $font-weight : 100;
+    }
+    @font-face {
+
+      $file-src : '';
+      font-family: map-get($font-details, "name");
+      font-weight: $font-weight;
+      @each $font-file in $font-files {
+        $file-name: nth($font-file, 1);
+        $file-format: str-slice($file-name, str-index($file-name, ".") + 1);
+        $file-path: $font-folder + "/" + $file-name;
+        $file-src :$file-src + #{url("../fonts/#{$file-path}") format('#{$file-format}')} + ', ';
+      }
+      src: unquote($file-src);
+    }
+  }
+}
+
+.s{
+    color : red
+}

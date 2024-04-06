@@ -1,5 +1,8 @@
-// $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps;
-$totalist :$p,;
+@import 'responsive';
+@import 'typography';
+
+
+$totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps;
 
 @function check-config-count($totalist-item){
     @if length(nth($totalist,$totalist-item))!=0{
