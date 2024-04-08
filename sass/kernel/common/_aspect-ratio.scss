@@ -1,0 +1,58 @@
+@function generate-aspect-ratio-class-name($map-config , $property){
+    $count:map-get($map-config , count);
+    @debug $count;
+    $step:map-get($map-config , step);
+    $value:calc($count / $step);
+    $class-name:();
+    @if $count == 0{
+        @return ();
+    }
+    @for $i from 1 through $value{
+        $number-1:$step * $i;
+        @for $j from 1 through $value{
+            $number-2:$step * $j;
+            $class-item:generate-classes-on-value($property , $number-1 + "x" + $number-2);
+            $class-name:join($class-name , $class-item , comma);
+        }
+    }
+    @return $class-name;
+}
+
+@function generate-aspect-ratio-key($property){
+    @return $property;
+}
+
+@function generate-aspect-ratio-value($map-config){
+    $count:map-get($map-config , count);
+    $step:map-get($map-config , step);
+    $value:calc($count / $step);
+    $class-name:();
+    $value-list:();
+    @if $count == 0{
+        @return ();
+    }
+    @for $i from 1 through $value{
+        $number-1:$step * $i;
+        @for $j from 1 through $value{
+            $number-2:$step * $j;
+            $value-list:append($value-list , join($number-1 , $number-2) , comma);
+        }
+    }
+    @return $value-list;
+}
+
+@mixin generate-total-style-aspect-ratio($map-config , $property){
+    $class-name-list:generate-aspect-ratio-class-name($map-config , $property);
+    $value-list:generate-aspect-ratio-value($map-config);
+    $map:();
+    $list:();
+    @for $i from 1 through length($class-name-list){
+        $class-item:nth($class-name-list , $i);
+        $value:nth($value-list , $i);
+        #{$class-item}{
+            #{$property}:nth($value , 1) + unquote("/") + nth($value , 2);
+        }
+    }
+}
+
+@include generate-total-style-aspect-ratio($conf-aspect-ratio , aspect-ratio);

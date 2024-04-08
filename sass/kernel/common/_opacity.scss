@@ -1,0 +1,15 @@
+@mixin generate-total-style($map-config , $property){
+    $class-name-list:generate-class-name-list($map-config , $property);
+    $value-list:generate-value($map-config);
+    $map:();
+    $list:();
+    @for $i from 1 through length($class-name-list){
+        $class-item:nth($class-name-list , $i);
+        $value:nth($value-list , $i);
+        #{$class-item}{
+            #{$property}:$value * 0.01;
+        }
+    }
+}
+
+@include generate-total-style($conf-opacity , opacity);

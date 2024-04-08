@@ -4,3 +4,20 @@ $all-border-normal:10px;
 $all-border-medium:16px;
 $all-border-large:25px;
 $all-border-extra-large:50px;
+
+$conf-opacity:(
+    max:100,
+    min:0,
+    step:10
+);
+
+$conf-z_index:(
+    max:10,
+    min:0,
+    step:1
+);
+
+$conf-aspect-ratio:(
+    count:2,
+    step:1
+);
