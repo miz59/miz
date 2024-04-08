@@ -11,13 +11,14 @@ $conf-opacity:(
     step:10
 );
 
-$conf-z_index:(
+$conf-z-index:(
     max:10,
     min:0,
     step:1
 );
 
 $conf-aspect-ratio:(
-    count:2,
+    nominator:16,
+    denominator:16,
     step:1
 );

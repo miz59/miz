@@ -3,23 +3,25 @@
     flex-direction: row;
     align-items:start;
     width: 100%;
+    box-sizing: border-box;
 }
 .container{
     display:flex;
     flex-direction: row;
     align-items: start;
     width: 100%;
+    box-sizing: border-box;
 }
 .block{
     display:flex;
     flex-direction: column;
     align-items: start;
     width: 100%;
+    box-sizing: border-box;
 }
 .div{
     display:flex;
+    box-sizing: border-box;
 }
 
-.section.boxed{
 
-}

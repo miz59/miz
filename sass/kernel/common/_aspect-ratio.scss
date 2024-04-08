@@ -1,15 +1,16 @@
 @function generate-aspect-ratio-class-name($map-config , $property){
-    $count:map-get($map-config , count);
-    @debug $count;
+    $nominator:map-get($map-config , nominator);
+    $denominator:map-get($map-config , denominator);
     $step:map-get($map-config , step);
-    $value:calc($count / $step);
+    $value-1:calc($nominator / $step);
+    $value-2:calc($denominator / $step);
     $class-name:();
-    @if $count == 0{
+    @if $nominator == 0{
         @return ();
     }
-    @for $i from 1 through $value{
+    @for $i from 1 through $value-1{
         $number-1:$step * $i;
-        @for $j from 1 through $value{
+        @for $j from 1 through $value-2{
             $number-2:$step * $j;
             $class-item:generate-classes-on-value($property , $number-1 + "x" + $number-2);
             $class-name:join($class-name , $class-item , comma);
@@ -23,17 +24,19 @@
 }
 
 @function generate-aspect-ratio-value($map-config){
-    $count:map-get($map-config , count);
+    $nominator:map-get($map-config , nominator);
+    $denominator:map-get($map-config , denominator);
     $step:map-get($map-config , step);
-    $value:calc($count / $step);
+    $value-1:calc($nominator / $step);
+    $value-2:calc($denominator / $step);
     $class-name:();
     $value-list:();
-    @if $count == 0{
+    @if $nominator == 0{
         @return ();
     }
-    @for $i from 1 through $value{
+    @for $i from 1 through $value-1{
         $number-1:$step * $i;
-        @for $j from 1 through $value{
+        @for $j from 1 through $value-2{
             $number-2:$step * $j;
             $value-list:append($value-list , join($number-1 , $number-2) , comma);
         }

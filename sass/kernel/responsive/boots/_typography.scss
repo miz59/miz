@@ -42,7 +42,7 @@ $font-weight : '';
       }
     }
 }
-@mixin make-font-classes{
+@mixin make-font-classes{ 
     $fonts-primary : map-get($fonts, 'primary');
     $font-type : map-get($fonts-primary, 'font-types');
     $class-name : map-get($fonts-primary, 'name');

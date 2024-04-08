@@ -85,3 +85,36 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     }
 }
 @include check-break-point();
+
+@mixin generate-boxed-space-around(){
+    @for $i from 1 through length($boxed-space-around){
+        $break-point-values:map.values($break-points);
+        $max-width-values:nth($break-point-values,$i);
+        $space-value:nth($boxed-space-around,$i);
+        @if get-greatest-breakpoint()==$max-width-values{
+            .section{
+                padding-left: $space-value;
+                padding-right:$space-value;
+            }
+        }
+        @else{
+            @media screen and (max-width:$max-width-values){
+                .section{
+                    padding-left: $space-value;
+                    padding-right:$space-value;
+                }
+            }
+        }
+    }
+
+}
+
+@include generate-boxed-space-around();
+
+
+
+
+.section.wide{
+    padding-right:0px !important;
+    padding-left: 0px !important;
+}
