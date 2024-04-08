@@ -59,9 +59,9 @@ $font-weight : '';
     $list : ();
     $base : ();
 
-        @for $i from 1 through {
+        @each $key,$value in $break-points{
             @each $name, $size in $font-size{
-                $base:generate-classes-responsive-on-value($font-prefix , nth($break-points, $i) , $name);
+                $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
                 $map:(
                     className: $base,
                     propertyKeys:'font-size',
