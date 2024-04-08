@@ -1,28 +1,40 @@
 $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
 
-@media screen and (max-width:1920px){
+// @media screen and (max-width:1920px){
 
-}
+// }
 
-@media screen and (max-width:1280px){
+// @media screen and (max-width:1280px){
 
-}
+// }
 
-@media screen and (max-width:1024px){
+// @media screen and (max-width:1024px){
 
-}
+// }
 
-@media screen and (max-width:767px){
-    html{
-        font-size: 10px;
-    }
-}
+// @media screen and (max-width:767px){
+//     html{
+//         font-size: 10px;
+//     }
+// }
 
-@media screen and (max-width:478px){
-    html{
-        font-size: 8px;
-    }
-}
+// @media screen and (max-width:478px){
+//     html{
+//         font-size: 8px;
+//     }
+// }
+
+$conf-opacity:(
+    max:200,
+    min:100,
+    step:2
+);
+
+$conf-z_index:(
+    max:10,
+    min:-10,
+    step:1
+);
 
 
 $conf-cols:(

@@ -1,0 +1,61 @@
+@function generate-class-name-list($map-config , $property){
+    $max:map-get($map-config , max);
+    $min:map-get($map-config , min);
+    $step:map-get($map-config , step);
+    $value:calc(($max - $min) / $step);
+    $class-name:();
+    @if $step == 0{
+        @return ();
+    }
+    @for $i from 0 through $value{
+        $number:$step * $i + $min;
+        @if $i == 0{
+            $number:$min;
+        }
+        $class-item:generate-classes-on-value($property , $number);
+        $class-name:join($class-name , $class-item , comma);
+    }
+    @debug $class-name;
+    @return $class-name;
+}
+
+@function generate-key($property){
+    @return $property;
+}
+
+@function generate-value($map-config){
+    $max:map-get($map-config , max);
+    $min:map-get($map-config , min);
+    $step:map-get($map-config , step);
+    $value:calc(($max - $min) / $step);
+    $number:();
+    $value-list:();
+    @for $i from 0 through $value{
+        $number:$step * $i + $min;
+        @if $i == 0{
+            $number:$min;
+        }
+        $value-list:append($value-list , $number , comma);
+    }
+    @return $value-list;
+}
+
+@function generate-total-map-list($map-config , $property){
+    $class-name-list:generate-class-name-list($map-config , $property);
+    $value-list:generate-value($map-config);
+    $map:();
+    $list:();
+    @for $i from 1 through length($class-name-list){
+        $class-item:nth($class-name-list , $i);
+        $value:nth($value-list , $i);
+        $map:(
+            className:$class-item,
+            propertyKeys:generate-key($property),
+            propertyValues:$value
+        );
+        $list:append($list , $map , comma);
+    }
+    @return $list;
+}
+
+$z-index:generate-total-map-list($conf-opacity, z-index);

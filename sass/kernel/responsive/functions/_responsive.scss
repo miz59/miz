@@ -7,7 +7,7 @@
         $character: str-slice($string, $i, $i);
         $index: index($strings, $character);
         @if not $index {
-            @warn "Unknown character #{$character}.";
+            @warn "Unknown character #{$character}";
             @return false;
         }
         $number: nth($numbers, $index);
