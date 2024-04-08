@@ -18,6 +18,7 @@ $conf-z_index:(
 );
 
 $conf-aspect-ratio:(
-    count:2,
+    nominator:16,
+    denominator:16,
     step:1
 );

@@ -1,10 +1,8 @@
 @import 'responsive';
-<<<<<<< HEAD
-// @import 'typography';
+@import 'typography';
 
 
-// $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size;
-$totalist:$p,;
+$totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size;
 
 @function check-config-count($totalist-item){
     @if length(nth($totalist,$totalist-item))!=0{
@@ -90,6 +88,3 @@ $totalist:$p,;
     }
 }
 @include check-break-point();
-=======
-@import 'typography';
->>>>>>> 86f0ad473f71186d3c20c1408bc13b44d4a1077a
