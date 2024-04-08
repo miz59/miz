@@ -1,4 +1,5 @@
 @import 'responsive';
+<<<<<<< HEAD
 // @import 'typography';
 
 
@@ -89,3 +90,6 @@ $totalist:$p,;
     }
 }
 @include check-break-point();
+=======
+@import 'typography';
+>>>>>>> 86f0ad473f71186d3c20c1408bc13b44d4a1077a
