@@ -59,7 +59,7 @@ $font-weight : '';
     $list : ();
     $base : ();
 
-        @for $i from 1 through $break-points{
+        @for $i from 1 through {
             @each $name, $size in $font-size{
                 $base:generate-classes-responsive-on-value($font-prefix , nth($break-points, $i) , $name);
                 $map:(
