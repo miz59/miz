@@ -1,0 +1,7 @@
+
+@function get-color($key){
+
+    $code:map.get($map-name,$key);
+
+    @return $code;
+}
