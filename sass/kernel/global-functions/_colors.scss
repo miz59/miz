@@ -1,7 +1,7 @@
 
 @function get-color($key){
 
-    $code:map.get($map-name,$key);
+    $code:map.get($color-pallets,$key);
 
     @return $code;
 }
