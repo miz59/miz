@@ -1,0 +1,15 @@
+@import '../../../structure/colors';
+@mixin generate-color-classes($pallet){
+    $color-value-list:map.values($pallet);
+    $color-name-list:map.keys($pallet);
+    @for $i from 1 through length($color-name-list){
+        .#{nth($color-name-list,$i)}{
+            color: nth($color-value-list,$i);
+        }
+        .bg-#{nth($color-name-list,$i)}{
+            background-color:nth($color-value-list,$i)
+        }
+    }
+}
+
+@include generate-color-classes($color-pallets);

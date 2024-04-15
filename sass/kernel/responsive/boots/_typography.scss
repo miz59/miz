@@ -4,7 +4,7 @@ $font-weight : '';
 
 @function font-weight-connection($font-weight-name){
     @if $font-weight-name == 'bold'{
-        @return  bold;
+        @return  700;
     }
     @if $font-weight-name == 'black'{
         @return  800;
