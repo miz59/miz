@@ -5798,6 +5798,10 @@ a {
   border-bottom-left-radius: 0px;
 }
 
+.all-border-full {
+  border-radius: 100000px;
+}
+
 .italic {
   font-style: italic;
 }/*# sourceMappingURL=style.css.map */
