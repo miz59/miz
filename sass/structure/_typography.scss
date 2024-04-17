@@ -1,5 +1,5 @@
 $font-prefix : "txt";
-$font-size:(small : 12px,subtitle : 14px,normal : 16px, title : 20px, mid-title : 24px, high-title : 28px, extra-title : 32px, );
+$font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32, big-title : 48px, extra-title : 72px, );
 $fonts: (
   "primary": (
     "name": "Vazir",
@@ -45,3 +45,7 @@ $fonts: (
   )
 );
 
+
+.italic{
+  font-style: italic;
+}
