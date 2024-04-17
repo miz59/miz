@@ -4577,6 +4577,18 @@ a {
   border-width: 10px;
 }
 
+.border-solid {
+  border-style: solid;
+}
+
+.border-dashed {
+  border-style: dashed;
+}
+
+.border-dotted {
+  border-style: dotted;
+}
+
 .aspect-ratio-1x1 {
   aspect-ratio: 1/1;
 }
