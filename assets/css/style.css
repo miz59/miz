@@ -137,20 +137,20 @@
   width: 10%;
 }
 
-.flex-direction-xxl-row {
-  flex-direction: row;
+.flex-row {
+  flex: row;
 }
 
-.flex-direction-xxl-row-reverse {
-  flex-direction: row-reverse;
+.flex-row-reverse {
+  flex: row-reverse;
 }
 
-.flex-direction-xxl-column {
-  flex-direction: column;
+.flex-column {
+  flex: column;
 }
 
-.flex-direction-xxl-column-reverse {
-  flex-direction: column-reverse;
+.flex-column-reverse {
+  flex: column-reverse;
 }
 
 .justify-content-flex-start {
@@ -2086,7 +2086,7 @@
 }
 
 .txt-xxl-high-title {
-  font-size: 32;
+  font-size: 32px;
 }
 
 .txt-xxl-big-title {
@@ -2098,18 +2098,6 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .flex-direction-xl-row {
-    flex-direction: row;
-  }
-  .flex-direction-xl-row-reverse {
-    flex-direction: row-reverse;
-  }
-  .flex-direction-xl-column {
-    flex-direction: column;
-  }
-  .flex-direction-xl-column-reverse {
-    flex-direction: column-reverse;
-  }
   .justify-self-xl-start {
     justify-self: start;
   }
@@ -2604,7 +2592,7 @@
     font-size: 24px;
   }
   .txt-xl-high-title {
-    font-size: 32;
+    font-size: 32px;
   }
   .txt-xl-big-title {
     font-size: 48px;
@@ -2614,18 +2602,6 @@
   }
 }
 @media screen and (max-width: 1024px) {
-  .flex-direction-lg-row {
-    flex-direction: row;
-  }
-  .flex-direction-lg-row-reverse {
-    flex-direction: row-reverse;
-  }
-  .flex-direction-lg-column {
-    flex-direction: column;
-  }
-  .flex-direction-lg-column-reverse {
-    flex-direction: column-reverse;
-  }
   .justify-self-lg-start {
     justify-self: start;
   }
@@ -3120,7 +3096,7 @@
     font-size: 24px;
   }
   .txt-lg-high-title {
-    font-size: 32;
+    font-size: 32px;
   }
   .txt-lg-big-title {
     font-size: 48px;
@@ -3130,18 +3106,6 @@
   }
 }
 @media screen and (max-width: 767px) {
-  .flex-direction-md-row {
-    flex-direction: row;
-  }
-  .flex-direction-md-row-reverse {
-    flex-direction: row-reverse;
-  }
-  .flex-direction-md-column {
-    flex-direction: column;
-  }
-  .flex-direction-md-column-reverse {
-    flex-direction: column-reverse;
-  }
   .justify-self-md-start {
     justify-self: start;
   }
@@ -3636,7 +3600,7 @@
     font-size: 24px;
   }
   .txt-md-high-title {
-    font-size: 32;
+    font-size: 32px;
   }
   .txt-md-big-title {
     font-size: 48px;
@@ -3646,18 +3610,6 @@
   }
 }
 @media screen and (max-width: 478px) {
-  .flex-direction-sm-row {
-    flex-direction: row;
-  }
-  .flex-direction-sm-row-reverse {
-    flex-direction: row-reverse;
-  }
-  .flex-direction-sm-column {
-    flex-direction: column;
-  }
-  .flex-direction-sm-column-reverse {
-    flex-direction: column-reverse;
-  }
   .justify-self-sm-start {
     justify-self: start;
   }
@@ -4152,7 +4104,7 @@
     font-size: 24px;
   }
   .txt-sm-high-title {
-    font-size: 32;
+    font-size: 32px;
   }
   .txt-sm-big-title {
     font-size: 48px;
