@@ -51,14 +51,49 @@ $key-list:(
     align-self ,
     align-items ,
 );
-@function get-flex-break-points-classes($break-points-key,$property-key-list , $property-value-list){
+
+$class-list:(
+    flex ,
+    justify-content ,
+    justify-self ,
+    justify-items ,
+    align-content ,
+    align-self ,
+    align-items ,
+);
+
+@function generate-flex-list(){
+    $flex-list:();
+
+    @for $i from 1 through length($key-list){
+        $value:generate-flex-classes(nth($key-list , $i), nth($value-list , $i),nth($class-list,$i));
+        $flex-list:join($flex-list , $value);
+    }
+    @return $flex-list;
+}
+
+@function generate-flex-classes($property-key-list , $property-value-list,$class-name){
+    $list : ();
+    $count : ();
+    @if check-responsive-status($conf-list, $property-key-list){
+        @each $key , $value in $break-points{
+            $list:join($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list,$class-name));
+        }
+    }@else{
+        $list:join($list , get-flex-break-points-classes(null,$property-key-list , $property-value-list,$class-name));   
+    }  
+    @return $list;
+} 
+
+
+@function get-flex-break-points-classes($break-points-key,$property-key-list , $property-value-list,$class-name){
     $list : ();
     $base : ();
     @for $i from 1 through length($property-value-list){
         @if check-responsive-status($conf-list, $property-key-list){
-            $base:generate-classes-responsive-on-value($property-key-list , $break-points-key , nth($property-value-list , $i));
+            $base:generate-classes-responsive-on-value($class-name , $break-points-key , nth($property-value-list , $i));
         }@else{
-            $base:generate-classes-on-value($property-key-list  ,nth($property-value-list , $i));
+            $base:generate-classes-on-value($class-name  ,nth($property-value-list , $i));
         }
         $map:(
             className: $base,
@@ -69,28 +104,8 @@ $key-list:(
     }
     @return $list;
 }
-@function generate-flex-classes($property-key-list , $property-value-list){
-    $list : ();
-    $count : ();
-    @if check-responsive-status($conf-list, $property-key-list){
-        @each $key , $value in $break-points{
-            $list:join($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list));
-        }
-    }@else{
-        $list:join($list , get-flex-break-points-classes(null,$property-key-list , $property-value-list));   
-    }  
-    @return $list;
-}
 
-@function generate-flex-list(){
-    $flex-list:();
 
-    @for $i from 1 through length($key-list){
-        $value:generate-flex-classes(nth($key-list , $i), nth($value-list , $i));
-        $flex-list:join($flex-list , $value);
-    }
-    @return $flex-list;
-}
 
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
 $flex-orders:generate-classes-items($order-list,order,$conf-orders);
