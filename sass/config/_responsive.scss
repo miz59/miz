@@ -2,19 +2,6 @@ $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
 // number of boxed space around should be equal with break points
 $boxed-space-around:(81px,70px,50px,17px,16px);
 
-$conf-opacity:(
-    max:200,
-    min:100,
-    step:2
-);
-
-$conf-z_index:(
-    max:10,
-    min:-10,
-    step:1
-);
-
-
 $conf-cols:(
     count:10,
     responsive:false
