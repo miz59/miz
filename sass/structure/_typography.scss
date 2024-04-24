@@ -49,3 +49,12 @@ $fonts: (
 .italic{
   font-style: italic;
 }
+.#{$font-prefix}-center{
+  text-align: center;
+}
+.#{$font-prefix}-left{
+  text-align: left;
+}
+.#{$font-prefix}-start{
+  text-align: start;
+}
