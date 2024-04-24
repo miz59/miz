@@ -47,33 +47,31 @@
   font-weight: 100;
   src: url("../fonts/vazir/Vazir-Thin-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Thin-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Bold-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Thin-FD.eot") format("eot"), ;
 }
-.Vazir-black {
+.Vazir {
   font-family: "Vazir";
+}
+
+.txt-black {
   font-weight: 800;
 }
 
-.Vazir-bold {
-  font-family: "Vazir";
+.txt-bold {
   font-weight: 700;
 }
 
-.Vazir-light {
-  font-family: "Vazir";
+.txt-light {
   font-weight: 300;
 }
 
-.Vazir-medium {
-  font-family: "Vazir";
+.txt-medium {
   font-weight: 500;
 }
 
-.Vazir-regular {
-  font-family: "Vazir";
+.txt-regular {
   font-weight: 400;
 }
 
-.Vazir-thin {
-  font-family: "Vazir";
+.txt-thin {
   font-weight: 100;
 }
 
@@ -4643,33 +4641,31 @@
   font-weight: 100;
   src: url("../fonts/vazir/Vazir-Thin-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Thin-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Bold-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Thin-FD.eot") format("eot"), ;
 }
-.Vazir-black {
+.Vazir {
   font-family: "Vazir";
+}
+
+.txt-black {
   font-weight: 800;
 }
 
-.Vazir-bold {
-  font-family: "Vazir";
+.txt-bold {
   font-weight: 700;
 }
 
-.Vazir-light {
-  font-family: "Vazir";
+.txt-light {
   font-weight: 300;
 }
 
-.Vazir-medium {
-  font-family: "Vazir";
+.txt-medium {
   font-weight: 500;
 }
 
-.Vazir-regular {
-  font-family: "Vazir";
+.txt-regular {
   font-weight: 400;
 }
 
-.Vazir-thin {
-  font-family: "Vazir";
+.txt-thin {
   font-weight: 100;
 }
 
