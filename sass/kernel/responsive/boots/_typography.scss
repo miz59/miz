@@ -46,11 +46,12 @@ $font-weight : '';
     $fonts-primary : map-get($fonts, 'primary');
     $font-type : map-get($fonts-primary, 'font-types');
     $class-name : map-get($fonts-primary, 'name');
-    
+    .#{$class-name}{
+        font-family : map-get($fonts-primary, 'name');
+    }
     @each $font-name, $font-file in $font-type{
         $font-weight : font-weight-connection($font-name);
-        .#{$class-name}-#{$font-name}{
-            font-family : map-get($fonts-primary, 'name');
+        .#{$font-prefix}-#{$font-name}{
             font-weight: $font-weight;
         }
     }
