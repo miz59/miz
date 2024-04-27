@@ -17,6 +17,18 @@
   font-style: italic;
 }
 
+.txt-center {
+  text-align: center;
+}
+
+.txt-left {
+  text-align: left;
+}
+
+.txt-start {
+  text-align: start;
+}
+
 @font-face {
   font-family: "Vazir";
   font-weight: 800;
@@ -4611,6 +4623,18 @@
   font-style: italic;
 }
 
+.txt-center {
+  text-align: center;
+}
+
+.txt-left {
+  text-align: left;
+}
+
+.txt-start {
+  text-align: start;
+}
+
 @font-face {
   font-family: "Vazir";
   font-weight: 800;
@@ -6226,4 +6250,16 @@ a {
 
 .italic {
   font-style: italic;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-left {
+  text-align: left;
+}
+
+.txt-start {
+  text-align: start;
 }
