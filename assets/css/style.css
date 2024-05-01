@@ -4734,6 +4734,35 @@
     padding-right: 16px;
   }
 }
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .section {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media screen and (max-width: 478px) {
+  .section {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 .section.wide {
   padding-right: 0px !important;
   padding-left: 0px !important;

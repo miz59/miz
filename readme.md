@@ -1,74 +1,95 @@
-khanom hojjatzadeh:
-
-layouts
-    displays
-    orders
-    index
-mixins
-    index
-
-kernel
-    index
-
-
------------------
-
-
-hossein:
-
-variables
-    index
-    responsive
-
-functions
-    responsive
-
-layouts
-    flex
-structure
-    typography
-
-common 
-    position 
-    z-index
+Ms Hojjatzadeh:
+miz
+	style
+	sass
+		index
+		kernel	
+			global-functions
+				break-point
+				color
+				image
+				index
+			responsive
+				boots
+					border
+				layout
+					index
+		structure
+			icon
 
 
-----------------
+Mr Kazemi:
+miz	
+	sass
 
+		Config
+				index
+				reset
+		kernel
+			common
+				aspect-ratio
+				functions
+				opacity
+				overflow
+				position
+				z-index
 
-saeed:
+			responsive
+				boots
+					reset
+				functions
+					space
+				variables
+					index
+					responsive
+			index
 
-boots
-    index
+Mr Saedi:
+miz
+	gitignore
+	readme
+	sass
 
-variables
-    sizes
-    
-config
-readme
-gitignore
+		Config
+				dims
+			responsive
 
-structure
-    index
-    layouts
+		kernel
+			responsive
+				boots
+					color
+					index
 
+				function
+					index
+					responsive
+				layout
+					diplays
+					flex
+					grid
+				index
+		structure
+			borders
+			colors
+			layouts
+			index
+	
+		
 
------------------
+Mr Jamali:
+miz
+	index
+	sass
+		style
+		Config
+				path
+		kernel
+			common
+				index
 
-
-mobin:
-
-functions
-    index
-    spaces
-
-layout
-    grid
-    z-index
-
-config
-        path
-
-structures
-    border
-    colors
+			responsive
+				boots
+					responsive
+					typography
+		structure
+			typography
