@@ -73,6 +73,22 @@ $font-weight : '';
         }
     @return $list;
 }
-$font-size : generate-font-size-classes();
+@function generate-font-size-classes-without-responsive(){
+    $list : ();
+    $base : ();
+
+    @each $name, $size in $font-size{
+        $base:generate-classes-on-value($font-prefix , $name);
+        $map:(
+            className: $base,
+            propertyKeys:'font-size',
+            propertyValues:$size
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
+$font-size-responsive : generate-font-size-classes();
+$font-size : generate-font-size-classes-without-responsive();
 @include make-font-face;
 @include make-font-classes;
