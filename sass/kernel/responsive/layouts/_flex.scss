@@ -15,7 +15,6 @@
     flex-wrap: nowrap;
 }
 $col-list:col;
-$order-list:order;
 $grow-list:grow;
 $conf-list:(
     flex-direction:map.get($conf-flex-direction , responsive) ,
@@ -108,6 +107,5 @@ $class-list:(
 
 
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
-$flex-orders:generate-classes-items($order-list,order,$conf-orders);
 $flex-grows:generate-classes-items($grow-list,flex-grow,$conf-grows);
 $flex-type : generate-flex-list();
