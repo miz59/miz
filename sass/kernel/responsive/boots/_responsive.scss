@@ -116,7 +116,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
                 padding-top: $space-value;
-                padding-left:$space-value;
+                padding-bottom:$space-value;
             }
         }
         @else{

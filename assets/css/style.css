@@ -4705,7 +4705,7 @@
 }
 .section {
   padding-top: 5rem;
-  padding-left: 5rem;
+  padding-bottom: 5rem;
 }
 
 @media screen and (max-width: 1280px) {
