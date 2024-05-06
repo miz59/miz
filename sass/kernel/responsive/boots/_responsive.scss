@@ -31,16 +31,45 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     }
     @return $result;
 }
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+  
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+  
+    @return $string;
+}
 
 @mixin generate-style-property($totalist-item,$total-list-member-item,$break-point-value){
     $total-list-member:nth($totalist,$totalist-item);
     @if (check-config-count($totalist-item)){
         $class-name:map.get(nth($total-list-member,$total-list-member-item),className);
+        $class-name-greatest : str-replace($class-name,'-xxl');
+
+        $result : ();
+        @each $item1 in $class-name{
+            @each $item2 in $class-name-greatest{
+                @if ($item1 != $item2){
+                    $result : $item2;
+                }
+            }
+        }
+
         $property-keys:map.get(nth($total-list-member,$total-list-member-item),propertyKeys);
         $property-break-point:break-point($class-name);
         $property-values:map.get(nth($total-list-member,$total-list-member-item),propertyValues);
         $property-list:($property-keys,$property-values);
+        
         @if($break-point-value==$property-break-point){
+            @if $result != (){
+                #{$result}{
+                    @for $k from 1 through length($property-keys){
+                        #{nth(nth($property-list,1),$k)}: nth(nth($property-list,2),$k);
+                    }
+                }
+            }
+            
             #{$class-name}{
                 @for $k from 1 through length($property-keys){
                     #{nth(nth($property-list,1),$k)}: nth(nth($property-list,2),$k);
@@ -85,7 +114,6 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     }
 }
 @include check-break-point();
-
 @mixin generate-boxed-horizontally(){
     @for $i from 1 through length($boxed-space-horizontally){
         $break-point-values:map.values($break-points);
@@ -107,7 +135,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
         }
     }
 }
-
+$file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
 @mixin generate-boxed-vertically(){
     @for $i from 1 through length($boxed-space-vertically){
         $break-point-values:map.values($break-points);
@@ -116,7 +144,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
                 padding-top: $space-value;
-                padding-left:$space-value;
+                padding-bottom:$space-value;
             }
         }
         @else{
