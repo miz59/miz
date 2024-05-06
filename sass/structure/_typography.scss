@@ -2,44 +2,92 @@ $font-prefix : "txt";
 $font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px, );
 $fonts: (
   "primary": (
-    "name": "Vazir",
-    "folder": "vazir",
+    "defaults":"",
+    "folder": "story-lens",
     "font-types": (
-      "black": (
-        "Vazir-Black-FD.woff2",
-        "Vazir-Black-FD.woff",
-        "Vazir-Black-FD.ttf",
-        "Vazir-Black-FD.eot"
-      ),
+      // "black": (
+      //   "Roboto-Black.woff2",
+      //   "Roboto-Black.woff",
+      //   "Roboto-Black.ttf",
+      //   "Roboto-Black.eot"
+      // ),
+      // "bold": (
+      //   "Roboto-Bold.woff2",
+      //   "Roboto-Bold.woff",
+      //   "Roboto-Bold.ttf",
+      //   "Roboto-Bold.eot"
+      // ),
+      // "light": (
+      //   "Roboto-Light.woff2",
+      //   "Roboto-Light.woff",
+      //   "Roboto-Light.ttf",
+      //   "Roboto-Light.eot"
+      // ),
+      // "medium": (
+      //   "Roboto-Medium.woff2",
+      //   "Roboto-Medium.woff",
+      //   "Roboto-Medium.ttf",
+      //   "Roboto-Medium.eot"
+      // ),
+      // "regular": (
+      //   "Roboto-Regular.woff2",
+      //   "Roboto-Regular.woff",
+      //   "Roboto-Regular.ttf",
+      //   "Roboto-Regular.eot"
+      // ),
+      // "thin": (
+      //   "Roboto-Thin.woff2",
+      //   "Roboto-Thin.woff",
+      //   "Roboto-Thin.ttf",
+      //   "Roboto-Thin.eot"
+      // )
       "bold": (
-        "Vazir-Bold-FD.woff2",
-        "Vazir-Bold-FD.woff",
-        "Vazir-Bold-FD.ttf",
-        "Vazir-Bold-FD.eot"
-      ),
-      "light": (
-        "Vazir-Light-FD.woff2",
-        "Vazir-Light-FD.woff",
-        "Vazir-Light-FD.ttf",
-        "Vazir-Light-FD.eot"
-      ),
-      "medium": (
-        "Vazir-Medium-FD.woff2",
-        "Vazir-Medium-FD.woff",
-        "Vazir-Medium-FD.ttf",
-        "Vazir-Medium-FD.eot"
-      ),
-      "regular": (
-        "Vazir-Regular-FD.woff2",
-        "Vazir-Regular-FD.woff",
-        "Vazir-Regular-FD.ttf",
-        "Vazir-Regular-FD.eot"
-      ),
-      "thin": (
-        "Vazir-Thin-FD.woff2",
-        "Vazir-Thin-FD.woff",
-        "Vazir-Bold-FD.ttf",
-        "Vazir-Thin-FD.eot"
+        "Story-Lens.woff2"
+      )
+    )
+  ),
+  "none": (
+    "defaults":"sans-serif, 'Courier New', Courier, monospace",
+    "folder": "hh",
+    "font-types": (
+      // "black": (
+      //   "Roboto-Black.woff2",
+      //   "Roboto-Black.woff",
+      //   "Roboto-Black.ttf",
+      //   "Roboto-Black.eot"
+      // ),
+      // "bold": (
+      //   "Roboto-Bold.woff2",
+      //   "Roboto-Bold.woff",
+      //   "Roboto-Bold.ttf",
+      //   "Roboto-Bold.eot"
+      // ),
+      // "light": (
+      //   "Roboto-Light.woff2",
+      //   "Roboto-Light.woff",
+      //   "Roboto-Light.ttf",
+      //   "Roboto-Light.eot"
+      // ),
+      // "medium": (
+      //   "Roboto-Medium.woff2",
+      //   "Roboto-Medium.woff",
+      //   "Roboto-Medium.ttf",
+      //   "Roboto-Medium.eot"
+      // ),
+      // "regular": (
+      //   "Roboto-Regular.woff2",
+      //   "Roboto-Regular.woff",
+      //   "Roboto-Regular.ttf",
+      //   "Roboto-Regular.eot"
+      // ),
+      // "thin": (
+      //   "Roboto-Thin.woff2",
+      //   "Roboto-Thin.woff",
+      //   "Roboto-Thin.ttf",
+      //   "Roboto-Thin.eot"
+      // )
+      "black": (
+        "Story-Le.woff"
       )
     )
   )
