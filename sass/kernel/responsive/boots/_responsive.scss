@@ -45,8 +45,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     $total-list-member:nth($totalist,$totalist-item);
     @if (check-config-count($totalist-item)){
         $class-name:map.get(nth($total-list-member,$total-list-member-item),className);
-        $class-name-greatest:map.get(nth($total-list-member,$total-list-member-item),className);
-        $class-name-greatest : str-replace($class-name-greatest,'-xxl');
+        $class-name-greatest : str-replace($class-name,'-xxl');
 
         $result : ();
         @each $item1 in $class-name{
@@ -115,7 +114,6 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     }
 }
 @include check-break-point();
-
 @mixin generate-boxed-horizontally(){
     @for $i from 1 through length($boxed-space-horizontally){
         $break-point-values:map.values($break-points);
@@ -137,7 +135,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
         }
     }
 }
-
+$file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
 @mixin generate-boxed-vertically(){
     @for $i from 1 through length($boxed-space-vertically){
         $break-point-values:map.values($break-points);
