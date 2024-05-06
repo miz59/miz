@@ -119,61 +119,29 @@
 }
 
 @font-face {
-  font-family: "Vazir";
-  font-weight: 800;
-  src: url("../fonts/vazir/Vazir-Black-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Black-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Black-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Black-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
+  font-family: "primary";
   font-weight: 700;
-  src: url("../fonts/vazir/Vazir-Bold-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Bold-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Bold-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Bold-FD.eot") format("eot"), ;
+  src: url("../fonts/story-lens/Story-Lens.woff2");
 }
 @font-face {
-  font-family: "Vazir";
-  font-weight: 300;
-  src: url("../fonts/vazir/Vazir-Light-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Light-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Light-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Light-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
-  font-weight: 500;
-  src: url("../fonts/vazir/Vazir-Medium-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Medium-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Medium-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Medium-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
-  font-weight: 400;
-  src: url("../fonts/vazir/Vazir-Regular-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Regular-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Regular-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Regular-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
-  font-weight: 100;
-  src: url("../fonts/vazir/Vazir-Thin-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Thin-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Bold-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Thin-FD.eot") format("eot"), ;
-}
-.Vazir {
-  font-family: "Vazir";
-}
-
-.txt-black {
+  font-family: "none" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 800;
+  src: url("../fonts/hh/Story-Le.woff");
+}
+.primary {
+  font-family: "primary";
 }
 
 .txt-bold {
   font-weight: 700;
 }
 
-.txt-light {
-  font-weight: 300;
+.none {
+  font-family: "none";
 }
 
-.txt-medium {
-  font-weight: 500;
-}
-
-.txt-regular {
-  font-weight: 400;
-}
-
-.txt-thin {
-  font-weight: 100;
+.txt-black {
+  font-weight: 800;
 }
 
 .d-block {
@@ -272,10 +240,13 @@
   width: 10%;
 }
 
+<<<<<<< HEAD
 .col-xxl-10 {
   width: 10%;
 }
 
+=======
+>>>>>>> ffabd0156747dbf5c9fba3873366959a674c7fc3
 .flex-row {
   flex-direction: row;
 }
@@ -5724,7 +5695,83 @@
   gap: 10rem;
 }
 
+.txt-className .txt-small {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-small {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-subtitle {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-subtitle {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-normal {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-normal {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-title {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-title {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-mid-title {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-mid-title {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-high-title {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-high-title {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-big-title {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-big-title {
+  font-size: propertyKeys;
+}
+
+.txt-className .txt-extra-title {
+  font-size: propertyKeys;
+}
+
+.txt-xxl-className .txt-extra-title {
+  font-size: propertyKeys;
+}
+
+.txt-small {
+  font-size: 10px;
+}
+
+.txt-xxl-small {
+  font-size: 10px;
+}
+
 .txt-subtitle {
+  font-size: 12px;
+}
+
+.txt-xxl-subtitle {
   font-size: 12px;
 }
 
@@ -5732,7 +5779,15 @@
   font-size: 16px;
 }
 
+.txt-xxl-normal {
+  font-size: 16px;
+}
+
 .txt-title {
+  font-size: 20px;
+}
+
+.txt-xxl-title {
   font-size: 20px;
 }
 
@@ -5740,7 +5795,15 @@
   font-size: 24px;
 }
 
+.txt-xxl-mid-title {
+  font-size: 24px;
+}
+
 .txt-high-title {
+  font-size: 32px;
+}
+
+.txt-xxl-high-title {
   font-size: 32px;
 }
 
@@ -5748,6 +5811,7 @@
   font-size: 48px;
 }
 
+<<<<<<< HEAD
 .txt-extra-title {
   font-size: 72px;
 }
@@ -5804,6 +5868,8 @@
   font-size: 48px;
 }
 
+=======
+>>>>>>> ffabd0156747dbf5c9fba3873366959a674c7fc3
 .txt-xxl-big-title {
   font-size: 48px;
 }
@@ -7279,6 +7345,30 @@
   }
   .gap-xl-20 {
     gap: 10rem;
+  }
+  .txt-xl-className .txt-small {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-subtitle {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-normal {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-title {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-mid-title {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-high-title {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-big-title {
+    font-size: propertyKeys;
+  }
+  .txt-xl-className .txt-extra-title {
+    font-size: propertyKeys;
   }
   .txt-xl-small {
     font-size: 10px;
@@ -8769,6 +8859,30 @@
   .gap-lg-20 {
     gap: 10rem;
   }
+  .txt-lg-className .txt-small {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-subtitle {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-normal {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-title {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-mid-title {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-high-title {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-big-title {
+    font-size: propertyKeys;
+  }
+  .txt-lg-className .txt-extra-title {
+    font-size: propertyKeys;
+  }
   .txt-lg-small {
     font-size: 10px;
   }
@@ -10257,6 +10371,30 @@
   }
   .gap-md-20 {
     gap: 10rem;
+  }
+  .txt-md-className .txt-small {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-subtitle {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-normal {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-title {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-mid-title {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-high-title {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-big-title {
+    font-size: propertyKeys;
+  }
+  .txt-md-className .txt-extra-title {
+    font-size: propertyKeys;
   }
   .txt-md-small {
     font-size: 10px;
@@ -11747,8 +11885,29 @@
   .gap-sm-20 {
     gap: 10rem;
   }
-  .txt-small {
-    font-size: 10px;
+  .txt-sm-className .txt-small {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-subtitle {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-normal {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-title {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-mid-title {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-high-title {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-big-title {
+    font-size: propertyKeys;
+  }
+  .txt-sm-className .txt-extra-title {
+    font-size: propertyKeys;
   }
   .txt-sm-small {
     font-size: 10px;
@@ -11855,61 +12014,29 @@
 }
 
 @font-face {
-  font-family: "Vazir";
-  font-weight: 800;
-  src: url("../fonts/vazir/Vazir-Black-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Black-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Black-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Black-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
+  font-family: "primary";
   font-weight: 700;
-  src: url("../fonts/vazir/Vazir-Bold-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Bold-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Bold-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Bold-FD.eot") format("eot"), ;
+  src: url("../fonts/story-lens/Story-Lens.woff2");
 }
 @font-face {
-  font-family: "Vazir";
-  font-weight: 300;
-  src: url("../fonts/vazir/Vazir-Light-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Light-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Light-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Light-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
-  font-weight: 500;
-  src: url("../fonts/vazir/Vazir-Medium-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Medium-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Medium-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Medium-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
-  font-weight: 400;
-  src: url("../fonts/vazir/Vazir-Regular-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Regular-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Regular-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Regular-FD.eot") format("eot"), ;
-}
-@font-face {
-  font-family: "Vazir";
-  font-weight: 100;
-  src: url("../fonts/vazir/Vazir-Thin-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Thin-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Bold-FD.ttf") format("ttf"), url("../fonts/vazir/Vazir-Thin-FD.eot") format("eot"), ;
-}
-.Vazir {
-  font-family: "Vazir";
-}
-
-.txt-black {
+  font-family: "none" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 800;
+  src: url("../fonts/hh/Story-Le.woff");
+}
+.primary {
+  font-family: "primary";
 }
 
 .txt-bold {
   font-weight: 700;
 }
 
-.txt-light {
-  font-weight: 300;
+.none {
+  font-family: "none";
 }
 
-.txt-medium {
-  font-weight: 500;
-}
-
-.txt-regular {
-  font-weight: 400;
-}
-
-.txt-thin {
-  font-weight: 100;
+.txt-black {
+  font-weight: 800;
 }
 
 body, p, h1, h2, h3, h4, h5, h6, hr {
@@ -11936,254 +12063,6 @@ ul, li {
 a {
   text-decoration: none;
   color: black;
-}
-
-.border-primary-color {
-  border-color: #C7A151;
-}
-
-.primary-color {
-  color: #C7A151;
-}
-
-.bg-primary {
-  background-color: #C7A151;
-}
-
-.border-on-primary-color {
-  border-color: #FFFFFF;
-}
-
-.on-primary-color {
-  color: #FFFFFF;
-}
-
-.bg-on-primary {
-  background-color: #FFFFFF;
-}
-
-.border-primary-light-color {
-  border-color: #F8F8FF;
-}
-
-.primary-light-color {
-  color: #F8F8FF;
-}
-
-.bg-primary-light {
-  background-color: #F8F8FF;
-}
-
-.border-primary-dark-color {
-  border-color: #FFFFFF;
-}
-
-.primary-dark-color {
-  color: #FFFFFF;
-}
-
-.bg-primary-dark {
-  background-color: #FFFFFF;
-}
-
-.bg-secondary {
-  background-color: #262626;
-}
-
-.bg-on-secondary {
-  background-color: #BBBBBB;
-}
-
-.bg-secondary-light {
-  background-color: #FFFFFF;
-}
-
-.bg-secondary-dark {
-  background-color: #FFFFFF;
-}
-
-.specific-color {
-  color: #FFFFFF;
-}
-
-.bg-specific {
-  background-color: #FFFFFF;
-}
-
-.button-text-color {
-  color: #C7A151;
-}
-
-.bg-button-text {
-  background-color: #C7A151;
-}
-
-.bg-button {
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.text-color {
-  color: #BBBBBB;
-}
-
-.title-text-color {
-  color: #C7A151;
-}
-
-.secondary-text-color {
-  color: #FFFFFF;
-}
-
-.bg-secondary-text {
-  background-color: #FFFFFF;
-}
-
-.section-title-text-color {
-  color: #CECECE;
-}
-
-.bg-section-title-text {
-  background-color: #CECECE;
-}
-
-.border-border-color {
-  border-color: #C7A151;
-}
-
-.icon-color {
-  color: #C7A151;
-}
-
-.icon-hover-color {
-  color: #C7A151;
-}
-
-.bg-menu {
-  background-color: #1F1D1D;
-}
-
-.bg-card {
-  background-color: #120F10;
-}
-
-.bg-section {
-  background-color: #262626;
-}
-
-.bg-button-hover {
-  background-color: #C7A453;
-}
-
-.text-hover-color {
-  color: #C7A453;
-}
-
-.button-text-hover-color {
-  color: #C5B395;
-}
-
-.bg-button-text-hover {
-  background-color: #C5B395;
-}
-
-.bg-fields {
-  background-color: #FFFFFF;
-}
-
-.border-border-fields-color {
-  border-color: #FFFFFF;
-}
-
-.bg-border-fields {
-  background-color: #FFFFFF;
-}
-
-.title-text-fields-color {
-  color: #FFFFFF;
-}
-
-.bg-title-text-fields {
-  background-color: #FFFFFF;
-}
-
-.text-fields-color {
-  color: #FFFFFF;
-}
-
-.bg-text-fields {
-  background-color: #FFFFFF;
-}
-
-.bg-danger-regular {
-  background-color: #D70D0D;
-}
-
-.bg-disabled-regular {
-  background-color: #3761EB;
-}
-
-.bg-warning-regular {
-  background-color: #FFB800;
-}
-
-.bg-warning-light {
-  background-color: #FDD368;
-}
-
-.bg-warning-dark {
-  background-color: #E4A400;
-}
-
-.bg-success-regular {
-  background-color: #02B74A;
-}
-
-.bg-success-light {
-  background-color: #C0FCD8;
-}
-
-.bg-success-dark {
-  background-color: #009C3F;
-}
-
-.bg-danger-dark {
-  background-color: #D70D0D;
-}
-
-.bg-danger-light {
-  background-color: #F8D0D0;
-}
-
-.bg-disabled-light {
-  background-color: #B1B1B1;
-}
-
-.bg-disabled-dark {
-  background-color: #B1B1B1;
-}
-
-.bg-information-regular {
-  background-color: #3761EB;
-}
-
-.bg-information-light {
-  background-color: #7393FF;
-}
-
-.bg-information-dark {
-  background-color: #2145BC;
-}
-
-.border-color-border-secondary-color {
-  border-color: #B1B1B1;
-}
-
-.bg-color-border-secondary {
-  background-color: #B1B1B1;
-}
-
-.bg-unCommon {
-  background-color: #FFFFFF;
 }
 
 .border-width-0 {

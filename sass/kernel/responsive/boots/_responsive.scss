@@ -39,7 +39,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     }
   
     @return $string;
-  }
+}
 
 @mixin generate-style-property($totalist-item,$total-list-member-item,$break-point-value){
     $total-list-member:nth($totalist,$totalist-item);
@@ -54,7 +54,6 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
                 @if ($item1 != $item2){
                     $result : $item2;
                 }
-                
             }
         }
 
