@@ -62,7 +62,8 @@
 }
 
 @function check-responsive-status($map-config,$status-responsive){
-    $status:map.get($map-config , $status-responsive);
+    // $status:map.get($map-config , $status-responsive);
+    $status:"";
     @return $status;
 }
 
