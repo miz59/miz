@@ -1,47 +1,47 @@
-// // @import "../../../structure/colors";
+@import "../../../config/colors";
 
-// @mixin detect-color--palette(
-//   $keyword,
-//   $key-palette-color,
-//   $value-palette-color
-// ) {
-//   @if ($keyword==$borders) {
-//     .border-#{$key-palette-color}-color {
-//       border-color: $value-palette-color;
-//     }
-//   }
+@mixin detect-color--palette(
+  $keyword,
+  $key-palette-color,
+  $value-palette-color
+) {
+  @if ($keyword==$borders) {
+    .border-#{$key-palette-color}-color {
+      border-color: $value-palette-color;
+    }
+  }
 
-//   @if ($keyword==$backgrounds) {
-//     .bg-#{$key-palette-color} {
-//       background-color: $value-palette-color;
-//     }
-//   }
+  @if ($keyword==$backgrounds) {
+    .bg-#{$key-palette-color} {
+      background-color: $value-palette-color;
+    }
+  }
 
-//   @if ($keyword==$colors) {
-//     .#{$key-palette-color}-color {
-//       color: $value-palette-color;
-//     }
-//   }
-// }
+  @if ($keyword==$colors) {
+    .#{$key-palette-color}-color {
+      color: $value-palette-color;
+    }
+  }
+}
 
-// @mixin compare-palette-key($key-palette-color, $value-palette-color, $keyword) {
-//   @for $i from 1 through length($keyword) {
-//     $item-list: nth($keyword, $i);
-//     @if (str-index(#{$key-palette-color}, $item-list)) {
-//       @include detect-color--palette(
-//         $keyword,
-//         $key-palette-color,
-//         $value-palette-color
-//       );
-//     }
-//   }
-// }
-// @mixin generate-color-classes($palette) {
-//   @each $key, $value in $palette {
-//     @include compare-palette-key($key, $value, $borders);
-//     @include compare-palette-key($key, $value, $colors);
-//     @include compare-palette-key($key, $value, $backgrounds);
-//   }
-// }
+@mixin compare-palette-key($key-palette-color, $value-palette-color, $keyword) {
+  @for $i from 1 through length($keyword) {
+    $item-list: nth($keyword, $i);
+    @if (str-index(#{$key-palette-color}, $item-list)) {
+      @include detect-color--palette(
+        $keyword,
+        $key-palette-color,
+        $value-palette-color
+      );
+    }
+  }
+}
+@mixin generate-color-classes($palette) {
+  @each $key, $value in $palette {
+    @include compare-palette-key($key, $value, $borders);
+    @include compare-palette-key($key, $value, $colors);
+    @include compare-palette-key($key, $value, $backgrounds);
+  }
+}
 
-// @include generate-color-classes($color-palette);
+@include generate-color-classes($color-palette);
