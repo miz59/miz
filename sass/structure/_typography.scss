@@ -2,45 +2,57 @@ $font-prefix : "txt";
 $font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px, );
 $fonts: (
   "primary": (
-    "name": "Vazir",
+    "defaults":"sans-serif, 'Courier New', Courier, monospace",
     "folder": "vazir",
     "font-types": (
       "black": (
-        "Vazir-Black-FD.woff2",
-        "Vazir-Black-FD.woff",
-        "Vazir-Black-FD.ttf",
-        "Vazir-Black-FD.eot"
+        "Vazir-Black.woff2",
+        "Vazir-Black.woff",
+        "Vazir-Black.ttf",
+        "Vazir-Black.eot"
       ),
       "bold": (
-        "Vazir-Bold-FD.woff2",
-        "Vazir-Bold-FD.woff",
-        "Vazir-Bold-FD.ttf",
-        "Vazir-Bold-FD.eot"
+        "Vazir-Bold.woff2",
+        "Vazir-Bold.woff",
+        "Vazir-Bold.ttf",
+        "Vazir-Bold.eot"
       ),
       "light": (
-        "Vazir-Light-FD.woff2",
-        "Vazir-Light-FD.woff",
-        "Vazir-Light-FD.ttf",
-        "Vazir-Light-FD.eot"
+        "Vazir-Light.woff2",
+        "Vazir-Light.woff",
+        "Vazir-Light.ttf",
+        "Vazir-Light.eot"
       ),
       "medium": (
-        "Vazir-Medium-FD.woff2",
-        "Vazir-Medium-FD.woff",
-        "Vazir-Medium-FD.ttf",
-        "Vazir-Medium-FD.eot"
+        "Vazir-Medium.woff2",
+        "Vazir-Medium.woff",
+        "Vazir-Medium.ttf",
+        "Vazir-Medium.eot"
       ),
       "regular": (
-        "Vazir-Regular-FD.woff2",
-        "Vazir-Regular-FD.woff",
-        "Vazir-Regular-FD.ttf",
-        "Vazir-Regular-FD.eot"
+        "Vazir-Regular.woff2",
+        "Vazir-Regular.woff",
+        "Vazir-Regular.ttf",
+        "Vazir-Regular.eot"
       ),
       "thin": (
-        "Vazir-Thin-FD.woff2",
-        "Vazir-Thin-FD.woff",
-        "Vazir-Bold-FD.ttf",
-        "Vazir-Thin-FD.eot"
+        "Vazir-Thin.woff2",
+        "Vazir-Thin.woff",
+        "Vazir-Bold.ttf",
+        "Vazir-Thin.eot"
       )
+    )
+  ),
+  "secondary": (
+    "defaults":"sans-serif, 'Courier New', Courier, monospace",
+    "folder": "product-sans",
+    "font-types": (
+      "bold": (
+        "PTSans-Bold.ttf"
+      ),
+      "regular": (
+        "PTSans-Regular.ttf"
+      ),
     )
   )
 );
