@@ -110,66 +110,42 @@
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 800;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 700;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 300;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 500;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 400;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 100;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 700;
-<<<<<<< HEAD
-=======
   src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 400;
-<<<<<<< HEAD
-=======
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 .primary {
   font-family: "primary";
@@ -12829,66 +12805,42 @@
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 800;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 700;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 300;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 500;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 400;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 100;
-<<<<<<< HEAD
-=======
   src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 700;
-<<<<<<< HEAD
-=======
   src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 @font-face {
   font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
   font-weight: 400;
-<<<<<<< HEAD
-=======
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
->>>>>>> d366a183912ef2825c85b2f884551203d5cc3057
 }
 .primary {
   font-family: "primary";
@@ -14410,4 +14362,4 @@ a {
 
 .z-index-10 {
   z-index: 10;
-}/*# sourceMappingURL=style.css.map */
+}
