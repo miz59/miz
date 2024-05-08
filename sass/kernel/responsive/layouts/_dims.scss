@@ -1,0 +1,4 @@
+@import "../functions/responsive";
+@import "../../../config";
+$w-list:width;
+$width-list : generate-classes-items($w-list ,width, $conf-width) ;

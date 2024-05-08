@@ -5,9 +5,12 @@ $boxed-space-vertically:(5rem,4.5rem,4rem,3rem,3rem);
 
 $conf-cols:(
     count:10,
-    responsive:false
+    responsive:true
 );
-
+$conf-width:(
+    count:26,
+    responsive:true
+);
 $conf-grids:(
     count:14,
     responsive:true
@@ -29,7 +32,7 @@ $conf-margins:(
     count:40,
     unit:rem,
     factor:0.5,
-    responsive:false
+    responsive:true
 );
 
 $conf-orders:(

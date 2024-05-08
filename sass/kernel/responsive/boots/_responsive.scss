@@ -1,5 +1,5 @@
 @import 'typography';
-$totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive;
+$totalist : $display-values,$flex-cols,$width-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive;
 
 @function check-config-count($totalist-item){
     @if length(nth($totalist,$totalist-item))!=0{
@@ -118,7 +118,7 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
     @for $i from 1 through length($boxed-space-horizontally){
         $break-point-values:map.values($break-points);
         $max-width-values:nth($break-point-values,$i);
-        $space-value:nth($boxed-space-horizontally,$i);
+$space-value:nth($boxed-space-horizontally,$i);
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
                 padding-left: $space-value;
@@ -135,7 +135,6 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
         }
     }
 }
-$file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
 @mixin generate-boxed-vertically(){
     @for $i from 1 through length($boxed-space-vertically){
         $break-point-values:map.values($break-points);
