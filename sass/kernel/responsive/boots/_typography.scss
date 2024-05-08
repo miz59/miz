@@ -1,4 +1,4 @@
-@import '../../../structure/typography'; 
+@import '../../../structure/typography';
 
 $font-weight : '';
 
@@ -28,19 +28,6 @@ $font-weight : '';
       $font-defaults: map-get($font-details, "defaults");
       @each $font-type, $font-files in map-get($font-details, "font-types") {
         $font-weight : font-weight-connection($font-type);
-    }
-            @font-face {
-               $file-src : '';
-               font-family: map-get($font-details, "name");
-               font-weight: $font-weight;
-               @each $font-file in $font-files {
-                 $file-name: nth($font-file, 1);
-                 $file-format: str-slice($file-name, str-index($file-name, ".") + 1);
-                 $file-path: $font-folder + "/" + $file-name;
-                 $file-src :$file-src + #{url("#{$fonts-path + $file-path}") format('#{$file-format}')} + ', ';
-               }
-               src: unquote($file-src);
-            }
          @font-face {
             $file-src : '';
             font-family: "#{$font-name}" unquote($font-defaults);
@@ -77,17 +64,17 @@ $font-weight : '';
     $list : ();
     $base : ();
 
-    @each $key,$value in $break-points{
-        @each $name, $size in $font-size{
-            $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
-            $map:(
-                className: $base,
-                propertyKeys:'font-size',
-                propertyValues:$size
-            );
-            $list:append($list , $map);
+        @each $key,$value in $break-points{
+            @each $name, $size in $font-size{
+                $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
+                $map:(
+                    className: $base,
+                    propertyKeys:'font-size',
+                    propertyValues:$size
+                );
+                $list:append($list , $map);
+            }
         }
-    }
     @return $list;
 }
 @function generate-font-size-classes-without-responsive(){
@@ -107,9 +94,6 @@ $font-weight : '';
 }
 $font-size-responsive : generate-font-size-classes();
 $font-size : generate-font-size-classes-without-responsive();
-<<<<<<< HEAD
-=======
 $font-size : generate-font-size-classes();
->>>>>>> 6343ae272146fd2d6739fce8a210c6cee584ed8b
 @include make-font-face;
 @include make-font-classes;
