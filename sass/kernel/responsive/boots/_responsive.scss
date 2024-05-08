@@ -1,5 +1,5 @@
 @import 'typography';
-$totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive;
+$totalist : $display-values,$flex-cols,$width-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive;
 
 @function check-config-count($totalist-item){
     @if length(nth($totalist,$totalist-item))!=0{

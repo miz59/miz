@@ -16,20 +16,6 @@
     @return $result;
 }
 
-@function generate-responsive-classes($prefix , $count , $is-space:false){
-    $list:();
-    @each $key , $value in $break-points{
-        @for $i from 1 through $count{
-            $value:$i;
-            @if $is-space {
-                $value:$i - 1;    
-            }
-            $base:unquote("." + $prefix + "-" + $key + "-" + $value);
-            $list:append($list , $base , comma);
-        }
-    }
-    @return $list;
-}
 
 @function generate-classes($prefix , $count , $is-space:false){
     $list:();
@@ -54,48 +40,6 @@
     @return $base;
 }
 
-@function reset-count($k , $count){
-    @if $k==$count+1{
-        $k:1;
-    }
-    @return $k;
-}
-
-@function check-responsive-status($map-config,$status-responsive){
-    // $status:map.get($map-config , $status-responsive);
-    $status:"";
-    @return $status;
-}
-
-@function set-property-values($counter-reset,$type){
-
-    @if $type==col{
-        @return calc(100%/$counter-reset);
-    }
-    @else if $type==g{
-        @return repeat($counter-reset, 1fr);
-    }
-    @else{
-        @return $counter-reset;
-    }
-}
-
-@function generate-properties($map-list,$conf-map,$property,$type){
-    $count : map.get($conf-map,'count');
-    $counter-reset:1;
-    $list : ();
-    @for $j from 1 through length($map-list){
-        $counter-reset:reset-count($counter-reset,$count);
-        $conf-map:(
-            className: nth($map-list,$j),
-            propertyKeys:($property),
-            propertyValues:set-property-values($counter-reset,$type)
-        );
-        $list:append($list ,$conf-map,comma);   
-        $counter-reset:$counter-reset+1;
-    }
-    @return $list;
-}
 
 @function generate-classes-items($prefix,$property,$conf-map){
     $name-list : ();
@@ -107,15 +51,95 @@
     }
     @if check-responsive-status($conf-map,responsive){
         @for $i from 1 through length($prefix){
-            $name-list:generate-responsive-classes(nth($prefix,$i),$count);
+            $name-list:generate-responsive-classes(nth($prefix,$i),$count,nth($prefix,$i));
             $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
         }
     }
     @else{
         @for $i from 1 through length($prefix){
-            $name-list:generate-classes(nth($prefix,$i),$count);
+            $name-list:generate-classes(nth($prefix,$i),$count,nth($prefix,$i));
             $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i));
         }
     }
     @return $list;
 }
+
+@function check-responsive-status($map-config,$status-responsive){
+    // $status:map.get($map-config , $status-responsive);
+    $status:"";
+    @return $status;
+}
+
+
+@function generate-responsive-classes($prefix , $count ,$type, $is-space:false){
+    $list:();
+    $much-width:0;
+    @if ($type==width){
+        $much-width:calc(100/$count);
+    }
+    @each $key , $value in $break-points{
+        @for $i from 1 through $count{
+            @if ($type==width){
+                $value:0;
+                $value:(round($much-width*$i));
+            }
+            @else{
+                $value:$i;
+            }
+            @if $is-space {
+                $value:$i - 1;    
+            }
+            $base:unquote("." + $prefix + "-" + $key + "-" + $value);
+            $list:append($list , $base , comma);
+        }
+    }
+    @return $list;
+}
+
+
+@function generate-properties($map-list,$conf-map,$property,$type){
+    $count : map.get($conf-map,'count');
+    $counter-reset:1;
+    $list : ();
+    $much-width:0;
+    @if ($type==width){
+        $much-width:calc(100%/$count);
+    }
+    @for $j from 1 through length($map-list){
+        $counter-reset:reset-count($counter-reset,$count);
+        $conf-map:(
+            className: nth($map-list,$j),
+            propertyKeys:($property),
+            propertyValues:set-property-values($counter-reset,$type,$much-width)
+        );
+        $list:append($list ,$conf-map,comma);   
+        $counter-reset:$counter-reset+1;
+    }
+    @return $list;
+}
+
+@function reset-count($k , $count){
+    @if $k==$count+1{
+        $k:1;
+    }
+    @return $k;
+}
+
+@function set-property-values($counter-reset,$type,$space-width){
+
+    @if $type==col{
+        @return calc(100%/$counter-reset);
+    }
+    @else if $type==width{
+        @return $space-width*$counter-reset;
+    }
+    @else if $type==g{
+        @return repeat($counter-reset, 1fr);
+    }
+    @else{
+        @return $counter-reset;
+    }
+}
+
+
+
