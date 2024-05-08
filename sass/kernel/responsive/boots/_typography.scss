@@ -36,7 +36,7 @@ $font-weight : '';
               $file-name: nth($font-file, 1);
               $file-format: str-slice($file-name, str-index($file-name, ".") + 1);
               $file-path: $font-folder + "/" + $file-name;
-              $file-src :$file-src + #{url("#{$fonts-path + $file-path}")};
+              $file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
             }
             src: unquote($file-src);
           }

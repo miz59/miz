@@ -119,29 +119,83 @@
 }
 
 @font-face {
-  font-family: "primary";
-  font-weight: 700;
-  src: url("../fonts/story-lens/Story-Lens.woff2");
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 800;
+  src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
 }
 @font-face {
-  font-family: "none" sans-serif, 'Courier New', Courier, monospace;
-  font-weight: 800;
-  src: url("../fonts/hh/Story-Le.woff");
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 700;
+  src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 300;
+  src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 500;
+  src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 400;
+  src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 100;
+  src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
+}
+@font-face {
+  font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 700;
+  src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
+}
+@font-face {
+  font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 400;
+  src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
 .primary {
   font-family: "primary";
+}
+
+.txt-black {
+  font-weight: 800;
 }
 
 .txt-bold {
   font-weight: 700;
 }
 
-.none {
-  font-family: "none";
+.txt-light {
+  font-weight: 300;
 }
 
-.txt-black {
-  font-weight: 800;
+.txt-medium {
+  font-weight: 500;
+}
+
+.txt-regular {
+  font-weight: 400;
+}
+
+.txt-thin {
+  font-weight: 100;
+}
+
+.secondary {
+  font-family: "secondary";
+}
+
+.txt-bold {
+  font-weight: 700;
+}
+
+.txt-regular {
+  font-weight: 400;
 }
 
 .d-block {
@@ -12240,29 +12294,83 @@
 }
 
 @font-face {
-  font-family: "primary";
-  font-weight: 700;
-  src: url("../fonts/story-lens/Story-Lens.woff2");
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 800;
+  src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
 }
 @font-face {
-  font-family: "none" sans-serif, 'Courier New', Courier, monospace;
-  font-weight: 800;
-  src: url("../fonts/hh/Story-Le.woff");
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 700;
+  src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 300;
+  src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 500;
+  src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 400;
+  src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
+}
+@font-face {
+  font-family: "primary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 100;
+  src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
+}
+@font-face {
+  font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 700;
+  src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
+}
+@font-face {
+  font-family: "secondary" sans-serif, 'Courier New', Courier, monospace;
+  font-weight: 400;
+  src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
 .primary {
   font-family: "primary";
+}
+
+.txt-black {
+  font-weight: 800;
 }
 
 .txt-bold {
   font-weight: 700;
 }
 
-.none {
-  font-family: "none";
+.txt-light {
+  font-weight: 300;
 }
 
-.txt-black {
-  font-weight: 800;
+.txt-medium {
+  font-weight: 500;
+}
+
+.txt-regular {
+  font-weight: 400;
+}
+
+.txt-thin {
+  font-weight: 100;
+}
+
+.secondary {
+  font-family: "secondary";
+}
+
+.txt-bold {
+  font-weight: 700;
+}
+
+.txt-regular {
+  font-weight: 400;
 }
 
 body, p, h1, h2, h3, h4, h5, h6, hr {

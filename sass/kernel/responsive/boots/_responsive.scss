@@ -135,7 +135,6 @@ $totalist : $display-values,$flex-cols,$flex-type,$flex-orders,$flex-grows,$g,$p
         }
     }
 }
-$file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
 @mixin generate-boxed-vertically(){
     @for $i from 1 through length($boxed-space-vertically){
         $break-point-values:map.values($break-points);
