@@ -1,6 +1,59 @@
 @import 'typography';
 $totalist : $display-values,$flex-cols,$width-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive;
 
+@mixin generate-boxed-horizontally(){
+    @for $i from 1 through length($boxed-space-horizontally){
+        $break-point-values:map.values($break-points);
+        $max-width-values:nth($break-point-values,$i);
+$space-value:nth($boxed-space-horizontally,$i);
+        @if get-greatest-breakpoint()==$max-width-values{
+            .section{
+                padding-left: $space-value;
+                padding-right:$space-value;
+            }
+        }
+        @else{
+            @media screen and (max-width:$max-width-values){
+                .section{
+                    padding-left: $space-value;
+                    padding-right:$space-value;
+                }
+            }
+        }
+    }
+}
+@mixin generate-boxed-vertically(){
+    @for $i from 1 through length($boxed-space-vertically){
+        $break-point-values:map.values($break-points);
+        $max-width-values:nth($break-point-values,$i);
+        $space-value:nth($boxed-space-vertically,$i);
+        @if get-greatest-breakpoint()==$max-width-values{
+            .section{
+                padding-top: $space-value;
+                padding-bottom:$space-value;
+            }
+        }
+        @else{
+            @media screen and (max-width:$max-width-values){
+                .section{
+                    padding-left: $space-value;
+                    padding-right:$space-value;
+                }
+            }
+        }
+    }
+}
+
+@include generate-boxed-horizontally();
+@include generate-boxed-vertically();
+
+
+
+
+.section.wide{
+    padding-right:0px !important;
+    padding-left: 0px !important;
+}
 @function check-config-count($totalist-item){
     @if length(nth($totalist,$totalist-item))!=0{
         @return true;
@@ -114,56 +167,3 @@ $totalist : $display-values,$flex-cols,$width-list,$flex-type,$flex-orders,$flex
     }
 }
 @include check-break-point();
-@mixin generate-boxed-horizontally(){
-    @for $i from 1 through length($boxed-space-horizontally){
-        $break-point-values:map.values($break-points);
-        $max-width-values:nth($break-point-values,$i);
-$space-value:nth($boxed-space-horizontally,$i);
-        @if get-greatest-breakpoint()==$max-width-values{
-            .section{
-                padding-left: $space-value;
-                padding-right:$space-value;
-            }
-        }
-        @else{
-            @media screen and (max-width:$max-width-values){
-                .section{
-                    padding-left: $space-value;
-                    padding-right:$space-value;
-                }
-            }
-        }
-    }
-}
-@mixin generate-boxed-vertically(){
-    @for $i from 1 through length($boxed-space-vertically){
-        $break-point-values:map.values($break-points);
-        $max-width-values:nth($break-point-values,$i);
-        $space-value:nth($boxed-space-vertically,$i);
-        @if get-greatest-breakpoint()==$max-width-values{
-            .section{
-                padding-top: $space-value;
-                padding-bottom:$space-value;
-            }
-        }
-        @else{
-            @media screen and (max-width:$max-width-values){
-                .section{
-                    padding-left: $space-value;
-                    padding-right:$space-value;
-                }
-            }
-        }
-    }
-}
-
-@include generate-boxed-horizontally();
-@include generate-boxed-vertically();
-
-
-
-
-.section.wide{
-    padding-right:0px !important;
-    padding-left: 0px !important;
-}
