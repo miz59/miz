@@ -25,12 +25,11 @@ $font-weight : '';
 @mixin make-font-face{
     @each $font-name , $font-details in $fonts {
       $font-folder: map-get($font-details, "folder");
-      $font-defaults: map-get($font-details, "defaults");
       @each $font-type, $font-files in map-get($font-details, "font-types") {
         $font-weight : font-weight-connection($font-type);
          @font-face {
             $file-src : '';
-            font-family: "#{$font-name}" unquote($font-defaults);
+            font-family: "#{$font-name}";
             font-weight: $font-weight;
             @each $font-file in $font-files {
               $file-name: nth($font-file, 1);
@@ -49,8 +48,9 @@ $font-weight : '';
         $class-name : nth($font-name , $i);
         $font: map-get($fonts, '#{$class-name}');
         $font-type : map-get($font , 'font-types');
+        $font-defaults: map-get($font, "defaults");
         .#{$class-name}{
-            font-family : $class-name;
+            font-family : join($class-name , $font-defaults , comma);
         }
         @each $font-name, $font-file in $font-type{
             $font-weight : font-weight-connection($font-name);
@@ -97,3 +97,4 @@ $font-size : generate-font-size-classes-without-responsive();
 $font-size : generate-font-size-classes();
 @include make-font-face;
 @include make-font-classes;
+
