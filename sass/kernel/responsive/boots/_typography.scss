@@ -3,20 +3,29 @@
 $font-weight : '';
 
 @function font-weight-connection($font-weight-name){
+    @if $font-weight-name == 'black'{
+        @return  900;
+    }
+    @if $font-weight-name == 'extra-bold'{
+        @return  800;
+    }
     @if $font-weight-name == 'bold'{
         @return  700;
     }
-    @if $font-weight-name == 'black'{
-        @return  800;
-    }
-    @if $font-weight-name == 'light'{
-        @return  300;
+    @if $font-weight-name == 'semi-bold'{
+        @return  600;
     }
     @if $font-weight-name == 'medium'{
         @return  500;
     }
-    @if $font-weight-name == 'regular'{
+    @if $font-weight-name == 'normal'{
         @return  400;
+    }
+    @if $font-weight-name == 'light'{
+        @return  300;
+    }
+    @if $font-weight-name == 'extra-light'{
+        @return  200;
     }
     @if $font-weight-name == 'thin'{
         @return  100;
