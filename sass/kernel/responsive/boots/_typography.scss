@@ -3,59 +3,42 @@
 $font-weight : '';
 
 @function font-weight-connection($font-weight-name){
-    @if $font-weight-name == 'black'{
+@if $font-weight-name == 'black'{
         @return  900;
     }
-    @else{
-        @error "black font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'extra-bold'{
+    @else if $font-weight-name == 'extra-bold'{
         @return  800;
     }
-    @else{
-        @error "extra-bold font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'bold'{
+
+    @else if $font-weight-name == 'bold'{
         @return  700;
     }
-    @else{
-        @error "bold font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'semi-bold'{
+
+    @else if $font-weight-name == 'semi-bold'{
         @return  600;
     }
-    @else{
-        @error "semi-bold font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'medium'{
+
+    @else if $font-weight-name == 'medium'{
         @return  500;
     }
-    @else{
-        @error "medium font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'regular'{
+
+    @else if $font-weight-name == 'regular'{
         @return  400;
     }
-    @else{
-        @error "regular font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'light'{
+
+    @else if $font-weight-name == 'light'{
         @return  300;
     }
-    @else{
-        @error "light font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'extra-light'{
+
+    @else if $font-weight-name == 'extra-light'{
         @return  200;
     }
-    @else{
-        @error "extra-light font weight wrongly entered as key";
-    }
-    @if $font-weight-name == 'thin'{
+
+    @else if $font-weight-name == 'thin'{
         @return  100;
     }
     @else{
-        @error "thin font weight wrongly entered as key";
+        @error "font weight wrongly entered as key";
     }
 }
 @mixin make-font-face{
