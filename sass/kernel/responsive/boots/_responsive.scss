@@ -15,8 +15,8 @@ $space-value:nth($boxed-space-horizontally,$i);
         @else{
             @media screen and (max-width:$max-width-values){
                 .section{
-                    padding-left: $space-value;
-                    padding-right:$space-value;
+                    padding-top: $space-value;
+                    padding-left:$space-value;
                 }
             }
         }
