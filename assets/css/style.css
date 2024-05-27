@@ -6954,6 +6954,70 @@ h6 {
   letter-spacing: 40;
 }
 
+.icon-extra-large {
+  font-size: 32px;
+}
+
+.icon-xxl-extra-large {
+  font-size: 32px;
+}
+
+.icon-large {
+  font-size: 24px;
+}
+
+.icon-xxl-large {
+  font-size: 24px;
+}
+
+.icon-medium {
+  font-size: 20px;
+}
+
+.icon-xxl-medium {
+  font-size: 20px;
+}
+
+.icon-regular {
+  font-size: 16px;
+}
+
+.icon-xxl-regular {
+  font-size: 16px;
+}
+
+.icon-small {
+  font-size: 12px;
+}
+
+.icon-xxl-small {
+  font-size: 12px;
+}
+
+.icon-extra-small {
+  font-size: 10px;
+}
+
+.icon-xxl-extra-small {
+  font-size: 10px;
+}
+
+.icon-extra-large {
+  font-size: 32px;
+}
+
+.icon-large {
+  font-size: 24px;
+}
+
+.icon-medium {
+  font-size: 20px;
+}
+
+.icon-regular {
+  font-size: 16px;
+}
+
 @media screen and (max-width: 1280px) {
   .d-xl-block {
     display: block;
@@ -8834,6 +8898,24 @@ h6 {
   }
   .letter-space-xl-40 {
     letter-spacing: 40;
+  }
+  .icon-xl-extra-large {
+    font-size: 32px;
+  }
+  .icon-xl-large {
+    font-size: 24px;
+  }
+  .icon-xl-medium {
+    font-size: 20px;
+  }
+  .icon-xl-regular {
+    font-size: 16px;
+  }
+  .icon-xl-small {
+    font-size: 12px;
+  }
+  .icon-xl-extra-small {
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -10717,6 +10799,24 @@ h6 {
   .letter-space-lg-40 {
     letter-spacing: 40;
   }
+  .icon-lg-extra-large {
+    font-size: 32px;
+  }
+  .icon-lg-large {
+    font-size: 24px;
+  }
+  .icon-lg-medium {
+    font-size: 20px;
+  }
+  .icon-lg-regular {
+    font-size: 16px;
+  }
+  .icon-lg-small {
+    font-size: 12px;
+  }
+  .icon-lg-extra-small {
+    font-size: 10px;
+  }
 }
 @media screen and (max-width: 767px) {
   .d-md-block {
@@ -12598,6 +12698,24 @@ h6 {
   }
   .letter-space-md-40 {
     letter-spacing: 40;
+  }
+  .icon-md-extra-large {
+    font-size: 32px;
+  }
+  .icon-md-large {
+    font-size: 24px;
+  }
+  .icon-md-medium {
+    font-size: 20px;
+  }
+  .icon-md-regular {
+    font-size: 16px;
+  }
+  .icon-md-small {
+    font-size: 12px;
+  }
+  .icon-md-extra-small {
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 478px) {
@@ -14484,6 +14602,30 @@ h6 {
   .letter-space-sm-40 {
     letter-spacing: 40;
   }
+  .icon-sm-extra-large {
+    font-size: 32px;
+  }
+  .icon-sm-large {
+    font-size: 24px;
+  }
+  .icon-sm-medium {
+    font-size: 20px;
+  }
+  .icon-sm-regular {
+    font-size: 16px;
+  }
+  .icon-sm-small {
+    font-size: 12px;
+  }
+  .icon-sm-extra-small {
+    font-size: 10px;
+  }
+  .icon-small {
+    font-size: 12px;
+  }
+  .icon-extra-small {
+    font-size: 10px;
+  }
 }
 .italic {
   font-style: italic;
@@ -16105,5 +16247,6 @@ a {
 }
 
 .object-cover {
-  object-fit: cover;
-}
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=style.css.map */
