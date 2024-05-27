@@ -52,6 +52,9 @@ $conf-grows:(
 );
 $conf-letter-spacing:(
     count:40,
+    responsive:false
+);
+$conf-wrap:(
     responsive:true
 );
 $conf-flex-direction:(
@@ -75,4 +78,3 @@ $conf-align-self:(
 $conf-align-items:(
     responsive:false
 );
-

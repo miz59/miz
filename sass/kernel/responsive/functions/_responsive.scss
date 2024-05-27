@@ -130,7 +130,7 @@
     @if $type==col{
         @return calc(100%/$counter-reset);
     }
-    @else if $type==width{
+    @else if $type==width or $type==height{
         @return $space-width*$counter-reset;
     }
     @else if $type==g{

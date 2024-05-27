@@ -1,6 +1,9 @@
 @import '../../../structure/typography';
+@import "../functions/responsive";
+
 
 $font-weight : '';
+$letter-spacing:letter-space;
 
 @function font-weight-connection($font-weight-name){
 @if $font-weight-name == 'black'{
@@ -98,8 +101,10 @@ $font-weight : '';
     }
     @return $list;
 }
-$font-size-responsive : generate-typography-size-classes($font-size,$font-prefix);
-$font-size : generate-typography-size-classes-without-responsive($font-size,$font-prefix);
+
+$font-size-responsive : generate-typography-size-classes($font-size, $font-prefix);
+$font-size : generate-typography-size-classes-without-responsive($font-size, $font-prefix);
 $generate-text-align : generate-text-align();
+$letter-space:generate-classes-items($letter-spacing,letter-spacing,$conf-letter-spacing);
 @include make-font-face;
 @include make-font-classes;
