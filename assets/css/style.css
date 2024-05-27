@@ -83,14 +83,6 @@
   flex-wrap: wrap;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-
 .italic {
   font-style: italic;
 }
@@ -178,31 +170,31 @@
 @media screen and (max-width: 1920px) {
   .section {
     padding-top: 81px;
-    padding-left: 81px;
+    padding-bottom: 81px;
   }
 }
 @media screen and (max-width: 1280px) {
   .section {
     padding-top: 70px;
-    padding-left: 70px;
+    padding-bottom: 70px;
   }
 }
 @media screen and (max-width: 1024px) {
   .section {
     padding-top: 50px;
-    padding-left: 50px;
+    padding-bottom: 50px;
   }
 }
 @media screen and (max-width: 767px) {
   .section {
     padding-top: 17px;
-    padding-left: 17px;
+    padding-bottom: 17px;
   }
 }
 @media screen and (max-width: 478px) {
   .section {
     padding-top: 16px;
-    padding-left: 16px;
+    padding-bottom: 16px;
   }
 }
 @media screen and (max-width: 1920px) {
@@ -1206,6 +1198,22 @@
 
 .align-items-xxl-baseline {
   align-items: baseline;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-xxl-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-xxl-nowrap {
+  flex-wrap: nowrap;
 }
 
 .order-1 {
@@ -7184,6 +7192,12 @@
   .align-items-xl-baseline {
     align-items: baseline;
   }
+  .flex-xl-wrap {
+    flex-wrap: wrap;
+  }
+  .flex-xl-nowrap {
+    flex-wrap: nowrap;
+  }
   .order-xl-1 {
     order: 1;
   }
@@ -9044,6 +9058,12 @@
   }
   .align-items-lg-baseline {
     align-items: baseline;
+  }
+  .flex-lg-wrap {
+    flex-wrap: wrap;
+  }
+  .flex-lg-nowrap {
+    flex-wrap: nowrap;
   }
   .order-lg-1 {
     order: 1;
@@ -10906,6 +10926,12 @@
   .align-items-md-baseline {
     align-items: baseline;
   }
+  .flex-md-wrap {
+    flex-wrap: wrap;
+  }
+  .flex-md-nowrap {
+    flex-wrap: nowrap;
+  }
   .order-md-1 {
     order: 1;
   }
@@ -12766,6 +12792,12 @@
   }
   .align-items-sm-baseline {
     align-items: baseline;
+  }
+  .flex-sm-wrap {
+    flex-wrap: wrap;
+  }
+  .flex-sm-nowrap {
+    flex-wrap: nowrap;
   }
   .order-sm-1 {
     order: 1;
