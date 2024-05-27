@@ -1,5 +1,6 @@
 @import 'typography';
-$totalist : $display-values,$flex-cols,$width-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive,$generate-text-align;
+@import 'icon';
+$totalist : $display-values,$flex-cols,$width-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size,$font-size-responsive,$generate-text-align,$icon-size,$icon-size-responsive;
 
 @mixin generate-boxed-horizontally(){
     @for $i from 1 through length($boxed-space-horizontally){

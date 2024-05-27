@@ -79,55 +79,27 @@ $font-weight : '';
         }
     }
 }
-@function generate-font-size-classes(){
-    $list : ();
-    $base : ();
-
-        @each $key,$value in $break-points{
-            @each $name, $size in $font-size{
-                $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
-                $map:(
-                    className: $base,
-                    propertyKeys:'font-size',
-                    propertyValues:$size
-                );
-                $list:append($list , $map);
-            }
-        }
-    @return $list;
-}
-@function generate-font-size-classes-without-responsive(){
-    $list : ();
-    $base : ();
-
-    @each $name, $size in $font-size{
-        $base:generate-classes-on-value($font-prefix , $name);
-        $map:(
-            className: $base,
-            propertyKeys:'font-size',
-            propertyValues:$size
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
 @function generate-text-align(){
     $list : ();
     $base : ();
 
-    @each $key in $text-align{
-        $base:generate-classes-on-value($font-prefix , $key);
-        $map:(
-            className: $base,
-            propertyKeys:'text-align',
-            propertyValues:$key
-        );
-        $list:append($list , $map);
+    
+    @each $key,$value in $break-points{
+        @each $name in $text-align{
+            $base:generate-classes-responsive-on-value($font-prefix , $key , $name);;
+            $map:(
+                className: $base,
+                propertyKeys:'text-align',
+                propertyValues:$name
+            );
+            $list:append($list , $map);
+        }
+    
     }
     @return $list;
 }
-$font-size-responsive : generate-font-size-classes();
-$font-size : generate-font-size-classes-without-responsive();
+$font-size-responsive : generate-typography-size-classes($font-size,$font-prefix);
+$font-size : generate-typography-size-classes-without-responsive($font-size,$font-prefix);
 $generate-text-align : generate-text-align();
 @include make-font-face;
 @include make-font-classes;

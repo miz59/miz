@@ -143,3 +143,35 @@
 
 
 
+@function generate-typography-size-classes($font-map,$prefix){
+    $list : ();
+    $base : ();
+
+        @each $key,$value in $break-points{
+            @each $name, $size in $font-map{
+                $base:generate-classes-responsive-on-value($prefix , $key , $name);
+                $map:(
+                    className: $base,
+                    propertyKeys:'font-size',
+                    propertyValues:$size
+                );
+                $list:append($list , $map);
+            }
+        }
+    @return $list;
+}
+@function generate-typography-size-classes-without-responsive($font-map,$prefix){
+    $list : ();
+    $base : ();
+
+    @each $name, $size in $font-map{
+        $base:generate-classes-on-value($prefix , $name);
+        $map:(
+            className: $base,
+            propertyKeys:'font-size',
+            propertyValues:$size
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}

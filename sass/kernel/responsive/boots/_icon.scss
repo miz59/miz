@@ -1,0 +1,5 @@
+@import '../../../structure/icon';
+
+$icon-size-responsive : generate-typography-size-classes($icon-size,$icon-prefix);
+$icon-size : generate-typography-size-classes-without-responsive($icon-size,$icon-prefix);
+@debug $icon-size;

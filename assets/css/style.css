@@ -76,6 +76,59 @@
   font-style: italic;
 }
 
+h1 {
+  font-size: 2.125rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+.line-height {
+  line-height: 30px;
+}
+@media screen and (max-width: get-break-point(xxl)) {
+  .line-height {
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: get-break-point(xl)) {
+  .line-height {
+    line-height: 25px;
+  }
+}
+@media screen and (max-width: get-break-point(lg)) {
+  .line-height {
+    line-height: 20px;
+  }
+}
+@media screen and (max-width: get-break-point(md)) {
+  .line-height {
+    line-height: 15px;
+  }
+}
+@media screen and (max-width: get-break-point(sm)) {
+  .line-height {
+    line-height: 10px;
+  }
+}
+
 .row {
   width: 100%;
   display: flex;
@@ -93,6 +146,59 @@
 
 .italic {
   font-style: italic;
+}
+
+h1 {
+  font-size: 2.125rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+.line-height {
+  line-height: 30px;
+}
+@media screen and (max-width: get-break-point(xxl)) {
+  .line-height {
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: get-break-point(xl)) {
+  .line-height {
+    line-height: 25px;
+  }
+}
+@media screen and (max-width: get-break-point(lg)) {
+  .line-height {
+    line-height: 20px;
+  }
+}
+@media screen and (max-width: get-break-point(md)) {
+  .line-height {
+    line-height: 15px;
+  }
+}
+@media screen and (max-width: get-break-point(sm)) {
+  .line-height {
+    line-height: 10px;
+  }
 }
 
 @font-face {
@@ -6164,7 +6270,15 @@
   text-align: center;
 }
 
+.txt-xxl-center {
+  text-align: center;
+}
+
 .txt-end {
+  text-align: end;
+}
+
+.txt-xxl-end {
   text-align: end;
 }
 
@@ -6172,12 +6286,88 @@
   text-align: start;
 }
 
+.txt-xxl-start {
+  text-align: start;
+}
+
 .txt-left {
+  text-align: left;
+}
+
+.txt-xxl-left {
   text-align: left;
 }
 
 .txt-right {
   text-align: right;
+}
+
+.txt-xxl-right {
+  text-align: right;
+}
+
+.icon-extra-large {
+  font-size: 32px;
+}
+
+.icon-large {
+  font-size: 24px;
+}
+
+.icon-medium {
+  font-size: 20px;
+}
+
+.icon-regular {
+  font-size: 16px;
+}
+
+.icon-extra-large {
+  font-size: 32px;
+}
+
+.icon-xxl-extra-large {
+  font-size: 32px;
+}
+
+.icon-large {
+  font-size: 24px;
+}
+
+.icon-xxl-large {
+  font-size: 24px;
+}
+
+.icon-medium {
+  font-size: 20px;
+}
+
+.icon-xxl-medium {
+  font-size: 20px;
+}
+
+.icon-regular {
+  font-size: 16px;
+}
+
+.icon-xxl-regular {
+  font-size: 16px;
+}
+
+.icon-small {
+  font-size: 12px;
+}
+
+.icon-xxl-small {
+  font-size: 12px;
+}
+
+.icon-extra-small {
+  font-size: 10px;
+}
+
+.icon-xxl-extra-small {
+  font-size: 10px;
 }
 
 @media screen and (max-width: 1280px) {
@@ -7800,6 +7990,39 @@
   .txt-xl-extra-title {
     font-size: 72px;
   }
+  .txt-xl-center {
+    text-align: center;
+  }
+  .txt-xl-end {
+    text-align: end;
+  }
+  .txt-xl-start {
+    text-align: start;
+  }
+  .txt-xl-left {
+    text-align: left;
+  }
+  .txt-xl-right {
+    text-align: right;
+  }
+  .icon-xl-extra-large {
+    font-size: 32px;
+  }
+  .icon-xl-large {
+    font-size: 24px;
+  }
+  .icon-xl-medium {
+    font-size: 20px;
+  }
+  .icon-xl-regular {
+    font-size: 16px;
+  }
+  .icon-xl-small {
+    font-size: 12px;
+  }
+  .icon-xl-extra-small {
+    font-size: 10px;
+  }
 }
 @media screen and (max-width: 1024px) {
   .d-lg-block {
@@ -9421,6 +9644,39 @@
   .txt-lg-extra-title {
     font-size: 72px;
   }
+  .txt-lg-center {
+    text-align: center;
+  }
+  .txt-lg-end {
+    text-align: end;
+  }
+  .txt-lg-start {
+    text-align: start;
+  }
+  .txt-lg-left {
+    text-align: left;
+  }
+  .txt-lg-right {
+    text-align: right;
+  }
+  .icon-lg-extra-large {
+    font-size: 32px;
+  }
+  .icon-lg-large {
+    font-size: 24px;
+  }
+  .icon-lg-medium {
+    font-size: 20px;
+  }
+  .icon-lg-regular {
+    font-size: 16px;
+  }
+  .icon-lg-small {
+    font-size: 12px;
+  }
+  .icon-lg-extra-small {
+    font-size: 10px;
+  }
 }
 @media screen and (max-width: 767px) {
   .d-md-block {
@@ -11041,6 +11297,39 @@
   }
   .txt-md-extra-title {
     font-size: 72px;
+  }
+  .txt-md-center {
+    text-align: center;
+  }
+  .txt-md-end {
+    text-align: end;
+  }
+  .txt-md-start {
+    text-align: start;
+  }
+  .txt-md-left {
+    text-align: left;
+  }
+  .txt-md-right {
+    text-align: right;
+  }
+  .icon-md-extra-large {
+    font-size: 32px;
+  }
+  .icon-md-large {
+    font-size: 24px;
+  }
+  .icon-md-medium {
+    font-size: 20px;
+  }
+  .icon-md-regular {
+    font-size: 16px;
+  }
+  .icon-md-small {
+    font-size: 12px;
+  }
+  .icon-md-extra-small {
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 478px) {
@@ -12666,9 +12955,101 @@
   .txt-sm-extra-title {
     font-size: 72px;
   }
+  .txt-sm-center {
+    text-align: center;
+  }
+  .txt-sm-end {
+    text-align: end;
+  }
+  .txt-sm-start {
+    text-align: start;
+  }
+  .txt-sm-left {
+    text-align: left;
+  }
+  .txt-sm-right {
+    text-align: right;
+  }
+  .icon-small {
+    font-size: 12px;
+  }
+  .icon-extra-small {
+    font-size: 10px;
+  }
+  .icon-sm-extra-large {
+    font-size: 32px;
+  }
+  .icon-sm-large {
+    font-size: 24px;
+  }
+  .icon-sm-medium {
+    font-size: 20px;
+  }
+  .icon-sm-regular {
+    font-size: 16px;
+  }
+  .icon-sm-small {
+    font-size: 12px;
+  }
+  .icon-sm-extra-small {
+    font-size: 10px;
+  }
 }
 .italic {
   font-style: italic;
+}
+
+h1 {
+  font-size: 2.125rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+.line-height {
+  line-height: 30px;
+}
+@media screen and (max-width: get-break-point(xxl)) {
+  .line-height {
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: get-break-point(xl)) {
+  .line-height {
+    line-height: 25px;
+  }
+}
+@media screen and (max-width: get-break-point(lg)) {
+  .line-height {
+    line-height: 20px;
+  }
+}
+@media screen and (max-width: get-break-point(md)) {
+  .line-height {
+    line-height: 15px;
+  }
+}
+@media screen and (max-width: get-break-point(sm)) {
+  .line-height {
+    line-height: 10px;
+  }
 }
 
 @font-face {
@@ -14231,4 +14612,8 @@ a {
 
 .z-index-10 {
   z-index: 10;
+}
+
+.object-cover {
+  object-fit: cover;
 }
