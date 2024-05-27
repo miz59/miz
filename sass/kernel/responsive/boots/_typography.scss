@@ -111,8 +111,23 @@ $font-weight : '';
     }
     @return $list;
 }
+@function generate-text-align(){
+    $list : ();
+    $base : ();
+
+    @each $key in $text-align{
+        $base:generate-classes-on-value($font-prefix , $key);
+        $map:(
+            className: $base,
+            propertyKeys:'text-align',
+            propertyValues:$key
+        );
+        $list:append($list , $map);
+    }
+    @return $list;
+}
 $font-size-responsive : generate-font-size-classes();
 $font-size : generate-font-size-classes-without-responsive();
-$font-size : generate-font-size-classes();
+$generate-text-align : generate-text-align();
 @include make-font-face;
 @include make-font-classes;

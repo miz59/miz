@@ -1,5 +1,6 @@
 $font-prefix : "txt";
 $font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px, );
+$text-align : (center,end,start,left,right);
 $fonts: (
   "primary": (
     "defaults":"sans-serif, 'Courier New', Courier, monospace",
@@ -60,13 +61,4 @@ $fonts: (
 
 .italic{
   font-style: italic;
-}
-.#{$font-prefix}-center{
-  text-align: center;
-}
-.#{$font-prefix}-left{
-  text-align: left;
-}
-.#{$font-prefix}-start{
-  text-align: start;
 }
