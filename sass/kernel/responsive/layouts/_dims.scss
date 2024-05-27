@@ -3,4 +3,4 @@
 $w-list:w;
 $h-list:h;
 $width-list : generate-classes-items($w-list ,width, $conf-width) ;
-// $high-list : generate-classes-items($h-list ,high, $conf-high) ;
+$high-list : generate-classes-items($h-list ,height, $conf-height) ;

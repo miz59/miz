@@ -52,24 +52,24 @@
   border-radius: 50px;
 }
 
+.all-border-full {
+  border-radius: 100000px !important;
+}
+
 .all-border-tr {
-  border-top-right-radius: 0px;
+  border-top-right-radius: 0px !important;
 }
 
 .all-border-tl {
-  border-top-left-radius: 0px;
+  border-top-left-radius: 0px !important;
 }
 
 .all-border-br {
-  border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px !important;
 }
 
 .all-border-bl {
-  border-bottom-left-radius: 0px;
-}
-
-.all-border-full {
-  border-radius: 100000px;
+  border-bottom-left-radius: 0px !important;
 }
 
 .italic {
