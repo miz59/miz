@@ -11,6 +11,10 @@ $conf-width:(
     count:26,
     responsive:true
 );
+$conf-height:(
+    count:40,
+    responsive:true
+);
 $conf-grids:(
     count:14,
     responsive:true
@@ -44,6 +48,13 @@ $conf-display:(
 );
 $conf-grows:(
     count:5,
+    responsive:true
+);
+$conf-letter-spacing:(
+    count:40,
+    responsive:false
+);
+$conf-wrap:(
     responsive:true
 );
 $conf-flex-direction:(
