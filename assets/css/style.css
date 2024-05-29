@@ -79,86 +79,82 @@
   flex-wrap: wrap;
 }
 
+.font-weight-black {
+  font-weight: 900;
+}
+
+.font-weight-extra-bold {
+  font-weight: 800;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-weight-semi-bold {
+  font-weight: 600;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-regular {
+  font-weight: 400;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-weight-extra-light {
+  font-weight: 200;
+}
+
+.font-weight-thin {
+  font-weight: 100;
+}
+
 @font-face {
   font-family: "primary";
-  font-weight: 900;
+  font-weight: font-weight-connection("black");
   src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: 700;
+  font-weight: font-weight-connection("bold");
   src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: 300;
+  font-weight: font-weight-connection("light");
   src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: 500;
+  font-weight: font-weight-connection("medium");
   src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: 400;
+  font-weight: font-weight-connection("regular");
   src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: 100;
+  font-weight: font-weight-connection("thin");
   src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
 }
 @font-face {
   font-family: "secondary";
-  font-weight: 700;
+  font-weight: font-weight-connection("bold");
   src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
 }
 @font-face {
   font-family: "secondary";
-  font-weight: 400;
+  font-weight: font-weight-connection("regular");
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
-.primary {
-  font-family: "primary", "sans-serif, 'Courier New', Courier, monospace";
-}
-
-.txt-black {
-  font-weight: 900;
-}
-
-.txt-bold {
-  font-weight: 700;
-}
-
-.txt-light {
-  font-weight: 300;
-}
-
-.txt-medium {
-  font-weight: 500;
-}
-
-.txt-regular {
-  font-weight: 400;
-}
-
-.txt-thin {
-  font-weight: 100;
-}
-
-.secondary {
-  font-family: "secondary", "sans-serif, 'Courier New', Courier, monospace";
-}
-
-.txt-bold {
-  font-weight: 700;
-}
-
-.txt-regular {
-  font-weight: 400;
-}
-
 @media screen and (max-width: 1920px) {
   .section {
     padding-top: 81px;
@@ -14494,7 +14490,7 @@ a {
   color: #C7A151;
 }
 
-.bg-primary {
+.bg-primary-color {
   background-color: #C7A151;
 }
 
@@ -14506,7 +14502,7 @@ a {
   color: #FFFFFF;
 }
 
-.bg-on-primary {
+.bg-on-primary-color {
   background-color: #FFFFFF;
 }
 
@@ -14518,7 +14514,7 @@ a {
   color: #F8F8FF;
 }
 
-.bg-primary-light {
+.bg-primary-light-color {
   background-color: #F8F8FF;
 }
 
@@ -14530,23 +14526,23 @@ a {
   color: #FFFFFF;
 }
 
-.bg-primary-dark {
+.bg-primary-dark-color {
   background-color: #FFFFFF;
 }
 
-.bg-secondary {
+.bg-secondary-color {
   background-color: #262626;
 }
 
-.bg-on-secondary {
+.bg-on-secondary-color {
   background-color: #BBBBBB;
 }
 
-.bg-secondary-light {
+.bg-secondary-light-color {
   background-color: #FFFFFF;
 }
 
-.bg-secondary-dark {
+.bg-secondary-dark-color {
   background-color: #FFFFFF;
 }
 
@@ -14554,7 +14550,7 @@ a {
   color: #FFFFFF;
 }
 
-.bg-specific {
+.bg-specific-color {
   background-color: #FFFFFF;
 }
 
@@ -14562,11 +14558,11 @@ a {
   color: #C7A151;
 }
 
-.bg-button-text {
+.bg-button-text-color {
   background-color: #C7A151;
 }
 
-.bg-button {
+.bg-button-color {
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -14582,7 +14578,7 @@ a {
   color: #FFFFFF;
 }
 
-.bg-secondary-text {
+.bg-secondary-text-color {
   background-color: #FFFFFF;
 }
 
@@ -14590,11 +14586,11 @@ a {
   color: #CECECE;
 }
 
-.bg-section-title-text {
+.bg-section-title-text-color {
   background-color: #CECECE;
 }
 
-.border-border-color {
+.border-color {
   border-color: #C7A151;
 }
 
@@ -14606,19 +14602,23 @@ a {
   color: #C7A151;
 }
 
-.bg-menu {
+.bg-menu-color {
   background-color: #1F1D1D;
 }
 
-.bg-card {
+.bg-card-color {
   background-color: #120F10;
 }
 
-.bg-section {
+.bg-color {
   background-color: #262626;
 }
 
-.bg-button-hover {
+.bg-section-color {
+  background-color: #262626;
+}
+
+.bg-button-hover-color {
   background-color: #C7A453;
 }
 
@@ -14630,19 +14630,19 @@ a {
   color: #C5B395;
 }
 
-.bg-button-text-hover {
+.bg-button-text-hover-color {
   background-color: #C5B395;
 }
 
-.bg-fields {
+.bg-fields-color {
   background-color: #FFFFFF;
 }
 
-.border-border-fields-color {
+.border-fields-color {
   border-color: #FFFFFF;
 }
 
-.bg-border-fields {
+.bg-border-fields-color {
   background-color: #FFFFFF;
 }
 
@@ -14650,7 +14650,7 @@ a {
   color: #FFFFFF;
 }
 
-.bg-title-text-fields {
+.bg-title-text-fields-color {
   background-color: #FFFFFF;
 }
 
@@ -14658,79 +14658,79 @@ a {
   color: #FFFFFF;
 }
 
-.bg-text-fields {
+.bg-text-fields-color {
   background-color: #FFFFFF;
 }
 
-.bg-danger-regular {
+.bg-danger-regular-color {
   background-color: #D70D0D;
 }
 
-.bg-disabled-regular {
+.bg-disabled-regular-color {
   background-color: #3761EB;
 }
 
-.bg-warning-regular {
+.bg-warning-regular-color {
   background-color: #FFB800;
 }
 
-.bg-warning-light {
+.bg-warning-light-color {
   background-color: #FDD368;
 }
 
-.bg-warning-dark {
+.bg-warning-dark-color {
   background-color: #E4A400;
 }
 
-.bg-success-regular {
+.bg-success-regular-color {
   background-color: #02B74A;
 }
 
-.bg-success-light {
+.bg-success-light-color {
   background-color: #C0FCD8;
 }
 
-.bg-success-dark {
+.bg-success-dark-color {
   background-color: #009C3F;
 }
 
-.bg-danger-dark {
+.bg-danger-dark-color {
   background-color: #D70D0D;
 }
 
-.bg-danger-light {
+.bg-danger-light-color {
   background-color: #F8D0D0;
 }
 
-.bg-disabled-light {
+.bg-disabled-light-color {
   background-color: #B1B1B1;
 }
 
-.bg-disabled-dark {
+.bg-disabled-dark-color {
   background-color: #B1B1B1;
 }
 
-.bg-information-regular {
+.bg-information-regular-color {
   background-color: #3761EB;
 }
 
-.bg-information-light {
+.bg-information-light-color {
   background-color: #7393FF;
 }
 
-.bg-information-dark {
+.bg-information-dark-color {
   background-color: #2145BC;
 }
 
-.border-color-border-secondary-color {
+.border-secondary-color {
   border-color: #B1B1B1;
 }
 
-.bg-color-border-secondary {
+.bg-border-secondary-color {
   background-color: #B1B1B1;
 }
 
-.bg-unCommon {
+.bg-unCommon-color {
   background-color: #FFFFFF;
 }
 

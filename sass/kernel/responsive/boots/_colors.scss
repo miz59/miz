@@ -6,13 +6,15 @@
   $value-palette-color
 ) {
   @if ($keyword==$borders) {
-    .border-#{$key-palette-color}-color {
+    $result : str-replace("border-#{$key-palette-color}-color","-border","");
+    .#{$result} {
       border-color: $value-palette-color;
     }
   }
 
   @if ($keyword==$backgrounds) {
-    .bg-#{$key-palette-color} {
+    $result : str-replace("bg-#{$key-palette-color}-color","-background","");
+    .#{$result} {
       background-color: $value-palette-color;
     }
   }

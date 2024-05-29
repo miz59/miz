@@ -3,45 +3,32 @@
 
 $font-weight : '';
 $letter-spacing:letter-space;
-
-@function font-weight-connection($font-weight-name){
-@if $font-weight-name == 'black'{
-        @return  900;
-    }
-    @else if $font-weight-name == 'extra-bold'{
-        @return  800;
-    }
-
-    @else if $font-weight-name == 'bold'{
-        @return  700;
-    }
-
-    @else if $font-weight-name == 'semi-bold'{
-        @return  600;
-    }
-
-    @else if $font-weight-name == 'medium'{
-        @return  500;
-    }
-
-    @else if $font-weight-name == 'regular'{
-        @return  400;
-    }
-
-    @else if $font-weight-name == 'light'{
-        @return  300;
-    }
-
-    @else if $font-weight-name == 'extra-light'{
-        @return  200;
-    }
-
-    @else if $font-weight-name == 'thin'{
-        @return  100;
-    }
-    @else{
-        @error "font weight wrongly entered as key";
-    }
+.font-weight-black{
+    font-weight: 900;
+}
+.font-weight-extra-bold{
+    font-weight: 800;
+}
+.font-weight-bold{
+    font-weight: 700;
+}
+.font-weight-semi-bold{
+    font-weight: 600;
+}
+.font-weight-medium{
+    font-weight: 500;
+}
+.font-weight-regular{
+    font-weight: 400;
+}
+.font-weight-light{
+    font-weight: 300;
+}
+.font-weight-extra-light{
+    font-weight: 200;
+}
+.font-weight-thin{
+    font-weight: 100;
 }
 @mixin make-font-face{
     @each $font-name , $font-details in $fonts {
@@ -61,24 +48,6 @@ $letter-spacing:letter-space;
             src: unquote($file-src);
           }
       }
-    }
-}
-@mixin make-font-classes{ 
-    $font-name:map.keys($fonts);
-    @for $i from 1 through length($font-name){
-        $class-name : nth($font-name , $i);
-        $font: map-get($fonts, '#{$class-name}');
-        $font-type : map-get($font , 'font-types');
-        $font-defaults: map-get($font, "defaults");
-        .#{$class-name}{
-            font-family : join($class-name , $font-defaults , comma);
-        }
-        @each $font-name, $font-file in $font-type{
-            $font-weight : font-weight-connection($font-name);
-            .#{$font-prefix}-#{$font-name}{
-                font-weight: $font-weight;
-            }
-        }
     }
 }
 @function generate-text-align(){
@@ -105,4 +74,3 @@ $font-size-responsive : generate-typography-size-classes($font-size, $font-prefi
 $generate-text-align : generate-text-align();
 $letter-space:generate-classes-items($letter-spacing,letter-spacing,$conf-letter-spacing);
 @include make-font-face;
-@include make-font-classes;
