@@ -6,7 +6,7 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
     @for $i from 1 through length($boxed-space-horizontally){
         $break-point-values:map.values($break-points);
         $max-width-values:nth($break-point-values,$i);
-$space-value:nth($boxed-space-horizontally,$i);
+        $space-value:nth($boxed-space-horizontally,$i);
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
                 padding-left: $space-value;
@@ -168,3 +168,43 @@ $space-value:nth($boxed-space-horizontally,$i);
     }
 }
 @include check-break-point();
+
+.italic{
+    font-style: italic;
+  }
+  h1{
+    font-size: 2.125rem;
+  }
+  h2{
+    font-size: 1.875rem ;
+  }
+  h3{
+    font-size: 1.5rem;
+  }
+  h4{
+    font-size: 1.25rem;
+  }
+  h5{
+    font-size: 1rem;
+  }
+  h6{
+    font-size: .75rem;
+  }
+  .line-height{
+    line-height: 30px;
+    @media screen and (max-width : get-break-point-value(xxl)) {
+      line-height: 30px;
+    }
+    @media screen and (max-width : get-break-point-value(xl)) {
+      line-height: 25px;
+    }
+    @media screen and (max-width : get-break-point-value(lg)) {
+      line-height: 20px;
+    }
+    @media screen and (max-width : get-break-point-value(md)) {
+      line-height: 15px;
+    }
+    @media screen and (max-width : get-break-point-value(sm)) {
+      line-height: 10px;
+    }
+  }
