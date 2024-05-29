@@ -6388,34 +6388,6 @@
   gap: 10rem;
 }
 
-.txt-subtitle {
-  font-size: 12px;
-}
-
-.txt-normal {
-  font-size: 16px;
-}
-
-.txt-title {
-  font-size: 20px;
-}
-
-.txt-mid-title {
-  font-size: 24px;
-}
-
-.txt-high-title {
-  font-size: 32px;
-}
-
-.txt-big-title {
-  font-size: 48px;
-}
-
-.txt-extra-title {
-  font-size: 72px;
-}
-
 .txt-small {
   font-size: 10px;
 }
@@ -6886,22 +6858,6 @@
 
 .icon-xxl-extra-small {
   font-size: 10px;
-}
-
-.icon-extra-large {
-  font-size: 32px;
-}
-
-.icon-large {
-  font-size: 24px;
-}
-
-.icon-medium {
-  font-size: 20px;
-}
-
-.icon-regular {
-  font-size: 16px;
 }
 
 @media screen and (max-width: 1280px) {
@@ -14326,9 +14282,6 @@
   .gap-sm-20 {
     gap: 10rem;
   }
-  .txt-small {
-    font-size: 10px;
-  }
   .txt-sm-small {
     font-size: 10px;
   }
@@ -14504,12 +14457,6 @@
     font-size: 12px;
   }
   .icon-sm-extra-small {
-    font-size: 10px;
-  }
-  .icon-small {
-    font-size: 12px;
-  }
-  .icon-extra-small {
     font-size: 10px;
   }
 }

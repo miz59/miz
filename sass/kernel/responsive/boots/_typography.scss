@@ -102,7 +102,6 @@ $letter-spacing:letter-space;
 }
 
 $font-size-responsive : generate-typography-size-classes($font-size, $font-prefix);
-$font-size : generate-typography-size-classes-without-responsive($font-size, $font-prefix);
 $generate-text-align : generate-text-align();
 $letter-space:generate-classes-items($letter-spacing,letter-spacing,$conf-letter-spacing);
 @include make-font-face;

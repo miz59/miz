@@ -160,18 +160,3 @@
         }
     @return $list;
 }
-@function generate-typography-size-classes-without-responsive($font-map,$prefix){
-    $list : ();
-    $base : ();
-
-    @each $name, $size in $font-map{
-        $base:generate-classes-on-value($prefix , $name);
-        $map:(
-            className: $base,
-            propertyKeys:'font-size',
-            propertyValues:$size
-        );
-        $list:append($list , $map);
-    }
-    @return $list;
-}
