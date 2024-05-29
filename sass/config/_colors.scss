@@ -1,4 +1,4 @@
-$backgrounds:(primary,secondary,section,card,button,menu,field,warning,success,danger,disabled,information,unCommon,specific);
+$backgrounds:(primary,secondary,section,card,button,menu,field,warning,success,danger,disabled,information,unCommon,specific,background);
 $colors:(icon,text,specific,primary);
 $borders:(border,primary);
 
@@ -54,6 +54,6 @@ $color-palette:(
     information-regular: #3761EB,
     information-light: #7393FF,
     information-dark: #2145BC,
-    color-border-secondary: #B1B1B1,
+    border-secondary: #B1B1B1,
     unCommon: #FFFFFF
 );
