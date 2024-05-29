@@ -1,42 +1,5 @@
-.italic{
-  font-style: italic;
-}
-h1{
-  font-size: 2.125rem;
-}
-h2{
-  font-size: 1.875rem ;
-}
-h3{
-  font-size: 1.5rem;
-}
-h4{
-  font-size: 1.25rem;
-}
-h5{
-  font-size: 1rem;
-}
-h6{
-  font-size: .75rem;
-}
-.line-height{
-  line-height: 30px;
-  @media screen and (max-width : get-break-point(xxl)) {
-    line-height: 30px;
-  }
-  @media screen and (max-width : get-break-point(xl)) {
-    line-height: 25px;
-  }
-  @media screen and (max-width : get-break-point(lg)) {
-    line-height: 20px;
-  }
-  @media screen and (max-width : get-break-point(md)) {
-    line-height: 15px;
-  }
-  @media screen and (max-width : get-break-point(sm)) {
-    line-height: 10px;
-  }
-}
+@import '../global-functions/break-point';
+
 $font-prefix : "txt";
 $font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px, );
 $text-align : (center,end,start,left,right);
