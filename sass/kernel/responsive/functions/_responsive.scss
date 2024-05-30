@@ -73,15 +73,15 @@
 
 @function generate-responsive-classes($prefix , $count ,$type, $is-space:false){
     $list:();
-    $much-width:0;
-    @if ($type==width){
-        $much-width:calc(100/$count);
+    $much-size:0;
+    @if ($type==w or $type==h){
+        $much-size:calc(100/$count);
     }
     @each $key , $value in $break-points{
         @for $i from 1 through $count{
-            @if ($type==width){
+            @if ($type==w or $type==h){
                 $value:0;
-                $value:(round($much-width*$i));
+                $value:(round($much-size*$i));
             }
             @else{
                 $value:$i;
@@ -101,16 +101,16 @@
     $count : map.get($conf-map,'count');
     $counter-reset:1;
     $list : ();
-    $much-width:0;
-    @if ($type==width){
-        $much-width:calc(100%/$count);
+    $much-size:0;
+    @if ($type==w or $type==h){
+        $much-size:calc(100%/$count);
     }
     @for $j from 1 through length($map-list){
         $counter-reset:reset-count($counter-reset,$count);
         $conf-map:(
             className: nth($map-list,$j),
             propertyKeys:($property),
-            propertyValues:set-property-values($counter-reset,$type,$much-width)
+            propertyValues:set-property-values($counter-reset,$type,$much-size)
         );
         $list:append($list ,$conf-map,comma);   
         $counter-reset:$counter-reset+1;
@@ -130,7 +130,7 @@
     @if $type==col{
         @return calc(100%/$counter-reset);
     }
-    @else if $type==width or $type==height{
+    @else if $type==w or $type==h{
         @return $space-width*$counter-reset;
     }
     @else if $type==g{
@@ -158,20 +158,5 @@
                 $list:append($list , $map);
             }
         }
-    @return $list;
-}
-@function generate-typography-size-classes-without-responsive($font-map,$prefix){
-    $list : ();
-    $base : ();
-
-    @each $name, $size in $font-map{
-        $base:generate-classes-on-value($prefix , $name);
-        $map:(
-            className: $base,
-            propertyKeys:'font-size',
-            propertyValues:$size
-        );
-        $list:append($list , $map);
-    }
     @return $list;
 }

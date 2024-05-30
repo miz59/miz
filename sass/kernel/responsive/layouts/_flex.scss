@@ -106,5 +106,5 @@ $class-list:(
 
 
 $flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
-$flex-grows:generate-classes-items($grow-list,flex-grow,$conf-grows);
+$flex-grows:generate-classes-items($grow-list,flex,$conf-grows);
 $flex-type : generate-flex-list();
