@@ -15943,21 +15943,17 @@ a {
 }
 
 .object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
+  object-fit: fill;
 }
 
 .object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .object-none {
-  -o-object-fit: none;
-     object-fit: none;
-}/*# sourceMappingURL=style.css.map */
+  object-fit: none;
+}

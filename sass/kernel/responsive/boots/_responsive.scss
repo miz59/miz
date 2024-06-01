@@ -1,5 +1,3 @@
-@import 'typography';
-@import 'icon';
 $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size-responsive,$generate-text-align,$letter-space,$icon-size-responsive;
 
 @mixin generate-boxed-horizontally(){
