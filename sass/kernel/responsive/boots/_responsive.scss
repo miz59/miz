@@ -1,5 +1,6 @@
 @import 'typography';
 @import 'icon';
+
 $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size-responsive,$generate-text-align,$letter-space,$icon-size-responsive;
 
 @mixin generate-boxed-horizontally(){
@@ -16,8 +17,8 @@ $space-value:nth($boxed-space-horizontally,$i);
         @else{
             @media screen and (max-width:$max-width-values){
                 .section{
-                    padding-top: $space-value;
-                    padding-bottom:$space-value;
+                    padding-left: $space-value;
+                    padding-right:$space-value;
                 }
             }
         }
@@ -37,8 +38,8 @@ $space-value:nth($boxed-space-horizontally,$i);
         @else{
             @media screen and (max-width:$max-width-values){
                 .section{
-                    padding-left: $space-value;
-                    padding-right:$space-value;
+                    padding-top: $space-value;
+                    padding-bottom:$space-value;
                 }
             }
         }
