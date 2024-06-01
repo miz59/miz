@@ -175,44 +175,52 @@
 
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("black");
+  font-weight: 900;
   src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("bold");
+  font-weight: 700;
   src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("light");
+  font-weight: 300;
   src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("medium");
+  font-weight: 500;
   src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("regular");
+  font-weight: 400;
   src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("thin");
+  font-weight: 100;
   src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
 }
+.font-primary {
+  font-family: "primary";
+}
+
 @font-face {
   font-family: "secondary";
-  font-weight: font-weight-connection("bold");
+  font-weight: 700;
   src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
 }
 @font-face {
   font-family: "secondary";
-  font-weight: font-weight-connection("regular");
+  font-weight: 400;
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
+.font-secondary {
+  font-family: "secondary";
+}
+
 @media screen and (max-width: 1920px) {
   .section {
     padding-left: 81px;
