@@ -89,11 +89,6 @@
 .line-height {
   line-height: 5;
 }
-@media screen and (max-width: 1920px) {
-  .line-height {
-    line-height: 5;
-  }
-}
 @media screen and (max-width: 1280px) {
   .line-height {
     line-height: 4;
@@ -120,41 +115,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-.txt-nowrap {
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-}
-
-.line-height {
-  line-height: 5;
-}
-@media screen and (max-width: 1920px) {
-  .line-height {
-    line-height: 5;
-  }
-}
-@media screen and (max-width: 1280px) {
-  .line-height {
-    line-height: 4;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .line-height {
-    line-height: 3;
-  }
-}
-@media screen and (max-width: 767px) {
-  .line-height {
-    line-height: 2;
-  }
-}
-@media screen and (max-width: 478px) {
-  .line-height {
-    line-height: 1;
-  }
 }
 
 .font-weight-black {
@@ -237,6 +197,10 @@
   font-weight: 400;
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
+.font-secondary {
+  font-family: "secondary";
+}
+
 .header {
   padding-left: 81px;
   padding-right: 81px;

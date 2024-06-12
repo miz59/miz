@@ -10,9 +10,6 @@ $text-align : (center,end,start,left,right);
 }
 .line-height{
   line-height:  5;
-  @media screen and (max-width : get-break-point-value(xxl)) {
-    line-height: 5;
-  }
   @media screen and (max-width : get-break-point-value(xl)) {
     line-height: 4;
   }
