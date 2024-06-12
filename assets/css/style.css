@@ -28,6 +28,14 @@
   box-sizing: border-box;
 }
 
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
 .all-border-extra-small {
   border-radius: 2px;
 }
@@ -155,12 +163,40 @@
   font-weight: font-weight-connection("regular");
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
-@media screen and (max-width: 1920px) {
-  .section {
-    padding-left: 81px;
-    padding-right: 81px;
+.header {
+  padding-left: 81px;
+  padding-right: 81px;
+}
+
+@media screen and (max-width: 1280px) {
+  .header {
+    padding-left: 70px;
+    padding-right: 70px;
   }
 }
+@media screen and (max-width: 1024px) {
+  .header {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+}
+@media screen and (max-width: 478px) {
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.section {
+  padding-left: 81px;
+  padding-right: 81px;
+}
+
 @media screen and (max-width: 1280px) {
   .section {
     padding-left: 70px;
@@ -185,12 +221,11 @@
     padding-right: 16px;
   }
 }
-@media screen and (max-width: 1920px) {
-  .section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
+
 @media screen and (max-width: 1280px) {
   .section {
     padding-top: 4.5rem;
@@ -15896,6 +15931,22 @@ a {
 
 .position-sticky {
   position: sticky;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right {
+  right: 0px;
+}
+
+.bottom {
+  bottom: 0px;
 }
 
 .z-index-0 {

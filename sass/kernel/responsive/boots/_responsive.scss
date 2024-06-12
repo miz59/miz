@@ -3,11 +3,43 @@
 
 $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size-responsive,$generate-text-align,$letter-space,$icon-size-responsive;
 
+@function get-greatest-breakpoint(){
+    $max-size:0;
+    @each $key , $value in $break-points{
+        @if map.get($break-points, $key) > $max-size{
+            $max-size : map.get($break-points, $key);
+        }
+    }
+    @return $max-size;
+}
+
+@mixin generate-header-horizontally(){
+    @for $i from 1 through length($header-space-horizontally){
+        $break-point-values:map.values($break-points);
+        $max-width-values:nth($break-point-values,$i);
+        $space-value:nth($header-space-horizontally,$i);
+        @if get-greatest-breakpoint()==$max-width-values{
+            .header{
+                padding-left: $space-value;
+                padding-right:$space-value;
+            }
+        }
+        @else{
+            @media screen and (max-width:$max-width-values){
+                .header{
+                    padding-left: $space-value;
+                    padding-right:$space-value;
+                }
+            }
+        }
+    }
+}
 @mixin generate-boxed-horizontally(){
     @for $i from 1 through length($boxed-space-horizontally){
         $break-point-values:map.values($break-points);
         $max-width-values:nth($break-point-values,$i);
-$space-value:nth($boxed-space-horizontally,$i);
+        $space-value:nth($boxed-space-horizontally,$i);
+        $max-width:get-greatest-breakpoint();
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
                 padding-left: $space-value;
@@ -46,6 +78,7 @@ $space-value:nth($boxed-space-horizontally,$i);
     }
 }
 
+@include generate-header-horizontally();
 @include generate-boxed-horizontally();
 @include generate-boxed-vertically();
 
@@ -134,15 +167,6 @@ $space-value:nth($boxed-space-horizontally,$i);
     }
 }
 
-@function get-greatest-breakpoint(){
-    $max-size:0;
-    @each $key , $value in $break-points{
-        @if map.get($break-points, $key) > $max-size{
-            $max-size : map.get($break-points, $key);
-        }
-    }
-    @return $max-size;
-}
 @function get-greatest-breakpoint-key(){
     $max-size-key:"";
     $max-size:0;
