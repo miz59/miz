@@ -72,6 +72,12 @@
   border-bottom-left-radius: 0px !important;
 }
 
+.txt-nowrap {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
 .line-height {
   line-height: 5;
 }
@@ -106,6 +112,12 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.txt-nowrap {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 .line-height {
