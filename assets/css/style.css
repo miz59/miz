@@ -28,6 +28,14 @@
   box-sizing: border-box;
 }
 
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
 .all-border-extra-small {
   border-radius: 2px;
 }
@@ -70,6 +78,36 @@
 
 .all-border-bl {
   border-bottom-left-radius: 0px !important;
+}
+
+.txt-nowrap {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-height {
+  line-height: 5;
+}
+@media screen and (max-width: 1280px) {
+  .line-height {
+    line-height: 4;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .line-height {
+    line-height: 3;
+  }
+}
+@media screen and (max-width: 767px) {
+  .line-height {
+    line-height: 2;
+  }
+}
+@media screen and (max-width: 478px) {
+  .line-height {
+    line-height: 1;
+  }
 }
 
 .row {
@@ -117,102 +155,137 @@
 
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("black");
+  font-weight: 900;
   src: url("../fonts/vazir/Vazir-Black.woff2"),url("../fonts/vazir/Vazir-Black.woff"),url("../fonts/vazir/Vazir-Black.ttf"),url("../fonts/vazir/Vazir-Black.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("bold");
+  font-weight: 700;
   src: url("../fonts/vazir/Vazir-Bold.woff2"),url("../fonts/vazir/Vazir-Bold.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Bold.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("light");
+  font-weight: 300;
   src: url("../fonts/vazir/Vazir-Light.woff2"),url("../fonts/vazir/Vazir-Light.woff"),url("../fonts/vazir/Vazir-Light.ttf"),url("../fonts/vazir/Vazir-Light.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("medium");
+  font-weight: 500;
   src: url("../fonts/vazir/Vazir-Medium.woff2"),url("../fonts/vazir/Vazir-Medium.woff"),url("../fonts/vazir/Vazir-Medium.ttf"),url("../fonts/vazir/Vazir-Medium.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("regular");
+  font-weight: 400;
   src: url("../fonts/vazir/Vazir-Regular.woff2"),url("../fonts/vazir/Vazir-Regular.woff"),url("../fonts/vazir/Vazir-Regular.ttf"),url("../fonts/vazir/Vazir-Regular.eot"),;
 }
 @font-face {
   font-family: "primary";
-  font-weight: font-weight-connection("thin");
+  font-weight: 100;
   src: url("../fonts/vazir/Vazir-Thin.woff2"),url("../fonts/vazir/Vazir-Thin.woff"),url("../fonts/vazir/Vazir-Bold.ttf"),url("../fonts/vazir/Vazir-Thin.eot"),;
 }
+.font-primary {
+  font-family: "primary";
+}
+
 @font-face {
   font-family: "secondary";
-  font-weight: font-weight-connection("bold");
+  font-weight: 700;
   src: url("../fonts/product-sans/PTSans-Bold.ttf"),;
 }
 @font-face {
   font-family: "secondary";
-  font-weight: font-weight-connection("regular");
+  font-weight: 400;
   src: url("../fonts/product-sans/PTSans-Regular.ttf"),;
 }
-@media screen and (max-width: 1920px) {
-  .section {
-    padding-top: 81px;
-    padding-bottom: 81px;
+.font-secondary {
+  font-family: "secondary";
+}
+
+.header {
+  padding-left: 81px;
+  padding-right: 81px;
+}
+
+@media screen and (max-width: 1280px) {
+  .header {
+    padding-left: 70px;
+    padding-right: 70px;
   }
 }
+@media screen and (max-width: 1024px) {
+  .header {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+}
+@media screen and (max-width: 478px) {
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.section {
+  padding-left: 81px;
+  padding-right: 81px;
+}
+
 @media screen and (max-width: 1280px) {
   .section {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-left: 70px;
+    padding-right: 70px;
   }
 }
 @media screen and (max-width: 1024px) {
   .section {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 }
 @media screen and (max-width: 767px) {
   .section {
-    padding-top: 17px;
-    padding-bottom: 17px;
+    padding-left: 17px;
+    padding-right: 17px;
   }
 }
 @media screen and (max-width: 478px) {
   .section {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
-@media screen and (max-width: 1920px) {
-  .section {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
+
 @media screen and (max-width: 1280px) {
   .section {
-    padding-left: 4.5rem;
-    padding-right: 4.5rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
   }
 }
 @media screen and (max-width: 1024px) {
   .section {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 @media screen and (max-width: 767px) {
   .section {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 @media screen and (max-width: 478px) {
   .section {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 .section.wide {
@@ -15898,6 +15971,22 @@ a {
   position: sticky;
 }
 
+.top-0 {
+  top: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right {
+  right: 0px;
+}
+
+.bottom {
+  bottom: 0px;
+}
+
 .z-index-0 {
   z-index: 0;
 }
@@ -15943,21 +16032,17 @@ a {
 }
 
 .object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
+  object-fit: fill;
 }
 
 .object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .object-none {
-  -o-object-fit: none;
-     object-fit: none;
-}/*# sourceMappingURL=style.css.map */
+  object-fit: none;
+}

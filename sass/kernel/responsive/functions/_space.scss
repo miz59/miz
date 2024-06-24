@@ -1,6 +1,6 @@
 $paddings-list:p,pt,pb,pl,pr,px,py;
 $margins-list:m,mt,mb,ml,mr,mx,my;
-$gap-list:gap,;
+$gap-list:gap;
 
 $map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom));
 $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom));
