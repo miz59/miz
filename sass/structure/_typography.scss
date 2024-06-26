@@ -8,6 +8,9 @@ $text-align : (center,end,start,left,right);
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
+.list-style{
+  list-style: unset;
+}
 .line-height{
   line-height:  5;
   @media screen and (max-width : get-break-point-value(xl)) {
