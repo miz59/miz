@@ -12,6 +12,9 @@ $font-style:(italic);
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
+.list-style{
+  list-style: unset;
+}
 .line-height{
   line-height:  5;
   @media screen and (max-width : get-break-point-value(xl)) {
