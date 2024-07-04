@@ -3,7 +3,11 @@
 $font-prefix : "txt";
 $font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px, );
 $text-align : (center,end,start,left,right);
-.#{$font-prefix}-nowrap{
+$text-transform : (lowercase,none,uppercase,capitalize);
+$text-decoration-line : (line-through,none,overline,underline,wavy);
+$text-decoration-style:(dashed,dotted,double,solid);
+$font-style:(italic);
+.#{$font-prefix}-ellipsis{
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;

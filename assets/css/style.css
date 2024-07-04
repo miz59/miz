@@ -80,7 +80,23 @@
   border-bottom-left-radius: 0px !important;
 }
 
-.txt-nowrap {
+.border-t-none {
+  border-top: none;
+}
+
+.border-b-none {
+  border-bottom: none;
+}
+
+.border-r-none {
+  border-right: none;
+}
+
+.border-l-none {
+  border-left: none;
+}
+
+.txt-ellipsis {
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
@@ -6521,6 +6537,38 @@
   font-size: 72px;
 }
 
+.txt-lowercase {
+  text-transform: lowercase;
+}
+
+.txt-xxl-lowercase {
+  text-transform: lowercase;
+}
+
+.txt-none {
+  text-transform: none;
+}
+
+.txt-xxl-none {
+  text-transform: none;
+}
+
+.txt-uppercase {
+  text-transform: uppercase;
+}
+
+.txt-xxl-uppercase {
+  text-transform: uppercase;
+}
+
+.txt-capitalize {
+  text-transform: capitalize;
+}
+
+.txt-xxl-capitalize {
+  text-transform: capitalize;
+}
+
 .txt-center {
   text-align: center;
 }
@@ -6559,6 +6607,78 @@
 
 .txt-xxl-right {
   text-align: right;
+}
+
+.txt-line-through {
+  text-decoration-line: line-through;
+}
+
+.txt-xxl-line-through {
+  text-decoration-line: line-through;
+}
+
+.txt-none {
+  text-decoration-line: none;
+}
+
+.txt-xxl-none {
+  text-decoration-line: none;
+}
+
+.txt-overline {
+  text-decoration-line: overline;
+}
+
+.txt-xxl-overline {
+  text-decoration-line: overline;
+}
+
+.txt-underline {
+  text-decoration-line: underline;
+}
+
+.txt-xxl-underline {
+  text-decoration-line: underline;
+}
+
+.txt-wavy {
+  text-decoration-line: wavy;
+}
+
+.txt-xxl-wavy {
+  text-decoration-line: wavy;
+}
+
+.txt-dashed {
+  text-decoration-style: dashed;
+}
+
+.txt-xxl-dashed {
+  text-decoration-style: dashed;
+}
+
+.txt-dotted {
+  text-decoration-style: dotted;
+}
+
+.txt-xxl-dotted {
+  text-decoration-style: dotted;
+}
+
+.txt-double {
+  text-decoration-style: double;
+}
+
+.txt-xxl-double {
+  text-decoration-style: double;
+}
+
+.txt-solid {
+  text-decoration-style: solid;
+}
+
+.txt-xxl-solid {
+  text-decoration-style: solid;
 }
 
 .letter-space-1 {
@@ -8675,6 +8795,18 @@
   .txt-xl-extra-title {
     font-size: 72px;
   }
+  .txt-xl-lowercase {
+    text-transform: lowercase;
+  }
+  .txt-xl-none {
+    text-transform: none;
+  }
+  .txt-xl-uppercase {
+    text-transform: uppercase;
+  }
+  .txt-xl-capitalize {
+    text-transform: capitalize;
+  }
   .txt-xl-center {
     text-align: center;
   }
@@ -8689,6 +8821,33 @@
   }
   .txt-xl-right {
     text-align: right;
+  }
+  .txt-xl-line-through {
+    text-decoration-line: line-through;
+  }
+  .txt-xl-none {
+    text-decoration-line: none;
+  }
+  .txt-xl-overline {
+    text-decoration-line: overline;
+  }
+  .txt-xl-underline {
+    text-decoration-line: underline;
+  }
+  .txt-xl-wavy {
+    text-decoration-line: wavy;
+  }
+  .txt-xl-dashed {
+    text-decoration-style: dashed;
+  }
+  .txt-xl-dotted {
+    text-decoration-style: dotted;
+  }
+  .txt-xl-double {
+    text-decoration-style: double;
+  }
+  .txt-xl-solid {
+    text-decoration-style: solid;
   }
   .letter-space-xl-1 {
     letter-spacing: 1;
@@ -10575,6 +10734,18 @@
   .txt-lg-extra-title {
     font-size: 72px;
   }
+  .txt-lg-lowercase {
+    text-transform: lowercase;
+  }
+  .txt-lg-none {
+    text-transform: none;
+  }
+  .txt-lg-uppercase {
+    text-transform: uppercase;
+  }
+  .txt-lg-capitalize {
+    text-transform: capitalize;
+  }
   .txt-lg-center {
     text-align: center;
   }
@@ -10589,6 +10760,33 @@
   }
   .txt-lg-right {
     text-align: right;
+  }
+  .txt-lg-line-through {
+    text-decoration-line: line-through;
+  }
+  .txt-lg-none {
+    text-decoration-line: none;
+  }
+  .txt-lg-overline {
+    text-decoration-line: overline;
+  }
+  .txt-lg-underline {
+    text-decoration-line: underline;
+  }
+  .txt-lg-wavy {
+    text-decoration-line: wavy;
+  }
+  .txt-lg-dashed {
+    text-decoration-style: dashed;
+  }
+  .txt-lg-dotted {
+    text-decoration-style: dotted;
+  }
+  .txt-lg-double {
+    text-decoration-style: double;
+  }
+  .txt-lg-solid {
+    text-decoration-style: solid;
   }
   .letter-space-lg-1 {
     letter-spacing: 1;
@@ -12475,6 +12673,18 @@
   .txt-md-extra-title {
     font-size: 72px;
   }
+  .txt-md-lowercase {
+    text-transform: lowercase;
+  }
+  .txt-md-none {
+    text-transform: none;
+  }
+  .txt-md-uppercase {
+    text-transform: uppercase;
+  }
+  .txt-md-capitalize {
+    text-transform: capitalize;
+  }
   .txt-md-center {
     text-align: center;
   }
@@ -12489,6 +12699,33 @@
   }
   .txt-md-right {
     text-align: right;
+  }
+  .txt-md-line-through {
+    text-decoration-line: line-through;
+  }
+  .txt-md-none {
+    text-decoration-line: none;
+  }
+  .txt-md-overline {
+    text-decoration-line: overline;
+  }
+  .txt-md-underline {
+    text-decoration-line: underline;
+  }
+  .txt-md-wavy {
+    text-decoration-line: wavy;
+  }
+  .txt-md-dashed {
+    text-decoration-style: dashed;
+  }
+  .txt-md-dotted {
+    text-decoration-style: dotted;
+  }
+  .txt-md-double {
+    text-decoration-style: double;
+  }
+  .txt-md-solid {
+    text-decoration-style: solid;
   }
   .letter-space-md-1 {
     letter-spacing: 1;
@@ -14375,6 +14612,18 @@
   .txt-sm-extra-title {
     font-size: 72px;
   }
+  .txt-sm-lowercase {
+    text-transform: lowercase;
+  }
+  .txt-sm-none {
+    text-transform: none;
+  }
+  .txt-sm-uppercase {
+    text-transform: uppercase;
+  }
+  .txt-sm-capitalize {
+    text-transform: capitalize;
+  }
   .txt-sm-center {
     text-align: center;
   }
@@ -14389,6 +14638,33 @@
   }
   .txt-sm-right {
     text-align: right;
+  }
+  .txt-sm-line-through {
+    text-decoration-line: line-through;
+  }
+  .txt-sm-none {
+    text-decoration-line: none;
+  }
+  .txt-sm-overline {
+    text-decoration-line: overline;
+  }
+  .txt-sm-underline {
+    text-decoration-line: underline;
+  }
+  .txt-sm-wavy {
+    text-decoration-line: wavy;
+  }
+  .txt-sm-dashed {
+    text-decoration-style: dashed;
+  }
+  .txt-sm-dotted {
+    text-decoration-style: dotted;
+  }
+  .txt-sm-double {
+    text-decoration-style: double;
+  }
+  .txt-sm-solid {
+    text-decoration-style: solid;
   }
   .letter-space-sm-1 {
     letter-spacing: 1;
@@ -15979,11 +16255,11 @@ a {
   left: 0px;
 }
 
-.right {
+.right-0 {
   right: 0px;
 }
 
-.bottom {
+.bottom-0 {
   bottom: 0px;
 }
 
@@ -16045,4 +16321,4 @@ a {
 
 .object-none {
   object-fit: none;
-}
+}/*# sourceMappingURL=style.css.map */
