@@ -1,7 +1,7 @@
 @import 'typography';
 @import 'icon';
 
-$totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size-responsive,$generate-text-transform,$generate-text-align,$generate-text-decoration-line,$generate-text-decoration-style,$letter-space,$icon-size-responsive;
+$totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size-responsive,$generate-text-transform,$generate-text-align,$generate-text-decoration-line,$generate-text-decoration-style,$generate-font-style,$letter-space,$icon-size-responsive;
 
 @function get-greatest-breakpoint(){
     $max-size:0;

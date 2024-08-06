@@ -6,7 +6,7 @@ $text-align : (center,end,start,left,right);
 $text-transform : (lowercase,none,uppercase,capitalize);
 $text-decoration-line : (line-through,none,overline,underline,wavy);
 $text-decoration-style:(dashed,dotted,double,solid);
-$font-style:(italic);
+$font-style:(italic,);
 .#{$font-prefix}-ellipsis{
   white-space: nowrap;
   overflow-x: hidden;
@@ -36,54 +36,9 @@ $fonts: (
     "defaults":"sans-serif, 'Courier New', Courier, monospace",
     "folder": "vazir",
     "font-types": (
-      "black": (
-        "Vazir-Black.woff2",
-        "Vazir-Black.woff",
-        "Vazir-Black.ttf",
-        "Vazir-Black.eot"
-      ),
-      "bold": (
-        "Vazir-Bold.woff2",
-        "Vazir-Bold.woff",
-        "Vazir-Bold.ttf",
-        "Vazir-Bold.eot"
-      ),
-      "light": (
-        "Vazir-Light.woff2",
-        "Vazir-Light.woff",
-        "Vazir-Light.ttf",
-        "Vazir-Light.eot"
-      ),
-      "medium": (
-        "Vazir-Medium.woff2",
-        "Vazir-Medium.woff",
-        "Vazir-Medium.ttf",
-        "Vazir-Medium.eot"
-      ),
       "regular": (
-        "Vazir-Regular.woff2",
-        "Vazir-Regular.woff",
-        "Vazir-Regular.ttf",
-        "Vazir-Regular.eot"
-      ),
-      "thin": (
-        "Vazir-Thin.woff2",
-        "Vazir-Thin.woff",
-        "Vazir-Bold.ttf",
-        "Vazir-Thin.eot"
+        "SankofaDisplay-Regular.ttf"
       )
-    )
-  ),
-  "secondary": (
-    "defaults":"sans-serif, 'Courier New', Courier, monospace",
-    "folder": "product-sans",
-    "font-types": (
-      "bold": (
-        "PTSans-Bold.ttf"
-      ),
-      "regular": (
-        "PTSans-Regular.ttf"
-      ),
     )
   )
 );

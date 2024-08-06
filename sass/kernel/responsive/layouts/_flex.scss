@@ -21,11 +21,11 @@ $conf-list:(
     flex-wrap:map.get($conf-wrap,responsive),
 );
 $flex-direction-value-list:(row , row-reverse , column , column-reverse);
-$justify-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
+$justify-content-value-list:(flex-start , center , flex-end , start , end , space-between , space-around , space-evenly);
 $justify-self-value-list:(start , center , end ,  left , right , stretch);
 $justify-items-value-list:(start , center , end ,  left , right , stretch);
-$align-content-value-list:(flex-start , center , flex-end , space-between , space-around , space-evenly);
-$align-self-value-list:(flex-start , center , flex-end , baseline , stretch);
+$align-content-value-list:(flex-start , center , flex-end , start , end , space-between , space-around , space-evenly);
+$align-self-value-list:(flex-start , center , flex-end , start , end , baseline , stretch);
 $align-items-value-list:(flex-start , center , flex-end , stretch , start , end , baseline);
 $flex-wrap-value-list:(wrap,nowrap);
 $value-list:(
