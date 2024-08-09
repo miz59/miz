@@ -81,23 +81,23 @@
 }
 
 .border-t-none {
-  border-top: none;
+  border-top: none !important;
 }
 
 .border-b-none {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .border-r-none {
-  border-right: none;
+  border-right: none !important;
 }
 
 .border-l-none {
-  border-left: none;
+  border-left: none !important;
 }
 
 .border-none {
-  border: none;
+  border: none !important;
 }
 
 .txt-ellipsis {
@@ -180,7 +180,7 @@
 @font-face {
   font-family: "primary";
   font-weight: 400;
-  src: url("../fonts/vazir/SankofaDisplay-Regular.ttf"),;
+  src: url("../fonts/SankofaDisplay-Regular/SankofaDisplay-Regular.ttf"),;
 }
 .font-primary {
   font-family: "primary";

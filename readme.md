@@ -1,95 +1,33 @@
-Ms Hojjatzadeh:
-miz
-	style
-	sass
-		index
-		kernel	
-			global-functions
-				break-point
-				color
-				image
-				index
-			responsive
-				boots
-					border
-				layout
-					index
-		structure
-			icon
+# Miz
 
+Miz is a CSS and SASS framework designed for frontend developers, offering a wide range of classes to simplify and speed up your web development process.
 
-Mr Kazemi:
-miz	
-	sass
+## Installation
 
-		Config
-				index
-				reset
-		kernel
-			common
-				aspect-ratio
-				functions
-				opacity
-				overflow
-				position
-				z-index
+You can install Miz in two ways:
 
-			responsive
-				boots
-					reset
-				functions
-					space
-				variables
-					index
-					responsive
-			index
+### 1. Installation via NPM
+If you're using frameworks like React, Laravel, or Vue, you can install Miz using NPM. Please refer to [this link](https://github.com/miz59/npm) for the installation guide.
 
-Mr Saedi:
-miz
-	gitignore
-	readme
-	sass
+### 2. Installation without NPM
+For users not using these frameworks, you can download and run the setup files based on your operating system:
 
-		Config
-				dims
-			responsive
+- **Windows:** Download and run the [`windows-installer.bat`](#) file.
+- **macOS/Linux:** Download and run the [`linux-mac-installer.sh`](#) file.
 
-		kernel
-			responsive
-				boots
-					color
-					index
+## Documentation and Tutorials
 
-				function
-					index
-					responsive
-				layout
-					diplays
-					flex
-					grid
-				index
-		structure
-			borders
-			colors
-			layouts
-			index
-	
-		
+To learn more about how to use Miz, check out the following links:
 
-Mr Jamali:
-miz
-	index
-	sass
-		style
-		Config
-				path
-		kernel
-			common
-				index
+<!-- - [Miz Official Website](#) -->
+<!-- - [Video Tutorial on Aparat](#) -->
+<!-- - [Video Tutorial on YouTube](#) -->
+- [Miz NPM Page](https://github.com/miz59/npm)
 
-			responsive
-				boots
-					responsive
-					typography
-		structure
-			typography
+<!-- ## License -->
+
+<!-- Add your license type here (e.g., MIT). -->
+
+---
+
+Thank you for using Miz!
