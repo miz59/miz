@@ -66,27 +66,42 @@ $letter-spacing:letter-space;
       }
     }
 }
-@function generate-text-align(){
+@function generate-text-style($text-property , $text-value , $map-config){
+    $is-responsive: check-responsive-status($map-config , responsive);
     $list : ();
     $base : ();
-
-    
-    @each $key,$value in $break-points{
-        @each $name in $text-align{
-            $base:generate-classes-responsive-on-value($font-prefix , $key , $name);;
+    @if $is-responsive{
+        @each $key,$value in $break-points{
+            @each $name in $text-value{
+                $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
+                $map:(
+                    className: $base,
+                    propertyKeys:'#{$text-property}',
+                    propertyValues:$name
+                );
+                $list:append($list , $map);
+            }
+        }
+    }
+    @else{
+        @each $name in $text-value{
+            $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
             $map:(
                 className: $base,
-                propertyKeys:'text-align',
+                propertyKeys:'#{$text-property}',
                 propertyValues:$name
             );
             $list:append($list , $map);
         }
-    
     }
     @return $list;
 }
 
 $font-size-responsive : generate-typography-size-classes($font-size, $font-prefix);
-$generate-text-align : generate-text-align();
+$generate-text-align : generate-text-style(text-align , $text-align , $conf-text-align);
+$generate-text-transform : generate-text-style(text-transform , $text-transform , $conf-text-transform);
+$generate-text-decoration-line : generate-text-style(text-decoration-line , $text-decoration-line , $conf-text-decoration);
+$generate-text-decoration-style : generate-text-style(text-decoration-style , $text-decoration-style , $conf-text-decoration);
+$generate-font-style : generate-text-style(font-style , $font-style , $conf-font-style);
 $letter-space:generate-classes-items($letter-spacing,letter-spacing,$conf-letter-spacing);
 @include make-font-face;

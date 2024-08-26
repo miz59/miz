@@ -6,9 +6,9 @@ $all-border-large:25px;
 $all-border-extra-large:50px;
 
 $conf-opacity:(
-    max:100,
+    max:10,
     min:0,
-    step:10
+    step:1
 );
 
 $conf-z-index:(
