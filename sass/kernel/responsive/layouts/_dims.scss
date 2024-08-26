@@ -1,6 +1,14 @@
 @import "../functions/responsive";
 @import "../../../config";
+
+.w-100vw{
+    width: 100vw;
+}
+.h-100vh{
+    height: 100vh;
+}
+
 $w-list:w;
 $h-list:h;
-$width-list : generate-classes-items($w-list ,width, $conf-width) ;
-$height-list : generate-classes-items($h-list ,height, $conf-height) ;
+$width-list : generate-classes-items($w-list ,width, $conf-width);
+$height-list : generate-classes-items($h-list ,height, $conf-height);
