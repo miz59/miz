@@ -1,3 +1,5 @@
+@import "../../../config";
+
 $backgrounds:(primary,on-primary,primary-light,primary-dark,secondary,on-secondary,secondary-light,secondary-dark,specific,button-text,button,text,title-text,secondary-text,section-title-text,border,divider,shadow,icon,menu,card,background,section,hover,button-hover,text-hover,button-text-hover,danger-regular,disabled-regular,warning-regular,warning-light,warning-dark,success-regular,success-light,success-dark,danger-dark,danger-light,disabled-light,disabled-dark,information-regular,information-light,information-dark,border-secondary,unCommon);
 $colors:(icon,text,specific,primary);
 $borders:(border,primary);
@@ -40,7 +42,7 @@ $color-palette-theme:(
     black: #000000,
     white: #FFFFFF,
     danger-regular: #D70D0D,
-    disabled-regular: #3761EB,
+    disabled-regular: #B1B1B1,
     warning-regular: #FFB800,
     warning-light: #FDD368,
     warning-dark: #E4A400,
