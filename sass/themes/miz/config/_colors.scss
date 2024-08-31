@@ -4,7 +4,7 @@ $backgrounds:(primary,on-primary,primary-light,primary-dark,secondary,on-seconda
 $colors:(icon,text,specific,primary);
 $borders:(border,primary);
 
-$color-palette-theme:(
+$color-palette-themes:(
     primary: #3761EB,
     on-primary: #FFFFFF,
     primary-light: #E9EDFA,
@@ -60,4 +60,4 @@ $color-palette-theme:(
     unCommon: #FFFFFF
 );
 
-$color-palette:map.merge($color-palette , $color-palette-theme);
+$color-palette:map.merge($color-palette , $color-palette-themes);
