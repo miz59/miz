@@ -1,0 +1,53 @@
+.badge{
+    @extend .position-relative;
+    @extend .pointer;
+    @extend .font-primary;
+
+    // @extend .btn;
+    // padding in btn
+
+    // in doc from one kind show classes and tolk which class changed
+    // black and white error in function
+
+    & span{
+        padding:4px;
+        text-transform: uppercase;
+        @extend .txt-center;
+        @extend .d-flex;
+        @extend .flex-row;
+        @extend .justify-content-center;
+        @extend .align-items-center;
+        @extend .position-absolute;
+
+        &:not(:empty){
+            padding:2px 4px;
+        }
+        &:has(i){
+            padding:4px !important;
+            @extend .aspect-ratio-1x1;
+            & *{
+                @extend .aspect-ratio-1x1;
+            }
+        }
+    }
+    & span[class*="top"][class*="left"]{
+        &:not(:empty){
+            transform: translate(-50% , -50%);
+        }
+    }
+    & span[class*="top"][class*="right"]{
+        &:not(:empty){
+            transform: translate(50% , -50%);
+        }
+    }
+    & span[class*="bottom"][class*="left"]{
+        &:not(:empty){
+            transform: translate(-50% , 50%);
+        }
+    }
+    & span[class*="bottom"][class*="right"]{
+        &:not(:empty){
+            transform: translate(50% , 50%);
+        }
+    }
+}

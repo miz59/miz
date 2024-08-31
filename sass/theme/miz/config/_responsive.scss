@@ -1,0 +1,18 @@
+$conf-gaps:map.merge($conf-gaps ,(
+    count:20,
+    unit:rem,
+    factor:0.5,
+    responsive:true
+));
+$conf-paddings:map.merge($conf-paddings ,(
+    count:25,
+    unit:rem,
+    factor:0.5,
+    responsive:true
+));
+$conf-margins:map.merge($conf-margins ,(
+    count:25,
+    unit:rem,
+    factor:0.5,
+    responsive:true
+));

@@ -1,0 +1,29 @@
+.breadcrumb{
+    & ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        
+        &[style*="--content"]{
+            & li{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+
+                &::after{
+                    content: var(--content);
+                    display: inline-block;
+                }
+    
+                &:last-child::after{
+                    content:'';
+                }
+            }
+        }
+    }
+}
