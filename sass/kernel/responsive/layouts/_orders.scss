@@ -1,6 +1,6 @@
 @import "../functions/responsive";
-@import "../../../config";
-@import "../../../themes";
+// @import "../../../config";
+// @import "../../../themes";
 
 $order-list:order;
 $flex-orders:generate-classes-items($order-list,order,$conf-orders);

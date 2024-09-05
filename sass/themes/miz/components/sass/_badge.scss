@@ -1,7 +1,5 @@
 .badge{
-    @extend .position-relative;
-    @extend .pointer;
-    @extend .font-primary;
+    @extend .position-relative, .pointer, .font-primary;
 
     // @extend .btn;
     // padding in btn
@@ -12,12 +10,7 @@
     & span{
         padding:4px;
         text-transform: uppercase;
-        @extend .txt-center;
-        @extend .d-flex;
-        @extend .flex-row;
-        @extend .justify-content-center;
-        @extend .align-items-center;
-        @extend .position-absolute;
+        @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
 
         &:not(:empty){
             padding:2px 4px;

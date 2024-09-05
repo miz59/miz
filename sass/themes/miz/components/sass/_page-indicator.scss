@@ -1,23 +1,15 @@
 .page-indicator{
     width:fit-content;
     height:var(--size);
-    @extend .d-flex;
-    @extend .flex-row;
-    @extend .justify-content-start;
-    @extend .align-items-center;
+    @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
 
     & li{
         &:empty{
             background-color: get-color(primary);
-            @extend .pointer;
-            @extend .w-100;
-            @extend .h-100;
-            @extend .aspect-ratio-1x1;
-            @extend .all-border-full;
+            @extend .pointer, .h-100, .aspect-ratio-1x1, .all-border-full;
             
             &.active{            
                 background-color: get-color(specific);
-                @extend .w-100;
                 aspect-ratio: 2/1;
             }
         }
@@ -26,34 +18,14 @@
             background-color: get-color(primary-dark);
             border-color: get-color(primary);
             width:fit-content;
-            @extend .pointer;
-            @extend .h-100;
-            @extend .d-flex;
-            @extend .flex-row;
-            @extend .justify-content-center;
-            @extend .align-items-center;
-            @extend .p-1;
-            @extend .aspect-ratio-1x1;
-            @extend .border-width-1;
-            @extend .border-solid;
-            @extend .txt-center;
-            @extend .all-border-full;
+            @extend .pointer, .h-100, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .aspect-ratio-1x1, .border-width-1, .border-solid, .txt-center, .all-border-full;
 
             &.active{
                 background-color: get-color(primary-dark);
                 border-color: get-color(specific);
                 width:fit-content;
                 border-width: 2px;
-                @extend .h-100;
-                @extend .d-flex;
-                @extend .flex-row;
-                @extend .justify-content-center;
-                @extend .align-items-center;
-                @extend .p-1;
-                @extend .aspect-ratio-1x1;
-                @extend .border-solid;
-                @extend .txt-center;
-                @extend .all-border-full;
+                @extend .h-100, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .aspect-ratio-1x1, .border-solid, .txt-center, .all-border-full;
             }
         }
     }

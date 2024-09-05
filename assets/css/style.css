@@ -3,108 +3,117 @@
   box-shadow: 0px 0px 10px 2px #DEDEDE;
 }
 
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
+.btn {
+  cursor: pointer;
+  user-select: none;
 }
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
+.btn-primary {
   background-color: #3761EB;
 }
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
+
+.btn-secondary {
+  background-color: #272E3F;
 }
 
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
+.btn-success {
+  background-color: #02B74A;
 }
-.page-indicator li:empty {
+
+.btn-danger {
+  background-color: #D70D0D;
+}
+
+.btn-warning {
+  background-color: #FFB800;
+}
+
+.btn-info {
   background-color: #3761EB;
 }
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
+
+.btn-info {
+  background-color: #3761EB;
 }
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
+
+.btn-link {
+  color: #7393FF;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.btn-outline-primary {
+  color: #3761EB;
   border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
+  background-color: transparent;
 }
 
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
+.btn-outline-secondary {
+  color: #272E3F;
+  border-color: #272E3F;
+  background-color: transparent;
+}
+
+.btn-outline-success {
+  color: #02B74A;
+  border-color: #02B74A;
+  background-color: transparent;
+}
+
+.btn-outline-danger {
+  color: #D70D0D;
+  border-color: #D70D0D;
+  background-color: transparent;
+}
+
+.btn-outline-warning {
+  color: #FFB800;
+  border-color: #FFB800;
+  background-color: transparent;
+}
+
+.btn-outline-info {
+  color: #3761EB;
+  border-color: #3761EB;
+  background-color: transparent;
+}
+
+.pointer, .page-indicator li:not(:empty), .page-indicator li:empty, .tab .tab-bar .tab-item, .tab .tab-bar .tab-item *, .nav .nav-item *, .list-group .list-group-item *, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] + label, .badge {
+  cursor: pointer;
+}
+
+.dropdown label:not([class*=w-]) {
+  width: fit-content;
+}
+.dropdown ul {
+  max-height: 0;
+  opacity: 0;
+  transition: 0.4s ease-in, opacity 0.1s;
+  width: max-content;
+}
+.dropdown ul a {
+  color: unset;
+}
+.dropdown:has(input:checked) ul {
+  max-height: 100vh;
+  opacity: 1;
+}
+
+.dropdown-bottom ul {
+  top: calc(100% + 5px);
+}
+
+.dropdown-right ul {
+  left: calc(100% + 5px);
+  top: 0%;
+}
+
+.dropdown-left ul {
+  right: calc(100% + 5px);
+  top: 0%;
+}
+
+.dropdown-top ul {
+  bottom: calc(100% + 5px);
 }
 
 .badge span {
@@ -130,57 +139,230 @@
   transform: translate(50%, 50%);
 }
 
-.progress {
+.progress-bar {
   width: 100%;
   height: 10px;
   background-color: #E2E2E2;
   position: relative;
   overflow: hidden;
 }
-.progress:not([class*=py-]) {
+.progress-bar:not([class*=py-]) {
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 14px;
 }
-.progress::after {
+.progress-bar::after {
   content: attr(data-content);
   width: calc(var(--percentage) * 1%);
   background-color: #3761EB;
 }
-.progress[style*=content-place]::after {
+.progress-bar[style*=content-place]::after {
   justify-content: var(--content-place);
 }
-.progress[style*=content-place][style*=start]::after {
+.progress-bar[style*=content-place][style*=start]::after {
   justify-content: var(--content-place);
   width: calc(var(--percentage) * 1% - 10px);
   padding-inline-start: 10px;
 }
-.progress[style*=content-place][style*=end]::after {
+.progress-bar[style*=content-place][style*=end]::after {
   justify-content: var(--content-place);
   width: calc(var(--percentage) * 1% - 10px);
   padding-inline-end: 10px;
 }
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+body:has(.offcanvas-static.offcanvas-scroll input[id*=offcanvasCheck]:checked) {
+  overflow: unset;
+}
+
+body:has(.offcanvas-static.offcanvas-no-scroll input[id*=offcanvasCheck]:checked) {
+  overflow: hidden;
+}
+
+.offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label {
+  background-color: #272E3F;
+  visibility: hidden;
+  transition: 250ms linear;
+}
+.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top {
+  height: 25%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateY(-100%);
+  transition: 250ms linear;
+}
+.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom {
+  height: 25%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: 250ms linear;
+}
+.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left {
+  width: 25%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+  transition: 250ms linear;
+}
+.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
+  width: 25%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: 250ms linear;
+}
+.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas {
+  transform: translateX(0%);
+}
+.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-top {
+  transform: translateY(0%);
+}
+.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-bottom {
+  transform: translateY(0%);
+}
+.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-left {
+  transform: translateX(0%);
+}
+.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-right {
+  transform: translateX(0%);
+}
+.offcanvas-static input[id*=offcanvasCheck]:checked + label + label {
+  opacity: 0.7;
+  visibility: visible;
+}
+
+.breadcrumb ol {
   gap: 0.5rem;
 }
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
+.breadcrumb ol[style*="--content"] li::after {
   content: var(--content);
-  display: inline-block;
 }
-.breadcrumb ul[style*="--content"] li:last-child::after {
+.breadcrumb ol[style*="--content"] li:last-child::after {
   content: "";
+}
+
+.list-group .list-group-item {
+  box-sizing: border-box;
+}
+.list-group .list-group-item.active {
+  color: #FFFFFF;
+  background-color: #3761EB;
+}
+.list-group .list-group-item.active a {
+  color: #FFFFFF;
+}
+.list-group .list-group-item.disabled, .list-group .list-group-item.disabled * {
+  user-select: none;
+  cursor: default;
+}
+ol.list-group li {
+  list-style: decimal;
+}
+ol.list-group li.active {
+  background-color: #3761EB;
+  color: #FFFFFF;
+}
+ol.list-group li.active::marker {
+  color: #707479;
+}
+
+.nav .nav-item.active {
+  color: #FFFFFF;
+  background-color: #3761EB;
+}
+.nav .nav-item.active a {
+  color: #FFFFFF;
+}
+.nav .nav-item.disabled, .nav .nav-item.disabled * {
+  user-select: none;
+  cursor: default;
+}
+.tab .tab-bar .tab-item {
+  user-select: none;
+}
+.tab .tab-bar .tab-item label {
+  border-color: transparent;
+}
+.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-1 {
+  transform: translateX(0%);
+}
+.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-2 {
+  transform: translateX(0%);
+}
+.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-3 {
+  transform: translateX(0%);
+}
+.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-4 {
+  transform: translateX(0%);
+}
+.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5 {
+  transform: translateX(100%);
+}
+.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
+  transform: translateX(-100%);
+}
+.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-5 {
+  transform: translateX(0%);
+}
+.tab .tab-page [class*=tab-page-] {
+  transition: 400ms linear;
 }
 
 .page-indicator {
@@ -248,11 +430,11 @@
   border-radius: 2px;
 }
 
-.all-border-small {
+.all-border-small, .btn {
   border-radius: 5px;
 }
 
-.all-border-normal, .palette-color div div {
+.all-border-normal, .palette-color div div, .list-group.flex-column .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:first-child, .list-group.flex-column .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:last-child, .list-group:not(.flex-column) .list-group-item:first-child, .list-group:not(.flex-column) .list-group-item:last-child, .nav .nav-item {
   border-radius: 10px;
 }
 
@@ -268,39 +450,39 @@
   border-radius: 50px;
 }
 
-.all-border-full, .progress, .progress::after, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.all-border-full, .btn-round, .progress-bar, .progress-bar::after, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   border-radius: 100000px !important;
 }
 
-.all-border-tr {
+.all-border-tr, .list-group.flex-column .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:last-child, .list-group:not(.flex-column) .list-group-item:first-child {
   border-top-right-radius: 0px !important;
 }
 
-.all-border-tl {
+.all-border-tl, .list-group.flex-column .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:last-child, .list-group:not(.flex-column) .list-group-item:last-child {
   border-top-left-radius: 0px !important;
 }
 
-.all-border-br {
+.all-border-br, .list-group.flex-column .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:first-child, .list-group:not(.flex-column) .list-group-item:first-child {
   border-bottom-right-radius: 0px !important;
 }
 
-.all-border-bl {
+.all-border-bl, .list-group.flex-column .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:first-child, .list-group:not(.flex-column) .list-group-item:last-child {
   border-bottom-left-radius: 0px !important;
 }
 
-.border-t-none {
+.border-t-none, .list-group.flex-column .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:not(:first-child), .list-group-flush .list-group-item {
   border-top: none !important;
 }
 
-.border-b-none {
+.border-b-none, .list-group-flush .list-group-item:last-child {
   border-bottom: none !important;
 }
 
-.border-r-none {
+.border-r-none, .list-group-flush .list-group-item {
   border-right: none !important;
 }
 
-.border-l-none {
+.border-l-none, .list-group:not(.flex-column) .list-group-item:not(:first-child), .list-group-flush .list-group-item {
   border-left: none !important;
 }
 
@@ -342,531 +524,11 @@
   }
 }
 
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
-}
-
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
-}
-
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
-}
-
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
-}
-
 .row {
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
 }
 
 .w-100vw {
@@ -875,6 +537,32 @@
 
 .h-100vh {
   height: 100vh;
+}
+
+body, p, h1, h2, h3, h4, h5, h6, hr {
+  margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+}
+
+ul, li, ol {
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .font-weight-black {
@@ -1022,7 +710,7 @@
   display: block;
 }
 
-.d-none {
+.d-none, .offcanvas-static input[id*=offcanvasCheck], .tab .tab-bar .tab-item input[id*=tabCheck] {
   display: none;
 }
 
@@ -1030,7 +718,7 @@
   display: none;
 }
 
-.d-flex, .badge span, .progress, .progress::after, .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.d-flex, .btn:has(i):not(:has(span)), .dropdown label, .badge span, .progress-bar, .progress-bar::after, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group, .nav, .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   display: flex;
 }
 
@@ -1046,7 +734,7 @@
   display: grid;
 }
 
-.d-inline-block {
+.d-inline-block, .breadcrumb ol[style*="--content"] li::after, .tab .tab-bar .tab-item label {
   display: inline-block;
 }
 
@@ -1526,7 +1214,7 @@
   width: 98%;
 }
 
-.w-100, .page-indicator li:empty, .page-indicator li:empty.active {
+.w-100, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .list-group .list-group-item, .list-group-flush .list-group-item, .nav, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-5 {
   width: 100%;
 }
 
@@ -1846,7 +1534,7 @@
   height: 97.5%;
 }
 
-.h-100, .progress::after, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.h-100, .progress-bar::after, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-5, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   height: 100%;
 }
 
@@ -1854,7 +1542,7 @@
   height: 100%;
 }
 
-.flex-row, .badge span, .progress, .progress::after, .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.flex-row, .badge span, .progress-bar, .progress-bar::after, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group:not(.flex-column), .nav, .nav:not(.flex-column), .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   flex-direction: row;
 }
 
@@ -1870,7 +1558,7 @@
   flex-direction: row-reverse;
 }
 
-.flex-column {
+.flex-column, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
   flex-direction: column;
 }
 
@@ -1894,7 +1582,7 @@
   justify-content: flex-start;
 }
 
-.justify-content-center, .badge span, .progress, .progress::after, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.justify-content-center, .dropdown label, .badge span, .progress-bar, .progress-bar::after, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group, .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   justify-content: center;
 }
 
@@ -1910,7 +1598,7 @@
   justify-content: flex-end;
 }
 
-.justify-content-start, .page-indicator {
+.justify-content-start, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .page-indicator {
   justify-content: start;
 }
 
@@ -1918,7 +1606,7 @@
   justify-content: start;
 }
 
-.justify-content-end {
+.justify-content-end, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label {
   justify-content: end;
 }
 
@@ -2174,7 +1862,7 @@
   align-items: flex-start;
 }
 
-.align-items-center, .badge span, .progress, .progress::after, .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.align-items-center, .dropdown label, .badge span, .progress-bar, .progress-bar::after, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group, .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   align-items: center;
 }
 
@@ -2198,7 +1886,7 @@
   align-items: stretch;
 }
 
-.align-items-start {
+.align-items-start, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .nav:not([class*=align-items]) {
   align-items: start;
 }
 
@@ -2222,7 +1910,7 @@
   align-items: baseline;
 }
 
-.flex-wrap {
+.flex-wrap, .breadcrumb ol {
   flex-wrap: wrap;
 }
 
@@ -2494,7 +2182,7 @@
   padding: 0rem;
 }
 
-.p-1, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.p-1, .btn:has(i):not(:has(span)), .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .list-group .list-group-item, .list-group-flush .list-group-item, .nav .nav-item, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   padding: 0.5rem;
 }
 
@@ -2698,7 +2386,7 @@
   padding: 0rem;
 }
 
-.p-1, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.p-1, .btn:has(i):not(:has(span)), .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .list-group .list-group-item, .list-group-flush .list-group-item, .nav .nav-item, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   padding: 0.5rem;
 }
 
@@ -4066,7 +3754,7 @@
   padding-right: 0.5rem;
 }
 
-.px-2 {
+.px-2, .btn {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -4076,7 +3764,7 @@
   padding-right: 1rem;
 }
 
-.px-3 {
+.px-3, .tab .tab-bar .tab-item label {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -4316,12 +4004,12 @@
   padding-right: 0.5rem;
 }
 
-.px-2 {
+.px-2, .btn {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.px-3 {
+.px-3, .tab .tab-bar .tab-item label {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -4446,7 +4134,7 @@
   padding-bottom: 0rem;
 }
 
-.py-1 {
+.py-1, .btn, .tab .tab-bar .tab-item label {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -4456,7 +4144,7 @@
   padding-bottom: 0.5rem;
 }
 
-.py-2 {
+.py-2, .dropdown ul {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -4701,12 +4389,12 @@
   padding-bottom: 0rem;
 }
 
-.py-1 {
+.py-1, .btn, .tab .tab-bar .tab-item label {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.py-2 {
+.py-2, .dropdown ul {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -5458,7 +5146,7 @@
   margin-bottom: 0rem;
 }
 
-.mb-1 {
+.mb-1, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label {
   margin-bottom: 0.5rem;
 }
 
@@ -5662,7 +5350,7 @@
   margin-bottom: 0rem;
 }
 
-.mb-1 {
+.mb-1, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label {
   margin-bottom: 0.5rem;
 }
 
@@ -6396,7 +6084,7 @@
   margin-right: 0rem;
 }
 
-.mx-1, .progress p {
+.mx-1, .progress-bar p {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -6651,7 +6339,7 @@
   margin-right: 0rem;
 }
 
-.mx-1, .progress p {
+.mx-1, .progress-bar p {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
@@ -7174,7 +6862,7 @@
   gap: 0rem;
 }
 
-.gap-1 {
+.gap-1, .btn:has(i + span), .breadcrumb ol[style*="--content"] li, .nav {
   gap: 0.5rem;
 }
 
@@ -7338,7 +7026,7 @@
   gap: 0rem;
 }
 
-.gap-1 {
+.gap-1, .btn:has(i + span), .breadcrumb ol[style*="--content"] li, .nav {
   gap: 0.5rem;
 }
 
@@ -16130,136 +15818,6 @@
     font-size: 10px;
   }
 }
-body, p, h1, h2, h3, h4, h5, h6, hr {
-  margin: 0px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-}
-
-li {
-  list-style: none;
-}
-
-button {
-  border: none;
-}
-
-ul, li, ol {
-  padding: 0px;
-  margin: 0px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
-}
-
 .border-primary-color {
   border-color: #3761EB;
 }
@@ -16376,7 +15934,7 @@ a {
   background-color: #3761EB;
 }
 
-.text-color {
+.text-color, .list-group .list-group-item, .list-group .list-group-item a, .list-group-flush .list-group-item, .list-group-flush .list-group-item a, .nav .nav-item a {
   color: #707479;
 }
 
@@ -16452,7 +16010,7 @@ a {
   background-color: #FFFFFF;
 }
 
-.border-color {
+.border-color, .list-group .list-group-item, .list-group-flush .list-group-item, .tab .tab-bar .tab-item:has(input[id*=tabCheck]:checked) label {
   border-color: #E4E6E8;
 }
 
@@ -16676,7 +16234,7 @@ a {
   border-width: 0px;
 }
 
-.border-width-1, .page-indicator li:not(:empty) {
+.border-width-1, .btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning, .btn-outline-info, .list-group .list-group-item, .list-group-flush .list-group-item, .tab .tab-bar .tab-item label, .tab .tab-bar .tab-item:has(input[id*=tabCheck]:checked) label, .page-indicator li:not(:empty) {
   border-width: 1px;
 }
 
@@ -16716,7 +16274,7 @@ a {
   border-width: 10px;
 }
 
-.border-solid, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.border-solid, .btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning, .btn-outline-info, .list-group .list-group-item, .list-group-flush .list-group-item, .tab .tab-bar .tab-item label, .tab .tab-bar .tab-item:has(input[id*=tabCheck]:checked) label, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
   border-style: solid;
 }
 
@@ -16728,7 +16286,7 @@ a {
   border-style: dotted;
 }
 
-.pointer, .badge, .page-indicator li:empty, .page-indicator li:not(:empty) {
+.pointer, .badge, .offcanvas-static input[id*=offcanvasCheck] + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .list-group .list-group-item *, .nav .nav-item *, .tab .tab-bar .tab-item, .tab .tab-bar .tab-item *, .page-indicator li:empty, .page-indicator li:not(:empty) {
   cursor: pointer;
 }
 
@@ -16768,7 +16326,7 @@ a {
   aspect-ratio: 3/3;
 }
 
-.opacity-0 {
+.opacity-0, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
   opacity: 0;
 }
 
@@ -16812,7 +16370,7 @@ a {
   overflow: scroll;
 }
 
-.overflow-hidden {
+.overflow-hidden, .dropdown ul, .tab .tab-page {
   overflow: hidden;
 }
 
@@ -16832,15 +16390,15 @@ a {
   overflow-y: hidden;
 }
 
-.position-relative, .badge {
+.position-relative, .dropdown, .badge, .tab .tab-page {
   position: relative;
 }
 
-.position-absolute, .badge span, .progress::after {
+.position-absolute, .dropdown ul, .badge span, .progress-bar::after, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
   position: absolute;
 }
 
-.position-fixed {
+.position-fixed, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
   position: fixed;
 }
 
@@ -16848,19 +16406,19 @@ a {
   position: sticky;
 }
 
-.top-0, .progress::after {
+.top-0, .progress-bar::after, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
   top: 0px;
 }
 
-.left-0, .progress::after {
+.left-0, .progress-bar::after, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left {
   left: 0px;
 }
 
-.right-0 {
+.right-0, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
   right: 0px;
 }
 
-.bottom-0 {
+.bottom-0, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom {
   bottom: 0px;
 }
 
@@ -16868,11 +16426,11 @@ a {
   z-index: 0;
 }
 
-.z-index-1, .progress p {
+.z-index-1, .progress-bar p {
   z-index: 1;
 }
 
-.z-index-2 {
+.z-index-2, .dropdown label {
   z-index: 2;
 }
 
@@ -16922,108 +16480,4 @@ a {
 
 .object-none {
   object-fit: none;
-}
-
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
-}
-
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
-}
-.badge span:not(:empty) {
-  padding: 2px 4px;
-}
-.badge span:has(i) {
-  padding: 4px !important;
-}
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
-}
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
-}
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
-}
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
-}
-
-.progress {
-  width: 100%;
-  height: 10px;
-  background-color: #E2E2E2;
-  position: relative;
-  overflow: hidden;
-}
-.progress:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 14px;
-}
-.progress::after {
-  content: attr(data-content);
-  width: calc(var(--percentage) * 1%);
-  background-color: #3761EB;
-}
-.progress[style*=content-place]::after {
-  justify-content: var(--content-place);
-}
-.progress[style*=content-place][style*=start]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-start: 10px;
-}
-.progress[style*=content-place][style*=end]::after {
-  justify-content: var(--content-place);
-  width: calc(var(--percentage) * 1% - 10px);
-  padding-inline-end: 10px;
-}
-.breadcrumb ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.breadcrumb ul[style*="--content"] li::after {
-  content: var(--content);
-  display: inline-block;
-}
-.breadcrumb ul[style*="--content"] li:last-child::after {
-  content: "";
-}
-
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
-}
-.page-indicator li:empty {
-  background-color: #3761EB;
-}
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
-}
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
 }/*# sourceMappingURL=style.css.map */

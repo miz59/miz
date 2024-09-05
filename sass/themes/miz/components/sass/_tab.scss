@@ -1,0 +1,54 @@
+.tab{
+    .tab-bar{
+        @extend .d-flex, .flex-row, .justify-content-center, .align-items-center;
+
+        & .tab-item{
+            user-select: none;
+            
+            & label{
+                @extend .py-1, .px-3, .border-solid, .border-width-1, .d-inline-block;
+                border-color:transparent;
+            }
+            & , & *{
+                @extend .pointer;
+            }
+            &:has(input[id*="tabCheck"]:checked) label{
+                @extend .border-solid, .border-width-1, .border-color;
+            }
+            input[id*="tabCheck"]{
+                @extend .d-none;
+            }
+        }
+        $n:5;
+        @for $i from 1 through $n{
+            @for $j from 1 through $n{
+                @if $i == $j{
+                    &:has(input#tabCheck#{$i}:checked) ~ .tab-page .tab-page-#{$i}{
+                        @extend .w-100, .h-100;
+                        transform: translateX(0%);
+                    }
+                }
+                @else{
+                    &:has(input#tabCheck#{$i}:checked) ~ .tab-page .tab-page-#{$j}{
+                        @extend .w-100, .h-100, .position-absolute, .top-0, .opacity-0;
+
+                        @if $j > $i{
+                            transform: translateX(100%);
+                        }
+                        @else{
+                            transform: translateX(-100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tab-page{
+        @extend .overflow-hidden, .position-relative;
+
+        & [class*="tab-page-"]{
+            @extend .d-flex, .flex-row, .justify-content-center, .align-items-center;
+            transition: 400ms linear;
+        }
+    }
+}
