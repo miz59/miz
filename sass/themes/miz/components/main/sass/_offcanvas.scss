@@ -21,6 +21,14 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             @extend .pointer;
         }
         & ~ .offcanvas-top{
+            height:37%;
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateY(-100%);
+            transition: 250ms linear;
+            z-index:1000;
+
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 height: 25% !important;
                 @media screen and (max-width:get-break-point-value(md)){
@@ -30,19 +38,12 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
                     height: 50% !important;
                 }
             }
-            height:37%;
             @media screen and (max-width:get-break-point-value(md)) {
                 height: 50%;
             }
             @media screen and (max-width:get-break-point-value(sm)) {
                 height: 100%;
             }
-            background-color: get-color(primary);
-            color: get-color(on-primary);
-            box-sizing:border-box;
-            transform: translateY(-100%);
-            transition: 250ms linear;
-            z-index:1000;
             @extend .w-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
@@ -50,6 +51,13 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             }
         }
         & ~ .offcanvas-bottom{
+            height:37%;
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateY(100%);
+            transition: 250ms linear;
+            z-index:1000;
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 height: 25% !important;
                 @media screen and (max-width:get-break-point-value(md)){
@@ -59,19 +67,12 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
                     height: 50% !important;
                 }
             }
-            height:37%;
             @media screen and (max-width:get-break-point-value(md)) {
                 height: 50%;
             }
             @media screen and (max-width:get-break-point-value(sm)) {
                 height: 100%;
             }
-            background-color: get-color(primary);
-            color: get-color(on-primary);
-            box-sizing:border-box;
-            transform: translateY(100%);
-            transition: 250ms linear;
-            z-index:1000;
             @extend .w-100, .position-fixed, .left-0, .bottom-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
@@ -79,6 +80,13 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             }
         }
         & ~ .offcanvas-left{
+            width:37%;
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateX(-100%);
+            transition: 250ms linear;
+            z-index:1000;
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 width: 25% !important;
                 @media screen and (max-width:get-break-point-value(md)){
@@ -88,19 +96,12 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
                     width: 50% !important;
                 }
             }
-            width:37%;
             @media screen and (max-width:get-break-point-value(md)) {
                 width: 50%;
             }
             @media screen and (max-width:get-break-point-value(sm)) {
                 width: 100%;
             }
-            background-color: get-color(primary);
-            color: get-color(on-primary);
-            box-sizing:border-box;
-            transform: translateX(-100%);
-            transition: 250ms linear;
-            z-index:1000;
             @extend .h-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
@@ -108,6 +109,13 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             }
         }
         & ~ .offcanvas-right{
+            width:37% ;
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateX(100%);
+            transition: 250ms linear;
+            z-index:1000;
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 width: 25% !important;
                 @media screen and (max-width:get-break-point-value(md)){
@@ -117,19 +125,12 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
                     width: 50% !important;
                 }
             }
-            width:537 ;
             @media screen and (max-width:get-break-point-value(md)) {
                 width: 750 ;
             }
             @media screen and (max-width:get-break-point-value(sm)) {
                 width: 100% ;
             }
-            background-color: get-color(primary);
-            color: get-color(on-primary);
-            box-sizing:border-box;
-            transform: translateX(100%);
-            transition: 250ms linear;
-            z-index:1000;
             @extend .h-100, .position-fixed, .right-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
