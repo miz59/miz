@@ -1,0 +1,27 @@
+.form-select{
+    @extend .p-1;
+    &:not([class^="all-border"]){
+        @extend .all-border-small;
+    }
+    &:not([class^="bg-"][class$="-color"]){
+        background-color: get-color(primary);
+        color:get-color(on-primary);
+        border:none;
+    }
+    option:not([class^="bg-"][class$="-color"]) {
+        background-color: get-color(on-primary);
+        color: get-color(text);
+    }
+    &.small{
+        font-size: 12px;
+        padding: 5px;
+    }
+    &.medium{
+        font-size: 16px;
+        padding: 7px;
+    }
+    &.large{
+        font-size: 22px;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,33 @@
+.nav{
+    @extend .w-100, .d-flex, .flex-row, .gap-1;
+
+    & .nav-item{
+        @extend .p-1, .all-border-small;
+
+        &.active{
+            color: get-color(on-primary);
+            background-color: get-color(primary);
+
+            & a{
+                color: get-color(on-primary);
+            }
+        }
+        &.disabled , &.disabled *{
+            user-select:none;
+            cursor: default;
+            color:get-color(disabled-regular);
+        }
+        & *{
+            @extend .pointer;
+        }
+        & a{
+            @extend .text-color;
+        }
+    }
+    &:not([class*="align-items"]){
+        @extend .align-items-start;
+    }
+    &:not(.flex-column){
+        @extend .flex-row;
+    }
+}

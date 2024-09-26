@@ -1,0 +1,39 @@
+.form-floating{
+    @extend .position-relative;
+    .form-control{
+        height: 100%;
+        padding-top: 17px !important;
+        padding-bottom: 5px !important;
+        &::placeholder{ 
+            @extend .opacity-0;
+            user-select: none;
+        }
+        & + label{
+            @extend .position-absolute;
+            top: 50%;
+            right: 100%;
+            left: 10px;
+            white-space: nowrap;
+            transition: 0.2s ease-in;
+            z-index: 1;
+            transform: translateY(-50%);
+            &:not([class*="color"]){
+                color: get-color(text-fields);
+            }
+        }
+        & textarea + label{
+            top: 10px;
+        }
+        &:not(:placeholder-shown) , &:focus , &:disabled{
+            & + label{
+                transform: scale(0.7);
+                top: 0px;
+                right: 100%;
+                left: 10px;
+            }
+        }
+        &:disabled + label{
+            z-index: 1;
+        }
+    }
+}

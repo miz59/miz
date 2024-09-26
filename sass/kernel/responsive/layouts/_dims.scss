@@ -1,12 +1,16 @@
 @import "../functions/responsive";
-// @import "../../../config";
-// @import "../../../themes";
 
 .w-100vw{
     width: 100vw;
 }
 .h-100vh{
     height: 100vh;
+}
+.w-fit-content{
+    width: fit-content;
+}
+.h-fit-content{
+    height: fit-content;
 }
 
 $w-list:w;

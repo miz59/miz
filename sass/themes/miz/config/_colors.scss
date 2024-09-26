@@ -1,7 +1,7 @@
 @import "../../../config";
 
 $backgrounds:(primary,on-primary,primary-light,primary-dark,secondary,on-secondary,secondary-light,secondary-dark,specific,button-text,button,text,title-text,secondary-text,section-title-text,border,divider,shadow,icon,menu,card,background,section,hover,button-hover,text-hover,button-text-hover,danger-regular,disabled-regular,warning-regular,warning-light,warning-dark,success-regular,success-light,success-dark,danger-dark,danger-light,disabled-light,disabled-dark,information-regular,information-light,information-dark,border-secondary,unCommon);
-$colors:(icon,text,specific,primary);
+$colors:(primary,on-primary,primary-light,primary-dark,secondary,on-secondary,secondary-light,secondary-dark,specific,button-text,button,text,title-text,secondary-text,section-title-text,border,divider,shadow,icon,menu,card,background,section,hover,button-hover,text-hover,button-text-hover,danger-regular,disabled-regular,warning-regular,warning-light,warning-dark,success-regular,success-light,success-dark,danger-dark,danger-light,disabled-light,disabled-dark,information-regular,information-light,information-dark,border-secondary,unCommon);
 $borders:(border,primary);
 
 $color-palette-themes:(
@@ -32,13 +32,10 @@ $color-palette-themes:(
     hover: #9E9E9E,
     button-hover: #FFFFFF,
     text-hover: #FFFFFF,
-    button-text-hover: #FFFFFF,
-    discount-price: #FFFFFF,
-    gradient: #FFFFFF,
-    fields: #FFFFFF,
-    border-fields: #FFFFFF,
+    fields: #F3F3F5,
+    border-fields: #D7D7D7,
     title-text-fields: #FFFFFF,
-    text-fields: #FFFFFF,
+    text-fields: #64748B,
     black: #000000,
     white: #FFFFFF,
     danger-regular: #D70D0D,

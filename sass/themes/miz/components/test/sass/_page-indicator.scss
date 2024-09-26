@@ -1,0 +1,35 @@
+.page-indicator{
+    width:fit-content;
+    height:var(--size);
+    @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
+    input[type="radio"]{
+        @extend .d-none;
+        &:checked + label:empty{
+            background-color: get-color(specific);
+            aspect-ratio: 2/1;
+        }
+        &:checked + label:not(:empty){
+            background-color: get-color(primary-dark);
+            border-color: get-color(specific);
+        }
+    }
+
+    & label{
+        transition: .3s; 
+        &:empty{
+            height: var(--size);
+            background-color: get-color(primary);
+            @extend .pointer, .aspect-ratio-1x1, .all-border-full, .border-box;
+        }
+
+        &:not(:empty){
+            background-color: get-color(primary-dark);
+            border-color: get-color(primary);
+            border-width: 3px;
+            user-select: none;
+            width: var(--size);
+            height: var(--size);
+            @extend .pointer, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .border-solid, .txt-center, .all-border-full, .border-box;
+        }
+    }
+}

@@ -1,0 +1,123 @@
+.table{
+    border-collapse: separate;
+    border-spacing: 0;
+    @extend .overflow-hidden;
+    &.outline{
+        border: 1px solid;
+        &:not([class^="border-"][class$="-color"]){
+            border-color: #fff;
+        }
+    }
+    &:not(.noline){
+        &>thead>tr>th, &>thead>tr:not(:last-child)>td, &>tbody>tr:not(:last-child)>th, &>tbody>tr:not(:last-child)>td, &>tfoot>tr:not(:last-child)>th, &>tfoot>tr:not(:last-child)>td{
+            border-bottom: 1px solid rgb(255, 255, 255);
+        }
+    }
+    &:not([class^="all-border"]){
+        @extend .all-border-medium;
+    }   
+    thead{
+        &:not([class^="bg-"][class$="-color"]){
+            @extend .bg-primary-color;
+        }
+        &:not([class^="py-"]){
+            th{
+                @extend .py-1;  
+            }
+        }
+    }
+    tbody{
+        tr{
+            border-top: 1px solid;
+            &:not([class^="border-"][class$="-color"]){
+                border-color: #fff;
+            }
+            td{
+                text-align: center;
+                color: #fff;
+                padding-top:var(--table-space);
+                padding-bottom:var(--table-space);
+                &:has(img){
+                    @extend .pt-1;
+                }
+                img{
+                    @extend .all-border-full, .aspect-ratio-1x1;
+                    width: 40px; 
+                }
+            }
+        }
+        &.zebra-mode{
+            & tr:nth-child(even){
+                td{
+                    background-color: get-color(primary);
+                }
+            }
+        }
+    }
+    &:has(tbody.zebra-mode){
+        background-color: transparent !important;
+    }
+}
+*{
+    box-sizing: border-box;
+}
+// .table{
+//     border-collapse: collapse;
+//     @extend .overflow-hidden;
+//     &.outline{
+//         border: 1px solid;
+//         border-collapse: separate;
+//         border-spacing: 0;
+//         &:not([class^="border-"][class$="-color"]){
+//             border-color: #fff;
+//         }
+//         &>thead>tr>th, &>thead>tr:not(:last-child)>td, &>tbody>tr:not(:last-child)>th, &>tbody>tr:not(:last-child)>td, &>tfoot>tr:not(:last-child)>th, &>tfoot>tr:not(:last-child)>td{
+//             border-bottom: 1px solid rgb(255, 255, 255);
+//         }
+//     }
+//     &:not([class^="all-border"]){
+//         @extend .all-border-medium;
+//     }   
+//     thead{
+//         &:not([class^="bg-"][class$="-color"]){
+//             @extend .bg-primary-color;
+//         }
+//         &:not([class^="py-"]){
+//             th{
+//                 @extend .py-1;  
+//             }
+//         }
+//     }
+//     tbody{
+//         tr{
+//             border-top: 1px solid;
+//             &:not([class^="border-"][class$="-color"]){
+//                 border-color: #fff;
+//             }
+//             td{
+//                 text-align: center;
+//                 color: #fff;
+//                 &:has(img){
+//                     @extend .pt-1;
+//                 }
+//                 img{
+//                     @extend .all-border-full, .aspect-ratio-1x1;
+//                     width: 40px; 
+//                 }
+//             }
+//         }
+//         &.zebra-mode{
+//             & tr:nth-child(even){
+//                 td{
+//                     background-color: get-color(primary);
+//                 }
+//             }
+//         }
+//     }
+//     &:has(tbody.zebra-mode){
+//         background-color: transparent !important;
+//     }
+// }
+// *{
+//     box-sizing: border-box;
+// }

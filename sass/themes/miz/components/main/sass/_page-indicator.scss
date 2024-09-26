@@ -1,0 +1,35 @@
+.page-indicator{
+    width:fit-content;
+    height:var(--size);
+    @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
+    .page{
+        &.active:empty{
+            background-color: get-color(specific);
+            aspect-ratio: 2/1;
+        }
+        &.active:not(:empty){
+            background-color: get-color(primary-dark);
+            border-color: get-color(specific);
+        }
+    }
+
+    & .page{
+        transition: .3s; 
+        &:empty{
+            height: var(--size);
+            background-color: get-color(primary);
+            @extend .pointer, .aspect-ratio-1x1, .all-border-full, .border-box;
+        }
+
+        &:not(:empty){
+            color:get-color(on-primary);
+            background-color: get-color(primary-dark);
+            border-color: get-color(primary);
+            border-width: 3px;
+            user-select: none;
+            width: var(--size);
+            height: var(--size);
+            @extend .pointer, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .border-solid, .txt-center, .all-border-full, .border-box;
+        }
+    }
+}

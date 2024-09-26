@@ -1,8 +1,5 @@
 @import "../functions/responsive";
-// @import "../../../config";
-// @import "../../../themes";
 
-// giving to parent class [row] for cols
 .row{
     width: 100%;
     display: flex;
@@ -83,7 +80,6 @@ $class-list:(
     }  
     @return $list;
 } 
-
 
 @function get-flex-break-points-classes($break-points-key,$property-key-list , $property-value-list,$class-name){
     $list : ();

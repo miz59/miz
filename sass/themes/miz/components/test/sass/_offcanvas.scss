@@ -1,0 +1,164 @@
+
+
+body:has(.offcanvas-static.offcanvas-scroll input[id*="offcanvasCheck"]:checked){
+    overflow: unset;
+}
+
+body:has(.offcanvas-static.offcanvas-no-scroll input[id*="offcanvasCheck"]:checked){
+    overflow: hidden;
+}
+
+.offcanvas-static{
+    @extend .d-flex,.flex-row,.justify-content-center,.align-items-center;
+    &.offcanvas-backdrop input[id*="offcanvasCheck"] + label + label{
+        background-color: get-color(secondary);
+        visibility:hidden;
+        transition: 250ms linear;
+        @extend .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0;
+    }
+    input[id*="offcanvasCheck"],input[id*="dropdown-toggle"]{
+        @extend .d-none;
+
+        & + label{
+            @extend .pointer;
+        }
+        & ~ .offcanvas-top{
+            &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
+                height: 25% !important;
+                @media screen and (max-width:get-break-point-value(md)){
+                    height: 37% !important;
+                }
+                @media screen and (max-width:get-break-point-value(sm)){
+                    height: 50% !important;
+                }
+            }
+            height:37%;
+            @media screen and (max-width:get-break-point-value(md)) {
+                height: 50%;
+            }
+            @media screen and (max-width:get-break-point-value(sm)) {
+                height: 100%;
+            }
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateY(-100%);
+            transition: 250ms linear;
+            z-index:1000;
+            @extend .w-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+
+            & label{
+                @extend .w-100, .d-flex, .justify-content-end, .pointer, .mb-1;
+            }
+        }
+        & ~ .offcanvas-bottom{
+            &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
+                height: 25% !important;
+                @media screen and (max-width:get-break-point-value(md)){
+                    height: 37% !important;
+                }
+                @media screen and (max-width:get-break-point-value(sm)){
+                    height: 50% !important;
+                }
+            }
+            height:37%;
+            @media screen and (max-width:get-break-point-value(md)) {
+                height: 50%;
+            }
+            @media screen and (max-width:get-break-point-value(sm)) {
+                height: 100%;
+            }
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateY(100%);
+            transition: 250ms linear;
+            z-index:1000;
+            @extend .w-100, .position-fixed, .left-0, .bottom-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+
+            & label{
+                @extend .w-100, .d-flex, .justify-content-end, .pointer, .mb-1;
+            }
+        }
+        & ~ .offcanvas-left{
+            &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
+                width: 25% !important;
+                @media screen and (max-width:get-break-point-value(md)){
+                    width: 37% !important;
+                }
+                @media screen and (max-width:get-break-point-value(sm)){
+                    width: 50% !important;
+                }
+            }
+            width:37%;
+            @media screen and (max-width:get-break-point-value(md)) {
+                width: 50%;
+            }
+            @media screen and (max-width:get-break-point-value(sm)) {
+                width: 100%;
+            }
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateX(-100%);
+            transition: 250ms linear;
+            z-index:1000;
+            @extend .h-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+
+            & label{
+                @extend .w-100, .d-flex, .justify-content-end, .pointer, .mb-1;
+            }
+        }
+        & ~ .offcanvas-right{
+            &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
+                width: 25% !important;
+                @media screen and (max-width:get-break-point-value(md)){
+                    width: 37% !important;
+                }
+                @media screen and (max-width:get-break-point-value(sm)){
+                    width: 50% !important;
+                }
+            }
+            width:537 ;
+            @media screen and (max-width:get-break-point-value(md)) {
+                width: 750 ;
+            }
+            @media screen and (max-width:get-break-point-value(sm)) {
+                width: 100% ;
+            }
+            background-color: get-color(primary);
+            color: get-color(on-primary);
+            box-sizing:border-box;
+            transform: translateX(100%);
+            transition: 250ms linear;
+            z-index:1000;
+            @extend .h-100, .position-fixed, .right-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+
+            & label{
+                @extend .w-100, .d-flex, .justify-content-end, .pointer, .mb-1;
+            }
+        }
+        &:checked{
+            & ~ .offcanvas{
+                transform:translateX(0%);
+            }
+            & ~ .offcanvas-top{
+                transform:translateY(0%);
+            }
+            & ~ .offcanvas-bottom{
+                transform:translateY(0%);
+            }
+            & ~ .offcanvas-left{
+                transform:translateX(0%);
+            }
+            & ~ .offcanvas-right{
+                transform:translateX(0%);
+            }
+            & + label + label{
+                opacity: 0.8 !important;
+                visibility:visible !important;
+                z-index:999;
+            }
+        }
+    }
+}

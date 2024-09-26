@@ -1,0 +1,83 @@
+.btn{
+    @extend .px-2, .py-1, .all-border-small, .pointer;
+    user-select: none;
+    &:has(i){
+        &:not(:has(span)){
+        @extend .p-1, .d-flex;
+        }
+    }
+    &:has(i + span){
+        @extend .gap-1;
+    }
+    
+}
+.btn-primary{
+    background-color: get-color(primary);
+}
+.btn-secondary{
+    background-color: get-color(secondary);
+}
+.btn-success{
+    background-color: get-color(success-regular);
+}
+.btn-danger{
+    background-color: get-color(danger-regular);
+}
+.btn-warning{
+    background-color: get-color(warning-regular);
+}
+.btn-info{
+    background-color: get-color(information-regular);
+}
+.btn-link{
+    color:get-color(information-light);
+    text-decoration:underline; 
+    background-color: transparent;
+}
+
+.btn-outline-primary {
+    border-color:get-color(primary);
+    color: get-color(primary);
+    background-color:transparent;
+    @extend .border-solid, .border-width-1;
+}
+
+.btn-outline-secondary {
+    border-color:get-color(secondary);    
+    color: get-color(secondary);
+    background-color:transparent;
+    @extend .border-solid, .border-width-1;
+}
+
+.btn-outline-success {
+    border-color: get-color(success-regular);
+    color: get-color(success-regular);
+    background-color:transparent;
+    @extend .border-solid, .border-width-1;
+}
+
+.btn-outline-danger {
+    border-color: get-color(danger-regular);
+    color: get-color(danger-regular);
+    background-color:transparent;
+    @extend .border-solid, .border-width-1;
+}
+
+.btn-outline-warning {
+    border-color: get-color(warning-regular);
+    color: get-color(warning-regular);
+    background-color:transparent;
+    @extend .border-solid, .border-width-1;
+
+}
+
+.btn-outline-info {
+    border-color: get-color(information-regular);
+    color: get-color(information-regular);
+    background-color:transparent;
+    @extend .border-solid, .border-width-1;
+
+}
+.btn-round{
+    @extend .all-border-full;
+}

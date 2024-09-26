@@ -128,7 +128,7 @@
 @function set-property-values($counter-reset,$type,$space-width){
 
     @if $type==col{
-        @return calc(100%/$counter-reset);
+        @return calc(100 / map.get($conf-cols,'count') * $counter-reset * 1%);
     }
     @else if $type==w or $type==h{
         @return $space-width*$counter-reset;

@@ -1,0 +1,55 @@
+.form-check{
+    @extend .d-flex, .justify-content-center, .gap-1;
+    align-items: baseline;
+    input , label{
+        cursor: pointer;
+        user-select: none;
+    }
+    input:disabled + label{
+        opacity: .6;
+    }
+}
+.switch {
+    position: relative;
+    input{
+        @extend .d-none;
+    }
+    label{
+        width: 60px;
+        height: 34px;
+        transition: .3s;
+        cursor: pointer;
+        @extend .all-border-full, .d-block, .position-relative;        
+    }
+    &.switch-success{
+        input:checked + .switch-label {
+            background-color: get-color(success) !important;
+        }
+    }
+}
+.switch-label:before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+input:checked + .switch-label:before {
+    left: 100%;
+    transform: translateX(-120%);
+}
+// label{
+//     &:not([class^="bg"][class$="color"][class*=" "]){
+//         background-color: red !important; 
+//     }
+// }
+// body{
+//     &:not([class^="bg"][class$="color"]){
+//         background-color: red !important;
+//     }
+// }

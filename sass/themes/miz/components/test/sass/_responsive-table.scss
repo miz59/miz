@@ -1,0 +1,31 @@
+.responsive-table{
+    @media screen and (max-width: get-break-point-value(lg)) {
+        border-radius: 0px !important;
+        thead{
+            display: none;
+        }
+        tbody{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            tr{
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                align-items: start; 
+                border-top: none;
+                border-radius: 15px;
+                &:not([class^="bg-"][class$="-color"]){
+                    background-color: get-color(secondary-light);
+                    padding: 10px 10px;
+                }   
+                td{
+                    border: none !important;
+                    &::before{
+                        content: #{attr(data-thead-title)} " : "; 
+                    }
+                }
+            } 
+        }   
+    }
+}

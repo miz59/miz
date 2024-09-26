@@ -34,10 +34,15 @@ $font-style:(italic,);
 $fonts: (
   "primary": (
     "defaults":"sans-serif, 'Courier New', Courier, monospace",
-    "folder": "SankofaDisplay-Regular",
+    "folder": "PTSans",
     "font-types": (
       "regular": (
-        "SankofaDisplay-Regular.ttf"
+        "PTSans-Regular.ttf",
+        "PTSans-Italic.ttf"
+      ),
+      "bold": (
+        "PTSans-Bold.ttf",
+        "PTSans-BoldItalic.ttf"
       )
     )
   )

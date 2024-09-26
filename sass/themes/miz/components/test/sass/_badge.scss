@@ -1,0 +1,29 @@
+.badge{
+    @extend .position-relative, .pointer, .font-primary;
+
+    & span{
+        padding:4px;
+        text-transform: uppercase;
+        @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
+
+        &:has(i){
+            padding:4px !important;
+            @extend .aspect-ratio-1x1;
+            & *{
+                @extend .aspect-ratio-1x1;
+            }
+        }
+    }
+    & span[class*="top"][class*="left"]{
+        transform: translate(-50% , -50%);
+    }
+    & span[class*="top"][class*="right"]{
+        transform: translate(50% , -50%);
+    }
+    & span[class*="bottom"][class*="left"]{
+        transform: translate(-50% , 50%);
+    }
+    & span[class*="bottom"][class*="right"]{
+        transform: translate(50% , 50%);
+    }
+}

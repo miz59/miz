@@ -1,0 +1,39 @@
+.breadcrumb{
+    width:fit-content;
+
+    & > *{
+        @extend .d-flex, .flex-row, .flex-wrap, .justify-content-center, .align-items-center;
+        gap: 0.5rem;
+    }
+
+    &[style*="--content"]{
+        & li{
+            color:get-color(section-title-text);
+            @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center;
+            
+            & a{
+                color:get-color(section-title-text);
+            }
+
+            &::after{
+                content: var(--content);
+                @extend .d-inline-block;
+            }
+
+            &:last-child::after{
+                content:'';
+            }
+
+            &.active{
+                color:get-color(primary);
+
+                & a{
+                    color:get-color(primary);
+                }
+            }
+        }
+    }
+}
+div:has(.breadcrumb){
+    @extend .d-flex, .flex-row, .align-items-center;
+}

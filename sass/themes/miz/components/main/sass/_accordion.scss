@@ -1,0 +1,32 @@
+.accordion-box {
+    min-width: 100%;
+    
+    transition: 0.5s;
+    @extend .p-2, .all-border-small, .d-grid, .gap-1, .pointer;
+
+    grid-template-rows: 0fr 0fr;
+    span{
+        border-bottom: 1px solid;
+        margin-top: 7px;
+        @extend .pb-1, .w-100, .d-flex, .flex-row, .justify-content-space-between, .align-items-center; 
+    }
+    & > div {
+        @extend .overflow-hidden, .pl-3;
+    }
+}
+
+.scroll-accordion{
+    max-height: 500px;
+    @extend .overflow-y-scroll;
+}
+.accordion {
+    gap: 5px;
+    width: 100%;
+    @extend .d-flex, .flex-column, .justify-content-center, .align-items-center;
+    &.active .accordion-box {
+        grid-template-rows: 0fr 1fr;
+        span > i{
+            transform: rotate(180deg);
+        }
+    }
+}

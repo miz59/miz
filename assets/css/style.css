@@ -1,37 +1,105 @@
-.palette-color div div {
-  width: 60px;
-  box-shadow: 0px 0px 10px 2px #DEDEDE;
+.accordion-box {
+  min-width: 100%;
+  transition: 0.5s;
+  grid-template-rows: 0fr 0fr;
+}
+.accordion-box span {
+  border-bottom: 1px solid;
+  margin-top: 7px;
+}
+.scroll-accordion {
+  max-height: 500px;
 }
 
-.btn {
-  cursor: pointer;
-  user-select: none;
+.accordion {
+  gap: 5px;
+  width: 100%;
+}
+.accordion.active .accordion-box {
+  grid-template-rows: 0fr 1fr;
+}
+.accordion.active .accordion-box span > i {
+  transform: rotate(180deg);
+}
+
+*:has(.badge) .badge {
+  padding: 4px;
+  text-transform: uppercase;
+}
+*:has(.badge) .badge:has(i) {
+  padding: 4px !important;
+}
+*:has(.badge) .badge[class*=top][class*=left] {
+  transform: translate(-50%, -50%);
+}
+*:has(.badge) .badge[class*=top][class*=right] {
+  transform: translate(50%, -50%);
+}
+*:has(.badge) .badge[class*=bottom][class*=left] {
+  transform: translate(-50%, 50%);
+}
+*:has(.badge) .badge[class*=bottom][class*=right] {
+  transform: translate(50%, 50%);
+}
+
+.breadcrumb {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.breadcrumb > * {
+  gap: 0.5rem;
+}
+.breadcrumb[style*="--content"] li {
+  color: #FFFFFF;
+}
+.breadcrumb[style*="--content"] li a {
+  color: #FFFFFF;
+}
+.breadcrumb[style*="--content"] li::after {
+  content: var(--content);
+}
+.breadcrumb[style*="--content"] li:last-child::after {
+  content: "";
+}
+.breadcrumb[style*="--content"] li.active {
+  color: #3761EB;
+}
+.breadcrumb[style*="--content"] li.active a {
+  color: #3761EB;
+}
+
+.btn, div:has(> .form-control) .form-control[type=file]::file-selector-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .btn-primary {
+  color: #FFFFFF;
   background-color: #3761EB;
 }
 
-.btn-secondary {
+.btn-secondary, div:has(> .form-control) .form-control[type=file]::file-selector-button {
+  color: #AFB3BC;
   background-color: #272E3F;
 }
 
 .btn-success {
+  color: #FFFFFF;
   background-color: #02B74A;
 }
 
 .btn-danger {
+  color: #FFFFFF;
   background-color: #D70D0D;
 }
 
 .btn-warning {
+  color: #FFFFFF;
   background-color: #FFB800;
 }
 
 .btn-info {
-  background-color: #3761EB;
-}
-
-.btn-info {
+  color: #FFFFFF;
   background-color: #3761EB;
 }
 
@@ -42,101 +110,549 @@
 }
 
 .btn-outline-primary {
-  color: #3761EB;
   border-color: #3761EB;
+  color: #3761EB;
   background-color: transparent;
 }
 
 .btn-outline-secondary {
-  color: #272E3F;
   border-color: #272E3F;
+  color: #272E3F;
   background-color: transparent;
 }
 
 .btn-outline-success {
-  color: #02B74A;
   border-color: #02B74A;
+  color: #02B74A;
   background-color: transparent;
 }
 
 .btn-outline-danger {
-  color: #D70D0D;
   border-color: #D70D0D;
+  color: #D70D0D;
   background-color: transparent;
 }
 
 .btn-outline-warning {
-  color: #FFB800;
   border-color: #FFB800;
+  color: #FFB800;
   background-color: transparent;
 }
 
 .btn-outline-info {
-  color: #3761EB;
   border-color: #3761EB;
+  color: #3761EB;
   background-color: transparent;
 }
 
-.pointer, .page-indicator li:not(:empty), .page-indicator li:empty, .tab .tab-bar .tab-item, .tab .tab-bar .tab-item *, .nav .nav-item *, .list-group .list-group-item *, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] + label, .badge {
-  cursor: pointer;
+.btn-sm {
+  font-size: 10px;
+}
+
+.btn-lg {
+  font-size: 20px;
+}
+
+.multiply-ellipsis-3 {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.card {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.card .card-header p {
+  border-bottom: 1px solid;
+}
+.card .card-footer p {
+  border-top: 1px solid;
+}
+.card-scrollbar .card-body {
+  padding-top: 0 !important;
+  scrollbar-width: none;
+}
+.card-scrollbar .card-body p {
+  margin-top: 0 !important;
+}
+.palette-color div div {
+  width: 60px;
+  box-shadow: 0px 0px 10px 2px #DEDEDE;
+  transition: 90ms linear;
+}
+.palette-color div div:hover {
+  transform: scale(1.16);
 }
 
 .dropdown label:not([class*=w-]) {
+  width: -moz-fit-content;
   width: fit-content;
 }
 .dropdown ul {
   max-height: 0;
-  opacity: 0;
   transition: 0.4s ease-in, opacity 0.1s;
+  width: -moz-max-content;
   width: max-content;
 }
 .dropdown ul a {
   color: unset;
 }
-.dropdown:has(input:checked) ul {
+.dropdown.active ul {
+  width: 100%;
   max-height: 100vh;
   opacity: 1;
 }
-
-.dropdown-bottom ul {
+.dropdown.dropdown-bottom ul {
   top: calc(100% + 5px);
 }
-
-.dropdown-right ul {
+.dropdown.dropdown-right ul {
   left: calc(100% + 5px);
   top: 0%;
 }
-
-.dropdown-left ul {
+.dropdown.dropdown-left ul {
   right: calc(100% + 5px);
   top: 0%;
 }
-
-.dropdown-top ul {
+.dropdown.dropdown-top ul {
   bottom: calc(100% + 5px);
 }
 
-.badge span {
-  padding: 4px;
-  text-transform: uppercase;
+.dropdown-sm {
+  font-size: 10px;
 }
-.badge span:not(:empty) {
-  padding: 2px 4px;
+
+.dropdown-lg {
+  font-size: 20px;
 }
-.badge span:has(i) {
-  padding: 4px !important;
+.dropdown-lg label {
+  padding: 10px 15px !important;
 }
-.badge span[class*=top][class*=left]:not(:empty) {
-  transform: translate(-50%, -50%);
+
+.form-floating .form-control {
+  height: 100%;
+  padding-top: 17px !important;
+  padding-bottom: 5px !important;
 }
-.badge span[class*=top][class*=right]:not(:empty) {
-  transform: translate(50%, -50%);
+.form-floating .form-control::-moz-placeholder {
+  -moz-user-select: none;
+       user-select: none;
 }
-.badge span[class*=bottom][class*=left]:not(:empty) {
-  transform: translate(-50%, 50%);
+.form-floating .form-control::placeholder {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
-.badge span[class*=bottom][class*=right]:not(:empty) {
-  transform: translate(50%, 50%);
+.form-floating .form-control + label {
+  top: 50%;
+  right: 100%;
+  left: 10px;
+  white-space: nowrap;
+  transition: 0.2s ease-in;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.form-floating .form-control + label:not([class*=color]) {
+  color: #64748B;
+}
+.form-floating .form-control textarea + label {
+  top: 10px;
+}
+.form-floating .form-control:not(:-moz-placeholder-shown) + label {
+  transform: scale(0.7);
+  top: 0px;
+  right: 100%;
+  left: 10px;
+}
+.form-floating .form-control:not(:placeholder-shown) + label, .form-floating .form-control:focus + label, .form-floating .form-control:disabled + label {
+  transform: scale(0.7);
+  top: 0px;
+  right: 100%;
+  left: 10px;
+}
+.form-floating .form-control:disabled + label {
+  z-index: 1;
+}
+
+div:has(> .form-control)[class*=flex-row] input, div:has(> .form-control)[class*=flex-row] p {
+  margin-top: 0 !important;
+}
+div:has(> .form-control) .form-label:not([class*=-color]) {
+  color: #FFFFFF;
+}
+div:has(> .form-control) .form-control {
+  padding: 7px 10px;
+}
+div:has(> .form-control) .form-control:not([class*=-color]) {
+  background-color: #F3F3F5;
+  color: #64748B;
+}
+div:has(> .form-control) .form-control:not([class^=border-][class$=-color]) {
+  border-color: #D7D7D7;
+}
+div:has(> .form-control) .form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+div:has(> .form-control) .form-control[type=file]::file-selector-button {
+  border: none;
+}
+div:has(> .form-control) textarea.form-control {
+  resize: vertical;
+}
+div:has(> .form-control) .form-control-sm {
+  padding: 5px 6px;
+}
+div:has(> .form-control) .form-control-lg {
+  padding: 10px 12px;
+}
+div:has(> .form-control) .form-text:not([class*=-color]) {
+  color: #64748B;
+}
+div:has(> .form-control) .form-control:disabled::-moz-placeholder {
+  opacity: 0.8;
+}
+div:has(> .form-control) .form-control:disabled::placeholder {
+  opacity: 0.8;
+}
+div:has(> .form-control) .form-control:disabled:not([class^=bg-][class$=-color]) {
+  background-color: #F3F3F5;
+}
+div:has(> .form-control) .form-control:disabled:not([class$=-color]) {
+  color: #DADEE3;
+}
+div:has(> .form-control) .form-control:read-only::-moz-placeholder {
+  opacity: 1;
+}
+div:has(> .form-control) .form-control:-moz-read-only::placeholder {
+  opacity: 1;
+}
+div:has(> .form-control) .form-control:read-only::placeholder {
+  opacity: 1;
+}
+div:has(> .form-control) .form-control:-moz-read-only:not([class^=bg-][class$=-color]) {
+  background-color: #F3F3F5;
+}
+div:has(> .form-control) .form-control:read-only:not([class^=bg-][class$=-color]) {
+  background-color: #F3F3F5;
+}
+div:has(> .form-control) .form-control:-moz-read-only:not([class$=-color]) {
+  color: #FFFFFF;
+}
+div:has(> .form-control) .form-control:read-only:not([class$=-color]) {
+  color: #FFFFFF;
+}
+div:has(> .form-control) .form-control:read-only:not([class$=-color])::-moz-placeholder {
+  color: #FFFFFF !important;
+}
+div:has(> .form-control) .form-control:-moz-read-only:not([class$=-color])::placeholder {
+  color: #FFFFFF !important;
+}
+div:has(> .form-control) .form-control:read-only:not([class$=-color])::placeholder {
+  color: #FFFFFF !important;
+}
+div:has(> .form-control) .form-control-plaintext:not([class^=bg-][class$=-color]) {
+  background-color: transparent !important;
+}
+div:has(> .form-control) .form-control-plaintext:not([class^=border-][class$=-color]) {
+  border: none !important;
+}
+div:has(> .form-control) .form-control-plaintext:not([class$=-color]) {
+  color: #FFFFFF;
+}
+div:has(> .form-control) .form-control-color {
+  height: 3rem;
+  border-radius: 16px;
+}
+
+.btn-group .btn, .btn-group div:has(> .form-control) .form-control[type=file]::file-selector-button, div:has(> .form-control) .btn-group .form-control[type=file]::file-selector-button {
+  transition: 0.2s;
+}
+.btn-group .btn:hover, .btn-group div:has(> .form-control) .form-control[type=file]:hover::file-selector-button, div:has(> .form-control) .btn-group .form-control[type=file]:hover::file-selector-button {
+  filter: brightness(1.3);
+}
+.btn-group .btn.active, .btn-group div:has(> .form-control) .active.form-control[type=file]::file-selector-button, div:has(> .form-control) .btn-group .active.form-control[type=file]::file-selector-button {
+  filter: brightness(1.3);
+}
+
+.input-group {
+  gap: 0rem !important;
+}
+.input-group > label, .input-group > span {
+  background-color: #F3F3F5;
+  border-color: #D7D7D7;
+}
+.input-group > :nth-child(n):has(+ datalist:last-child) {
+  border-radius: 5px !important;
+  border-right: 1px solid #D7D7D7 !important;
+}
+.input-group > * {
+  border: 1px solid #D7D7D7;
+}
+
+.list-group .list-group-items.active {
+  color: #FFFFFF;
+  background-color: #3761EB;
+}
+.list-group .list-group-items.active a {
+  color: #FFFFFF;
+}
+.list-group .list-group-items.disabled {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+ol.list-group li {
+  list-style: decimal;
+}
+ol.list-group li.active {
+  background-color: #3761EB;
+  color: #FFFFFF;
+}
+ol.list-group li.active::marker {
+  color: #707479;
+}
+
+.mason {
+  -moz-column-count: var(--column-count);
+       column-count: var(--column-count);
+}
+@media screen and (max-width: 1280px) {
+  .mason {
+    -moz-column-count: 5;
+         column-count: 5;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .mason {
+    -moz-column-count: 3;
+         column-count: 3;
+  }
+}
+@media screen and (max-width: 767px) {
+  .mason {
+    -moz-column-count: 2;
+         column-count: 2;
+  }
+}
+@media screen and (max-width: 478px) {
+  .mason {
+    -moz-column-count: 1;
+         column-count: 1;
+  }
+}
+.mason .mason-item {
+  background-color: #3761EB;
+}
+
+.nav .nav-item.active {
+  color: #FFFFFF;
+  background-color: #3761EB;
+}
+.nav .nav-item.active a {
+  color: #FFFFFF;
+}
+.nav .nav-item.disabled, .nav .nav-item.disabled * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: default;
+  color: #B1B1B1;
+}
+body:has(.offcanvas-static.offcanvas-scroll div[id*=offcanvasCheck].active) {
+  overflow: unset;
+}
+
+body:has(.offcanvas-static.offcanvas-no-scroll div[id*=offcanvasCheck].active) {
+  overflow: hidden;
+}
+
+.offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop {
+  background-color: #272E3F;
+  visibility: hidden;
+  transition: 250ms linear;
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top {
+  height: 37%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateY(-100%);
+  transition: 250ms linear;
+  z-index: 1000;
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top ~ [class*=offcanvas-] {
+  height: 25% !important;
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top ~ [class*=offcanvas-] {
+    height: 37% !important;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top ~ [class*=offcanvas-] {
+    height: 50% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top {
+    height: 50%;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top {
+    height: 100%;
+  }
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom {
+  height: 37%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: 250ms linear;
+  z-index: 1000;
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom ~ [class*=offcanvas-] {
+  height: 25% !important;
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom ~ [class*=offcanvas-] {
+    height: 37% !important;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom ~ [class*=offcanvas-] {
+    height: 50% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom {
+    height: 50%;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom {
+    height: 100%;
+  }
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left {
+  width: 37%;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+  transition: 250ms linear;
+  z-index: 1000;
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left ~ [class*=offcanvas-] {
+  width: 25% !important;
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left ~ [class*=offcanvas-] {
+    width: 37% !important;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left ~ [class*=offcanvas-] {
+    width: 50% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left {
+    width: 100%;
+  }
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
+  width: 537;
+  background-color: #3761EB;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: 250ms linear;
+  z-index: 1000;
+}
+.offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right ~ [class*=offcanvas-] {
+  width: 25% !important;
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right ~ [class*=offcanvas-] {
+    width: 37% !important;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right ~ [class*=offcanvas-], .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right:has(~ [class*=offcanvas-]), .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right ~ [class*=offcanvas-] {
+    width: 50% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
+    width: 750;
+  }
+}
+@media screen and (max-width: 478px) {
+  .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
+    width: 100%;
+  }
+}
+.offcanvas-static div[id*=offcanvasCheck].active ~ .offcanvas, .offcanvas-static div[id*=dropdown-toggle].active ~ .offcanvas {
+  transform: translateX(0%);
+}
+.offcanvas-static div[id*=offcanvasCheck].active ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle].active ~ .offcanvas-top {
+  transform: translateY(0%);
+}
+.offcanvas-static div[id*=offcanvasCheck].active ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle].active ~ .offcanvas-bottom {
+  transform: translateY(0%);
+}
+.offcanvas-static div[id*=offcanvasCheck].active ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle].active ~ .offcanvas-left {
+  transform: translateX(0%);
+}
+.offcanvas-static div[id*=offcanvasCheck].active ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle].active ~ .offcanvas-right {
+  transform: translateX(0%);
+}
+.offcanvas-static div[id*=offcanvasCheck].active + div.backdrop, .offcanvas-static div[id*=dropdown-toggle].active + div.backdrop {
+  opacity: 0.8 !important;
+  visibility: visible !important;
+  z-index: 999;
+}
+
+.page-indicator {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: var(--size);
+}
+.page-indicator .page.active:empty {
+  background-color: #38BDF8;
+  aspect-ratio: 2/1;
+}
+.page-indicator .page.active:not(:empty) {
+  background-color: #0C2780;
+  border-color: #38BDF8;
+}
+.page-indicator .page {
+  transition: 0.3s;
+}
+.page-indicator .page:empty {
+  height: var(--size);
+  background-color: #3761EB;
+}
+.page-indicator .page:not(:empty) {
+  color: #FFFFFF;
+  background-color: #0C2780;
+  border-color: #3761EB;
+  border-width: 3px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: var(--size);
+  height: var(--size);
 }
 
 .progress-bar {
@@ -147,8 +663,8 @@
   overflow: hidden;
 }
 .progress-bar:not([class*=py-]) {
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 14px;
 }
 .progress-bar::after {
@@ -169,225 +685,799 @@
   width: calc(var(--percentage) * 1% - 10px);
   padding-inline-end: 10px;
 }
-body:has(.offcanvas-static.offcanvas-scroll input[id*=offcanvasCheck]:checked) {
-  overflow: unset;
+.form-check {
+  align-items: baseline;
+}
+.form-check input, .form-check label {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.form-check input:disabled + label {
+  opacity: 0.6;
+}
+.form-check input.danger {
+  accent-color: #D70D0D;
+}
+.form-check input.success {
+  accent-color: #02B74A;
+}
+.form-check input.info {
+  accent-color: #3761EB;
+}
+.form-check input.primary {
+  accent-color: #3761EB;
+}
+.form-check input.secondary {
+  accent-color: #272E3F;
 }
 
-body:has(.offcanvas-static.offcanvas-no-scroll input[id*=offcanvasCheck]:checked) {
-  overflow: hidden;
+.switch {
+  position: relative;
+}
+.switch label.switch-label {
+  width: var(--switch-size);
+  aspect-ratio: 2/1;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.switch input:checked + .switch-label {
+  background-color: #3761EB;
+}
+.switch.switch-success input:checked + .switch-label {
+  background-color: #02B74A !important;
+}
+.switch.switch-danger input:checked + .switch-label {
+  background-color: #D70D0D !important;
+}
+.switch.switch-secondary input:checked + .switch-label {
+  background-color: #272E3F !important;
+}
+.switch.switch-info input:checked + .switch-label {
+  background-color: #3761EB !important;
 }
 
-.offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label {
-  background-color: #272E3F;
-  visibility: hidden;
-  transition: 250ms linear;
-}
-.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top {
-  height: 25%;
-  background-color: #3761EB;
-  color: #FFFFFF;
-  box-sizing: border-box;
-  transform: translateY(-100%);
-  transition: 250ms linear;
-}
-.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom {
-  height: 25%;
-  background-color: #3761EB;
-  color: #FFFFFF;
-  box-sizing: border-box;
-  transform: translateY(100%);
-  transition: 250ms linear;
-}
-.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left {
-  width: 25%;
-  background-color: #3761EB;
-  color: #FFFFFF;
-  box-sizing: border-box;
-  transform: translateX(-100%);
-  transition: 250ms linear;
-}
-.offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
-  width: 25%;
-  background-color: #3761EB;
-  color: #FFFFFF;
-  box-sizing: border-box;
-  transform: translateX(100%);
-  transition: 250ms linear;
-}
-.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas {
-  transform: translateX(0%);
-}
-.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-top {
-  transform: translateY(0%);
-}
-.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-bottom {
-  transform: translateY(0%);
-}
-.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-left {
-  transform: translateX(0%);
-}
-.offcanvas-static input[id*=offcanvasCheck]:checked ~ .offcanvas-right {
-  transform: translateX(0%);
-}
-.offcanvas-static input[id*=offcanvasCheck]:checked + label + label {
-  opacity: 0.7;
-  visibility: visible;
-}
-
-.breadcrumb ol {
-  gap: 0.5rem;
-}
-.breadcrumb ol[style*="--content"] li::after {
-  content: var(--content);
-}
-.breadcrumb ol[style*="--content"] li:last-child::after {
+.switch-label:before {
   content: "";
+  position: absolute;
+  height: 80%;
+  aspect-ratio: 1/1;
+  left: 0%;
+  bottom: 50%;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  transform: translateY(50%) translateX(15%);
 }
 
-.list-group .list-group-item {
-  box-sizing: border-box;
+input:checked + .switch-label:before {
+  left: 100%;
+  transform: translateX(-115%) translateY(50%);
 }
-.list-group .list-group-item.active {
-  color: #FFFFFF;
+
+.switch-label:not([class*=bg][class*=color]) {
+  background-color: #3C4252;
+}
+
+.range {
+  width: 100%;
+  height: var(--height-range);
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: #3761EB;
 }
-.list-group .list-group-item.active a {
-  color: #FFFFFF;
+.range.appearance {
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto;
+  accent-color: #3761EB;
 }
-.list-group .list-group-item.disabled, .list-group .list-group-item.disabled * {
-  user-select: none;
-  cursor: default;
+.range:not(.appearance):disabled {
+  background-color: #B1B1B1;
 }
-ol.list-group li {
-  list-style: decimal;
-}
-ol.list-group li.active {
+
+.form-select:not([class^=bg-][class$=-color]) {
   background-color: #3761EB;
   color: #FFFFFF;
+  border: none;
 }
-ol.list-group li.active::marker {
+.form-select option:not([class^=bg-][class$=-color]) {
+  background-color: #FFFFFF;
   color: #707479;
 }
+.form-select.small {
+  font-size: 12px;
+  padding: 5px;
+}
+.form-select.medium {
+  font-size: 16px;
+  padding: 7px;
+}
+.form-select.large {
+  font-size: 22px;
+  padding: 10px;
+}
 
-.nav .nav-item.active {
-  color: #FFFFFF;
-  background-color: #3761EB;
+.tab-container {
+  margin: 0 auto;
 }
-.nav .nav-item.active a {
-  color: #FFFFFF;
+
+.tab {
+  flex-basis: 100%;
+  border-bottom: 1px solid;
 }
-.nav .nav-item.disabled, .nav .nav-item.disabled * {
-  user-select: none;
-  cursor: default;
+.tab:not([class^=border-][class$=-color]) {
+  border-color: #ddd;
 }
-.tab .tab-bar .tab-item {
-  user-select: none;
+.tab .tab-label {
+  cursor: pointer;
 }
-.tab .tab-bar .tab-item label {
-  border-color: transparent;
+.tab .tab-label:not([class^=bg-][class$=-color]) {
+  background-color: #f7f7f7;
 }
-.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-1 {
-  transform: translateX(0%);
+
+.tab-content {
+  cursor: pointer;
+  left: 0;
+  transition: 0.2s;
 }
-.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2 {
-  transform: translateX(100%);
+.tab-content:not([class^=bg-][class$=-color]) {
+  background-color: #fff;
 }
-.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3 {
-  transform: translateX(100%);
+
+.tab-container {
+  display: flex;
 }
-.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4 {
-  transform: translateX(100%);
+
+.tab {
+  flex-basis: 33.33%;
+  border-bottom: none;
+  border-right: 1px solid #ddd;
 }
-.tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5 {
-  transform: translateX(100%);
+.tab-label {
+  background-color: #e7e7e7;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
 }
-.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-2 {
-  transform: translateX(0%);
-}
-.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3 {
-  transform: translateX(100%);
-}
-.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4 {
-  transform: translateX(100%);
-}
-.tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5 {
-  transform: translateX(100%);
-}
-.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-3 {
-  transform: translateX(0%);
-}
-.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4 {
-  transform: translateX(100%);
-}
-.tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5 {
-  transform: translateX(100%);
-}
-.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-4 {
-  transform: translateX(0%);
-}
-.tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5 {
-  transform: translateX(100%);
-}
-.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
-  transform: translateX(-100%);
-}
-.tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-5 {
-  transform: translateX(0%);
-}
-.tab .tab-page [class*=tab-page-] {
+
+.tab-content {
+  display: block;
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 20px;
+  position: absolute;
   transition: 400ms linear;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-.page-indicator {
-  width: fit-content;
-  height: var(--size);
+.tab-container .tab input#tabCheck1:checked ~ .tab-content {
+  transform: translateX(0%);
 }
-.page-indicator li:empty {
+.tab-container:has(input#tabCheck1:checked) .tab:nth-child(2) .tab-content {
+  transform: translateX(100%);
+}
+.tab-container:has(input#tabCheck1:checked) .tab:nth-child(3) .tab-content {
+  transform: translateX(100%);
+}
+.tab-container:has(input#tabCheck2:checked) .tab:nth-child(1) .tab-content {
+  transform: translateX(-100%);
+}
+.tab-container .tab input#tabCheck2:checked ~ .tab-content {
+  transform: translateX(0%);
+}
+.tab-container:has(input#tabCheck2:checked) .tab:nth-child(3) .tab-content {
+  transform: translateX(100%);
+}
+.tab-container:has(input#tabCheck3:checked) .tab:nth-child(1) .tab-content {
+  transform: translateX(-100%);
+}
+.tab-container:has(input#tabCheck3:checked) .tab:nth-child(2) .tab-content {
+  transform: translateX(-100%);
+}
+.tab-container .tab input#tabCheck3:checked ~ .tab-content {
+  transform: translateX(0%);
+}
+
+@media (max-width: 600px) {
+  .tab-container {
+    flex-direction: column;
+  }
+  .tab-content {
+    height: 0px;
+    opacity: 0;
+    position: unset;
+    transform: translate(0) !important;
+    z-index: -1;
+    transition: 0s !important;
+  }
+  input[type=radio]:checked + .tab-label + .tab-content {
+    height: -moz-fit-content !important;
+    height: fit-content !important;
+    opacity: 1;
+  }
+}
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table.outline {
+  border: 1px solid;
+}
+.table.outline:not([class^=border-][class$=-color]) {
+  border-color: #fff;
+}
+.table:not(.noline) > thead > tr > th, .table:not(.noline) > thead > tr:not(:last-child) > td, .table:not(.noline) > tbody > tr:not(:last-child) > th, .table:not(.noline) > tbody > tr:not(:last-child) > td, .table:not(.noline) > tfoot > tr:not(:last-child) > th, .table:not(.noline) > tfoot > tr:not(:last-child) > td {
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+.table tbody tr {
+  border-top: 1px solid;
+}
+.table tbody tr:not([class^=border-][class$=-color]) {
+  border-color: #fff;
+}
+.table tbody tr td {
+  text-align: center;
+  color: #fff;
+  padding-top: var(--table-space);
+  padding-bottom: var(--table-space);
+}
+.table tbody tr td img:not([class*=w-]) {
+  width: 40px;
+}
+.table tbody.zebra-mode tr:nth-child(even) td {
   background-color: #3761EB;
 }
-.page-indicator li:empty.active {
-  background-color: #38BDF8;
-  aspect-ratio: 2/1;
+.table:has(tbody.zebra-mode) {
+  background-color: transparent !important;
 }
-.page-indicator li:not(:empty) {
-  background-color: #0C2780;
-  border-color: #3761EB;
-  width: fit-content;
-}
-.page-indicator li:not(:empty).active {
-  background-color: #0C2780;
-  border-color: #38BDF8;
-  width: fit-content;
-  border-width: 2px;
+@media screen and (max-width: 1024px) {
+  .responsive-table {
+    border-radius: 0px !important;
+  }
+  .responsive-table thead {
+    display: none;
+  }
+  .responsive-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .responsive-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    border-top: none;
+    border-radius: 15px;
+  }
+  .responsive-table tbody tr:not([class^=bg-][class$=-color]) {
+    background-color: #3761EB;
+    padding: 10px 10px;
+  }
+  .responsive-table tbody tr td {
+    border: none !important;
+  }
+  .responsive-table tbody tr td::before {
+    content: attr(data-thead-title) " : ";
+  }
 }
 
+.tooltip.tooltip-top span {
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip.tooltip-top span::after {
+  border-top-color: inherit !important;
+  left: 50%;
+  bottom: -30%;
+}
+.tooltip.tooltip-bottom span {
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip.tooltip-bottom span::after {
+  border-bottom-color: inherit !important;
+  left: 50%;
+  top: -28%;
+}
+.tooltip.tooltip-right span {
+  left: 50%;
+  top: 0%;
+  transform: translateX(50%);
+}
+.tooltip.tooltip-right span::after {
+  border-right-color: inherit !important;
+  left: 0%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.tooltip.tooltip-left span {
+  right: 50%;
+  top: 0%;
+  transform: translateX(-50%);
+}
+.tooltip.tooltip-left span::after {
+  border-left-color: inherit !important;
+  right: 0%;
+  top: 50%;
+  transform: translateX(100%) translateY(-50%);
+}
+.tooltip span {
+  opacity: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.tooltip span:not([class^=bg-][class$=-color]) {
+  background-color: #272E3F;
+}
+.tooltip span:not([class^=border-][class$=-color]) {
+  border-color: #272E3F;
+}
+.tooltip span::after {
+  content: "";
+  margin-left: -5px;
+  border-width: 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.tooltip:hover span {
+  opacity: 1;
+}
+
+.loader-spinner-border {
+  width: 50px;
+  border-color: #3761EB;
+  animation: spinner-border-1 0.8s infinite linear alternate, spinner-border-2 1.6s infinite linear;
+}
+
+.loader-spinner-border-sm {
+  width: 20px;
+}
+.loader-spinner-border-sm:not([class*=border-width]) {
+  border-width: 5px;
+}
+
+.loader-spinner-border-md {
+  width: 30px;
+}
+.loader-spinner-border-md:not([class*=border-width]) {
+  border-width: 6px;
+}
+
+.loader-spinner-border-lg {
+  width: 50px;
+}
+.loader-spinner-border-lg:not([class*=border-width]) {
+  border-width: 8px;
+}
+
+.loader-spinner-border-xl {
+  width: 70px;
+}
+.loader-spinner-border-xl:not([class*=border-width]) {
+  border-width: 9px;
+}
+
+.loader-spinner-border-danger {
+  border-color: #D70D0D !important;
+}
+
+.loader-spinner-border-warning {
+  border-color: #FFB800 !important;
+}
+
+.loader-spinner-border-success {
+  border-color: #02B74A !important;
+}
+
+.loader-spinner-border-information {
+  border-color: #3761EB !important;
+}
+
+.loader-grow {
+  --loader-grow-size: 50px;
+  background-color: #3761EB;
+  animation: grow 0.75s linear infinite;
+  width: 50px;
+}
+
+.loader-grow-danger {
+  background-color: #D70D0D !important;
+}
+
+.loader-grow-warning {
+  background-color: #FFB800 !important;
+}
+
+.loader-grow-success {
+  background-color: #02B74A !important;
+}
+
+.loader-grow-information {
+  background-color: #3761EB !important;
+}
+
+.loader-grow-sm {
+  width: 20px;
+}
+
+.loader-grow-md {
+  width: 30px;
+}
+
+.loader-grow-lg {
+  width: 50px;
+}
+
+.loader-grow-xl {
+  width: 70px;
+}
+
+.loader-bars {
+  width: 45px;
+  aspect-ratio: 0.75;
+  --color-bars: no-repeat linear-gradient(#3761EB 0 0);
+  background: var(--color-bars) 0% 50%, var(--color-bars) 50% 50%, var(--color-bars) 100% 50%;
+  background-size: 20% 50%;
+  animation: bars 1s infinite linear;
+}
+
+.loader-bars-danger {
+  background-color: #D70D0D !important;
+}
+
+.loader-bars-warning {
+  background-color: #FFB800 !important;
+}
+
+.loader-bars-success {
+  background-color: #02B74A !important;
+}
+
+.loader-bars-information {
+  background-color: #3761EB !important;
+}
+
+.loader-bars-sm {
+  width: 20px;
+}
+
+.loader-bars-md {
+  width: 30px;
+}
+
+.loader-bars-lg {
+  width: 50px;
+}
+
+.loader-bars-xl {
+  width: 70px;
+}
+
+.loader-multi {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  border-right-color: #3761EB;
+  animation: multi 1s infinite linear;
+}
+
+.loader-multi::before,
+.loader-multi::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: multi 2s infinite;
+}
+
+.loader-multi::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+
+.loader-multi-danger {
+  background-color: #D70D0D !important;
+}
+
+.loader-multi-warning {
+  background-color: #FFB800 !important;
+}
+
+.loader-multi-success {
+  background-color: #02B74A !important;
+}
+
+.loader-multi-information {
+  background-color: #3761EB !important;
+}
+
+.loader-multi-sm {
+  width: 20px;
+}
+
+.loader-multi-md {
+  width: 30px;
+}
+
+.loader-multi-lg {
+  width: 50px;
+}
+
+.loader-multi-xl {
+  width: 70px;
+}
+
+.loader-spinner-fade {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #3761EB 94%, transparent) top/8px 8px no-repeat, conic-gradient(transparent 30%, #3761EB);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 0);
+  animation: spinner-fade 1s infinite linear;
+}
+
+.loader-spinner-fade-danger {
+  background: radial-gradient(farthest-side, #D70D0D 94%, transparent) top/8px 8px no-repeat, conic-gradient(transparent 30%, #D70D0D) !important;
+}
+
+.loader-spinner-fade-warning {
+  background: radial-gradient(farthest-side, #FFB800 94%, transparent) top/8px 8px no-repeat, conic-gradient(transparent 30%, #FFB800) !important;
+}
+
+.loader-spinner-fade-success {
+  background: radial-gradient(farthest-side, #02B74A 94%, transparent) top/8px 8px no-repeat, conic-gradient(transparent 30%, #02B74A) !important;
+}
+
+.loader-spinner-fade-information {
+  background: radial-gradient(farthest-side, #3761EB 94%, transparent) top/8px 8px no-repeat, conic-gradient(transparent 30%, #3761EB) !important;
+}
+
+.loader-spinner-fade-sm {
+  width: 20px;
+}
+
+.loader-spinner-fade-md {
+  width: 30px;
+}
+
+.loader-spinner-fade-lg {
+  width: 50px;
+}
+
+.loader-spinner-fade-xl {
+  width: 70px;
+}
+
+.loader-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  border-top-color: #3761EB;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.loader-spinner-danger {
+  border-color: #B1B1B1;
+  border-top-color: #D70D0D;
+}
+
+.loader-spinner-warning {
+  border-color: #B1B1B1;
+  border-top-color: #FFB800;
+}
+
+.loader-spinner-success {
+  border-color: #B1B1B1;
+  border-top-color: #02B74A;
+}
+
+.loader-spinner-information {
+  border-color: #B1B1B1;
+  border-top-color: #3761EB;
+}
+
+.loader-spinner-sm {
+  width: 20px;
+}
+
+.loader-spinner-md {
+  width: 30px;
+}
+
+.loader-spinner-lg {
+  width: 50px;
+}
+
+.loader-spinner-xl {
+  width: 70px;
+}
+
+.loader-liquid {
+  width: 50px;
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  display: grid;
+  filter: contrast(2);
+}
+
+.loader-liquid:before,
+.loader-liquid:after {
+  content: "";
+  grid-area: 1/1;
+  animation: liquid 3s infinite linear;
+  background-color: #3761EB;
+  border-radius: 50%;
+}
+
+.loader-liquid:after {
+  animation-delay: -0.8s;
+}
+
+.loader-liquid-danger::after, .loader-liquid-danger::before {
+  background-color: #D70D0D;
+}
+
+.loader-liquid-warning::after, .loader-liquid-warning::before {
+  background-color: #FFB800;
+}
+
+.loader-liquid-success::after, .loader-liquid-success::before {
+  background-color: #02B74A;
+}
+
+.loader-liquid-information::after, .loader-liquid-information::before {
+  background-color: #3761EB;
+}
+
+.loader-liquid-sm {
+  width: 20px;
+}
+
+.loader-liquid-md {
+  width: 30px;
+}
+
+.loader-liquid-lg {
+  width: 50px;
+}
+
+.loader-liquid-xl {
+  width: 70px;
+}
+
+@keyframes spinner-border-1 {
+  0% {
+    -webkit-clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+            clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+  12.5% {
+    -webkit-clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+            clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+  }
+  25% {
+    -webkit-clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+            clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+  }
+  50% {
+    -webkit-clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+            clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  62.5% {
+    -webkit-clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+            clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  75% {
+    -webkit-clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+            clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  100% {
+    -webkit-clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+            clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+  }
+}
+@keyframes spinner-border-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  49.99% {
+    transform: scaleY(1) rotate(135deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(0deg);
+  }
+  100% {
+    transform: scaleY(-1) rotate(-135deg);
+  }
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes liquid {
+  12.5% {
+    border-radius: 37% 63% 70% 30%/30% 62% 38% 70%;
+  }
+  25% {
+    border-radius: 84% 16% 15% 85%/55% 79% 21% 45%;
+  }
+  37.5% {
+    border-radius: 73% 27% 74% 26%/64% 32% 68% 36%;
+  }
+  50% {
+    border-radius: 73% 27% 18% 82%/52% 32% 68% 48%;
+  }
+  62.5% {
+    border-radius: 33% 67% 18% 82%/52% 75% 25% 48%;
+  }
+  75% {
+    border-radius: 12% 88% 69% 31%/10% 66% 34% 90%;
+  }
+  87.5% {
+    border-radius: 50% 50% 70% 30%/52% 62% 38% 48%;
+  }
+}
+@keyframes bars {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
+}
+@keyframes grow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes multi {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+@keyframes spinner-fade {
+  100% {
+    transform: rotate(1turn);
+  }
+}
 .section {
   width: 100%;
   display: flex;
@@ -426,19 +1516,27 @@ ol.list-group li.active::marker {
   direction: ltr;
 }
 
+.border-box, .btn, .dropdown.active ul, div:has(> .form-control) .form-control[type=file]::file-selector-button, .input-group > label, .input-group > span, .input-group > *, .list-group .list-group-items, .mason .mason-item, .page-indicator .page:empty, .page-indicator .page:not(:empty), .table, .table * {
+  box-sizing: border-box;
+}
+
+.content-box {
+  box-sizing: content-box;
+}
+
 .all-border-extra-small {
   border-radius: 2px;
 }
 
-.all-border-small, .btn {
+.all-border-small, .accordion-box, .btn, div:has(> .form-control) .form-control:not([class*=all-border-]), div:has(> .form-control) .form-control[type=file]::file-selector-button, .input-group > :first-child, .input-group > :first-child > .btn, div:has(> .form-control) .input-group > :first-child > .form-control[type=file]::file-selector-button, .input-group > :last-child, .input-group > :last-child > .btn, div:has(> .form-control) .input-group > :last-child > .form-control[type=file]::file-selector-button, .nav .nav-item, .form-select:not([class^=all-border]) {
   border-radius: 5px;
 }
 
-.all-border-normal, .palette-color div div, .list-group.flex-column .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:first-child, .list-group.flex-column .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:last-child, .list-group:not(.flex-column) .list-group-item:first-child, .list-group:not(.flex-column) .list-group-item:last-child, .nav .nav-item {
+.all-border-normal, .palette-color div div, .list-group.flex-column .list-group-items:first-child, .list-group.accordion .list-group-items:first-child, .list-group.card .list-group-items:first-child, .card .list-group.card-body .list-group-items:first-child, .list-group.flex-column .list-group-items:last-child, .list-group.accordion .list-group-items:last-child, .list-group.card .list-group-items:last-child, .card .list-group.card-body .list-group-items:last-child, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:first-child, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:last-child {
   border-radius: 10px;
 }
 
-.all-border-medium {
+.all-border-medium, .card:has(.card-image-space) .card-image-space:not([class^=all-border]), .table:not([class^=all-border]) {
   border-radius: 16px;
 }
 
@@ -450,39 +1548,39 @@ ol.list-group li.active::marker {
   border-radius: 50px;
 }
 
-.all-border-full, .btn-round, .progress-bar, .progress-bar::after, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.all-border-full, .btn-round, .page-indicator .page:empty, .page-indicator .page:not(:empty), .progress-bar, .progress-bar::after, .switch label.switch-label, .range, .loader-spinner-border, .loader-grow {
   border-radius: 100000px !important;
 }
 
-.all-border-tr, .list-group.flex-column .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:last-child, .list-group:not(.flex-column) .list-group-item:first-child {
+.all-border-tr, .input-group > :first-child, .input-group > :first-child > .btn, div:has(> .form-control) .input-group > :first-child > .form-control[type=file]::file-selector-button, .input-group > :nth-child(n):not(:last-child, :first-child), .input-group > :nth-child(n):not(:last-child, :first-child) > .btn, div:has(> .form-control) .input-group > :nth-child(n):not(:last-child, :first-child) > .form-control[type=file]::file-selector-button, .list-group.flex-column .list-group-items:last-child, .list-group.accordion .list-group-items:last-child, .list-group.card .list-group-items:last-child, .card .list-group.card-body .list-group-items:last-child, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:last-child {
   border-top-right-radius: 0px !important;
 }
 
-.all-border-tl, .list-group.flex-column .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:last-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:last-child, .list-group:not(.flex-column) .list-group-item:last-child {
+.all-border-tl, .input-group > :last-child, .input-group > :last-child > .btn, div:has(> .form-control) .input-group > :last-child > .form-control[type=file]::file-selector-button, .input-group > :nth-child(n):not(:last-child, :first-child), .input-group > :nth-child(n):not(:last-child, :first-child) > .btn, div:has(> .form-control) .input-group > :nth-child(n):not(:last-child, :first-child) > .form-control[type=file]::file-selector-button, .input-group > :nth-child(n):has(+ datalist:last-child), .list-group.flex-column .list-group-items:last-child, .list-group.accordion .list-group-items:last-child, .list-group.card .list-group-items:last-child, .card .list-group.card-body .list-group-items:last-child, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:last-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:last-child {
   border-top-left-radius: 0px !important;
 }
 
-.all-border-br, .list-group.flex-column .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:first-child, .list-group:not(.flex-column) .list-group-item:first-child {
+.all-border-br, .input-group > :first-child, .input-group > :first-child > .btn, div:has(> .form-control) .input-group > :first-child > .form-control[type=file]::file-selector-button, .input-group > :nth-child(n):not(:last-child, :first-child), .input-group > :nth-child(n):not(:last-child, :first-child) > .btn, div:has(> .form-control) .input-group > :nth-child(n):not(:last-child, :first-child) > .form-control[type=file]::file-selector-button, .list-group.flex-column .list-group-items:first-child, .list-group.accordion .list-group-items:first-child, .list-group.card .list-group-items:first-child, .card .list-group.card-body .list-group-items:first-child, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:first-child {
   border-bottom-right-radius: 0px !important;
 }
 
-.all-border-bl, .list-group.flex-column .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:first-child, .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:first-child, .list-group:not(.flex-column) .list-group-item:last-child {
+.all-border-bl, .input-group > :last-child, .input-group > :last-child > .btn, div:has(> .form-control) .input-group > :last-child > .form-control[type=file]::file-selector-button, .input-group > :nth-child(n):not(:last-child, :first-child), .input-group > :nth-child(n):not(:last-child, :first-child) > .btn, div:has(> .form-control) .input-group > :nth-child(n):not(:last-child, :first-child) > .form-control[type=file]::file-selector-button, .input-group > :nth-child(n):has(+ datalist:last-child), .list-group.flex-column .list-group-items:first-child, .list-group.accordion .list-group-items:first-child, .list-group.card .list-group-items:first-child, .card .list-group.card-body .list-group-items:first-child, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:last-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:first-child, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:first-child, .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:first-child {
   border-bottom-left-radius: 0px !important;
 }
 
-.border-t-none, .list-group.flex-column .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-item:not(:first-child), .offcanvas-static input[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-item:not(:first-child), .list-group-flush .list-group-item {
+.border-t-none, .list-group.flex-column .list-group-items:not(:first-child), .list-group.accordion .list-group-items:not(:first-child), .list-group.card .list-group-items:not(:first-child), .card .list-group.card-body .list-group-items:not(:first-child), .list-group-flush .list-group-items, .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-top .list-group-items:not(:first-child), .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-top .list-group-items:not(:first-child), .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-bottom .list-group-items:not(:first-child), .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-bottom .list-group-items:not(:first-child), .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-left .list-group-items:not(:first-child), .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-left .list-group-items:not(:first-child), .offcanvas-static div[id*=offcanvasCheck] ~ .list-group.offcanvas-right .list-group-items:not(:first-child), .offcanvas-static div[id*=dropdown-toggle] ~ .list-group.offcanvas-right .list-group-items:not(:first-child) {
   border-top: none !important;
 }
 
-.border-b-none, .list-group-flush .list-group-item:last-child {
+.border-b-none, .list-group-flush .list-group-items:last-child {
   border-bottom: none !important;
 }
 
-.border-r-none, .list-group-flush .list-group-item {
+.border-r-none, .input-group > :nth-child(n):not(:last-child), .list-group-flush .list-group-items {
   border-right: none !important;
 }
 
-.border-l-none, .list-group:not(.flex-column) .list-group-item:not(:first-child), .list-group-flush .list-group-item {
+.border-l-none, .list-group:not(.flex-column):not(.accordion):not(.card) .list-group-items:not(:first-child), .list-group-flush .list-group-items {
   border-left: none !important;
 }
 
@@ -537,6 +1635,16 @@ ol.list-group li.active::marker {
 
 .h-100vh {
   height: 100vh;
+}
+
+.w-fit-content {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.h-fit-content {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 body, p, h1, h2, h3, h4, h5, h6, hr {
@@ -604,9 +1712,14 @@ a {
 @font-face {
   font-family: "primary";
   font-weight: 400;
-  src: url("../fonts/SankofaDisplay-Regular/SankofaDisplay-Regular.ttf"),;
+  src: url("../fonts/PTSans/PTSans-Regular.ttf"),url("../fonts/PTSans/PTSans-Italic.ttf"),;
 }
-.font-primary, .badge {
+@font-face {
+  font-family: "primary";
+  font-weight: 700;
+  src: url("../fonts/PTSans/PTSans-Bold.ttf"),url("../fonts/PTSans/PTSans-BoldItalic.ttf"),;
+}
+.font-primary, *:has(.badge) {
   font-family: "primary";
 }
 
@@ -702,7 +1815,7 @@ a {
   padding-left: 0px !important;
 }
 
-.d-block {
+.d-block, .switch label.switch-label {
   display: block;
 }
 
@@ -710,7 +1823,7 @@ a {
   display: block;
 }
 
-.d-none, .offcanvas-static input[id*=offcanvasCheck], .tab .tab-bar .tab-item input[id*=tabCheck] {
+.d-none, .card-scrollbar .card-body::-webkit-scrollbar, .switch input, .tab input[type=radio] {
   display: none;
 }
 
@@ -718,7 +1831,7 @@ a {
   display: none;
 }
 
-.d-flex, .btn:has(i):not(:has(span)), .dropdown label, .badge span, .progress-bar, .progress-bar::after, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group, .nav, .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.d-flex, .accordion-box span, .accordion, *:has(.badge) .badge, .breadcrumb > *, .breadcrumb[style*="--content"] li, div:has(.breadcrumb), .btn:has(i):not(:has(span)), .card, .card .card-body, .dropdown label, div:has(> .form-control), div:has(> .form-control) .form-control[type=file]:has(i):not(:has(span))::file-selector-button, .btn-group, .btn-group .btn, .btn-group div:has(> .form-control) .form-control[type=file]::file-selector-button, div:has(> .form-control) .btn-group .form-control[type=file]::file-selector-button, .input-group, .input-group > label, .input-group > span, .list-group, .nav, .offcanvas-static, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right div.offcanvas-close, .page-indicator, .page-indicator .page:not(:empty), .progress-bar, .progress-bar::after, .form-check, .tab-container, .loader-spinner-border, .loader-grow {
   display: flex;
 }
 
@@ -726,7 +1839,7 @@ a {
   display: flex;
 }
 
-.d-grid {
+.d-grid, .accordion-box {
   display: grid;
 }
 
@@ -734,7 +1847,7 @@ a {
   display: grid;
 }
 
-.d-inline-block, .breadcrumb ol[style*="--content"] li::after, .tab .tab-bar .tab-item label {
+.d-inline-block, .breadcrumb[style*="--content"] li::after, .mason .mason-item, .tab .tab-label {
   display: inline-block;
 }
 
@@ -743,83 +1856,83 @@ a {
 }
 
 .col-1 {
-  width: 100%;
+  width: 10%;
 }
 
 .col-xxl-1 {
-  width: 100%;
+  width: 10%;
 }
 
 .col-2 {
-  width: 50%;
+  width: 20%;
 }
 
 .col-xxl-2 {
-  width: 50%;
+  width: 20%;
 }
 
 .col-3 {
-  width: 33.3333333333%;
+  width: 30%;
 }
 
 .col-xxl-3 {
-  width: 33.3333333333%;
+  width: 30%;
 }
 
 .col-4 {
-  width: 25%;
+  width: 40%;
 }
 
 .col-xxl-4 {
-  width: 25%;
+  width: 40%;
 }
 
 .col-5 {
-  width: 20%;
+  width: 50%;
 }
 
 .col-xxl-5 {
-  width: 20%;
+  width: 50%;
 }
 
 .col-6 {
-  width: 16.6666666667%;
+  width: 60%;
 }
 
 .col-xxl-6 {
-  width: 16.6666666667%;
+  width: 60%;
 }
 
 .col-7 {
-  width: 14.2857142857%;
+  width: 70%;
 }
 
 .col-xxl-7 {
-  width: 14.2857142857%;
+  width: 70%;
 }
 
 .col-8 {
-  width: 12.5%;
+  width: 80%;
 }
 
 .col-xxl-8 {
-  width: 12.5%;
+  width: 80%;
 }
 
 .col-9 {
-  width: 11.1111111111%;
+  width: 90%;
 }
 
 .col-xxl-9 {
-  width: 11.1111111111%;
+  width: 90%;
 }
 
 .col-10 {
-  width: 10%;
+  width: 100%;
 }
 
 .col-xxl-10 {
-  width: 10%;
+  width: 100%;
 }
 
 .w-2 {
@@ -1214,7 +2327,7 @@ a {
   width: 98%;
 }
 
-.w-100, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .list-group .list-group-item, .list-group-flush .list-group-item, .nav, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-5 {
+.w-100, .accordion-box span, .dropdown.active ul, div:has(> .form-control) .form-control, .list-group .list-group-items, .list-group-flush .list-group-items, .mason .mason-item, .nav, .offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right div.offcanvas-close, .tab .tab-label, .tab-content, .tab-container .tab input#tabCheck1:checked ~ .tab-content, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(2) .tab-content, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(1) .tab-content, .tab-container .tab input#tabCheck2:checked ~ .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(2) .tab-content, .tab-container .tab input#tabCheck3:checked ~ .tab-content {
   width: 100%;
 }
 
@@ -1534,7 +2647,7 @@ a {
   height: 97.5%;
 }
 
-.h-100, .progress-bar::after, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-5, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.h-100, .input-group > label, .input-group > span, .input-group > *, .offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right, .progress-bar::after, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(2) .tab-content, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(2) .tab-content {
   height: 100%;
 }
 
@@ -1542,7 +2655,7 @@ a {
   height: 100%;
 }
 
-.flex-row, .badge span, .progress-bar, .progress-bar::after, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group:not(.flex-column), .nav, .nav:not(.flex-column), .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.flex-row, .accordion-box span, *:has(.badge) .badge, .breadcrumb > *, .breadcrumb[style*="--content"] li, div:has(.breadcrumb), div:has(> .form-control):not([class*=flex-]), .input-group, .input-group > label, .input-group > span, .list-group:not(.flex-column):not(.accordion):not(.card), .nav, .nav:not(.flex-column):not(.accordion):not(.card), .offcanvas-static, .page-indicator, .page-indicator .page:not(:empty), .progress-bar, .progress-bar::after {
   flex-direction: row;
 }
 
@@ -1558,7 +2671,7 @@ a {
   flex-direction: row-reverse;
 }
 
-.flex-column, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
+.flex-column, .accordion, .card, .card .card-body, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
   flex-direction: column;
 }
 
@@ -1582,7 +2695,7 @@ a {
   justify-content: flex-start;
 }
 
-.justify-content-center, .dropdown label, .badge span, .progress-bar, .progress-bar::after, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group, .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.justify-content-center, .accordion, *:has(.badge) .badge, .breadcrumb > *, .breadcrumb[style*="--content"] li, .dropdown label, .btn-group .btn, .btn-group div:has(> .form-control) .form-control[type=file]::file-selector-button, div:has(> .form-control) .btn-group .form-control[type=file]::file-selector-button, .input-group > label, .input-group > span, .list-group, .offcanvas-static, .page-indicator .page:not(:empty), .progress-bar, .progress-bar::after, .form-check {
   justify-content: center;
 }
 
@@ -1598,7 +2711,7 @@ a {
   justify-content: flex-end;
 }
 
-.justify-content-start, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .page-indicator {
+.justify-content-start, div:has(> .form-control), div:has(> .form-control)[class*=flex-row], .input-group, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right div.offcanvas-close, .page-indicator {
   justify-content: start;
 }
 
@@ -1606,7 +2719,7 @@ a {
   justify-content: start;
 }
 
-.justify-content-end, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label {
+.justify-content-end {
   justify-content: end;
 }
 
@@ -1614,7 +2727,7 @@ a {
   justify-content: end;
 }
 
-.justify-content-space-between {
+.justify-content-space-between, .accordion-box span {
   justify-content: space-between;
 }
 
@@ -1862,7 +2975,7 @@ a {
   align-items: flex-start;
 }
 
-.align-items-center, .dropdown label, .badge span, .progress-bar, .progress-bar::after, .breadcrumb ol, .breadcrumb ol[style*="--content"] li, .list-group, .tab .tab-bar, .tab .tab-page [class*=tab-page-], .page-indicator, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.align-items-center, .accordion-box span, .accordion, *:has(.badge) .badge, .breadcrumb > *, .breadcrumb[style*="--content"] li, div:has(.breadcrumb), .dropdown label, div:has(> .form-control)[class*=flex-row], .btn-group .btn, .btn-group div:has(> .form-control) .form-control[type=file]::file-selector-button, div:has(> .form-control) .btn-group .form-control[type=file]::file-selector-button, .input-group, .input-group > label, .input-group > span, .list-group, .offcanvas-static, .page-indicator, .page-indicator .page:not(:empty), .progress-bar, .progress-bar::after {
   align-items: center;
 }
 
@@ -1886,7 +2999,7 @@ a {
   align-items: stretch;
 }
 
-.align-items-start, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .nav:not([class*=align-items]) {
+.align-items-start, div:has(> .form-control), .nav:not([class*=align-items]), .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
   align-items: start;
 }
 
@@ -1894,7 +3007,7 @@ a {
   align-items: start;
 }
 
-.align-items-end {
+.align-items-end, .card .card-body:has(p:only-of-type):has(button) {
   align-items: end;
 }
 
@@ -1910,7 +3023,7 @@ a {
   align-items: baseline;
 }
 
-.flex-wrap, .breadcrumb ol {
+.flex-wrap, .breadcrumb > * {
   flex-wrap: wrap;
 }
 
@@ -2182,7 +3295,7 @@ a {
   padding: 0rem;
 }
 
-.p-1, .btn:has(i):not(:has(span)), .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .list-group .list-group-item, .list-group-flush .list-group-item, .nav .nav-item, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.p-1, .btn:has(i):not(:has(span)), div:has(> .form-control) .form-control[type=file]:has(i):not(:has(span))::file-selector-button, .input-group > label, .input-group > span, .list-group .list-group-items, .list-group-flush .list-group-items, .mason .mason-item, .nav .nav-item, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right, .page-indicator .page:not(:empty), .form-select {
   padding: 0.5rem;
 }
 
@@ -2190,7 +3303,7 @@ a {
   padding: 0.5rem;
 }
 
-.p-2 {
+.p-2, .accordion-box, .tab .tab-label, .tab-content {
   padding: 1rem;
 }
 
@@ -2386,11 +3499,11 @@ a {
   padding: 0rem;
 }
 
-.p-1, .btn:has(i):not(:has(span)), .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .list-group .list-group-item, .list-group-flush .list-group-item, .nav .nav-item, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.p-1, .btn:has(i):not(:has(span)), div:has(> .form-control) .form-control[type=file]:has(i):not(:has(span))::file-selector-button, .input-group > label, .input-group > span, .list-group .list-group-items, .list-group-flush .list-group-items, .mason .mason-item, .nav .nav-item, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right, .page-indicator .page:not(:empty), .form-select {
   padding: 0.5rem;
 }
 
-.p-2 {
+.p-2, .accordion-box, .tab .tab-label, .tab-content {
   padding: 1rem;
 }
 
@@ -2494,7 +3607,7 @@ a {
   padding-top: 0rem;
 }
 
-.pt-1 {
+.pt-1, .table tbody tr td:has(img) {
   padding-top: 0.5rem;
 }
 
@@ -2502,7 +3615,7 @@ a {
   padding-top: 0.5rem;
 }
 
-.pt-2 {
+.pt-2, .card-scrollbar:not(:has(.card-header)):has(.card-footer) {
   padding-top: 1rem;
 }
 
@@ -2698,11 +3811,11 @@ a {
   padding-top: 0rem;
 }
 
-.pt-1 {
+.pt-1, .table tbody tr td:has(img) {
   padding-top: 0.5rem;
 }
 
-.pt-2 {
+.pt-2, .card-scrollbar:not(:has(.card-header)):has(.card-footer) {
   padding-top: 1rem;
 }
 
@@ -2806,7 +3919,7 @@ a {
   padding-bottom: 0rem;
 }
 
-.pb-1 {
+.pb-1, .accordion-box span {
   padding-bottom: 0.5rem;
 }
 
@@ -2814,7 +3927,7 @@ a {
   padding-bottom: 0.5rem;
 }
 
-.pb-2 {
+.pb-2, .card-scrollbar:not(:has(.card-footer)):has(.card-header) {
   padding-bottom: 1rem;
 }
 
@@ -3010,11 +4123,11 @@ a {
   padding-bottom: 0rem;
 }
 
-.pb-1 {
+.pb-1, .accordion-box span {
   padding-bottom: 0.5rem;
 }
 
-.pb-2 {
+.pb-2, .card-scrollbar:not(:has(.card-footer)):has(.card-header) {
   padding-bottom: 1rem;
 }
 
@@ -3134,7 +4247,7 @@ a {
   padding-left: 1rem;
 }
 
-.pl-3 {
+.pl-3, .accordion-box > div {
   padding-left: 1.5rem;
 }
 
@@ -3330,7 +4443,7 @@ a {
   padding-left: 1rem;
 }
 
-.pl-3 {
+.pl-3, .accordion-box > div {
   padding-left: 1.5rem;
 }
 
@@ -3734,7 +4847,7 @@ a {
   padding-right: 12.5rem;
 }
 
-.px-0 {
+.px-0, .card:has(.card-image-space) > div {
   padding-left: 0rem;
   padding-right: 0rem;
 }
@@ -3754,7 +4867,7 @@ a {
   padding-right: 0.5rem;
 }
 
-.px-2, .btn {
+.px-2, .card .card-header, .card .card-footer, .card .card-body, .card:has(.card-image-space), .tooltip span {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -3764,7 +4877,7 @@ a {
   padding-right: 1rem;
 }
 
-.px-3, .tab .tab-bar .tab-item label {
+.px-3 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -3994,7 +5107,7 @@ a {
   padding-right: 12.5rem;
 }
 
-.px-0 {
+.px-0, .card:has(.card-image-space) > div {
   padding-left: 0rem;
   padding-right: 0rem;
 }
@@ -4004,12 +5117,12 @@ a {
   padding-right: 0.5rem;
 }
 
-.px-2, .btn {
+.px-2, .card .card-header, .card .card-footer, .card .card-body, .card:has(.card-image-space), .tooltip span {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.px-3, .tab .tab-bar .tab-item label {
+.px-3 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -4134,7 +5247,7 @@ a {
   padding-bottom: 0rem;
 }
 
-.py-1, .btn, .tab .tab-bar .tab-item label {
+.py-1, .table thead:not([class^=py-]) th, .tooltip span {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -4144,7 +5257,7 @@ a {
   padding-bottom: 0.5rem;
 }
 
-.py-2, .dropdown ul {
+.py-2, .card .card-header, .card .card-footer, .card .card-body, .dropdown ul {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -4389,12 +5502,12 @@ a {
   padding-bottom: 0rem;
 }
 
-.py-1, .btn, .tab .tab-bar .tab-item label {
+.py-1, .table thead:not([class^=py-]) th, .tooltip span {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.py-2, .dropdown ul {
+.py-2, .card .card-header, .card .card-footer, .card .card-body, .dropdown ul {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -4834,7 +5947,7 @@ a {
   margin-top: 0rem;
 }
 
-.mt-1 {
+.mt-1, div:has(> .form-control) .form-text {
   margin-top: 0.5rem;
 }
 
@@ -4842,7 +5955,7 @@ a {
   margin-top: 0.5rem;
 }
 
-.mt-2 {
+.mt-2, .card .card-body:has(p:only-of-type) p {
   margin-top: 1rem;
 }
 
@@ -5038,11 +6151,11 @@ a {
   margin-top: 0rem;
 }
 
-.mt-1 {
+.mt-1, div:has(> .form-control) .form-text {
   margin-top: 0.5rem;
 }
 
-.mt-2 {
+.mt-2, .card .card-body:has(p:only-of-type) p {
   margin-top: 1rem;
 }
 
@@ -5146,7 +6259,7 @@ a {
   margin-bottom: 0rem;
 }
 
-.mb-1, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label {
+.mb-1, .mason .mason-item, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right div.offcanvas-close {
   margin-bottom: 0.5rem;
 }
 
@@ -5350,7 +6463,7 @@ a {
   margin-bottom: 0rem;
 }
 
-.mb-1, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label {
+.mb-1, .mason .mason-item, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right div.offcanvas-close {
   margin-bottom: 0.5rem;
 }
 
@@ -6484,7 +7597,7 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.my-2 {
+.my-2, .card .card-body:has(p:only-of-type):has(button) p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -6734,7 +7847,7 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.my-2 {
+.my-2, .card .card-body:has(p:only-of-type):has(button) p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -6862,7 +7975,7 @@ a {
   gap: 0rem;
 }
 
-.gap-1, .btn:has(i + span), .breadcrumb ol[style*="--content"] li, .nav {
+.gap-1, .accordion-box, .breadcrumb[style*="--content"] li, .btn:has(i + span), .card .card-body, div:has(> .form-control) .form-control[type=file]:has(i + span)::file-selector-button, .btn-group, .nav, .form-check {
   gap: 0.5rem;
 }
 
@@ -6870,7 +7983,7 @@ a {
   gap: 0.5rem;
 }
 
-.gap-2 {
+.gap-2, div:has(> .form-control)[class*=flex-row] {
   gap: 1rem;
 }
 
@@ -7026,11 +8139,11 @@ a {
   gap: 0rem;
 }
 
-.gap-1, .btn:has(i + span), .breadcrumb ol[style*="--content"] li, .nav {
+.gap-1, .accordion-box, .breadcrumb[style*="--content"] li, .btn:has(i + span), .card .card-body, div:has(> .form-control) .form-control[type=file]:has(i + span)::file-selector-button, .btn-group, .nav, .form-check {
   gap: 0.5rem;
 }
 
-.gap-2 {
+.gap-2, div:has(> .form-control)[class*=flex-row] {
   gap: 1rem;
 }
 
@@ -7114,7 +8227,7 @@ a {
   font-size: 10px;
 }
 
-.txt-subtitle {
+.txt-subtitle, div:has(> .form-control) .form-control-sm, div:has(> .form-control) .form-text {
   font-size: 12px;
 }
 
@@ -7130,7 +8243,7 @@ a {
   font-size: 16px;
 }
 
-.txt-title {
+.txt-title, div:has(> .form-control) .form-control-lg {
   font-size: 20px;
 }
 
@@ -7202,7 +8315,7 @@ a {
   text-transform: capitalize;
 }
 
-.txt-center, .badge span, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.txt-center, *:has(.badge) .badge, .page-indicator .page:not(:empty), .tooltip span {
   text-align: center;
 }
 
@@ -7707,34 +8820,34 @@ a {
     display: inline-block;
   }
   .col-xl-1 {
-    width: 100%;
+    width: 10%;
   }
   .col-xl-2 {
-    width: 50%;
-  }
-  .col-xl-3 {
-    width: 33.3333333333%;
-  }
-  .col-xl-4 {
-    width: 25%;
-  }
-  .col-xl-5 {
     width: 20%;
   }
+  .col-xl-3 {
+    width: 30%;
+  }
+  .col-xl-4 {
+    width: 40%;
+  }
+  .col-xl-5 {
+    width: 50%;
+  }
   .col-xl-6 {
-    width: 16.6666666667%;
+    width: 60%;
   }
   .col-xl-7 {
-    width: 14.2857142857%;
+    width: 70%;
   }
   .col-xl-8 {
-    width: 12.5%;
+    width: 80%;
   }
   .col-xl-9 {
-    width: 11.1111111111%;
+    width: 90%;
   }
   .col-xl-10 {
-    width: 10%;
+    width: 100%;
   }
   .w-xl-2 {
     width: 2%;
@@ -9739,34 +10852,34 @@ a {
     display: inline-block;
   }
   .col-lg-1 {
-    width: 100%;
+    width: 10%;
   }
   .col-lg-2 {
-    width: 50%;
-  }
-  .col-lg-3 {
-    width: 33.3333333333%;
-  }
-  .col-lg-4 {
-    width: 25%;
-  }
-  .col-lg-5 {
     width: 20%;
   }
+  .col-lg-3 {
+    width: 30%;
+  }
+  .col-lg-4 {
+    width: 40%;
+  }
+  .col-lg-5 {
+    width: 50%;
+  }
   .col-lg-6 {
-    width: 16.6666666667%;
+    width: 60%;
   }
   .col-lg-7 {
-    width: 14.2857142857%;
+    width: 70%;
   }
   .col-lg-8 {
-    width: 12.5%;
+    width: 80%;
   }
   .col-lg-9 {
-    width: 11.1111111111%;
+    width: 90%;
   }
   .col-lg-10 {
-    width: 10%;
+    width: 100%;
   }
   .w-lg-2 {
     width: 2%;
@@ -11771,34 +12884,34 @@ a {
     display: inline-block;
   }
   .col-md-1 {
-    width: 100%;
+    width: 10%;
   }
   .col-md-2 {
-    width: 50%;
-  }
-  .col-md-3 {
-    width: 33.3333333333%;
-  }
-  .col-md-4 {
-    width: 25%;
-  }
-  .col-md-5 {
     width: 20%;
   }
+  .col-md-3 {
+    width: 30%;
+  }
+  .col-md-4 {
+    width: 40%;
+  }
+  .col-md-5 {
+    width: 50%;
+  }
   .col-md-6 {
-    width: 16.6666666667%;
+    width: 60%;
   }
   .col-md-7 {
-    width: 14.2857142857%;
+    width: 70%;
   }
   .col-md-8 {
-    width: 12.5%;
+    width: 80%;
   }
   .col-md-9 {
-    width: 11.1111111111%;
+    width: 90%;
   }
   .col-md-10 {
-    width: 10%;
+    width: 100%;
   }
   .w-md-2 {
     width: 2%;
@@ -13803,34 +14916,34 @@ a {
     display: inline-block;
   }
   .col-sm-1 {
-    width: 100%;
+    width: 10%;
   }
   .col-sm-2 {
-    width: 50%;
-  }
-  .col-sm-3 {
-    width: 33.3333333333%;
-  }
-  .col-sm-4 {
-    width: 25%;
-  }
-  .col-sm-5 {
     width: 20%;
   }
+  .col-sm-3 {
+    width: 30%;
+  }
+  .col-sm-4 {
+    width: 40%;
+  }
+  .col-sm-5 {
+    width: 50%;
+  }
   .col-sm-6 {
-    width: 16.6666666667%;
+    width: 60%;
   }
   .col-sm-7 {
-    width: 14.2857142857%;
+    width: 70%;
   }
   .col-sm-8 {
-    width: 12.5%;
+    width: 80%;
   }
   .col-sm-9 {
-    width: 11.1111111111%;
+    width: 90%;
   }
   .col-sm-10 {
-    width: 10%;
+    width: 100%;
   }
   .w-sm-2 {
     width: 2%;
@@ -15822,16 +16935,28 @@ a {
   border-color: #3761EB;
 }
 
+.bg-primary-color, .table thead:not([class^=bg-][class$=-color]) {
+  background-color: #3761EB;
+}
+
 .primary-color {
   color: #3761EB;
 }
 
-.bg-primary-color {
+.bg-primary-color, .table thead:not([class^=bg-][class$=-color]) {
   background-color: #3761EB;
+}
+
+.primary-color {
+  color: #3761EB;
 }
 
 .border-on-primary-color {
   border-color: #FFFFFF;
+}
+
+.bg-on-primary-color {
+  background-color: #FFFFFF;
 }
 
 .on-primary-color {
@@ -15842,12 +16967,32 @@ a {
   background-color: #FFFFFF;
 }
 
+.on-primary-color {
+  color: #FFFFFF;
+}
+
 .bg-on-primary-color {
   background-color: #FFFFFF;
 }
 
+.on-primary-color {
+  color: #FFFFFF;
+}
+
+.bg-on-primary-color {
+  background-color: #FFFFFF;
+}
+
+.on-primary-color {
+  color: #FFFFFF;
+}
+
 .border-primary-light-color {
   border-color: #E9EDFA;
+}
+
+.bg-primary-light-color {
+  background-color: #E9EDFA;
 }
 
 .primary-light-color {
@@ -15858,12 +17003,32 @@ a {
   background-color: #E9EDFA;
 }
 
+.primary-light-color {
+  color: #E9EDFA;
+}
+
 .bg-primary-light-color {
   background-color: #E9EDFA;
 }
 
+.primary-light-color {
+  color: #E9EDFA;
+}
+
+.bg-primary-light-color {
+  background-color: #E9EDFA;
+}
+
+.primary-light-color {
+  color: #E9EDFA;
+}
+
 .border-primary-dark-color {
   border-color: #0C2780;
+}
+
+.bg-primary-dark-color {
+  background-color: #0C2780;
 }
 
 .primary-dark-color {
@@ -15874,36 +17039,140 @@ a {
   background-color: #0C2780;
 }
 
+.primary-dark-color {
+  color: #0C2780;
+}
+
 .bg-primary-dark-color {
   background-color: #0C2780;
+}
+
+.primary-dark-color {
+  color: #0C2780;
+}
+
+.bg-primary-dark-color {
+  background-color: #0C2780;
+}
+
+.primary-dark-color {
+  color: #0C2780;
 }
 
 .bg-secondary-color {
   background-color: #272E3F;
 }
 
-.bg-on-secondary-color {
-  background-color: #FFFFFF;
+.secondary-color {
+  color: #272E3F;
+}
+
+.bg-secondary-color {
+  background-color: #272E3F;
+}
+
+.secondary-color {
+  color: #272E3F;
 }
 
 .bg-on-secondary-color {
   background-color: #FFFFFF;
 }
 
-.bg-secondary-light-color {
-  background-color: #3C4252;
+.on-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-on-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.on-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-on-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.on-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-on-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.on-secondary-color {
+  color: #FFFFFF;
 }
 
 .bg-secondary-light-color {
   background-color: #3C4252;
 }
 
-.bg-secondary-dark-color {
-  background-color: #0F172A;
+.secondary-light-color {
+  color: #3C4252;
+}
+
+.bg-secondary-light-color {
+  background-color: #3C4252;
+}
+
+.secondary-light-color {
+  color: #3C4252;
+}
+
+.bg-secondary-light-color {
+  background-color: #3C4252;
+}
+
+.secondary-light-color {
+  color: #3C4252;
+}
+
+.bg-secondary-light-color {
+  background-color: #3C4252;
+}
+
+.secondary-light-color {
+  color: #3C4252;
 }
 
 .bg-secondary-dark-color {
   background-color: #0F172A;
+}
+
+.secondary-dark-color {
+  color: #0F172A;
+}
+
+.bg-secondary-dark-color {
+  background-color: #0F172A;
+}
+
+.secondary-dark-color {
+  color: #0F172A;
+}
+
+.bg-secondary-dark-color {
+  background-color: #0F172A;
+}
+
+.secondary-dark-color {
+  color: #0F172A;
+}
+
+.bg-secondary-dark-color {
+  background-color: #0F172A;
+}
+
+.secondary-dark-color {
+  color: #0F172A;
+}
+
+.bg-specific-color {
+  background-color: #38BDF8;
 }
 
 .specific-color {
@@ -15914,6 +17183,14 @@ a {
   background-color: #38BDF8;
 }
 
+.specific-color {
+  color: #38BDF8;
+}
+
+.bg-button-text-color {
+  background-color: #FFFFFF;
+}
+
 .button-text-color {
   color: #FFFFFF;
 }
@@ -15922,24 +17199,76 @@ a {
   background-color: #FFFFFF;
 }
 
-.bg-button-text-color {
-  background-color: #FFFFFF;
+.button-text-color {
+  color: #FFFFFF;
 }
 
 .bg-button-text-color {
   background-color: #FFFFFF;
+}
+
+.button-text-color {
+  color: #FFFFFF;
+}
+
+.bg-button-text-color {
+  background-color: #FFFFFF;
+}
+
+.button-text-color {
+  color: #FFFFFF;
+}
+
+.bg-button-text-color {
+  background-color: #FFFFFF;
+}
+
+.button-text-color {
+  color: #FFFFFF;
+}
+
+.bg-button-text-color {
+  background-color: #FFFFFF;
+}
+
+.button-text-color {
+  color: #FFFFFF;
 }
 
 .bg-button-color {
   background-color: #3761EB;
 }
 
-.text-color, .list-group .list-group-item, .list-group .list-group-item a, .list-group-flush .list-group-item, .list-group-flush .list-group-item a, .nav .nav-item a {
+.button-color {
+  color: #3761EB;
+}
+
+.bg-button-color {
+  background-color: #3761EB;
+}
+
+.button-color {
+  color: #3761EB;
+}
+
+.bg-text-color {
+  background-color: #707479;
+}
+
+.text-color, .list-group .list-group-items, .list-group .list-group-items a, .list-group-flush .list-group-items, .list-group-flush .list-group-items a, .nav .nav-item a {
   color: #707479;
 }
 
 .bg-text-color {
   background-color: #707479;
+}
+
+.text-color, .list-group .list-group-items, .list-group .list-group-items a, .list-group-flush .list-group-items, .list-group-flush .list-group-items a, .nav .nav-item a {
+  color: #707479;
+}
+
+.bg-title-text-color {
+  background-color: #0F172A;
 }
 
 .title-text-color {
@@ -15950,8 +17279,28 @@ a {
   background-color: #0F172A;
 }
 
+.title-text-color {
+  color: #0F172A;
+}
+
 .bg-title-text-color {
   background-color: #0F172A;
+}
+
+.title-text-color {
+  color: #0F172A;
+}
+
+.bg-title-text-color {
+  background-color: #0F172A;
+}
+
+.title-text-color {
+  color: #0F172A;
+}
+
+.bg-header-text-color {
+  background-color: #DDCDFE;
 }
 
 .header-text-color {
@@ -15962,6 +17311,14 @@ a {
   background-color: #DDCDFE;
 }
 
+.header-text-color {
+  color: #DDCDFE;
+}
+
+.bg-header-title-text-color {
+  background-color: #ffffff;
+}
+
 .header-title-text-color {
   color: #ffffff;
 }
@@ -15970,8 +17327,28 @@ a {
   background-color: #ffffff;
 }
 
+.header-title-text-color {
+  color: #ffffff;
+}
+
 .bg-header-title-text-color {
   background-color: #ffffff;
+}
+
+.header-title-text-color {
+  color: #ffffff;
+}
+
+.bg-header-title-text-color {
+  background-color: #ffffff;
+}
+
+.header-title-text-color {
+  color: #ffffff;
+}
+
+.bg-secondary-text-color {
+  background-color: #AFB3BC;
 }
 
 .secondary-text-color {
@@ -15982,12 +17359,44 @@ a {
   background-color: #AFB3BC;
 }
 
-.bg-secondary-text-color {
-  background-color: #AFB3BC;
+.secondary-text-color {
+  color: #AFB3BC;
 }
 
 .bg-secondary-text-color {
   background-color: #AFB3BC;
+}
+
+.secondary-text-color {
+  color: #AFB3BC;
+}
+
+.bg-secondary-text-color {
+  background-color: #AFB3BC;
+}
+
+.secondary-text-color {
+  color: #AFB3BC;
+}
+
+.bg-secondary-text-color {
+  background-color: #AFB3BC;
+}
+
+.secondary-text-color {
+  color: #AFB3BC;
+}
+
+.bg-secondary-text-color {
+  background-color: #AFB3BC;
+}
+
+.secondary-text-color {
+  color: #AFB3BC;
+}
+
+.bg-section-title-text-color {
+  background-color: #FFFFFF;
 }
 
 .section-title-text-color {
@@ -15998,19 +17407,59 @@ a {
   background-color: #FFFFFF;
 }
 
-.bg-section-title-text-color {
-  background-color: #FFFFFF;
+.section-title-text-color {
+  color: #FFFFFF;
 }
 
 .bg-section-title-text-color {
   background-color: #FFFFFF;
 }
 
+.section-title-text-color {
+  color: #FFFFFF;
+}
+
 .bg-section-title-text-color {
   background-color: #FFFFFF;
 }
 
-.border-color, .list-group .list-group-item, .list-group-flush .list-group-item, .tab .tab-bar .tab-item:has(input[id*=tabCheck]:checked) label {
+.section-title-text-color {
+  color: #FFFFFF;
+}
+
+.bg-section-title-text-color {
+  background-color: #FFFFFF;
+}
+
+.section-title-text-color {
+  color: #FFFFFF;
+}
+
+.bg-section-title-text-color {
+  background-color: #FFFFFF;
+}
+
+.section-title-text-color {
+  color: #FFFFFF;
+}
+
+.bg-section-title-text-color {
+  background-color: #FFFFFF;
+}
+
+.section-title-text-color {
+  color: #FFFFFF;
+}
+
+.bg-section-title-text-color {
+  background-color: #FFFFFF;
+}
+
+.section-title-text-color {
+  color: #FFFFFF;
+}
+
+.border-color, .list-group .list-group-items, .list-group-flush .list-group-items {
   border-color: #E4E6E8;
 }
 
@@ -16018,12 +17467,52 @@ a {
   background-color: #E4E6E8;
 }
 
+.border-color, .list-group .list-group-items, .list-group-flush .list-group-items {
+  color: #E4E6E8;
+}
+
+.bg-border-color {
+  background-color: #E4E6E8;
+}
+
+.border-color, .list-group .list-group-items, .list-group-flush .list-group-items {
+  color: #E4E6E8;
+}
+
 .bg-divider-color {
   background-color: #E6E7EA;
 }
 
+.divider-color {
+  color: #E6E7EA;
+}
+
+.bg-divider-color {
+  background-color: #E6E7EA;
+}
+
+.divider-color {
+  color: #E6E7EA;
+}
+
 .bg-shadow-color {
   background-color: #DEDEDE;
+}
+
+.shadow-color {
+  color: #DEDEDE;
+}
+
+.bg-shadow-color {
+  background-color: #DEDEDE;
+}
+
+.shadow-color {
+  color: #DEDEDE;
+}
+
+.bg-icon-color {
+  background-color: #3761EB;
 }
 
 .icon-color {
@@ -16034,6 +17523,14 @@ a {
   background-color: #3761EB;
 }
 
+.icon-color {
+  color: #3761EB;
+}
+
+.bg-icon-hover-color {
+  background-color: #FFFFFF;
+}
+
 .icon-hover-color {
   color: #FFFFFF;
 }
@@ -16042,75 +17539,271 @@ a {
   background-color: #FFFFFF;
 }
 
+.icon-hover-color {
+  color: #FFFFFF;
+}
+
 .bg-icon-hover-color {
   background-color: #FFFFFF;
+}
+
+.icon-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-icon-hover-color {
+  background-color: #FFFFFF;
+}
+
+.icon-hover-color {
+  color: #FFFFFF;
 }
 
 .bg-menu-color {
   background-color: #FFFFFF;
 }
 
+.menu-color {
+  color: #FFFFFF;
+}
+
+.bg-menu-color {
+  background-color: #FFFFFF;
+}
+
+.menu-color {
+  color: #FFFFFF;
+}
+
 .bg-card-color {
   background-color: #FFFFFF;
+}
+
+.card-color {
+  color: #FFFFFF;
+}
+
+.bg-card-color {
+  background-color: #FFFFFF;
+}
+
+.card-color {
+  color: #FFFFFF;
 }
 
 .bg-color {
   background-color: #FAFAFA;
 }
 
+.background-color {
+  color: #FAFAFA;
+}
+
+.bg-color {
+  background-color: #FAFAFA;
+}
+
+.background-color {
+  color: #FAFAFA;
+}
+
 .bg-section-color {
   background-color: #FFFFFF;
+}
+
+.section-color {
+  color: #FFFFFF;
+}
+
+.bg-section-color {
+  background-color: #FFFFFF;
+}
+
+.section-color {
+  color: #FFFFFF;
 }
 
 .bg-hover-color {
   background-color: #9E9E9E;
 }
 
-.bg-button-hover-color {
-  background-color: #FFFFFF;
+.hover-color {
+  color: #9E9E9E;
+}
+
+.bg-hover-color {
+  background-color: #9E9E9E;
+}
+
+.hover-color {
+  color: #9E9E9E;
 }
 
 .bg-button-hover-color {
   background-color: #FFFFFF;
 }
 
+.button-hover-color {
+  color: #FFFFFF;
+}
+
 .bg-button-hover-color {
   background-color: #FFFFFF;
 }
 
-.button-text-hover-color {
+.button-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-button-hover-color {
+  background-color: #FFFFFF;
+}
+
+.button-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-button-hover-color {
+  background-color: #FFFFFF;
+}
+
+.button-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-button-hover-color {
+  background-color: #FFFFFF;
+}
+
+.button-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-button-hover-color {
+  background-color: #FFFFFF;
+}
+
+.button-hover-color {
   color: #FFFFFF;
 }
 
 .bg-button-text-hover-color {
-  background-color: #FFFFFF;
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
 }
 
 .bg-button-text-hover-color {
-  background-color: #FFFFFF;
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
 }
 
 .bg-button-text-hover-color {
-  background-color: #FFFFFF;
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
 }
 
 .bg-button-text-hover-color {
-  background-color: #FFFFFF;
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
 }
 
 .bg-button-text-hover-color {
-  background-color: #FFFFFF;
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
 }
 
 .bg-button-text-hover-color {
-  background-color: #FFFFFF;
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
+}
+
+.bg-button-text-hover-color {
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
+}
+
+.bg-button-text-hover-color {
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
+}
+
+.bg-button-text-hover-color {
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
+}
+
+.bg-button-text-hover-color {
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
+}
+
+.bg-button-text-hover-color {
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
+}
+
+.bg-button-text-hover-color {
+  background-color: #C5B395;
+}
+
+.button-text-hover-color {
+  color: #C5B395;
 }
 
 .border-fields-color {
-  border-color: #FFFFFF;
+  border-color: #D7D7D7;
 }
 
 .bg-border-fields-color {
+  background-color: #D7D7D7;
+}
+
+.border-fields-color {
+  color: #D7D7D7;
+}
+
+.bg-border-fields-color {
+  background-color: #D7D7D7;
+}
+
+.border-fields-color {
+  color: #D7D7D7;
+}
+
+.bg-title-text-fields-color {
   background-color: #FFFFFF;
 }
 
@@ -16122,76 +17815,280 @@ a {
   background-color: #FFFFFF;
 }
 
+.title-text-fields-color {
+  color: #FFFFFF;
+}
+
 .bg-title-text-fields-color {
   background-color: #FFFFFF;
 }
 
-.text-fields-color {
+.title-text-fields-color {
+  color: #FFFFFF;
+}
+
+.bg-title-text-fields-color {
+  background-color: #FFFFFF;
+}
+
+.title-text-fields-color {
   color: #FFFFFF;
 }
 
 .bg-text-fields-color {
-  background-color: #FFFFFF;
+  background-color: #64748B;
+}
+
+.text-fields-color {
+  color: #64748B;
+}
+
+.bg-text-fields-color {
+  background-color: #64748B;
+}
+
+.text-fields-color {
+  color: #64748B;
 }
 
 .bg-danger-regular-color {
   background-color: #D70D0D;
 }
 
+.danger-regular-color {
+  color: #D70D0D;
+}
+
+.bg-danger-regular-color {
+  background-color: #D70D0D;
+}
+
+.danger-regular-color {
+  color: #D70D0D;
+}
+
 .bg-disabled-regular-color {
   background-color: #B1B1B1;
+}
+
+.disabled-regular-color {
+  color: #B1B1B1;
+}
+
+.bg-disabled-regular-color {
+  background-color: #B1B1B1;
+}
+
+.disabled-regular-color {
+  color: #B1B1B1;
 }
 
 .bg-warning-regular-color {
   background-color: #FFB800;
 }
 
+.warning-regular-color {
+  color: #FFB800;
+}
+
+.bg-warning-regular-color {
+  background-color: #FFB800;
+}
+
+.warning-regular-color {
+  color: #FFB800;
+}
+
 .bg-warning-light-color {
   background-color: #FDD368;
+}
+
+.warning-light-color {
+  color: #FDD368;
+}
+
+.bg-warning-light-color {
+  background-color: #FDD368;
+}
+
+.warning-light-color {
+  color: #FDD368;
 }
 
 .bg-warning-dark-color {
   background-color: #E4A400;
 }
 
+.warning-dark-color {
+  color: #E4A400;
+}
+
+.bg-warning-dark-color {
+  background-color: #E4A400;
+}
+
+.warning-dark-color {
+  color: #E4A400;
+}
+
 .bg-success-regular-color {
   background-color: #02B74A;
+}
+
+.success-regular-color {
+  color: #02B74A;
+}
+
+.bg-success-regular-color {
+  background-color: #02B74A;
+}
+
+.success-regular-color {
+  color: #02B74A;
 }
 
 .bg-success-light-color {
   background-color: #C0FCD8;
 }
 
+.success-light-color {
+  color: #C0FCD8;
+}
+
+.bg-success-light-color {
+  background-color: #C0FCD8;
+}
+
+.success-light-color {
+  color: #C0FCD8;
+}
+
 .bg-success-dark-color {
   background-color: #009C3F;
+}
+
+.success-dark-color {
+  color: #009C3F;
+}
+
+.bg-success-dark-color {
+  background-color: #009C3F;
+}
+
+.success-dark-color {
+  color: #009C3F;
 }
 
 .bg-danger-dark-color {
   background-color: #D70D0D;
 }
 
+.danger-dark-color {
+  color: #D70D0D;
+}
+
+.bg-danger-dark-color {
+  background-color: #D70D0D;
+}
+
+.danger-dark-color {
+  color: #D70D0D;
+}
+
 .bg-danger-light-color {
   background-color: #F8D0D0;
+}
+
+.danger-light-color {
+  color: #F8D0D0;
+}
+
+.bg-danger-light-color {
+  background-color: #F8D0D0;
+}
+
+.danger-light-color {
+  color: #F8D0D0;
 }
 
 .bg-disabled-light-color {
   background-color: #E2E2E2;
 }
 
+.disabled-light-color {
+  color: #E2E2E2;
+}
+
+.bg-disabled-light-color {
+  background-color: #E2E2E2;
+}
+
+.disabled-light-color {
+  color: #E2E2E2;
+}
+
 .bg-disabled-dark-color {
   background-color: #575857;
+}
+
+.disabled-dark-color {
+  color: #575857;
+}
+
+.bg-disabled-dark-color {
+  background-color: #575857;
+}
+
+.disabled-dark-color {
+  color: #575857;
 }
 
 .bg-information-regular-color {
   background-color: #3761EB;
 }
 
+.information-regular-color {
+  color: #3761EB;
+}
+
+.bg-information-regular-color {
+  background-color: #3761EB;
+}
+
+.information-regular-color {
+  color: #3761EB;
+}
+
 .bg-information-light-color {
   background-color: #7393FF;
 }
 
+.information-light-color {
+  color: #7393FF;
+}
+
+.bg-information-light-color {
+  background-color: #7393FF;
+}
+
+.information-light-color {
+  color: #7393FF;
+}
+
 .bg-information-dark-color {
   background-color: #2145BC;
+}
+
+.information-dark-color {
+  color: #2145BC;
+}
+
+.bg-information-dark-color {
+  background-color: #2145BC;
+}
+
+.information-dark-color {
+  color: #2145BC;
 }
 
 .border-secondary-color {
@@ -16202,15 +18099,67 @@ a {
   background-color: #FFFFFF;
 }
 
-.bg-border-secondary-color {
-  background-color: #FFFFFF;
+.border-secondary-color {
+  color: #FFFFFF;
 }
 
 .bg-border-secondary-color {
   background-color: #FFFFFF;
+}
+
+.border-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-border-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.border-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-border-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.border-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-border-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.border-secondary-color {
+  color: #FFFFFF;
+}
+
+.bg-border-secondary-color {
+  background-color: #FFFFFF;
+}
+
+.border-secondary-color {
+  color: #FFFFFF;
 }
 
 .bg-unCommon-color {
+  background-color: #FFFFFF;
+}
+
+.unCommon-color {
+  color: #FFFFFF;
+}
+
+.bg-unCommon-color {
+  background-color: #FFFFFF;
+}
+
+.unCommon-color {
+  color: #FFFFFF;
+}
+
+.bg-text-hover-color {
   background-color: #FFFFFF;
 }
 
@@ -16222,19 +18171,47 @@ a {
   background-color: #FFFFFF;
 }
 
-.bg-text-hover-color {
-  background-color: #FFFFFF;
+.text-hover-color {
+  color: #FFFFFF;
 }
 
 .bg-text-hover-color {
   background-color: #FFFFFF;
+}
+
+.text-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-text-hover-color {
+  background-color: #FFFFFF;
+}
+
+.text-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-text-hover-color {
+  background-color: #FFFFFF;
+}
+
+.text-hover-color {
+  color: #FFFFFF;
+}
+
+.bg-text-hover-color {
+  background-color: #FFFFFF;
+}
+
+.text-hover-color {
+  color: #FFFFFF;
 }
 
 .border-width-0 {
   border-width: 0px;
 }
 
-.border-width-1, .btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning, .btn-outline-info, .list-group .list-group-item, .list-group-flush .list-group-item, .tab .tab-bar .tab-item label, .tab .tab-bar .tab-item:has(input[id*=tabCheck]:checked) label, .page-indicator li:not(:empty) {
+.border-width-1, .btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning, .btn-outline-info, div:has(> .form-control) .form-control:not([class^=border-][class$=-color]), .input-group > label, .input-group > span, .list-group .list-group-items, .list-group-flush .list-group-items {
   border-width: 1px;
 }
 
@@ -16274,7 +18251,7 @@ a {
   border-width: 10px;
 }
 
-.border-solid, .btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning, .btn-outline-info, .list-group .list-group-item, .list-group-flush .list-group-item, .tab .tab-bar .tab-item label, .tab .tab-bar .tab-item:has(input[id*=tabCheck]:checked) label, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.border-solid, .btn-outline-primary, .btn-outline-secondary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning, .btn-outline-info, div:has(> .form-control) .form-control:not([class^=border-][class$=-color]), .input-group > label, .input-group > span, .list-group .list-group-items, .list-group-flush .list-group-items, .page-indicator .page:not(:empty), .tooltip span::after, .loader-spinner-border {
   border-style: solid;
 }
 
@@ -16286,11 +18263,11 @@ a {
   border-style: dotted;
 }
 
-.pointer, .badge, .offcanvas-static input[id*=offcanvasCheck] + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right label, .list-group .list-group-item *, .nav .nav-item *, .tab .tab-bar .tab-item, .tab .tab-bar .tab-item *, .page-indicator li:empty, .page-indicator li:not(:empty) {
+.pointer, .accordion-box, *:has(.badge), .btn, .palette-color div div, div:has(> .form-control) .form-control[type=file]::file-selector-button, .input-group > label, .input-group > span, .list-group .list-group-items *, .nav .nav-item *, .offcanvas-static div[id*=offcanvasCheck] + div.backdrop, .offcanvas-static div[id*=dropdown-toggle] + div.backdrop, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left div.offcanvas-close, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right div.offcanvas-close, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right div.offcanvas-close, .page-indicator .page:empty, .page-indicator .page:not(:empty) {
   cursor: pointer;
 }
 
-.aspect-ratio-1x1, .palette-color div div, .badge span:has(i), .badge span:has(i) *, .page-indicator li:empty, .page-indicator li:not(:empty), .page-indicator li:not(:empty).active {
+.aspect-ratio-1x1, *:has(.badge) .badge:has(i), *:has(.badge) .badge:has(i) *, .palette-color div div, .page-indicator .page:empty, .table tbody tr td img, .loader-spinner-border, .loader-grow {
   aspect-ratio: 1/1;
 }
 
@@ -16326,7 +18303,11 @@ a {
   aspect-ratio: 3/3;
 }
 
-.opacity-0, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
+.form-floating .form-control::-moz-placeholder {
+  opacity: 0;
+}
+
+.opacity-0, .dropdown ul, .form-floating .form-control::placeholder, .offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(2) .tab-content, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(2) .tab-content {
   opacity: 0;
 }
 
@@ -16370,7 +18351,7 @@ a {
   overflow: scroll;
 }
 
-.overflow-hidden, .dropdown ul, .tab .tab-page {
+.overflow-hidden, .accordion-box > div, .multiply-ellipsis-3, .card, .dropdown ul, .table {
   overflow: hidden;
 }
 
@@ -16378,7 +18359,7 @@ a {
   overflow-x: scroll;
 }
 
-.overflow-y-scroll {
+.overflow-y-scroll, .scroll-accordion, .card-scrollbar .card-body {
   overflow-y: scroll;
 }
 
@@ -16390,15 +18371,15 @@ a {
   overflow-y: hidden;
 }
 
-.position-relative, .dropdown, .badge, .tab .tab-page {
+.position-relative, *:has(.badge), .dropdown, .form-floating, .switch label.switch-label, .tab-container, .tooltip {
   position: relative;
 }
 
-.position-absolute, .dropdown ul, .badge span, .progress-bar::after, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
+.position-absolute, *:has(.badge) .badge, .dropdown ul, .form-floating .form-control + label, .progress-bar::after, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(2) .tab-content, .tab-container:has(input#tabCheck1:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck2:checked) .tab:nth-child(3) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(1) .tab-content, .tab-container:has(input#tabCheck3:checked) .tab:nth-child(2) .tab-content, .tooltip span::after {
   position: absolute;
 }
 
-.position-fixed, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
+.position-fixed, .offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
   position: fixed;
 }
 
@@ -16406,19 +18387,19 @@ a {
   position: sticky;
 }
 
-.top-0, .progress-bar::after, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck1:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck2:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-4, .tab .tab-bar:has(input#tabCheck3:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck4:checked) ~ .tab-page .tab-page-5, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-1, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-2, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-3, .tab .tab-bar:has(input#tabCheck5:checked) ~ .tab-page .tab-page-4 {
+.top-0, .offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right, .progress-bar::after {
   top: 0px;
 }
 
-.left-0, .progress-bar::after, .offcanvas-static.offcanvas-backdrop input[id*=offcanvasCheck] + label + label, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-left {
+.left-0, .offcanvas-static.offcanvas-backdrop div[id*=offcanvasCheck] + div.backdrop, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-top, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-top, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-left, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-left, .progress-bar::after {
   left: 0px;
 }
 
-.right-0, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-right {
+.right-0, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
   right: 0px;
 }
 
-.bottom-0, .offcanvas-static input[id*=offcanvasCheck] ~ .offcanvas-bottom {
+.bottom-0, .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-bottom, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-bottom {
   bottom: 0px;
 }
 
@@ -16467,17 +18448,21 @@ a {
 }
 
 .object-cover {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .object-fill {
-  object-fit: fill;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .object-contain {
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .object-none {
-  object-fit: none;
+  -o-object-fit: none;
+     object-fit: none;
 }/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,85 @@
+.form-check{
+    @extend .d-flex, .justify-content-center, .gap-1;
+    align-items: baseline;
+    input , label{
+        cursor: pointer;
+        user-select: none;
+    }
+    input:disabled + label{
+        opacity: .6;
+    }
+    input.danger{
+        accent-color: get-color(danger-regular);
+    }
+    input.success{
+        accent-color: get-color(success-regular);
+    }
+    input.info{
+        accent-color: get-color(information-regular);
+    }
+    input.primary{
+        accent-color: get-color(primary);
+    }
+    input.secondary{
+        accent-color: get-color(secondary);
+    }
+}
+.switch {
+    position: relative;
+    input{
+        @extend .d-none;
+    }
+    label.switch-label{
+        width: var(--switch-size);
+        aspect-ratio: 2 / 1;
+        transition: .3s;
+        cursor: pointer;
+        @extend .all-border-full, .d-block, .position-relative;
+        
+    }
+    input:checked + .switch-label{
+        background-color: get-color(primary);
+    }
+    &.switch-success{
+        input:checked + .switch-label {
+            background-color: get-color(success-regular) !important;
+        }
+    }
+    &.switch-danger{
+        input:checked + .switch-label {
+            background-color: get-color(danger-regular) !important;
+        }
+    }
+    &.switch-secondary{
+        input:checked + .switch-label {
+            background-color: get-color(secondary) !important;
+        }
+    }
+    &.switch-info{
+        input:checked + .switch-label {
+            background-color: get-color(information-regular) !important;
+        }
+    }
+}
+.switch-label:before {
+    content: "";
+    position: absolute;
+    height: 80%;
+    aspect-ratio: 1 / 1;
+    left: 0%;
+    bottom: 50%;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    transform: translateY(50%) translateX(15%);
+}
+
+input:checked + .switch-label:before {
+    left: 100%;
+    transform: translateX(-115%) translateY(50%);
+}
+.switch-label{
+    &:not([class*="bg"][class*="color"]){
+        background-color: #3C4252; 
+    }
+}

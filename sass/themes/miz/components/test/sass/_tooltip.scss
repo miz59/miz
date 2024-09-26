@@ -1,0 +1,89 @@
+.tooltip{
+    @extend .position-relative;
+    // &.tooltip-full-width{
+    //     span{
+    //         width: 100vw;
+    //     }
+    // }
+    &.tooltip-top{
+        span{
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            &::after{
+                border-top-color: inherit !important;
+                left: 50%;
+                bottom: -30%;
+            }
+        }
+    }
+    &.tooltip-bottom{
+        span{
+            top: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            &::after{
+                border-bottom-color: inherit !important;
+                left: 50%;
+                top: -28%;
+            }
+        }
+    }
+    &.tooltip-right{
+        span{
+            left: 50%;
+            top: 0%;
+            transform: translateX(50%);
+            &::after{
+                border-right-color: inherit !important;
+                left: 0%;
+                top: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+    }
+    &.tooltip-left{
+        span{
+            right: 50%;
+            top: 0%;
+            transform: translateX(-50%);
+            &::after{
+                border-left-color: inherit !important;
+                right: 0%;
+                top: 50%;
+                transform: translateX(100%) translateY(-50%);
+            }
+        }
+    }
+    span{
+        opacity: 0;
+        width: fit-content; 
+        height: fit-content;
+        color: #fff;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        transition: .2s;
+        white-space: nowrap;
+        @extend .px-2, .py-1, .txt-center;
+        &:not([class^="bg-"][class$="-color"]){
+            background-color: get-color(secondary);
+        }
+         &:not([class^="border-"][class$="-color"]){
+            border-color: get-color(secondary);
+        }
+        &::after {
+            content: ""; 
+            @extend .position-absolute, .border-solid;
+            margin-left: -5px;  
+            border-width: 5px;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+        }
+    }
+    &:hover span{
+        opacity: 1;
+    }
+}
