@@ -71,7 +71,7 @@ $class-list:(
 @function generate-flex-classes($property-key-list , $property-value-list,$class-name){
     $list : ();
     $count : ();
-    @if check-responsive-status($conf-list, $property-key-list){
+    @if check-status($conf-list, $property-key-list){
         @each $key , $value in $break-points{
             $list:join($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list,$class-name));
         }
@@ -85,7 +85,7 @@ $class-list:(
     $list : ();
     $base : ();
     @for $i from 1 through length($property-value-list){
-        @if check-responsive-status($conf-list, $property-key-list){
+        @if check-status($conf-list, $property-key-list){
             $base:generate-classes-responsive-on-value($class-name , $break-points-key , nth($property-value-list , $i));
         }@else{
             $base:generate-classes-on-value($class-name  ,nth($property-value-list , $i));

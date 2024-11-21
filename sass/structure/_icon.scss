@@ -9,6 +9,7 @@ extra-small :10px
 $icon-prefix : "icon";
 
 // ----------------------------
+
 $folder-default:"fonts";
 $fonts: (
   (
@@ -30,15 +31,15 @@ $url:();
 
 @each $font-info in $fonts{
     @each $key , $value in $font-info{
-        @if $key == "name"{
+        @if ($key == "name"){
             $font-family:$value;
         }
 
-        @else if $key == "folder"{
+        @else if ($key == "folder"){
             $font-folder:$value;
         }
 
-        @else if $key == "font-types"{
+        @else if ($key == "font-types"){
             @each $weight , $file-name in $value{
                     $url:();
                     @each $name in $file-name{

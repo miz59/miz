@@ -5,12 +5,7 @@
     appearance: none;
     background-color: get-color(primary);
     @extend .all-border-full;
-
-    // &.disabled{
-    //     user-select:none;
-    //     cursor: default;
-    //     accent-color:get-color(disabled-regular);
-    // }
+    
     &.appearance{
         appearance: auto;
         accent-color: get-color(primary);

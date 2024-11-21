@@ -1,10 +1,5 @@
 .tooltip{
     @extend .position-relative;
-    // &.tooltip-full-width{
-    //     span{
-    //         width: 100vw;
-    //     }
-    // }
     &.tooltip-top{
         span{
             bottom: 150%;

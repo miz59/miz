@@ -67,10 +67,10 @@ $letter-spacing:letter-space;
     }
 }
 @function generate-text-style($text-property , $text-value , $map-config){
-    $is-responsive: check-responsive-status($map-config , responsive);
+    $is-responsive: check-status($map-config , responsive);
     $list : ();
     $base : ();
-    @if $is-responsive{
+    @if ($is-responsive){
         @each $key,$value in $break-points{
             @each $name in $text-value{
                 $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
@@ -85,7 +85,7 @@ $letter-spacing:letter-space;
     }
     @else{
         @each $name in $text-value{
-            $base:generate-classes-responsive-on-value($font-prefix , $key , $name);
+            $base:generate-classes-on-value($font-prefix , $name);
             $map:(
                 className: $base,
                 propertyKeys:'#{$text-property}',

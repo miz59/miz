@@ -43,13 +43,3 @@ input:checked + .switch-label:before {
     left: 100%;
     transform: translateX(-120%);
 }
-// label{
-//     &:not([class^="bg"][class$="color"][class*=" "]){
-//         background-color: red !important; 
-//     }
-// }
-// body{
-//     &:not([class^="bg"][class$="color"]){
-//         background-color: red !important;
-//     }
-// }

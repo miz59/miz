@@ -2,7 +2,7 @@ $display-value-list:(block,none,flex,grid,inline-block);
 $display-list:();
 @function generate-responsive-display-classes($prefix){
     $list:();
-    @if check-responsive-status($conf-display,responsive){
+    @if check-status($conf-display,responsive){
         @each $key , $value in $break-points{
             $base:unquote(".d" + "-" + $key + "-" + $prefix );
             $conf-map:(

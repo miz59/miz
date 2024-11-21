@@ -4,22 +4,18 @@
     $step:map-get($map-config , step);
     $value:calc(($max - $min) / $step);
     $class-name:();
-    @if $step == 0{
+    @if ($step == 0){
         @return ();
     }
     @for $i from 0 through $value{
         $number:$step * $i + $min;
-        @if $i == 0{
+        @if ($i == 0){
             $number:$min;
         }
         $class-item:generate-classes-on-value($property , $number);
         $class-name:join($class-name , $class-item , comma);
     }
     @return $class-name;
-}
-
-@function generate-key($property){
-    @return $property;
 }
 
 @function generate-value($map-config){
@@ -31,7 +27,7 @@
     $value-list:();
     @for $i from 0 through $value{
         $number:$step * $i + $min;
-        @if $i == 0{
+        @if ($i == 0){
             $number:$min;
         }
         $value-list:append($value-list , $number , comma);

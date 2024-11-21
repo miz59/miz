@@ -5,7 +5,7 @@
     $value-1:calc($nominator / $step);
     $value-2:calc($denominator / $step);
     $class-name:();
-    @if $nominator == 0{
+    @if ($nominator == 0){
         @return ();
     }
     @for $i from 1 through $value-1{
@@ -31,7 +31,7 @@
     $value-2:calc($denominator / $step);
     $class-name:();
     $value-list:();
-    @if $nominator == 0{
+    @if ($nominator == 0){
         @return ();
     }
     @for $i from 1 through $value-1{

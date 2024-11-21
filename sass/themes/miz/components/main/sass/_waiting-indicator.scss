@@ -5,9 +5,6 @@
   animation:
   spinner-border-1 0.8s infinite linear alternate,
   spinner-border-2 1.6s infinite linear;
-    // &:not([class^="border-"][class$="-color"]){
-    //   border-color: get-color(primary);
-    // }
 }
 .loader-spinner-border-sm{
   width: 20px;

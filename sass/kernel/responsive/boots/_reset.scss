@@ -1,30 +1,36 @@
-@mixin reset-file($reset){
-    @if $reset{
-        body,p,h1,h2,h3,h4,h5,h6,hr{
-            margin:0px;
-        }
-        
-        h1,h2,h3,h4,h5,h6{
-            font-weight: normal;
-        }
-        
-        li{
-            list-style: none;
-        }
-        
-        button{
-            border:none;
-        }
-        
-        ul,li,ol{
-            padding:0px;
-            margin:0px;
-        }
-        
-        a{
-            text-decoration: none;
-            color:black;
-        }
+@function generate-class-name-list($map-config , $property){
+    $max:map-get($map-config , max);
+    $min:map-get($map-config , min);
+    $step:map-get($map-config , step);
+    $value:calc(($max - $min) / $step);
+    $class-name:();
+    @if ($step == 0){
+        @return ();
     }
+    @for $i from 0 through $value{
+        $number:$step * $i + $min;
+        @if ($i == 0){
+            $number:$min;
+        }
+        $class-item:generate-classes-on-value($property , $number);
+        $class-name:join($class-name , $class-item , comma);
+    }
+    @return $class-name;
 }
-@include reset-file($reset);
+
+@function generate-value($map-config){
+    $max:map-get($map-config , max);
+    $min:map-get($map-config , min);
+    $step:map-get($map-config , step);
+    $value:calc(($max - $min) / $step);
+    $number:();
+    $value-list:();
+    @for $i from 0 through $value{
+        $number:$step * $i + $min;
+        @if ($i == 0){
+            $number:$min;
+        }
+        $value-list:append($value-list , $number , comma);
+    }
+    @return $value-list;
+}

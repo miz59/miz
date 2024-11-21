@@ -7,11 +7,11 @@ $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:m
 $map-gap:(gap:gap);
 
 @function generate-class-name-list($name-list, $map-config) {
-    $is-responsive: check-responsive-status($map-config , responsive);
+    $is-responsive: check-status($map-config , responsive);
     $class-name-list: ();
     $count:map.get($map-config , count) + 1;
 
-    @if $count == 1 {
+    @if ($count == 1){
         @return ();
     }
     @if($is-responsive) {

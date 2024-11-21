@@ -571,7 +571,7 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*=offcanvasCheck].active) {
   }
 }
 .offcanvas-static div[id*=offcanvasCheck] ~ .offcanvas-right, .offcanvas-static div[id*=dropdown-toggle] ~ .offcanvas-right {
-  width: 537;
+  width: 37%;
   background-color: #3761EB;
   color: #FFFFFF;
   box-sizing: border-box;
@@ -1712,12 +1712,7 @@ a {
 @font-face {
   font-family: "primary";
   font-weight: 400;
-  src: url("../fonts/PTSans/PTSans-Regular.ttf"),url("../fonts/PTSans/PTSans-Italic.ttf"),;
-}
-@font-face {
-  font-family: "primary";
-  font-weight: 700;
-  src: url("../fonts/PTSans/PTSans-Bold.ttf"),url("../fonts/PTSans/PTSans-BoldItalic.ttf"),;
+  src: url("../fonts/PTSans/PTSans-Regular.ttf"),;
 }
 .font-primary, *:has(.badge) {
   font-family: "primary";
