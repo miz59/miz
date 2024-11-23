@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'sass:list';
+
 @import "config";
 @import "global-functions";
 @import "themes";
