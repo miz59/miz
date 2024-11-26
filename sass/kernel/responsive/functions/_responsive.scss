@@ -29,9 +29,6 @@
     @for $i from $counter-reset through $count{
         $value:$i;
         $base:unquote("." + $prefix + "-" + $value);
-        @if ($prefix == "w"){
-            @debug $base;
-        }
         $list:append($list , $base , comma);
     }
     @return $list;
