@@ -28,10 +28,10 @@
     }
     @for $i from $counter-reset through $count{
         $value:$i;
-        @if ($is-space){
-            $value:$i - 1;
-        }
         $base:unquote("." + $prefix + "-" + $value);
+        @if ($prefix == "w"){
+            @debug $base;
+        }
         $list:append($list , $base , comma);
     }
     @return $list;

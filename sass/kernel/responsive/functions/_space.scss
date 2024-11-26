@@ -16,8 +16,8 @@ $map-gap:(gap:gap);
     }
     @if($is-responsive) {
         @for $i from 1 through length($name-list){
-            $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count,space, true));
-            $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count , true));
+            $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count, true , true));
+            $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count , true , true));
           }
     }
 
