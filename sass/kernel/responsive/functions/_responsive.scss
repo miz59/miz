@@ -41,9 +41,6 @@
         @if ($is-space){
             $value:$i - 1;    
         }
-        @if ($prefix == "w"){
-            @debug $value , $i;
-        }
         $base:unquote("." + $prefix + "-" + $value);
         $list:append($list , $base , comma);
     }
