@@ -16,9 +16,10 @@
     @return $result;
 }
 
-
-@function generate-classes($prefix , $count , $start-from-zero:false ,$is-space:false){
+@function generate-classes($prefix , $count ,$type, $start-from-zero:false , $is-space:false){
     $list:();
+    $value:0;
+    $much-size:0;
     $counter-reset:0;
     @if ($start-from-zero){
         $counter-reset:0;
@@ -26,8 +27,23 @@
     @else{
         $counter-reset:1;
     }
+    @if ($type==w or $type==h){
+        $much-size:calc(100 / $count);
+    }
     @for $i from $counter-reset through $count{
-        $value:$i;
+        @if ($type==w or $type==h){
+            $value:0;
+            $value:(round($much-size*$i));
+        }
+        @else{
+            $value:$i;
+        }
+        @if ($is-space){
+            $value:$i - 1;    
+        }
+        @if ($prefix == "w"){
+            @debug $value , $i;
+        }
         $base:unquote("." + $prefix + "-" + $value);
         $list:append($list , $base , comma);
     }
@@ -43,7 +59,6 @@
     $base:unquote("." + $prefix + "-" + $value);
     @return $base;
 }
-
 
 @function generate-classes-items($prefix,$property,$conf-map,$start-from-zero:false){
     $name-list : ();
@@ -73,7 +88,6 @@
     $status:map.get($map-config , $status);
     @return $status;
 }
-
 
 @function generate-responsive-classes($prefix , $count ,$type, $start-from-zero:false , $is-space:false){
     $list:();
@@ -106,7 +120,6 @@
     }
     @return $list;
 }
-
 
 @function generate-properties($map-list,$conf-map,$property,$type,$start-from-zero){
     $count : map.get($conf-map,'count');
@@ -157,8 +170,6 @@
         @return $counter-reset;
     }
 }
-
-
 
 @function generate-typography-size-classes($font-map,$prefix){
     $list : ();
