@@ -1,5 +1,7 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .tooltip{
-    @extend .position-relative;
+    position: relative;
     &.tooltip-top{
         span{
             bottom: 150%;
@@ -60,16 +62,19 @@
         z-index: 1;
         transition: .2s;
         white-space: nowrap;
-        @extend .px-2, .py-1, .txt-center;
+        // @extend .px-2, .py-1, .txt-center;
+        text-align: center;
         &:not([class^="bg-"][class$="-color"]){
-            background-color: get-color(secondary);
+            background-color: colors.get-color(secondary);
         }
          &:not([class^="border-"][class$="-color"]){
-            border-color: get-color(secondary);
+            border-color: colors.get-color(secondary);
         }
         &::after {
             content: ""; 
-            @extend .position-absolute, .border-solid;
+            // @extend .position-absolute, .border-solid;
+            position: absolute;
+            border-style: solid;
             margin-left: -5px;  
             border-width: 5px;
             border-top-color: transparent;

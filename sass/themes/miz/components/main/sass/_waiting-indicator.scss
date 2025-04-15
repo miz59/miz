@@ -1,7 +1,12 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .loader-spinner-border {
-  @extend .aspect-ratio-1x1, .all-border-full,.border-solid,.d-flex;
+  aspect-ratio: 1/1;
+  border-radius: 10000px;
+  border-style: solid;
+  display: flex;
   width: 50px;
-  border-color: get-color(primary);
+  border-color: colors.get-color(primary);
   animation:
   spinner-border-1 0.8s infinite linear alternate,
   spinner-border-2 1.6s infinite linear;
@@ -31,36 +36,38 @@
    }
 }
 .loader-spinner-border-danger{
-  border-color: get-color(danger-regular) !important;
+  border-color: colors.get-color(danger-regular) !important;
 }
 .loader-spinner-border-warning{
-  border-color: get-color(warning-regular) !important;
+  border-color: colors.get-color(warning-regular) !important;
 }
 .loader-spinner-border-success{
-  border-color: get-color(success-regular) !important;
+  border-color: colors.get-color(success-regular) !important;
 }
 .loader-spinner-border-information{
-  border-color: get-color(information-regular) !important;
+  border-color: colors.get-color(information-regular) !important;
 }
 
 .loader-grow{
-  @extend .d-flex, .aspect-ratio-1x1, .all-border-full;
+  display: flex;
+  aspect-ratio: 1/1;
+  border-radius: 1000px;
   --loader-grow-size : 50px;
-  background-color: get-color(primary);
+  background-color: colors.get-color(primary);
   animation: grow .75s linear infinite;
   width: 50px;
 }
 .loader-grow-danger{
-  background-color: get-color(danger-regular) !important;
+  background-color: colors.get-color(danger-regular) !important;
 }
 .loader-grow-warning{
-  background-color: get-color(warning-regular) !important;
+  background-color: colors.get-color(warning-regular) !important;
 }
 .loader-grow-success{
-  background-color: get-color(success-regular) !important;
+  background-color: colors.get-color(success-regular) !important;
 }
 .loader-grow-information{
-  background-color: get-color(information-regular) !important;
+  background-color: colors.get-color(information-regular) !important;
 }
 .loader-grow-sm{
   width: 20px;
@@ -77,7 +84,7 @@
 .loader-bars{
   width: 45px;
   aspect-ratio: .75;
-  $color-bars:get-color(primary);
+  $color-bars:colors.get-color(primary);
   --color-bars: no-repeat linear-gradient(#{$color-bars} 0 0);
   background: 
     var(--color-bars) 0%   50%,
@@ -87,16 +94,16 @@
   animation: bars 1s infinite linear;
 }
 .loader-bars-danger{
-  background-color: get-color(danger-regular) !important;
+  background-color: colors.get-color(danger-regular) !important;
 }
 .loader-bars-warning{
-  background-color: get-color(warning-regular) !important;
+  background-color: colors.get-color(warning-regular) !important;
 }
 .loader-bars-success{
-  background-color: get-color(success-regular) !important;
+  background-color: colors.get-color(success-regular) !important;
 }
 .loader-bars-information{
-  background-color: get-color(information-regular) !important;
+  background-color: colors.get-color(information-regular) !important;
 }
 .loader-bars-sm{
   width: 20px;
@@ -116,7 +123,7 @@
   display: grid;
   border: 4px solid transparent;
   border-radius: 50%;
-  border-right-color: get-color(primary);
+  border-right-color: colors.get-color(primary);
   animation: multi 1s infinite linear;
 }
 .loader-multi::before,
@@ -133,16 +140,16 @@
   animation-duration: 3s;
 }
 .loader-multi-danger{
-  background-color: get-color(danger-regular) !important;
+  background-color: colors.get-color(danger-regular) !important;
 }
 .loader-multi-warning{
-  background-color: get-color(warning-regular) !important;
+  background-color: colors.get-color(warning-regular) !important;
 }
 .loader-multi-success{
-  background-color: get-color(success-regular) !important;
+  background-color: colors.get-color(success-regular) !important;
 }
 .loader-multi-information{
-  background-color: get-color(information-regular) !important;
+  background-color: colors.get-color(information-regular) !important;
 }
 .loader-multi-sm{
   width: 20px;
@@ -161,30 +168,30 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: 
-    radial-gradient(farthest-side,#{get-color(primary)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{get-color(primary)});
+    radial-gradient(farthest-side,#{colors.get-color(primary)} 94%,transparent) top/8px 8px no-repeat,
+    conic-gradient(transparent 30%,#{colors.get-color(primary)});
   -webkit-mask: radial-gradient(farthest-side,transparent calc(100% - 8px),#000 0);
   animation: spinner-fade 1s infinite linear;
 }
 .loader-spinner-fade-danger{
   background: 
-    radial-gradient(farthest-side,#{get-color(danger-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{get-color(danger-regular)}) !important;
+    radial-gradient(farthest-side,#{colors.get-color(danger-regular)} 94%,transparent) top/8px 8px no-repeat,
+    conic-gradient(transparent 30%,#{colors.get-color(danger-regular)}) !important;
 }
 .loader-spinner-fade-warning{
   background: 
-    radial-gradient(farthest-side,#{get-color(warning-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{get-color(warning-regular)}) !important;
+    radial-gradient(farthest-side,#{colors.get-color(warning-regular)} 94%,transparent) top/8px 8px no-repeat,
+    conic-gradient(transparent 30%,#{colors.get-color(warning-regular)}) !important;
 }
 .loader-spinner-fade-success{
   background: 
-    radial-gradient(farthest-side,#{get-color(success-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{get-color(success-regular)}) !important;
+    radial-gradient(farthest-side,#{colors.get-color(success-regular)} 94%,transparent) top/8px 8px no-repeat,
+    conic-gradient(transparent 30%,#{colors.get-color(success-regular)}) !important;
 }
 .loader-spinner-fade-information{
   background: 
-    radial-gradient(farthest-side,#{get-color(information-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{get-color(information-regular)}) !important;
+    radial-gradient(farthest-side,#{colors.get-color(information-regular)} 94%,transparent) top/8px 8px no-repeat,
+    conic-gradient(transparent 30%,#{colors.get-color(information-regular)}) !important;
 }
 .loader-spinner-fade-sm{
   width: 20px;
@@ -202,27 +209,27 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  border: 3px solid get-color(on-primary);
+  border: 3px solid colors.get-color(on-primary);
   border-radius: 50%;
-  border-top-color: get-color(primary);
+  border-top-color: colors.get-color(primary);
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
 }
 .loader-spinner-danger{
-  border-color:get-color(disabled-regular);
-  border-top-color:get-color(danger-regular);
+  border-color:colors.get-color(disabled-regular);
+  border-top-color:colors.get-color(danger-regular);
 }
 .loader-spinner-warning{
-  border-color:get-color(disabled-regular);
-  border-top-color:get-color(warning-regular);
+  border-color:colors.get-color(disabled-regular);
+  border-top-color:colors.get-color(warning-regular);
 }
 .loader-spinner-success{
-  border-color:get-color(disabled-regular);
-  border-top-color:get-color(success-regular);
+  border-color:colors.get-color(disabled-regular);
+  border-top-color:colors.get-color(success-regular);
 }
 .loader-spinner-information{
-  border-color:get-color(disabled-regular);
-  border-top-color:get-color(information-regular);
+  border-color:colors.get-color(disabled-regular);
+  border-top-color:colors.get-color(information-regular);
 }
 .loader-spinner-sm{
   width: 20px;
@@ -248,23 +255,23 @@
   content:"";
   grid-area: 1/1;
   animation: liquid 3s infinite linear;
-  background-color:get-color(primary);
+  background-color:colors.get-color(primary);
   border-radius: 50%;
 }
 .loader-liquid:after {
   animation-delay: -.8s;
 }
 .loader-liquid-danger::after,.loader-liquid-danger::before{
-  background-color: get-color(danger-regular);
+  background-color: colors.get-color(danger-regular);
 }
 .loader-liquid-warning::after,.loader-liquid-warning::before{
-  background-color: get-color(warning-regular);
+  background-color: colors.get-color(warning-regular);
 }
 .loader-liquid-success::after,.loader-liquid-success::before{
-  background-color: get-color(success-regular);
+  background-color: colors.get-color(success-regular);
 }
 .loader-liquid-information::after,.loader-liquid-information::before{
-  background-color: get-color(information-regular);
+  background-color: colors.get-color(information-regular);
 }
 .loader-liquid-sm{
   width: 20px;

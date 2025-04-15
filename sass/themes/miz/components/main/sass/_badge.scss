@@ -1,16 +1,27 @@
 *:has(.badge){
-    @extend .position-relative, .pointer, .font-primary;
+    // @extend .position-relative, .pointer, .font-primary;
+    position: relative;
+    cursor: pointer;
+    // font-family: "primary";
 
     & .badge{
         padding:4px;
         text-transform: uppercase;
-        @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
+        // @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
 
         &:has(i){
             padding:4px !important;
-            @extend .aspect-ratio-1x1;
+            // @extend .aspect-ratio-1x1;
+            aspect-ratio: 1/1;
             & *{
-                @extend .aspect-ratio-1x1;
+                // @extend .aspect-ratio-1x1;
+                aspect-ratio: 1/1;
             }
         }
     }

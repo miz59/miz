@@ -1,3 +1,8 @@
+@use "sass:list";
+@use "sass:string";
+@use "../kernel/responsive/boots/typography" as typography2;
+@use "typography";
+
 $icon-size : (
 extra-large :32px,
 large : 24px,
@@ -11,7 +16,7 @@ $icon-prefix : "icon";
 // ----------------------------
 
 $folder-default:"fonts";
-$fonts: (
+typography.$fonts: (
   (
     "name": primary,
     "folder": vazir,
@@ -26,10 +31,10 @@ $fonts: (
 
 // $font-family:"";
 $font-folder:"";
-$font-weight:"";
+typography2.$font-weight:"";
 $url:();
 
-@each $font-info in $fonts{
+@each $font-info in typography.$fonts{
     @each $key , $value in $font-info{
         @if ($key == "name"){
             $font-family:$value;
@@ -43,8 +48,8 @@ $url:();
             @each $weight , $file-name in $value{
                     $url:();
                     @each $name in $file-name{
-                        $url-path:unquote('url("#{$fonts-path}/#{$font-folder}/#{$name}")');
-                        $url:append($url , $url-path , comma);
+                        $url-path:string.unquote('url("#{$fonts-path}/#{$font-folder}/#{$name}")');
+                        $url:list.append($url , $url-path , comma);
                     }
                 $font-weight:map.get($weight-type , $weight);
                 @font-face {

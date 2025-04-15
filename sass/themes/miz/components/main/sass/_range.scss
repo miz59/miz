@@ -1,16 +1,19 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .range{
     width: 100%;
     height:var(--height-range);
     cursor: pointer;
     appearance: none;
-    background-color: get-color(primary);
-    @extend .all-border-full;
+    background-color: colors.get-color(primary);
+    // @extend .all-border-full;
+    border-radius: 1000px;
 
     &.appearance{
         appearance: auto;
-        accent-color: get-color(primary);
+        accent-color: colors.get-color(primary);
     }
     &:not(.appearance):disabled{
-        background-color: get-color(disabled-regular);
+        background-color: colors.get-color(disabled-regular);
     }
 }

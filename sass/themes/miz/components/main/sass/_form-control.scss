@@ -1,32 +1,48 @@
+@use "../../../../../kernel/global-functions/colors";
+@use "../../../config" as *;
+
 div:has( > .form-control){
-    @extend .d-flex, .justify-content-start, .align-items-start;
+    // @extend .d-flex, .justify-content-start, .align-items-start;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+
     &:not([class*="flex-"]){
-        @extend .flex-row;
+        // @extend .flex-row;
+        flex-direction: row;
     }
     &[class*="flex-row"]{
-        @extend .justify-content-start , .align-items-center, .gap-2;
+        // @extend .justify-content-start , .align-items-center, .gap-2;
+        justify-content: start;
+        align-items: center;
+        // gap: ;
+
         input , p{
             margin-top: 0 !important;   
         }
     }
     .form-label{
         &:not([class*="-color"]){
-            color: get-color(title-text-fields);
+            color: colors.get-color(title-text-fields);
         }
     }
     .form-control{
         padding: 7px 10px;
-        @extend .w-100;
+        // @extend .w-100;
+        width: 100%;
         &:not([class*="-color"]){
-            background-color: get-color(fields);
-            color: get-color(text-fields);
+            background-color: colors.get-color(fields);
+            color: colors.get-color(text-fields);
         }
         &:not([class^="border-"][class$="-color"]){
-            border-color: get-color(border-fields);
-            @extend .border-width-1, .border-solid;
+            border-color: colors.get-color(border-fields);
+            // @extend .border-width-1, .border-solid;
+            border-width: 1px;
+            border-style: solid;
         }
         &:not([class*="all-border-"]){
-            @extend .all-border-small;
+            // @extend .all-border-small;
+            border-radius: $all-border-small;
         }
         &:focus {
             outline: none;
@@ -34,7 +50,7 @@ div:has( > .form-control){
         }
         &[type="file"]::file-selector-button{
             border:none;
-            @extend .btn, .btn-secondary;
+            // @extend .btn, .btn-secondary;
         }
     }
     textarea.form-control{
@@ -42,16 +58,16 @@ div:has( > .form-control){
     }
     .form-control-sm{
         padding: 5px 6px; 
-        @extend .txt-subtitle;
+        // @extend .txt-subtitle;
     }
     .form-control-lg{
         padding: 10px 12px;
-        @extend .txt-title;
+        // @extend .txt-title;
     }
     .form-text{
-        @extend .txt-subtitle, .mt-1;
+        // @extend .txt-subtitle, .mt-1;
         &:not([class*="-color"]){
-            color: get-color(text-fields);
+            color: colors.get-color(text-fields);
         }
     }
     .form-control:disabled{
@@ -59,7 +75,7 @@ div:has( > .form-control){
             opacity: 0.8;
         }
         &:not([class^="bg-"][class$="-color"]){
-            background-color: get-color(fields);
+            background-color: colors.get-color(fields);
         }
         &:not([class$="-color"]){
             color: #DADEE3;
@@ -70,12 +86,12 @@ div:has( > .form-control){
             opacity: 1; 
         }
         &:not([class^="bg-"][class$="-color"]){
-            background-color: get-color(fields);
+            background-color: colors.get-color(fields);
         }
         &:not([class$="-color"]){
-            color: get-color(white);
+            color: colors.get-color(white);
             &::placeholder{
-                color: get-color(white) !important;
+                color: colors.get-color(white) !important;
             }
         }
     }
@@ -87,7 +103,7 @@ div:has( > .form-control){
             border: none !important;
         }
         &:not([class$="-color"]){
-            color: get-color(white);
+            color: colors.get-color(white);
         }
     }
     .form-control-color{

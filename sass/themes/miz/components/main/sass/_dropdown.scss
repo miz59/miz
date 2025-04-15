@@ -1,17 +1,26 @@
 .dropdown{
-  @extend .position-relative; 
+  // @extend .position-relative; 
+  position: relative;
   label{
-    @extend .d-flex,.align-items-center,.justify-content-center,.z-index-2;
+    // @extend .d-flex,.align-items-center,.justify-content-center,.z-index-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
     &:not([class*="w-"]){
       width: fit-content;
     }
   }
   ul{
-    @extend .position-absolute,.py-2,.overflow-hidden;
+    // @extend .position-absolute,.py-2,.overflow-hidden;
+    position: absolute;
+    // padding: ;
+    overflow: hidden;
     max-height: 0;
     transition: .4s ease-in, opacity .1s;
     width: max-content;
-    @extend .opacity-0;
+    // @extend .opacity-0;
+    opacity: 0;
     a{
       color: unset;
     }
@@ -20,7 +29,9 @@
     width: 100%;
     max-height: 100vh;
     opacity: 1;
-    @extend .w-100, .border-box;
+    // @extend .w-100, .border-box;
+    box-sizing: border-box;
+    width: 100%;
   }
   &.dropdown-bottom ul{
     top: calc(100% + 5px);

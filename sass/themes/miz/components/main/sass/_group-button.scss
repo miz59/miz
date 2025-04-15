@@ -1,7 +1,12 @@
 .btn-group{
-    @extend .d-flex, .gap-1;
+    // @extend .d-flex, .gap-1;
+    display: flex;
+    // gap: ;
     .btn{
-        @extend .d-flex, .justify-content-center, .align-items-center;
+        // @extend .d-flex, .justify-content-center, .align-items-center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: .2s;
         &:hover{
             filter : brightness(1.3);

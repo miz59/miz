@@ -1,20 +1,22 @@
+@use "../themes/miz/config/dims";
+
 .all-border-extra-small{
-    border-radius: $all-border-extra-small;
+    border-radius: dims.$all-border-extra-small;
 }
 .all-border-small{
-    border-radius:$all-border-small;
+    border-radius:dims.$all-border-small;
 }
 .all-border-normal{
-    border-radius:$all-border-normal;
+    border-radius:dims.$all-border-normal;
 }
 .all-border-medium{
-    border-radius:$all-border-medium;
+    border-radius:dims.$all-border-medium;
 }
 .all-border-large{
-    border-radius:$all-border-large;
+    border-radius:dims.$all-border-large;
 }
 .all-border-extra-large{
-    border-radius: $all-border-extra-large;
+    border-radius: dims.$all-border-extra-large;
 }
 .all-border-full{
     border-radius:100000px !important;

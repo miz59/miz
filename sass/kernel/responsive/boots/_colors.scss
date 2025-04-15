@@ -1,23 +1,28 @@
+@use "sass:list";
+@use "sass:string";
+@use "../../../config/colors";
+@use "responsive";
+
 @mixin detect-color--palette(
   $keyword,
   $key-palette-color,
   $value-palette-color
 ) {
-  @if ($keyword==$borders) {
-    $result : str-replace("border-#{$key-palette-color}-color","-border","");
+  @if ($keyword==colors.$borders) {
+    $result : responsive.str-replace("border-#{$key-palette-color}-color","-border","");
     .#{$result} {
       border-color: $value-palette-color;
     }
   }
 
-  @if ($keyword==$backgrounds) {
-    $result : str-replace("bg-#{$key-palette-color}-color","-background","");
+  @if ($keyword==colors.$backgrounds) {
+    $result : responsive.str-replace("bg-#{$key-palette-color}-color","-background","");
     .#{$result} {
       background-color: $value-palette-color;
     }
   }
 
-  @if ($keyword==$colors) {
+  @if ($keyword==colors.$colors) {
     .#{$key-palette-color}-color {
       color: $value-palette-color;
     }
@@ -25,9 +30,9 @@
 }
 
 @mixin compare-palette-key($key-palette-color, $value-palette-color, $keyword) {
-  @for $i from 1 through length($keyword) {
-    $item-list: nth($keyword, $i);
-    @if (str-index(#{$key-palette-color}, $item-list)) {
+  @for $i from 1 through list.length($keyword) {
+    $item-list: list.nth($keyword, $i);
+    @if (string.index(#{$key-palette-color}, $item-list)) {
       @include detect-color--palette(
         $keyword,
         $key-palette-color,
@@ -38,10 +43,10 @@
 }
 @mixin generate-color-classes($palette) {
   @each $key, $value in $palette {
-    @include compare-palette-key($key, $value, $borders);
-    @include compare-palette-key($key, $value, $colors);
-    @include compare-palette-key($key, $value, $backgrounds);
+    @include compare-palette-key($key, $value, colors.$borders);
+    @include compare-palette-key($key, $value, colors.$colors);
+    @include compare-palette-key($key, $value, colors.$backgrounds);
   }
 }
 
-@include generate-color-classes($color-palette);
+@include generate-color-classes(colors.$color-palette);

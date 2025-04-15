@@ -1,7 +1,13 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+@use "../../themes/miz/config/dims";
+@use "../responsive/functions/responsive";
+
 @function generate-aspect-ratio-class-name($map-config , $property){
-    $nominator:map-get($map-config , nominator);
-    $denominator:map-get($map-config , denominator);
-    $step:map-get($map-config , step);
+    $nominator:map.get($map-config , nominator);
+    $denominator:map.get($map-config , denominator);
+    $step:map.get($map-config , step);
     $value-1:calc($nominator / $step);
     $value-2:calc($denominator / $step);
     $class-name:();
@@ -12,8 +18,8 @@
         $number-1:$step * $i;
         @for $j from 1 through $value-2{
             $number-2:$step * $j;
-            $class-item:generate-classes-on-value($property , $number-1 + "x" + $number-2);
-            $class-name:join($class-name , $class-item , comma);
+            $class-item:responsive.generate-classes-on-value($property , $number-1 + "x" + $number-2);
+            $class-name:list.join($class-name , $class-item , comma);
         }
     }
     @return $class-name;
@@ -24,9 +30,9 @@
 }
 
 @function generate-aspect-ratio-value($map-config){
-    $nominator:map-get($map-config , nominator);
-    $denominator:map-get($map-config , denominator);
-    $step:map-get($map-config , step);
+    $nominator:map.get($map-config , nominator);
+    $denominator:map.get($map-config , denominator);
+    $step:map.get($map-config , step);
     $value-1:calc($nominator / $step);
     $value-2:calc($denominator / $step);
     $class-name:();
@@ -38,7 +44,7 @@
         $number-1:$step * $i;
         @for $j from 1 through $value-2{
             $number-2:$step * $j;
-            $value-list:append($value-list , join($number-1 , $number-2) , comma);
+            $value-list:list.append($value-list , list.join($number-1 , $number-2) , comma);
         }
     }
     @return $value-list;
@@ -49,13 +55,13 @@
     $value-list:generate-aspect-ratio-value($map-config);
     $map:();
     $list:();
-    @for $i from 1 through length($class-name-list){
-        $class-item:nth($class-name-list , $i);
-        $value:nth($value-list , $i);
+    @for $i from 1 through list.length($class-name-list){
+        $class-item:list.nth($class-name-list , $i);
+        $value:list.nth($value-list , $i);
         #{$class-item}{
-            #{$property}:nth($value , 1) + unquote("/") + nth($value , 2);
+            #{$property}:list.nth($value , 1) + string.unquote("/") + list.nth($value , 2);
         }
     }
 }
 
-@include generate-total-style-aspect-ratio($conf-aspect-ratio , aspect-ratio);
+@include generate-total-style-aspect-ratio(dims.$conf-aspect-ratio , aspect-ratio);

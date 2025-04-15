@@ -1,16 +1,21 @@
+@use "../../../../../kernel/global-functions/colors";
+@use "../../../config/dims" as *;
+
 .form-select{
-    @extend .p-1;
+    // @extend .p-1;
+    // padding:;
     &:not([class^="all-border"]){
-        @extend .all-border-small;
+        // @extend .all-border-small;
+        border-radius: $all-border-small;
     }
     &:not([class^="bg-"][class$="-color"]){
-        background-color: get-color(primary);
-        color:get-color(on-primary);
+        background-color: colors.get-color(primary);
+        color:colors.get-color(on-primary);
         border:none;
     }
     option:not([class^="bg-"][class$="-color"]) {
-        background-color: get-color(on-primary);
-        color: get-color(text);
+        background-color: colors.get-color(on-primary);
+        color: colors.get-color(text);
     }
     &.small{
         font-size: 12px;

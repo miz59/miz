@@ -1,3 +1,10 @@
+@use "../../../../../kernel/global-functions/break-point";
+@use "../../../../../kernel/global-functions/colors";
+
+body{
+    @extend .bg-color;
+}
+
 body:has(.offcanvas-static.offcanvas-scroll div[id*="offcanvasCheck"].active){
     overflow: unset;
 }
@@ -7,132 +14,201 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
 }
 
 .offcanvas-static{
-    @extend .d-flex,.flex-row,.justify-content-center,.align-items-center;
+    // @extend .d-flex,.flex-row,.justify-content-center,.align-items-center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     &.offcanvas-backdrop div[id*="offcanvasCheck"] + div.backdrop{
-        background-color: get-color(secondary);
+        background-color: colors.get-color(secondary);
         visibility:hidden;
         transition: 250ms linear;
-        @extend .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0;
+        // @extend .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
     }
     div[id*="offcanvasCheck"],div[id*="dropdown-toggle"]{
         & + div.backdrop{
-            @extend .pointer;
+            // @extend .pointer;
+            cursor: pointer;
         }
         & ~ .offcanvas-top{
             height:37%;
-            background-color: get-color(primary);
-            color: get-color(on-primary);
+            background-color: colors.get-color(primary);
+            color: colors.get-color(on-primary);
             box-sizing:border-box;
             transform: translateY(-100%);
             transition: 250ms linear;
             z-index:1000;
+            // @extend .w-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            // padding: ;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
 
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 height: 25% !important;
-                @media screen and (max-width:get-break-point-value(md)){
+                @media screen and (max-width:break-point.get-break-point-value(md)){
                     height: 37% !important;
                 }
-                @media screen and (max-width:get-break-point-value(sm)){
+                @media screen and (max-width:break-point.get-break-point-value(sm)){
                     height: 50% !important;
                 }
             }
-            @media screen and (max-width:get-break-point-value(md)) {
+            @media screen and (max-width:break-point.get-break-point-value(md)) {
                 height: 50%;
             }
-            @media screen and (max-width:get-break-point-value(sm)) {
+            @media screen and (max-width:break-point.get-break-point-value(sm)) {
                 height: 100%;
             }
-            @extend .w-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
-                @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                width: 100%;
+                display: flex;
+                justify-content: start;
+                cursor: pointer;
+                // margin-bottom: ;
             }
         }
         & ~ .offcanvas-bottom{
             height:37%;
-            background-color: get-color(primary);
-            color: get-color(on-primary);
+            background-color: colors.get-color(primary);
+            color: colors.get-color(on-primary);
             box-sizing:border-box;
             transform: translateY(100%);
             transition: 250ms linear;
             z-index:1000;
+            // @extend .w-100, .position-fixed, .left-0, .bottom-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            // padding: ;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 height: 25% !important;
-                @media screen and (max-width:get-break-point-value(md)){
+                @media screen and (max-width:break-point.get-break-point-value(md)){
                     height: 37% !important;
                 }
-                @media screen and (max-width:get-break-point-value(sm)){
+                @media screen and (max-width:break-point.get-break-point-value(sm)){
                     height: 50% !important;
                 }
             }
-            @media screen and (max-width:get-break-point-value(md)) {
+            @media screen and (max-width:break-point.get-break-point-value(md)) {
                 height: 50%;
             }
-            @media screen and (max-width:get-break-point-value(sm)) {
+            @media screen and (max-width:break-point.get-break-point-value(sm)) {
                 height: 100%;
             }
-            @extend .w-100, .position-fixed, .left-0, .bottom-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
-                @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                width: 100%;
+                display: flex;
+                justify-content: start;
+                cursor: pointer;
+                // margin-bottom: ;
             }
         }
         & ~ .offcanvas-left{
             width:37%;
-            background-color: get-color(primary);
-            color: get-color(on-primary);
+            background-color: colors.get-color(primary);
+            color: colors.get-color(on-primary);
             box-sizing:border-box;
             transform: translateX(-100%);
             transition: 250ms linear;
             z-index:1000;
+            // @extend .h-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+            height: 100%;
+            position: fixed;
+            left:0;
+            top: 0;
+            // padding: ;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 width: 25% !important;
-                @media screen and (max-width:get-break-point-value(md)){
+                @media screen and (max-width:break-point.get-break-point-value(md)){
                     width: 37% !important;
                 }
-                @media screen and (max-width:get-break-point-value(sm)){
+                @media screen and (max-width:break-point.get-break-point-value(sm)){
                     width: 50% !important;
                 }
             }
-            @media screen and (max-width:get-break-point-value(md)) {
+            @media screen and (max-width:break-point.get-break-point-value(md)) {
                 width: 50%;
             }
-            @media screen and (max-width:get-break-point-value(sm)) {
+            @media screen and (max-width:break-point.get-break-point-value(sm)) {
                 width: 100%;
             }
-            @extend .h-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
-                @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                width: 100%;
+                display: flex;
+                justify-content: start;
+                cursor: pointer;
+                // margin-bottom: ;
             }
         }
         & ~ .offcanvas-right{
             width:37% ;
-            background-color: get-color(primary);
-            color: get-color(on-primary);
+            background-color: colors.get-color(primary);
+            color: colors.get-color(on-primary);
             box-sizing:border-box;
             transform: translateX(100%);
             transition: 250ms linear;
             z-index:1000;
+            // @extend .h-100, .position-fixed, .right-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            // padding: ;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 width: 25% !important;
-                @media screen and (max-width:get-break-point-value(md)){
+                @media screen and (max-width:break-point.get-break-point-value(md)){
                     width: 37% !important;
                 }
-                @media screen and (max-width:get-break-point-value(sm)){
+                @media screen and (max-width:break-point.get-break-point-value(sm)){
                     width: 50% !important;
                 }
             }
-            @media screen and (max-width:get-break-point-value(md)) {
+            @media screen and (max-width:break-point.get-break-point-value(md)) {
                 width: 750 ;
             }
-            @media screen and (max-width:get-break-point-value(sm)) {
+            @media screen and (max-width:break-point.get-break-point-value(sm)) {
                 width: 100% ;
             }
-            @extend .h-100, .position-fixed, .right-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             & div.offcanvas-close{
-                @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
+                width: 100%;
+                display: flex;
+                justify-content: start;
+                cursor: pointer;
+                // margin-bottom: ;
             }
         }
         &.active{

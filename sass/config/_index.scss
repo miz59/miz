@@ -1,5 +1,5 @@
-@import 'paths';
-@import 'responsive';
-@import 'dims';
-@import 'colors';
-@import 'reset';
+@forward 'paths';
+@forward 'responsive';
+@forward 'dims';
+@forward 'colors';
+@forward 'reset';

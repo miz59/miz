@@ -1,23 +1,36 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .breadcrumb{
     width:fit-content;
 
     & > *{
-        @extend .d-flex, .flex-row, .flex-wrap, .justify-content-center, .align-items-center;
+        // @extend .d-flex, .flex-row, .flex-wrap, .justify-content-center, .align-items-center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         gap: 0.5rem;
     }
 
     &[style*="--content"]{
         & li{
-            color:get-color(section-title-text);
-            @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center;
+            color:colors.get-color(section-title-text);
+            // @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            // gap: 0.5rem;
             
             & a{
-                color:get-color(section-title-text);
+                color:colors.get-color(section-title-text);
             }
 
             &::after{
                 content: var(--content);
-                @extend .d-inline-block;
+                // @extend .d-inline-block;
+                display: inline-block;
             }
 
             &:last-child::after{
@@ -25,15 +38,18 @@
             }
 
             &.active{
-                color:get-color(primary);
+                color:colors.get-color(primary);
 
                 & a{
-                    color:get-color(primary);
+                    color:colors.get-color(primary);
                 }
             }
         }
     }
 }
 div:has(.breadcrumb){
-    @extend .d-flex, .flex-row, .align-items-center;
+    // @extend .d-flex, .flex-row, .align-items-center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

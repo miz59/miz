@@ -1,31 +1,36 @@
+@use "sass:list";
+@use "sass:string";
+@use "../functions/responsive";
+@use "../../../config/responsive" as *;
+
 $display-value-list:(block,none,flex,grid,inline-block);
 $display-list:();
 @function generate-responsive-display-classes($prefix){
     $list:();
-    @if check-status($conf-display,responsive){
+    @if responsive.check-status($conf-display,responsive){
         @each $key , $value in $break-points{
-            $base:unquote(".d" + "-" + $key + "-" + $prefix );
+            $base:string.unquote(".d" + "-" + $key + "-" + $prefix );
             $conf-map:(
                 className: $base,
                 propertyKeys:display,
                 propertyValues:$prefix
             );
-            $list:append($list , $conf-map,comma);
+            $list:list.append($list , $conf-map,comma);
         }
     }
     @else{
-        $base:unquote(".d"+"-"+$prefix );
+        $base:string.unquote(".d"+"-"+$prefix );
         $conf-map:(
             className: $base,
             propertyKeys:display,
             propertyValues:$prefix
         );
-        $list:append($list , $conf-map,comma);
+        $list:list.append($list , $conf-map,comma);
     }
     @return $list;
 }
-@for $i from 1 through length($display-value-list){
-    $display-child:generate-responsive-display-classes(nth($display-value-list , $i));
-    $display-list:join($display-list,$display-child,comma);
+@for $i from 1 through list.length($display-value-list){
+    $display-child:generate-responsive-display-classes(list.nth($display-value-list , $i));
+    $display-list:list.join($display-list,$display-child,comma);
 }
 $display-values:$display-list;

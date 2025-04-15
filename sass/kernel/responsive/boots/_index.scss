@@ -1,4 +1,4 @@
-@import 'reset';
-@import 'responsive';
-@import 'colors';
-@import 'border';
+@forward "reset";
+@forward "responsive";
+@forward "colors";
+@forward "border";

@@ -1,16 +1,22 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+@use "sass:map";
+@use "../../../config/responsive" as *;
+
 @function cast-string-number($string) {
     $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
     $numbers: 0 1 2 3 4 5 6 7 8 9;
     $result: 0;
 
-    @for $i from 1 through str-length($string) {
-        $character: str-slice($string, $i, $i);
-        $index: index($strings, $character);
+    @for $i from 1 through string.length($string) {
+        $character: string.slice($string, $i, $i);
+        $index: list.index($strings, $character);
         @if not $index {
             @warn "Unknown character #{$character}";
             @return false;
         }
-        $number: nth($numbers, $index);
+        $number: list.nth($numbers, $index);
         $result: $result * 10 + $number;
     }
     @return $result;
@@ -33,7 +39,7 @@
     @for $i from $counter-reset through $count{
         @if ($type==w or $type==h){
             $value:0;
-            $value:(round($much-size*$i));
+            $value:(math.round($much-size*$i));
         }
         @else{
             $value:$i;
@@ -41,19 +47,19 @@
         @if ($is-space){
             $value:$i - 1;    
         }
-        $base:unquote("." + $prefix + "-" + $value);
-        $list:append($list , $base , comma);
+        $base:string.unquote("." + $prefix + "-" + $value);
+        $list:list.append($list , $base , comma);
     }
     @return $list;
 }
 
 @function generate-classes-responsive-on-value($prefix , $break-point , $value){
-    $base:unquote("." + $prefix + "-"+ $break-point + "-" + $value);
+    $base:string.unquote("." + $prefix + "-"+ $break-point + "-" + $value);
     @return $base;
 }
 
 @function generate-classes-on-value($prefix , $value){
-    $base:unquote("." + $prefix + "-" + $value);
+    $base:string.unquote("." + $prefix + "-" + $value);
     @return $base;
 }
 
@@ -67,15 +73,15 @@
         @return ();
     }
     @if ($is-responsive){
-        @for $i from 1 through length($prefix){
-            $name-list:generate-responsive-classes(nth($prefix,$i),$count,nth($prefix,$i),$start-from-zero);
-            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i),$start-from-zero);
+        @for $i from 1 through list.length($prefix){
+            $name-list:generate-responsive-classes(list.nth($prefix,$i),$count,list.nth($prefix,$i),$start-from-zero);
+            $list:generate-properties($name-list,$conf-map,$property,list.nth($prefix,$i),$start-from-zero);
         }
     }
     @else{
-        @for $i from 1 through length($prefix){
-            $name-list:generate-classes(nth($prefix,$i),$count,nth($prefix,$i),$start-from-zero);
-            $list:generate-properties($name-list,$conf-map,$property,nth($prefix,$i),$start-from-zero);
+        @for $i from 1 through list.length($prefix){
+            $name-list:generate-classes(list.nth($prefix,$i),$count,list.nth($prefix,$i),$start-from-zero);
+            $list:generate-properties($name-list,$conf-map,$property,list.nth($prefix,$i),$start-from-zero);
         }
     }
     @return $list;
@@ -103,7 +109,7 @@
         @for $i from $counter-reset through $count{
             @if ($type==w or $type==h){
                 $value:0;
-                $value:(round($much-size*$i));
+                $value:(math.round($much-size*$i));
             }
             @else{
                 $value:$i;
@@ -111,8 +117,8 @@
             @if ($is-space){
                 $value:$i - 1;    
             }
-            $base:unquote("." + $prefix + "-" + $key + "-" + $value);
-            $list:append($list , $base , comma);
+            $base:string.unquote("." + $prefix + "-" + $key + "-" + $value);
+            $list:list.append($list , $base , comma);
         }
     }
     @return $list;
@@ -132,14 +138,14 @@
     @if ($type==w or $type==h){
         $much-size:calc(100% / $count);
     }
-    @for $j from 1 through length($map-list){
+    @for $j from 1 through list.length($map-list){
         $counter-reset:reset-count($counter-reset,$count);
         $conf-map:(
-            className: nth($map-list,$j),
+            className: list.nth($map-list,$j),
             propertyKeys:($property),
             propertyValues:set-property-values($counter-reset,$type,$much-size),
         );
-        $list:append($list ,$conf-map,comma);
+        $list:list.append($list ,$conf-map,comma);
         $counter-reset:$counter-reset+1;
     }
     @return $list;
@@ -180,7 +186,7 @@
                     propertyKeys:'font-size',
                     propertyValues:$size
                 );
-                $list:append($list , $map);
+                $list:list.append($list , $map);
             }
         }
     @return $list;

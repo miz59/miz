@@ -1,7 +1,12 @@
+@use "../../../../../kernel/global-functions/break-point";
+@use "../../../../../kernel/global-functions/colors";
+@use "../../../config/dims" as *;
+
 .table{
     border-collapse: separate;
     border-spacing: 0;
-    @extend .overflow-hidden;
+    // @extend .overflow-hidden;
+    overflow: hidden;
     &.outline{
         border: 1px solid;
         &:not([class^="border-"][class$="-color"]){
@@ -14,15 +19,19 @@
         }
     }
     &:not([class^="all-border"]){
-        @extend .all-border-medium;
+        // @extend .all-border-medium;
+        border-radius: $all-border-medium;
     }   
     thead{
         &:not([class^="bg-"][class$="-color"]){
-            @extend .bg-primary-color;
+            // @extend .bg-primary-color;
+            background-color: get-color(primary);
         }
         &:not([class^="py-"]){
             th{
-                @extend .py-1;  
+                // @extend .py-1;
+                // padding-top: ;
+                // padding-bottom: ;
             }
         }
     }
@@ -38,10 +47,12 @@
                 padding-top:var(--table-space);
                 padding-bottom:var(--table-space);
                 &:has(img){
-                    @extend .pt-1;
+                    // @extend .pt-1;
+                    // padding-top: ;
                 }
                 img{
-                    @extend .aspect-ratio-1x1;
+                    // @extend .aspect-ratio-1x1;
+                    aspect-ratio: 1/1;
                     
                     &:not([class*="w-"]){
                         width: 40px;
@@ -52,7 +63,7 @@
         &.zebra-mode{
             & tr:nth-child(even){
                 td{
-                    background-color: get-color(primary);
+                    background-color: colors.get-color(primary);
                 }
             }
         }
@@ -62,12 +73,13 @@
     }
 
     &,& *{
-        @extend .border-box;
+        // @extend .border-box;
+        box-sizing: border-box;
     }
 }
 
 .responsive-table{
-    @media screen and (max-width: get-break-point-value(lg)) {
+    @media screen and (max-width: break-point.get-break-point-value(lg)) {
         border-radius: 0px !important;
         thead{
             display: none;
@@ -84,7 +96,7 @@
                 border-top: none;
                 border-radius: 15px;
                 &:not([class^="bg-"][class$="-color"]){
-                    background-color: get-color(primary);
+                    background-color: colors.get-color(primary);
                     padding: 10px 10px;
                 }   
                 td{

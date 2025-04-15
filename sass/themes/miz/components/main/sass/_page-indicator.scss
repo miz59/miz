@@ -1,15 +1,21 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .page-indicator{
     width:fit-content;
     height:var(--size);
-    @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
+    // @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
     .page{
         &.active:empty{
-            background-color: get-color(specific);
+            background-color: colors.get-color(specific);
             aspect-ratio: 2/1;
         }
         &.active:not(:empty){
-            background-color: get-color(primary-dark);
-            border-color: get-color(specific);
+            background-color: colors.get-color(primary-dark);
+            border-color: colors.get-color(specific);
         }
     }
 
@@ -17,19 +23,33 @@
         transition: .3s; 
         &:empty{
             height: var(--size);
-            background-color: get-color(primary);
-            @extend .pointer, .aspect-ratio-1x1, .all-border-full, .border-box;
+            background-color: colors.get-color(primary);
+            // @extend .pointer, .aspect-ratio-1x1, .all-border-full, .border-box;
+            cursor: pointer;
+            aspect-ratio: 1/1;
+            border-radius: 1000px;
+            box-sizing: border-box;
         }
 
         &:not(:empty){
-            color:get-color(on-primary);
-            background-color: get-color(primary-dark);
-            border-color: get-color(primary);
+            color:colors.get-color(on-primary);
+            background-color: colors.get-color(primary-dark);
+            border-color: colors.get-color(primary);
             border-width: 3px;
             user-select: none;
             width: var(--size);
             height: var(--size);
-            @extend .pointer, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .border-solid, .txt-center, .all-border-full, .border-box;
+            // @extend .pointer, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .border-solid, .txt-center, .all-border-full, .border-box;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            // padding: ;
+            border-style: solid;
+            text-align: center;
+            border-radius: 1000px;
+            box-sizing: border-box;
         }
     }
 }

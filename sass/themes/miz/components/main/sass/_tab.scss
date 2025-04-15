@@ -1,6 +1,10 @@
+@use "../../../config/component";
+
 .tab-container {
     margin: 0 auto;
-    @extend .d-flex, .position-relative; 
+    // @extend .d-flex, .position-relative; 
+    display: flex;
+    position: relative;
     
 }
 
@@ -11,7 +15,9 @@
       border-color: #ddd;
   }
   .tab-label {
-    @extend .w-100, .d-inline-block, .p-2;
+    // @extend .w-100, .d-inline-block, .p-2;
+    width: 100%;
+    display: inline-block;
     cursor: pointer;
     &:not([class^="bg-"][class$="-color"]){
       background-color: #f7f7f7;
@@ -20,7 +26,8 @@
 }
 
 .tab-content {
-    @extend .w-100, .p-2;
+    // @extend .w-100, .p-2;
+    width: 100%;
     cursor: pointer;
     left: 0;
     transition: .2s;
@@ -38,7 +45,8 @@
   border-bottom: none;
   border-right: 1px solid #ddd;
   input[type="radio"] {
-    @extend .d-none;
+    // @extend .d-none;
+    display: none;
   }
 
 }
@@ -57,17 +65,22 @@
   height: fit-content;
 }
 .tab-container{
-    @for $i from 1 through $tab-count{ 
-        @for $j from 1 through $tab-count{
+    @for $i from 1 through component.$tab-count{ 
+        @for $j from 1 through component.$tab-count{
             @if ($i == $j){
                 & .tab input#tabCheck#{$i}:checked ~ .tab-content{
-                    @extend .w-100;
+                    // @extend .w-100;
+                    width: 100%;
                     transform: translateX(0%);
                 }
             }
             @else{
                 &:has(input#tabCheck#{$i}:checked) .tab:nth-child(#{$j}) .tab-content{
-                    @extend .w-100, .h-100, .position-absolute, .opacity-0; 
+                    // @extend .w-100, .h-100, .position-absolute, .opacity-0; 
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    opacity: 0;
     
                     @if ($j > $i){
                         transform: translateX(100%);

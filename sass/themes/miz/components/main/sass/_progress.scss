@@ -1,10 +1,17 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .progress-bar{
     width:100%;
     height:10px;
-    background-color: get-color(disabled-light);
+    background-color: colors.get-color(disabled-light);
     position:relative;
     overflow: hidden;
-    @extend .d-flex, .flex-row, .justify-content-center, .align-items-center, .all-border-full;
+    // @extend .d-flex, .flex-row, .justify-content-center, .align-items-center, .all-border-full;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
 
     &:not([class*="py-"]){
         padding-top:0.5rem;
@@ -15,8 +22,17 @@
     &::after{
         content: attr(data-content);
         width: calc(var(--percentage) * 1%);
-        background-color:get-color(information-regular);
-        @extend .h-100 , .position-absolute , .top-0 , .left-0 , .d-flex , .flex-row , .justify-content-center , .align-items-center , .all-border-full;
+        background-color:colors.get-color(information-regular);
+        // @extend .h-100 , .position-absolute , .top-0 , .left-0 , .d-flex , .flex-row , .justify-content-center , .align-items-center , .all-border-full;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1000px;
     }
 
     &[style*="content-place"]{
@@ -42,6 +58,9 @@
     }
 
     & p{
-        @extend .mx-1, .z-index-1;
+        // @extend .mx-1, .z-index-1;
+        z-index: 1;
+        // margin-left: ;
+        // margin-right: ;
     }
 }

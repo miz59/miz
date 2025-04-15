@@ -1,3 +1,10 @@
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+@use "sass:string";
+@use "../../../config/responsive" as *;
+@use "responsive";
+
 $paddings-list:p,pt,pb,pl,pr,px,py;
 $margins-list:m,mt,mb,ml,mr,mx,my;
 $gap-list:gap;
@@ -6,8 +13,8 @@ $map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left ,
 $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom));
 $map-gap:(gap:gap);
 
-@function generate-class-name-list($name-list, $map-config) {
-    $is-responsive: check-status($map-config , responsive);
+@function generate-class-name-list-space($name-list, $map-config) {
+    $is-responsive: responsive.check-status($map-config , responsive);
     $class-name-list: ();
     $count:map.get($map-config , count) + 1;
 
@@ -15,14 +22,14 @@ $map-gap:(gap:gap);
         @return ();
     }
     @if($is-responsive) {
-        @for $i from 1 through length($name-list){
-            $class-name-list: list.join($class-name-list, generate-responsive-classes(nth($name-list , $i) , $count, true , true));
+        @for $i from 1 through list.length($name-list){
+            $class-name-list: list.join($class-name-list, responsive.generate-responsive-classes(list.nth($name-list , $i) , $count, true , true));
           }
     }
 
     @else {
-        @for $i from 1 through length($name-list){
-            $class-name-list: list.join($class-name-list, generate-classes(nth($name-list , $i) , $count , true));
+        @for $i from 1 through list.length($name-list){
+            $class-name-list: list.join($class-name-list, responsive.generate-classes(list.nth($name-list , $i) , $count , true));
         }
     }
     @return $class-name-list;
@@ -30,24 +37,24 @@ $map-gap:(gap:gap);
 
 @function generate-key($name , $map-property){
     $split-dot:string.split($name , ".");
-    $split-class:string.split(nth($split-dot , length($split-dot)) , "-");
-    $prefix:nth($split-class , 1);
+    $split-class:string.split(list.nth($split-dot , list.length($split-dot)) , "-");
+    $prefix:list.nth($split-class , 1);
     $key:map.get($map-property , $prefix);
     @return $key;
 }
 
-@function generate-value($name , $map-config , $map-property){
+@function generate-value-space($name , $map-config , $map-property){
     $factor:map.get($map-config , factor);
     $unit:map.get($map-config , unit);
     $key:generate-key($name , $map-property);
     $split-class:string.split($name , "-");
-    $number:nth($split-class , length($split-class));
-    $value:$factor * cast-string-number($number);
+    $number:list.nth($split-class , list.length($split-class));
+    $value:$factor * responsive.cast-string-number($number);
     $value:$value + $unit;
     $value-list:();
 
-    @if type-of($key) == list{
-        @for $i from 1 through length($key){
+    @if meta.type-of($key) == list{
+        @for $i from 1 through list.length($key){
             $value-list:list.append($value-list,$value , comma);
         }
         @return $value-list;
@@ -58,18 +65,18 @@ $map-gap:(gap:gap);
 @function generate-total-map-list($name-list , $map-property , $map-config){
     $list:();
     $map:();
-    $class-name-list:generate-class-name-list($name-list, $map-config);
-    @if length($class-name-list) == 0 {
+    $class-name-list:generate-class-name-list-space($name-list, $map-config);
+    @if list.length($class-name-list) == 0 {
         @return ();
     }
-    @for $i from 1 through length($class-name-list){
-        $class-item:nth($class-name-list , $i);
+    @for $i from 1 through list.length($class-name-list){
+        $class-item:list.nth($class-name-list , $i);
         $map:(
             className:$class-item,
             propertyKeys:generate-key($class-item , $map-property),
-            propertyValues:generate-value($class-item , $map-config , $map-property)
+            propertyValues:generate-value-space($class-item , $map-config , $map-property)
         );
-        $list:append($list , $map , comma);
+        $list:list.append($list , $map , comma);
     }
     @return $list;
 }

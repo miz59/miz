@@ -1,7 +1,18 @@
-@import 'typography';
-@import 'icon';
+@use "sass:list";
+@use "sass:string";
+@use "sass:map";
+@use 'typography';
+@use 'icon';
+@use "../functions/space";
+@use "../layouts/dims";
+@use "../layouts/displays";
+@use "../layouts/flex";
+@use "../layouts/grid";
+@use "../layouts/orders";
+@use "../../../config/responsive" as *;
 
-$totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$p,$m,$gaps,$font-size-responsive,$generate-text-transform,$generate-text-align,$generate-text-decoration-line,$generate-text-decoration-style,$generate-font-style,$letter-space,$icon-size-responsive;
+
+$totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$height-list,flex.$flex-type,orders.$flex-orders,flex.$flex-grows,grid.$g,space.$p,space.$m,space.$gaps,typography.$font-size-responsive,typography.$generate-text-transform,typography.$generate-text-align,typography.$generate-text-decoration-line,typography.$generate-text-decoration-style,typography.$generate-font-style,typography.$letter-space,icon.$icon-size-responsive;
 
 @function get-greatest-breakpoint(){
     $max-size:0;
@@ -14,10 +25,10 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
 }
 
 @mixin generate-header-horizontally(){
-    @for $i from 1 through length($header-space-horizontally){
+    @for $i from 1 through list.length($header-space-horizontally){
         $break-point-values:map.values($break-points);
-        $max-width-values:nth($break-point-values,$i);
-        $space-value:nth($header-space-horizontally,$i);
+        $max-width-values:list.nth($break-point-values,$i);
+        $space-value:list.nth($header-space-horizontally,$i);
         @if get-greatest-breakpoint()==$max-width-values{
             .header{
                 padding-left: $space-value;
@@ -35,10 +46,10 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
     }
 }
 @mixin generate-boxed-horizontally(){
-    @for $i from 1 through length($boxed-space-horizontally){
+    @for $i from 1 through list.length($boxed-space-horizontally){
         $break-point-values:map.values($break-points);
-        $max-width-values:nth($break-point-values,$i);
-        $space-value:nth($boxed-space-horizontally,$i);
+        $max-width-values:list.nth($break-point-values,$i);
+        $space-value:list.nth($boxed-space-horizontally,$i);
         $max-width:get-greatest-breakpoint();
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
@@ -57,10 +68,10 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
     }
 }
 @mixin generate-boxed-vertically(){
-    @for $i from 1 through length($boxed-space-vertically){
+    @for $i from 1 through list.length($boxed-space-vertically){
         $break-point-values:map.values($break-points);
-        $max-width-values:nth($break-point-values,$i);
-        $space-value:nth($boxed-space-vertically,$i);
+        $max-width-values:list.nth($break-point-values,$i);
+        $space-value:list.nth($boxed-space-vertically,$i);
         @if get-greatest-breakpoint()==$max-width-values{
             .section{
                 padding-top: $space-value;
@@ -90,15 +101,15 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
     padding-left: 0px !important;
 }
 @function check-config-count($totalist-item){
-    @if length(nth($totalist,$totalist-item))!=0{
+    @if list.length(list.nth($totalist,$totalist-item))!=0{
         @return true;
     }
     @return false;
 }
 
 @mixin generate-classes($value){
-    @for $i from 1 through length($totalist){
-        @for $j from 1 through length(nth($totalist,$i)){
+    @for $i from 1 through list.length($totalist){
+        @for $j from 1 through list.length(list.nth($totalist,$i)){
             @include generate-style-property($i,$j,$value);
         }
     }
@@ -120,19 +131,19 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
     @return $result;
 }
 @function str-replace($string, $search, $replace: '') {
-    $index: str-index($string, $search);
+    $index: string.index($string, $search);
   
     @if ($index){
-        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+        @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
     }
   
     @return $string;
 }
 
 @mixin generate-style-property($totalist-item,$total-list-member-item,$break-point-value){
-    $total-list-member:nth($totalist,$totalist-item);
+    $total-list-member:list.nth($totalist,$totalist-item);
     @if (check-config-count($totalist-item)){
-        $class-name:map.get(nth($total-list-member,$total-list-member-item),className);
+        $class-name:map.get(list.nth($total-list-member,$total-list-member-item),className);
         $class-name-greatest : str-replace($class-name,'-xxl');
 
         $result : ();
@@ -144,23 +155,23 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
             }
         }
 
-        $property-keys:map.get(nth($total-list-member,$total-list-member-item),propertyKeys);
+        $property-keys:map.get(list.nth($total-list-member,$total-list-member-item),propertyKeys);
         $property-break-point:break-point($class-name);
-        $property-values:map.get(nth($total-list-member,$total-list-member-item),propertyValues);
+        $property-values:map.get(list.nth($total-list-member,$total-list-member-item),propertyValues);
         $property-list:($property-keys,$property-values);
         
         @if($break-point-value==$property-break-point){
             @if ($result != ()){
                 #{$result}{
-                    @for $k from 1 through length($property-keys){
-                        #{nth(nth($property-list,1),$k)}: nth(nth($property-list,2),$k);
+                    @for $k from 1 through list.length($property-keys){
+                        #{list.nth(list.nth($property-list,1),$k)}: list.nth(list.nth($property-list,2),$k);
                     }
                 }
             }
             
             #{$class-name}{
-                @for $k from 1 through length($property-keys){
-                    #{nth(nth($property-list,1),$k)}: nth(nth($property-list,2),$k);
+                @for $k from 1 through list.length($property-keys){
+                    #{list.nth(list.nth($property-list,1),$k)}: list.nth(list.nth($property-list,2),$k);
                 }
             }
         }

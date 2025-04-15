@@ -1,11 +1,11 @@
 @use 'sass:string';
 
-@import 'functions';
-@import 'cursor';
-@import 'aspect-ratio';
-@import 'opacity';
-@import 'overflow';
-@import 'position';
-@import 'z-index';
-@import "colors";
-@import "image"
+@forward "functions";
+@forward "cursor";
+@forward "aspect-ratio";
+@forward "opacity";
+@forward "overflow";
+@forward "position";
+@forward "z-index";
+@forward "colors";
+@forward "image";

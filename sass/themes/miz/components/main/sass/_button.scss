@@ -1,92 +1,112 @@
+@use "../../../../../kernel/global-functions/colors";
+@use "../../../config" as *;
+
 .btn{
-    @extend .all-border-small, .pointer, .border-box;
+    // @extend .all-border-small, .pointer, .border-box;
+    border-radius: $all-border-small;
+    cursor: pointer;
+    box-sizing: border-box;
     user-select: none;
     &:has(i){
         &:not(:has(span)){
-        @extend .p-1, .d-flex;
+        // @extend .p-1, .d-flex;
+        display: flex;
         }
     }
     &:has(i + span){
-        @extend .gap-1;
+        // @extend .gap-1;
     }
     
 }
 .btn-primary{
-    color: get-color(on-primary);
-    background-color: get-color(primary);
+    color: colors.get-color(on-primary);
+    background-color: colors.get-color(primary);
 }
 .btn-secondary{
-    color: get-color(secondary-text);
-    background-color: get-color(secondary);
+    color: colors.get-color(secondary-text);
+    background-color: colors.get-color(secondary);
 }
 .btn-success{
-    color:get-color(button-text);
-    background-color: get-color(success-regular);
+    color:colors.get-color(button-text);
+    background-color: colors.get-color(success-regular);
 }
 .btn-danger{
-    color:get-color(button-text);
-    background-color: get-color(danger-regular);
+    color:colors.get-color(button-text);
+    background-color: colors.get-color(danger-regular);
 }
 .btn-warning{
-    color:get-color(button-text);
-    background-color: get-color(warning-regular);
+    color:colors.get-color(button-text);
+    background-color: colors.get-color(warning-regular);
 }
 .btn-info{
-    color:get-color(button-text);
-    background-color: get-color(information-regular);
+    color:colors.get-color(button-text);
+    background-color: colors.get-color(information-regular);
 }
 .btn-link{
-    color:get-color(information-light);
+    color:colors.get-color(information-light);
     text-decoration:underline; 
     background-color: transparent;
 }
 
 .btn-outline-primary {
-    border-color:get-color(primary);
-    color: get-color(primary);
+    border-color:colors.get-color(primary);
+    color: colors.get-color(primary);
     background-color:transparent;
-    @extend .border-solid, .border-width-1;
+    // @extend .border-solid, .border-width-1;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .btn-outline-secondary {
-    border-color:get-color(secondary);    
-    color: get-color(secondary);
+    border-color:colors.get-color(secondary);    
+    color: colors.get-color(secondary);
     background-color:transparent;
-    @extend .border-solid, .border-width-1;
+    // @extend .border-solid, .border-width-1;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .btn-outline-success {
-    border-color: get-color(success-regular);
-    color: get-color(success-regular);
+    border-color: colors.get-color(success-regular);
+    color: colors.get-color(success-regular);
     background-color:transparent;
-    @extend .border-solid, .border-width-1;
+    // @extend .border-solid, .border-width-1;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .btn-outline-danger {
-    border-color: get-color(danger-regular);
-    color: get-color(danger-regular);
+    border-color: colors.get-color(danger-regular);
+    color: colors.get-color(danger-regular);
     background-color:transparent;
-    @extend .border-solid, .border-width-1;
+    // @extend .border-solid, .border-width-1;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .btn-outline-warning {
-    border-color: get-color(warning-regular);
-    color: get-color(warning-regular);
+    border-color: colors.get-color(warning-regular);
+    color: colors.get-color(warning-regular);
     background-color:transparent;
-    @extend .border-solid, .border-width-1;
+    // @extend .border-solid, .border-width-1;
+    border-style: solid;
+    border-width: 1px;
 
 }
 
 .btn-outline-info {
-    border-color: get-color(information-regular);
-    color: get-color(information-regular);
+    border-color: colors.get-color(information-regular);
+    color: colors.get-color(information-regular);
     background-color:transparent;
-    @extend .border-solid, .border-width-1;
+    // @extend .border-solid, .border-width-1;
+    border-style: solid;
+    border-width: 1px;
 
 }
 
 .btn-round{
-    @extend .all-border-full;
+    // @extend .all-border-full;
+    border-radius: 1000px;
 }
 
 .btn-sm{

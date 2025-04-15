@@ -1,15 +1,20 @@
+@use "../../../../../kernel/global-functions/colors";
+
 .form-floating{
-    @extend .position-relative;
+    // @extend .position-relative;
+    position: relative;
     .form-control{
         height: 100%;
         padding-top: 17px !important;
         padding-bottom: 5px !important;
         &::placeholder{ 
-            @extend .opacity-0;
+            // @extend .opacity-0;
+            opacity: 0;
             user-select: none;
         }
         & + label{
-            @extend .position-absolute;
+            // @extend .position-absolute;
+            position: absolute;
             top: 50%;
             right: 100%;
             left: 10px;
@@ -18,7 +23,7 @@
             z-index: 1;
             transform: translateY(-50%);
             &:not([class*="color"]){
-                color: get-color(text-fields);
+                color: colors.get-color(text-fields);
             }
         }
         & textarea + label{

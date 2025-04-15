@@ -1,4 +1,4 @@
-@import "component";
-@import "colors";
-@import "dims";
-@import "responsive";
+@forward "component";
+@forward "colors";
+@forward "dims";
+@forward "responsive";

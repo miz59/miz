@@ -1,33 +1,46 @@
+@use "../../../../../kernel/global-functions/colors";
+@use "../../../config" as *;
+
 .nav{
-    @extend .w-100, .d-flex, .flex-row, .gap-1;
+    // @extend .w-100, .d-flex, .flex-row, .gap-1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    // gap: ;
 
     & .nav-item{
-        @extend .p-1, .all-border-small;
+        // @extend .p-1, .all-border-small;
+        // padding: ;
+        border-radius: $all-border-small;
 
         &.active{
-            color: get-color(on-primary);
-            background-color: get-color(primary);
+            color: colors.get-color(on-primary);
+            background-color: colors.get-color(primary);
 
             & a{
-                color: get-color(on-primary);
+                color: colors.get-color(on-primary);
             }
         }
         &.disabled , &.disabled *{
             user-select:none;
             cursor: default;
-            color:get-color(disabled-regular);
+            color:colors.get-color(disabled-regular);
         }
         & *{
-            @extend .pointer;
+            // @extend .pointer;
+            cursor: pointer;
         }
         & a{
-            @extend .text-color;
+            // @extend .text-color;
+            color: get-color(text);
         }
     }
     &:not([class*="align-items"]){
-        @extend .align-items-start;
+        // @extend .align-items-start;
+        align-items: start;
     }
     &:not(.flex-column){
-        @extend .flex-row;
+        // @extend .flex-row;
+        flex-direction: row;
     }
 }

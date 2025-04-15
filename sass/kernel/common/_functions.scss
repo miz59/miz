@@ -1,7 +1,11 @@
+@use "sass:list";
+@use "sass:map";
+@use "../responsive/functions/responsive";
+
 @function generate-class-name-list($map-config , $property){
-    $max:map-get($map-config , max);
-    $min:map-get($map-config , min);
-    $step:map-get($map-config , step);
+    $max:map.get($map-config , max);
+    $min:map.get($map-config , min);
+    $step:map.get($map-config , step);
     $value:calc(($max - $min) / $step);
     $class-name:();
     @if ($step == 0){
@@ -12,16 +16,16 @@
         @if ($i == 0){
             $number:$min;
         }
-        $class-item:generate-classes-on-value($property , $number);
-        $class-name:join($class-name , $class-item , comma);
+        $class-item:responsive.generate-classes-on-value($property , $number);
+        $class-name:list.join($class-name , $class-item , comma);
     }
     @return $class-name;
 }
 
 @function generate-value($map-config){
-    $max:map-get($map-config , max);
-    $min:map-get($map-config , min);
-    $step:map-get($map-config , step);
+    $max:map.get($map-config , max);
+    $min:map.get($map-config , min);
+    $step:map.get($map-config , step);
     $value:calc(($max - $min) / $step);
     $number:();
     $value-list:();
@@ -30,7 +34,7 @@
         @if ($i == 0){
             $number:$min;
         }
-        $value-list:append($value-list , $number , comma);
+        $value-list:list.append($value-list , $number , comma);
     }
     @return $value-list;
 }
