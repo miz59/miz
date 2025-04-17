@@ -1,7 +1,0 @@
-.palette-color{
-    & div div{
-        width: 60px;
-        box-shadow: 0px 0px 10px 2px get-color(shadow);
-        @extend .all-border-normal, .aspect-ratio-1x1;
-    }
-}
