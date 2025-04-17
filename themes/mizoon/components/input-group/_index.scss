@@ -1,5 +1,5 @@
-@use "../../../../../kernel/global-functions/colors";
-@use "../../../config" as *;
+@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../config" as *;
 
 .input-group{
     // @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;

@@ -1,6 +1,6 @@
-@use "../../../../../kernel/global-functions/break-point";
-@use "../../../../../kernel/global-functions/colors";
-@use "../../../config/dims" as *;
+@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel/kernel-functions/break-point";
+@use "../../config" as *;
 
 .table{
     border-collapse: separate;

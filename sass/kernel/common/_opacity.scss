@@ -1,5 +1,5 @@
 @use "sass:list";
-@use "../../themes/miz/config/dims";
+@use "../../../themes/mizoon/config/dims";
 @use "functions";
 
 @mixin generate-total-style-opacity($map-config , $property){

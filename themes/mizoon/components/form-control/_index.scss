@@ -1,5 +1,5 @@
-@use "../../../../../kernel/global-functions/colors";
-@use "../../../config" as *;
+@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../config" as *;
 
 div:has( > .form-control){
     // @extend .d-flex, .justify-content-start, .align-items-start;

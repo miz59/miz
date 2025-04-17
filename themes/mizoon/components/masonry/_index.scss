@@ -1,12 +1,11 @@
-@use "../../../../../kernel/global-functions/break-point";
-@use "../../../../../kernel/global-functions/colors";
-@use "../../../config/component";
+@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../config" as *;
 
 .mason{
     column-count: var(--column-count);
 
-    @each $column-break-point , $column-count in component.$mason-break-point{
-        @media screen and (max-width:break-point.get-break-point-value($column-break-point)) {
+    @each $column-break-point , $column-count in $mason-break-point{
+        @media screen and (max-width:get-break-point-value($column-break-point)) {
             column-count: $column-count;
         }
     }

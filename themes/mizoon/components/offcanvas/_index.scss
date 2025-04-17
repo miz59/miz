@@ -1,9 +1,4 @@
-@use "../../../../../kernel/global-functions/break-point";
-@use "../../../../../kernel/global-functions/colors";
-
-body{
-    @extend .bg-color;
-}
+@use "../../../../sass/kernel/kernel-functions/colors";
 
 body:has(.offcanvas-static.offcanvas-scroll div[id*="offcanvasCheck"].active){
     overflow: unset;
@@ -57,17 +52,17 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
 
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 height: 25% !important;
-                @media screen and (max-width:break-point.get-break-point-value(md)){
+                @media screen and (max-width:get-break-point-value(md)){
                     height: 37% !important;
                 }
-                @media screen and (max-width:break-point.get-break-point-value(sm)){
+                @media screen and (max-width:get-break-point-value(sm)){
                     height: 50% !important;
                 }
             }
-            @media screen and (max-width:break-point.get-break-point-value(md)) {
+            @media screen and (max-width:get-break-point-value(md)) {
                 height: 50%;
             }
-            @media screen and (max-width:break-point.get-break-point-value(sm)) {
+            @media screen and (max-width:get-break-point-value(sm)) {
                 height: 100%;
             }
 
@@ -101,17 +96,17 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
 
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 height: 25% !important;
-                @media screen and (max-width:break-point.get-break-point-value(md)){
+                @media screen and (max-width:get-break-point-value(md)){
                     height: 37% !important;
                 }
-                @media screen and (max-width:break-point.get-break-point-value(sm)){
+                @media screen and (max-width:get-break-point-value(sm)){
                     height: 50% !important;
                 }
             }
-            @media screen and (max-width:break-point.get-break-point-value(md)) {
+            @media screen and (max-width:get-break-point-value(md)) {
                 height: 50%;
             }
-            @media screen and (max-width:break-point.get-break-point-value(sm)) {
+            @media screen and (max-width:get-break-point-value(sm)) {
                 height: 100%;
             }
 
@@ -144,17 +139,17 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             align-items: start;
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 width: 25% !important;
-                @media screen and (max-width:break-point.get-break-point-value(md)){
+                @media screen and (max-width:get-break-point-value(md)){
                     width: 37% !important;
                 }
-                @media screen and (max-width:break-point.get-break-point-value(sm)){
+                @media screen and (max-width:get-break-point-value(sm)){
                     width: 50% !important;
                 }
             }
-            @media screen and (max-width:break-point.get-break-point-value(md)) {
+            @media screen and (max-width:get-break-point-value(md)) {
                 width: 50%;
             }
-            @media screen and (max-width:break-point.get-break-point-value(sm)) {
+            @media screen and (max-width:get-break-point-value(sm)) {
                 width: 100%;
             }
 
@@ -188,17 +183,17 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
                 width: 25% !important;
-                @media screen and (max-width:break-point.get-break-point-value(md)){
+                @media screen and (max-width:get-break-point-value(md)){
                     width: 37% !important;
                 }
-                @media screen and (max-width:break-point.get-break-point-value(sm)){
+                @media screen and (max-width:get-break-point-value(sm)){
                     width: 50% !important;
                 }
             }
-            @media screen and (max-width:break-point.get-break-point-value(md)) {
+            @media screen and (max-width:get-break-point-value(md)) {
                 width: 750 ;
             }
-            @media screen and (max-width:break-point.get-break-point-value(sm)) {
+            @media screen and (max-width:get-break-point-value(sm)) {
                 width: 100% ;
             }
 

@@ -1,5 +1,5 @@
-@use "../../../../../kernel/global-functions/colors";
-@use "../../../config" as *;
+@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../config" as *;
 
 .nav{
     // @extend .w-100, .d-flex, .flex-row, .gap-1;

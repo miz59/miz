@@ -1,4 +1,4 @@
-@use "../../../config/component";
+@use "../../config" as *;
 
 .tab-container {
     margin: 0 auto;
@@ -65,8 +65,8 @@
   height: fit-content;
 }
 .tab-container{
-    @for $i from 1 through component.$tab-count{ 
-        @for $j from 1 through component.$tab-count{
+    @for $i from 1 through $tab-count{ 
+        @for $j from 1 through $tab-count{
             @if ($i == $j){
                 & .tab input#tabCheck#{$i}:checked ~ .tab-content{
                     // @extend .w-100;

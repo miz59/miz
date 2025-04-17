@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../../../config/responsive";
+@use "../../../sass/config/responsive";
 
 $conf-gaps:map.merge(responsive.$conf-gaps ,(
     count:20,

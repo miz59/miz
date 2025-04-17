@@ -1,4 +1,4 @@
-@use "../global-functions/colors";
+@use "../kernel-functions/colors";
 
 $primary-color:colors.get-color(primary);
 $on-primary-color:colors.get-color(on-primary);

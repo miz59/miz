@@ -1,4 +1,4 @@
-@use "../../../kernel/global-functions/break-point";
+@use "../../../sass/global-functions/_break-point";
 
 $tab-count:3;
 $tab-break-point:break-point.get-break-point-value(md);
