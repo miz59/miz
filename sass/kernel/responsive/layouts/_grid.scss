@@ -1,5 +1,5 @@
-@use "../functions/responsive";
+@use "../functions/responsive" as *;
 @use "../../../config/responsive" as *;
 
 $grid-list : g;
-$g : responsive.generate-classes-items($grid-list ,grid-template-columns, $conf-grids) ;
+$g : generate-classes-items($grid-list ,grid-template-columns, $conf-grids) ;

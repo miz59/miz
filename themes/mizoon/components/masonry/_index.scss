@@ -1,5 +1,7 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
-@use "../../config" as *;
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/structure" as *;
+
+$mason-break-point:(xl:5 , lg:3 , md:2 , sm:1);
 
 .mason{
     column-count: var(--column-count);
@@ -10,12 +12,12 @@
         }
     }
     .mason-item{
-        background-color: colors.get-color(primary);
-        // @extend .d-inline-block, .w-100, .mb-1, .p-1, .border-box;
-        display: inline-block;
-        width: 100%;
+        background-color: get-color(primary);
+        @extend .d-inline-block, .w-100, .mb-1, .p-1;
+        // display: inline-block;
+        // width: 100%;
         // margin-bottom: ;
         // padding: ;
-        box-sizing: border-box;
+        // box-sizing: border-box;
     }
 }

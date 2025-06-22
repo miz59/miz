@@ -1,6 +1,9 @@
-@use "../../../sass/global-functions/_break-point";
+@use "../../../sass/global-functions/_colors" as *;
+@use "../../../sass/global-functions/_break-point" as *;
+
+// accordion
+
 
 $tab-count:3;
-$tab-break-point:break-point.get-break-point-value(md);
+$tab-break-point:get-break-point-value(md);
 // masonry
-$mason-break-point:(xl:5 , lg:3 , md:2 , sm:1); 

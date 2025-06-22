@@ -1,113 +1,85 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
-@use "../../config" as *;
+@use "../button" as *;
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
+@use "sass:string";
 
-div:has( > .form-control){
-    // @extend .d-flex, .justify-content-start, .align-items-start;
-    display: flex;
-    justify-content: start;
-    align-items: start;
+$form-field-custom-classes:"";
+$form-control-bg-color:"fields";
+$form-control-color:"text-fields";
+$form-control-custom-classes:".p-1, .border-width-1, .border-color, .border-solid";
+$form-label-bg-color:"transparent";
+$form-label-color:"title-text-fields";
+$form-text-color:"text";
+$form-text-custom-classes:".txt-normal";
+$form-title-color:"title-text";
+$form-title-custom-classes:".txt-title";
+$from-control-disabled-bg-color:"fields";
+$from-control-disabled-color:"text-fields";
+$from-control-disabled-placeholder-opacity: 0.7;
+$form-control-read-only-bg-color:"fields";
+$form-control-read-only-color:"text-fields";
+$form-control-colorpicker-bg-color:"fields";
 
-    &:not([class*="flex-"]){
-        // @extend .flex-row;
-        flex-direction: row;
-    }
+.form-field{
+    @extend .d-flex, #{$form-field-custom-classes};
+
+
     &[class*="flex-row"]{
-        // @extend .justify-content-start , .align-items-center, .gap-2;
-        justify-content: start;
-        align-items: center;
-        // gap: ;
-
-        input , p{
-            margin-top: 0 !important;   
-        }
+        @extend .justify-content-start , .align-items-start, .gap-1;
     }
     .form-label{
-        &:not([class*="-color"]){
-            color: colors.get-color(title-text-fields);
-        }
+        color: get-color($form-label-color);
+        background-color: get-color($form-label-bg-color);
     }
     .form-control{
-        padding: 7px 10px;
-        // @extend .w-100;
-        width: 100%;
-        &:not([class*="-color"]){
-            background-color: colors.get-color(fields);
-            color: colors.get-color(text-fields);
+        color:get-color($form-control-color);
+        background-color:get-color($form-control-bg-color);
+        @extend #{$form-control-custom-classes};
+
+        @if string.index($form-control-custom-classes , "border-width-") == null {
+            border:none;
         }
-        &:not([class^="border-"][class$="-color"]){
-            border-color: colors.get-color(border-fields);
-            // @extend .border-width-1, .border-solid;
-            border-width: 1px;
-            border-style: solid;
+        @if string.index($form-control-custom-classes , "all-border-") == null {
+            @extend .all-border-small;
         }
-        &:not([class*="all-border-"]){
-            // @extend .all-border-small;
-            border-radius: $all-border-small;
-        }
+
         &:focus {
             outline: none;
             box-shadow: none;
         }
         &[type="file"]::file-selector-button{
             border:none;
-            // @extend .btn, .btn-secondary;
+            @extend .btn, .btn-secondary, .border-width-1, .border-solid, .border-color;
         }
     }
     textarea.form-control{
         resize: vertical;
     }
-    .form-control-sm{
-        padding: 5px 6px; 
-        // @extend .txt-subtitle;
-    }
-    .form-control-lg{
-        padding: 10px 12px;
-        // @extend .txt-title;
-    }
     .form-text{
-        // @extend .txt-subtitle, .mt-1;
-        &:not([class*="-color"]){
-            color: colors.get-color(text-fields);
-        }
+        color: get-color($form-text-color);
+        @extend #{$form-text-custom-classes};
+    }
+    .form-title{
+        color: get-color($form-title-color);
+        @extend #{$form-title-custom-classes};
     }
     .form-control:disabled{
+        background-color: get-color($from-control-disabled-bg-color);
+        color: get-color($from-control-disabled-color);
+
         &::placeholder{
-            opacity: 0.8;
-        }
-        &:not([class^="bg-"][class$="-color"]){
-            background-color: colors.get-color(fields);
-        }
-        &:not([class$="-color"]){
-            color: #DADEE3;
+            opacity: $from-control-disabled-placeholder-opacity;
         }
     }
     .form-control:read-only{
+        background-color: get-color($form-control-read-only-bg-color);
+        color: get-color($form-control-read-only-color);
+
         &::placeholder{
-            opacity: 1; 
-        }
-        &:not([class^="bg-"][class$="-color"]){
-            background-color: colors.get-color(fields);
-        }
-        &:not([class$="-color"]){
-            color: colors.get-color(white);
-            &::placeholder{
-                color: colors.get-color(white) !important;
-            }
+            opacity: 1;
         }
     }
-    .form-control-plaintext{
-        &:not([class^="bg-"][class$="-color"]){
-            background-color: transparent !important;
-        }
-        &:not([class^="border-"][class$="-color"]){
-            border: none !important;
-        }
-        &:not([class$="-color"]){
-            color: colors.get-color(white);
-        }
-    }
-    .form-control-color{
-        height: 3rem;
-        border-radius: $all-border-medium;
+    .form-control[type="color"]{
+        background-color:get-color($form-control-colorpicker-bg-color);
     }
 }

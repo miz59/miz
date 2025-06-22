@@ -1,55 +1,60 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel" as *;
+
+$breadcrumb-items-color: "on-secondary";
+$breadcrumb-items-active-color:"primary";
+$breadcrumb-items-after-margin-inline-end: 0.5rem;
 
 .breadcrumb{
-    width:fit-content;
+    @extend .w-fit-content;
 
     & > *{
-        // @extend .d-flex, .flex-row, .flex-wrap, .justify-content-center, .align-items-center;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
+        @extend .d-flex, .flex-row, .flex-wrap, .justify-content-center, .align-items-center;
     }
 
-    &[style*="--content"]{
-        & li{
-            color:colors.get-color(section-title-text);
-            // @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            // gap: 0.5rem;
+    &[style*="--content"],&[style*="--content-image"]{
+        & li, & .breadcrumb-item{
+            color:get-color($breadcrumb-items-color);
+            @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center;
             
             & a{
-                color:colors.get-color(section-title-text);
+                // @extend #{$breadcrumb-items};
+                color:get-color($breadcrumb-items-color);
             }
 
             &::after{
                 content: var(--content);
-                // @extend .d-inline-block;
-                display: inline-block;
+                margin-inline-end: $breadcrumb-items-after-margin-inline-end;
+                @extend .d-inline-block;
             }
 
             &:last-child::after{
-                content:'';
+                --content:none;
             }
 
             &.active{
-                color:colors.get-color(primary);
+                color:get-color($breadcrumb-items-active-color) !important;
 
                 & a{
-                    color:colors.get-color(primary);
+                    color:get-color($breadcrumb-items-active-color) !important;
                 }
             }
         }
     }
+    &[style*="--content-image"]{
+        & li::after{
+            content: '';
+            width: var(--content-image-size);
+            background-image: var(--content-image);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            @extend .aspect-ratio-1x1;
+        }
+        & li:last-child::after{
+            content: none;
+        }
+    }
 }
-div:has(.breadcrumb){
-    // @extend .d-flex, .flex-row, .align-items-center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.breadcrumb-wrapper{
+    @extend .d-flex, .flex-row, .align-items-center;
 }

@@ -1,8 +1,8 @@
-@use "sass:list";
-@use "sass:map";
-@use "sass:string";
-@use "../../../themes/mizoon/config/dims";
-@use "../responsive/functions/responsive";
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use "../../../themes/mizoon/config/dims" as *;
+@use "../responsive/functions/responsive" as *;
 
 @function generate-aspect-ratio-class-name($map-config , $property){
     $nominator:map.get($map-config , nominator);
@@ -18,7 +18,7 @@
         $number-1:$step * $i;
         @for $j from 1 through $value-2{
             $number-2:$step * $j;
-            $class-item:responsive.generate-classes-on-value($property , $number-1 + "x" + $number-2);
+            $class-item:generate-classes-on-value($property , $number-1 + "x" + $number-2);
             $class-name:list.join($class-name , $class-item , comma);
         }
     }
@@ -64,4 +64,4 @@
     }
 }
 
-@include generate-total-style-aspect-ratio(dims.$conf-aspect-ratio , aspect-ratio);
+@include generate-total-style-aspect-ratio($conf-aspect-ratio , aspect-ratio);

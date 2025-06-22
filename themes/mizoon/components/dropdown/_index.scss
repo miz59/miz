@@ -1,61 +1,107 @@
-.dropdown{
-  // @extend .position-relative; 
-  position: relative;
-  label{
-    // @extend .d-flex,.align-items-center,.justify-content-center,.z-index-2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    &:not([class*="w-"]){
-      width: fit-content;
-    }
-  }
-  ul{
-    // @extend .position-absolute,.py-2,.overflow-hidden;
-    position: absolute;
-    // padding: ;
-    overflow: hidden;
-    max-height: 0;
-    transition: .4s ease-in, opacity .1s;
-    width: max-content;
-    // @extend .opacity-0;
-    opacity: 0;
-    a{
-      color: unset;
-    }
-  }
-  &.active ul{
-    width: 100%;
-    max-height: 100vh;
-    opacity: 1;
-    // @extend .w-100, .border-box;
-    box-sizing: border-box;
-    width: 100%;
-  }
-  &.dropdown-bottom ul{
-    top: calc(100% + 5px);
-  }
-  &.dropdown-right ul{
-    left: calc(100% + 5px);
-    top: 0%;
-  }
-  &.dropdown-left ul{
-    right: calc(100% + 5px);
-    top: 0%;
-  }
-  &.dropdown-top ul{
-    bottom: calc(100% + 5px);
-  }
-}
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/structure" as *;
+@use "sass:map";
 
-.dropdown-sm{
-  font-size: 10px;
-}
+$dropdown-box-transition: 0.2s linear;
+$dropdown-box-custom-classes: ".bg-secondary-color, .on-secondary-color, .all-border-small, .txt-normal, .border-solid, .border-on-primary-color, .border-width-1";
+$dropdown-menu-transition: 0.2s linear;
+$dropdown-menu-custom-classes: ".bg-secondary-color, .on-secondary-color, .all-border-small, .txt-normal, .border-solid, .border-on-primary-color, .border-width-1";
+$dropdown-menu-item-custom-classes: ".py-1, .px-2, .on-secondary-color, .txt-normal";
+$dropdown-menu-item-transition: 0.2s linear;
+$dropdown-submenu-toggle-custom-classes: ".py-1, .px-2, .on-secondary-color, .txt-normal";
 
-.dropdown-lg{
-  font-size: 20px;
-  label{
-    padding: 10px 15px !important;
-  }
+.dropdown {
+    @extend .d-inline-block, .position-relative;
+    user-select: none;
+
+    .dropdown-box {
+        transition: $dropdown-box-transition;
+        @extend .d-flex, .align-items-center, .gap-1, .py-1, .px-2, .pointer, #{$dropdown-box-custom-classes};
+    }
+    .dropdown-menu {
+        transition: $dropdown-menu-transition;
+        @extend .position-absolute, .w-100, .opacity-0, .visibility-hidden, .z-index-10, #{$dropdown-menu-custom-classes};
+
+        & > li{
+            & > :not(:has(*)){
+                transition: $dropdown-menu-item-transition;
+                @extend .d-block, #{$dropdown-menu-item-custom-classes};
+        
+                &:hover{
+                    @extend .bg-primary-color, .on-primary-color;
+                }
+            }
+            &:first-child:not(.dropdown-submenu){
+                @extend .all-border-small, .all-border-br, .all-border-bl, .overflow-hidden;
+            }
+            &:last-child:not(.dropdown-submenu){
+                @extend .all-border-small, .all-border-tr, .all-border-tl, .overflow-hidden;
+            }
+            &:first-child.dropdown-submenu > *:not(.dropdown-menu){
+                @extend .all-border-small, .all-border-br, .all-border-bl, .overflow-hidden;
+            }
+            &:last-child.dropdown-submenu > *:not(.dropdown-menu){
+                @extend .all-border-small, .all-border-tr, .all-border-tl, .overflow-hidden;
+            }
+        }
+        &:has(> li:only-child){
+            @extend .overflow-hidden;
+        }
+        .dropdown-submenu {
+            @extend .position-relative;
+
+            .dropdown-submenu-toggle {
+                transition: $dropdown-menu-item-transition;
+                @extend .d-flex, .justify-content-space-between, .align-items-center, .w-100, #{$dropdown-submenu-toggle-custom-classes};
+                
+                &:hover {
+                    @extend .bg-primary-color, .on-primary-color;
+                }
+                i {
+                    transition: transform 0.2s linear;
+                }
+            }
+            &.active > .dropdown-submenu-toggle {
+                @extend .bg-primary-color, .on-primary-color;
+            }
+            &.active > .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    &.active > .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+    &.dropdown-bottom > .dropdown-menu , .dropdown-bottom > .dropdown-menu{
+        top: 100%;
+        bottom: unset;
+        right: unset;
+        @extend .left-0, .mt-1;
+    }
+    &.dropdown-top > .dropdown-menu , .dropdown-top > .dropdown-menu{
+        top: unset;
+        bottom: 100%;
+        right: unset;
+        @extend .left-0, .mb-1;
+    }
+    &.dropdown-right > .dropdown-menu , .dropdown-right > .dropdown-menu{
+        // top: 0;
+        bottom: unset;
+        left: 100%;
+        right: unset;
+        @extend .top-0, .ml-1, .mt-1;
+    }
+    &.dropdown-left > .dropdown-menu , .dropdown-left > .dropdown-menu{
+        bottom: unset;
+        left: unset;
+        right: 100%;
+        @extend .top-0, .mr-1, .mt-1;
+    }
+    &.dropdown-hover:hover > .dropdown-menu,
+    .dropdown-submenu.dropdown-hover:hover > .dropdown-menu {
+        opacity: 1;
+        @extend .visibility-visible;
+    }
 }

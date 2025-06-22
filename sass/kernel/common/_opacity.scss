@@ -1,19 +1,24 @@
-@use "sass:list";
-@use "../../../themes/mizoon/config/dims";
-@use "functions";
+@use "../../../themes/mizoon/config/dims" as *;
+@use "functions" as *;
+@use 'sass:list';
+@use 'sass:map';
 
 @mixin generate-total-style-opacity($map-config , $property){
-    $class-name-list:functions.generate-class-name-list($map-config , $property);
-    $value-list:functions.generate-value($map-config);
+    // $class-name-list:generate-class-name-list($map-config , $property);
+    // $value-list:generate-value($map-config);
+    // $class-name:;
+    $factor : map.get($map-config, factor);
     $map:();
     $list:();
-    @for $i from 1 through list.length($class-name-list){
-        $class-item:list.nth($class-name-list , $i);
-        $value:list.nth($value-list , $i);
-        #{$class-item}{
-            #{$property}:$value * 0.01;
+    $i : 0;
+    $value : 0;
+    @while ($value < 1){
+        $value:$i * $factor;
+        .opacity-#{$i}{
+            #{$property}:$value;
         }
+        $i : $i + 1;
     }
 }
 
-@include generate-total-style-opacity(dims.$conf-opacity , opacity);
+@include generate-total-style-opacity($conf-opacity , opacity);

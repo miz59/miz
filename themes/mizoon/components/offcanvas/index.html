@@ -1,43 +1,77 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href=./assets/css/miz.min.css>
-        <link rel="stylesheet" href="../../../../../../assets/icons/fontawesome/css/all.css">
+        <link rel="stylesheet" href="../../../../../../../../public/assets/icons/fontawesome/css/all.css">
+        <link rel="stylesheet" href="../../../../../../../../public/assets/css/document/miz.min.css">
     </head>
-    <body class="font-primary w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-        <div class="offcanvas-static offcanvas-scroll offcanvas-backdrop mb-2">
-            <div id="offcanvasCheck1" class="btn btn-primary px-2 py-1">offcanvas default</div>
-            <div class="backdrop"></div>
-            <div class="offcanvas-left">
-                <div class="offcanvas-close" for="offcanvasCheck1">
-                    <i class="fa-solid fa-close on-primary-color icon-medium"></i>
-                </div>
+    <body style="height: 1000px;" class="font-primary w-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="offcanvas-static offcanvas-scroll offcanvas-backdrop">
+            <div class="offcanvas-toggle btn btn-primary mb-2">offcanvas default</div>
+            <div class="offcanvas-left bg-secondary-color on-primary-color">
+                <i class="fa-solid offcanvas-close fa-close on-primary-color icon-medium"></i>
                 <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A tenetur vel corrupti? Maxime, fugiat temporibus harum</p>
-                <button class="btn btn-secondary px-2 py-1 on-primary-color mb-1">btn</button>
-                <div class="dropdown active dropdown-bottom">
-                    <div class="btn btn-secondary px-2 py-1 on-primary-color gap-1" for="dropdown-toggle-1">
-                        Dropdown button
+                <button class="btn btn-outline-success mb-1">btn</button>
+
+                <div class="dropdown dropdown-bottom">
+                    <div class="dropdown-box">
+                        Multi-level Dropdown
                         <i class="fa-solid fa-chevron-down"></i>
-                    </div> 
-                    <ul class="bg-secondary-color on-primary-color all-border-small px-1">
+                    </div>
+                    <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                    </ul>       
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-submenu-toggle">
+                                Submenu 1
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-right">
+                                <li><a href="#">Submenu Item 1</a></li>
+                                <li><a href="#">Submenu Item 2</a></li>
+                                <li class="dropdown-submenu">
+                                    <a href="#" class="dropdown-submenu-toggle">
+                                        Submenu 1.1
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-submenu-toggle">
+                                                Submenu Item 1.1.1
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Submenu Item 1.1.1</a></li>
+                                                <li><a href="#">Submenu Item 1.1.2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Submenu Item 1.1.2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-submenu-toggle">
+                                Submenu 2
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Submenu Item 3</a></li>
+                                <li><a href="#">Submenu Item 4</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
         <div class="offcanvas-static offcanvas-no-scroll mb-2">
-            <div id="offcanvasCheck2" class="btn btn-outline-success px-2 py-1">offcanvas top and bottom</div>
-            <div class="backdrop"></div>
-            <div class="offcanvas-top">
+            <div class="offcanvas-toggle btn btn-outline-success px-2 py-1">offcanvas top and bottom</div>
+            <div class="offcanvas-top bg-danger-regular-color on-primary-color">
                 <div class="offcanvas-close">
                     <i class="fa-solid fa-close on-primary-color icon-medium"></i>
                 </div>
                 <h1>big text</h1>
                 <p>lorem</p>
             </div>
-            <div class="offcanvas-bottom">
+            <div class="offcanvas-bottom bg-primary-color on-primary-color">
                 <div class="offcanvas-close">
                     <i class="fa-solid fa-close on-primary-color icon-medium"></i>
                 </div>
@@ -45,20 +79,20 @@
             </div>
         </div>
         <div class="offcanvas-static offcanvas-no-scroll offcanvas-backdrop">
-            <div id="offcanvasCheck3" class="btn btn-danger px-2 py-1">offcanvas left and right</div>
-            <div class="backdrop"></div>
-            <div class="offcanvas-left">
+            <div class="offcanvas-toggle btn btn-danger px-2 py-1">offcanvas left and right</div>
+            <div class="offcanvas-left bg-warning-regular-color on-primary-color">
                 <div class="offcanvas-close">
                     <i class="fa-solid fa-close on-primary-color icon-medium"></i>
                 </div>
                 <p>lorem</p>
             </div>
-            <div class="offcanvas-right">
+            <div class="offcanvas-right bg-success-regular-color on-primary-color">
                 <div class="offcanvas-close">
                     <i class="fa-solid fa-close on-primary-color icon-medium"></i>
                 </div>
                 <p>lorem</p>
             </div>
         </div>
+        <script src="../../../../../../../../public/assets/js/mizchin.js"></script>
     </body>
 </html>

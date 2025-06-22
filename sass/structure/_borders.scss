@@ -1,38 +1,7 @@
-@use "../../themes/mizoon/config/dims";
+@use "../../themes/mizoon/config/dims" as *;
+@use 'sass:list';
 
-.all-border-extra-small{
-    border-radius: dims.$all-border-extra-small;
-}
-.all-border-small{
-    border-radius:dims.$all-border-small;
-}
-.all-border-normal{
-    border-radius:dims.$all-border-normal;
-}
-.all-border-medium{
-    border-radius:dims.$all-border-medium;
-}
-.all-border-large{
-    border-radius:dims.$all-border-large;
-}
-.all-border-extra-large{
-    border-radius: dims.$all-border-extra-large;
-}
-.all-border-full{
-    border-radius:100000px !important;
-}
-.all-border-tr{
-    border-top-right-radius:0px !important;
-}
-.all-border-tl{
-    border-top-left-radius:0px !important;
-}
-.all-border-br{
-    border-bottom-right-radius:0px !important;
-}
-.all-border-bl{
-    border-bottom-left-radius:0px  !important;
-}
+
 .border-t-none{
     border-top:none !important;
 }

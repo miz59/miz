@@ -1,46 +1,41 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
-@use "../../config" as *;
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
+
+$nav-transition:all 150ms linear;
+$nav-item-active:".bg-primary-color, .on-primary-color";
+$nav-item-custom-classes:".p-1, .all-border-small";
+$nav-item-child-custom-classes:".pointer, .text-color";
+$nav-item-child-active-custom-classes:".on-primary-color";
+
 
 .nav{
-    // @extend .w-100, .d-flex, .flex-row, .gap-1;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    // gap: ;
+    @extend .w-100, .d-flex, .flex-row, .gap-1;
 
     & .nav-item{
-        // @extend .p-1, .all-border-small;
-        // padding: ;
-        border-radius: $all-border-small;
-
-        &.active{
-            color: colors.get-color(on-primary);
-            background-color: colors.get-color(primary);
-
-            & a{
-                color: colors.get-color(on-primary);
-            }
+        @extend #{$nav-item-custom-classes};
+        transition: $nav-transition;
+        & > *{
+            @extend #{$nav-item-child-custom-classes};
         }
+
         &.disabled , &.disabled *{
             user-select:none;
             cursor: default;
-            color:colors.get-color(disabled-regular);
+            color:get-color(disabled-regular);
         }
-        & *{
-            // @extend .pointer;
-            cursor: pointer;
-        }
-        & a{
-            // @extend .text-color;
-            color: get-color(text);
+
+        &.active{
+            @extend #{$nav-item-active};
+
+            & > *{
+                @extend #{$nav-item-child-active-custom-classes};
+            }
         }
     }
     &:not([class*="align-items"]){
-        // @extend .align-items-start;
-        align-items: start;
+        @extend .align-items-start;
     }
     &:not(.flex-column){
-        // @extend .flex-row;
-        flex-direction: row;
+        @extend .flex-row;
     }
 }

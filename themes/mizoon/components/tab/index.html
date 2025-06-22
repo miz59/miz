@@ -1,32 +1,26 @@
-<html>
-  <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href=./assets/css/miz.min.css>
-  </head>
-  <body class="font-primary d-flex flex-column justify-content-center align-items-center gap-4 w-100 h-100">
-          <div class="tab-container">
-              <div class="tab">
-                <input type="radio" id="tabCheck1" name="tab-group" checked>
-                <label for="tabCheck1" class="tab-label">Tab 1</label>
-                <div class="tab-content">
-                  <p>This is the content of Tab 1.</p>
-                  <button type="button" class="btn btn-primary px-2 py-1 section-title-text-color">Primary</button>
-                </div>
-              </div>
-              <div class="tab">
-                <input type="radio" id="tabCheck2" name="tab-group">
-                <label for="tabCheck2" class="tab-label">Tab 2</label>
-                <div class="tab-content">
-                  <p>This is the content of Tab 2.</p>
-                </div>
-              </div>
-              <div class="tab">
-                <input type="radio" id="tabCheck3" name="tab-group">
-                <label for="tabCheck3" class="tab-label">Tab 3</label>
-                <div class="tab-content">
-                  <p>This is the content of Tab 3.</p>
-                </div>
-              </div>
-          </div>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../../../../../../public/assets/css/document/miz.min.css">
+</head>
+<body>
+    <!-- <div class="tab-container"> -->
+        <div class="tab-container flex-column">
+            <div class="tab-labels">
+                <div class="tab-label active">Tab 1</div>
+                <div class="tab-label">Tab 2</div>
+                <div class="tab-label">Tab 3</div>
+            </div>
+            <div class="tab-contents">
+                <div class="tab-content active">Tab 1 content</div>
+                <div class="tab-content">Tab 2 content</div>
+                <div class="tab-content">Tab 3 content</div>
+            </div>
+        </div>
+    <!-- </div> -->
+    <script src="./script.js"></script>
+</body>
 </html>

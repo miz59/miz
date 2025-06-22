@@ -2,7 +2,6 @@
 @use 'sass:string';
 @use 'sass:list';
 
-@use "config";
-@use "global-functions";
-@use "structure";
-@use "kernel";
+@forward "config";
+@forward "structure";
+@forward "kernel";

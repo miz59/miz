@@ -1,112 +1,175 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
 @use "../../config" as *;
+@use "sass:list";
+@use "sass:map";
+
+$btn-transition: 0.2s linear;
+$btn-outline-transition: 0.2s linear;
+$btn-has-icon-and-span:".gap-1";
+$btn-not-has-span:".p-1";
+$btn-custom-classes:".py-1, .px-2";
+$btn-outline-custom-classes:".border-solid, .border-width-1, .py-1, .px-2";
+
+$btn:(
+    primary:(
+        background:"primary", 
+        color:"on-primary", 
+        background-hover:"primary-dark", 
+        color-hover:"on-primary"
+    ),
+    secondary:(
+        background:"secondary", 
+        color:"on-secondary", 
+        background-hover:"secondary-dark", 
+        color-hover:"on-secondary"
+    ),
+    success:(
+        background:"success-regular", 
+        color:"button-text", 
+        background-hover:"success-dark", 
+        color-hover:"button-text"
+    ),
+    danger:(
+        background:"danger-regular", 
+        color:"button-text", 
+        background-hover:"danger-dark", 
+        color-hover:"button-text"
+    ),
+    warning:(
+        background:"warning-regular", 
+        color:"button-text", 
+        background-hover:"warning-dark", 
+        color-hover:"button-text"
+    ),
+    info:(
+        background:"information-regular", 
+        color:"button-text", 
+        background-hover:"information-dark", 
+        color-hover:"button-text"
+    ),
+    link:(
+        background:"transparent", 
+        color:"information-light", 
+        background-hover:"transparent", 
+        color-hover:"information-dark"
+    )
+);
+
+$btn-outline:(
+    primary:(
+        border:"primary", 
+        color:"primary",
+        border-hover:"primary",
+        color-hover:"on-primary",
+        background-hover:"primary", 
+    ),
+    secondary:(
+        border:"secondary", 
+        color:"secondary", 
+        border-hover:"secondary",
+        color-hover:"on-secondary",
+        background-hover:"secondary", 
+    ),
+    success:(
+        border:"success-regular", 
+        color:"success-regular", 
+        border-hover:"success-regular",
+        color-hover:"button-text",
+        background-hover:"success-regular", 
+    ),
+    danger:(
+        border:"danger-regular", 
+        color:"danger-regular", 
+        border-hover:"danger-regular",
+        color-hover:"button-text",
+        background-hover:"danger-regular", 
+    ),
+    warning:(
+        border:"warning-regular", 
+        color:"warning-regular", 
+        border-hover:"warning-regular",
+        color-hover:"button-text",
+        background-hover:"warning-regular", 
+    ),
+    info:(
+        border:"information-regular", 
+        color:"information-regular", 
+        border-hover:"information-regular",
+        color-hover:"button-text",
+        background-hover:"information-regular", 
+    ),
+    link:(
+        border:"transparent", 
+        color:"information-light", 
+        border-hover:"transparent", 
+        color-hover:"information-light",
+        background-hover:"transparent", 
+    )
+);
 
 .btn{
-    // @extend .all-border-small, .pointer, .border-box;
-    border-radius: $all-border-small;
-    cursor: pointer;
-    box-sizing: border-box;
+    @extend .all-border-small, .pointer, .border-box;
     user-select: none;
     &:has(i){
         &:not(:has(span)){
-        // @extend .p-1, .d-flex;
-        display: flex;
+            @extend .d-flex , #{$btn-not-has-span};
         }
     }
     &:has(i + span){
-        // @extend .gap-1;
+        @extend .d-flex, #{$btn-has-icon-and-span};
     }
     
 }
-.btn-primary{
-    color: colors.get-color(on-primary);
-    background-color: colors.get-color(primary);
-}
-.btn-secondary{
-    color: colors.get-color(secondary-text);
-    background-color: colors.get-color(secondary);
-}
-.btn-success{
-    color:colors.get-color(button-text);
-    background-color: colors.get-color(success-regular);
-}
-.btn-danger{
-    color:colors.get-color(button-text);
-    background-color: colors.get-color(danger-regular);
-}
-.btn-warning{
-    color:colors.get-color(button-text);
-    background-color: colors.get-color(warning-regular);
-}
-.btn-info{
-    color:colors.get-color(button-text);
-    background-color: colors.get-color(information-regular);
-}
-.btn-link{
-    color:colors.get-color(information-light);
-    text-decoration:underline; 
-    background-color: transparent;
+
+
+@for $i from 1 through list.length($btn){
+    $btn-list-item:list.nth($btn , $i);
+    $btn-class:list.nth($btn-list-item , 1);
+    $btn-color:map.get(list.nth($btn-list-item , 2) , color);
+    $btn-bg:map.get(list.nth($btn-list-item , 2) , background);
+    $btn-bg-hover:map.get(list.nth($btn-list-item , 2) , background-hover);
+    $btn-color-hover:map.get(list.nth($btn-list-item , 2) , color-hover);
+
+    .btn-#{$btn-class}{
+        color: get-color($btn-color);
+        background-color: get-color($btn-bg);
+        transition: $btn-transition;
+        @extend #{$btn-custom-classes};
+    }
+    .btn-#{$btn-class}:hover{
+        background-color: get-color($btn-bg-hover);
+        color: get-color($btn-color-hover);
+    }
 }
 
-.btn-outline-primary {
-    border-color:colors.get-color(primary);
-    color: colors.get-color(primary);
-    background-color:transparent;
-    // @extend .border-solid, .border-width-1;
-    border-style: solid;
-    border-width: 1px;
-}
 
-.btn-outline-secondary {
-    border-color:colors.get-color(secondary);    
-    color: colors.get-color(secondary);
-    background-color:transparent;
-    // @extend .border-solid, .border-width-1;
-    border-style: solid;
-    border-width: 1px;
-}
 
-.btn-outline-success {
-    border-color: colors.get-color(success-regular);
-    color: colors.get-color(success-regular);
-    background-color:transparent;
-    // @extend .border-solid, .border-width-1;
-    border-style: solid;
-    border-width: 1px;
-}
+@for $i from 1 through list.length($btn-outline){
+    $btn-outline-list-item:list.nth($btn-outline , $i);
+    $btn-outline-class:list.nth($btn-outline-list-item , 1);
+    $btn-outline-color:map.get(list.nth($btn-outline-list-item , 2) , color);
+    $btn-outline-border:map.get(list.nth($btn-outline-list-item , 2) , border);
+    $btn-outline-bg-hover:map.get(list.nth($btn-outline-list-item , 2) , background-hover);
+    $btn-outline-color-hover:map.get(list.nth($btn-outline-list-item , 2) , color-hover);
+    $btn-outline-border-hover:map.get(list.nth($btn-outline-list-item , 2) , border-hover);
 
-.btn-outline-danger {
-    border-color: colors.get-color(danger-regular);
-    color: colors.get-color(danger-regular);
-    background-color:transparent;
-    // @extend .border-solid, .border-width-1;
-    border-style: solid;
-    border-width: 1px;
-}
-
-.btn-outline-warning {
-    border-color: colors.get-color(warning-regular);
-    color: colors.get-color(warning-regular);
-    background-color:transparent;
-    // @extend .border-solid, .border-width-1;
-    border-style: solid;
-    border-width: 1px;
-
-}
-
-.btn-outline-info {
-    border-color: colors.get-color(information-regular);
-    color: colors.get-color(information-regular);
-    background-color:transparent;
-    // @extend .border-solid, .border-width-1;
-    border-style: solid;
-    border-width: 1px;
-
+    .btn-outline-#{$btn-outline-class}{
+        color: get-color($btn-outline-color);
+        border-color: get-color($btn-outline-border);
+        background-color:transparent;
+        transition: $btn-outline-transition;
+        @extend #{$btn-outline-custom-classes};
+    }
+    .btn-outline-#{$btn-outline-class}:hover{
+        background-color: get-color($btn-outline-bg-hover);
+        color: get-color($btn-outline-color-hover);
+        border-color: get-color($btn-outline-border-hover);
+    }
 }
 
 .btn-round{
-    // @extend .all-border-full;
-    border-radius: 1000px;
+    @extend .all-border-full;
 }
 
 .btn-sm{
@@ -115,5 +178,4 @@
 
 .btn-lg{
     font-size: 20px;
-
 }

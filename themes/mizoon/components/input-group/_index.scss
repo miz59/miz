@@ -1,66 +1,35 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
 @use "../../config" as *;
 
+$input-group-items-border-class:".all-border-small";
+$input-group-label-custom-classes:".border-color, .border-width-1, .border-solid, .p-1";
+
 .input-group{
-    // @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 0rem !important;
+    @extend .d-flex, .flex-row, .justify-content-start, .align-items-stretch;
 
     & > label , & > span{
-        background-color: colors.get-color(fields);
-        border-color: colors.get-color(border-fields);
-        // @extend .h-100, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .border-box, .pointer, .border-width-1, .border-solid;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        // padding: ;
-        box-sizing: border-box;
-        cursor: pointer;
-        border-width: 1px;
-        border-style: solid;
+        @extend .pointer, .d-flex, .justify-content-center, .align-items-center, #{$input-group-label-custom-classes};
+        
     }
-    & > :first-child , & > :first-child > .btn{
-        // @extend .all-border-small, .all-border-tr, .all-border-br;
-        border-radius: $all-border-small;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
+    & > :first-child , & > :first-child > .btn , & > :first-child .dropdown-box{
+        @extend .all-border-tr, .all-border-br, #{$input-group-items-border-class};
     }
-    & > :last-child , & > :last-child > .btn{
-        // @extend .all-border-small, .all-border-bl, .all-border-tl;
-        border-radius: $all-border-small;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
+    & > :last-child , & > :last-child > .btn , & > :last-child .dropdown-box{
+        @extend .all-border-bl, .all-border-tl, #{$input-group-items-border-class};
     }
     & > :nth-child(n){
-        &:not(:last-child,:first-child),&:not(:last-child,:first-child) > .btn{
-            // @extend .all-border-tr, .all-border-br, .all-border-tl, .all-border-bl;
-            border-top-right-radius: 0px;
-            border-bottom-right-radius: 0px;
-            border-top-left-radius: 0px;
-            border-bottom-left-radius: 0px;
+        &:not(:last-child,:first-child){
+            &.btn , &.dropdown .dropdown-box , &:not(:has(+ datalist:last-child)){
+                @extend .all-border-tr, .all-border-br, .all-border-tl, .all-border-bl;
+            }
         }
-        &:not(:last-child){
-            // @extend .border-r-none;
-            border-right: none;
+        &:not(:last-child) , &:not(:last-child) .btn , &:not(:last-child) .dropdown-box{
+            @extend .border-ie-none;
         }
-        &:has( + datalist:last-child){
-            border-radius:$all-border-small !important;
-            border-right:1px solid colors.get-color(border-fields) !important;
-            // @extend .all-border-tl, .all-border-bl;
-            border-top-left-radius: 0px;
-            border-bottom-left-radius: 0px;
+        &:has(+ datalist:last-child){
+            @extend .all-border-es, .all-border-ss;
         }
 
-    }
-    & > *{
-        border: 1px solid colors.get-color(border-fields);
-        // @extend .h-100, .border-box;
-        height: 100%;
-        box-sizing: border-box;
     }
 }

@@ -1,40 +1,36 @@
-*:has(.badge){
-    // @extend .position-relative, .pointer, .font-primary;
-    position: relative;
-    cursor: pointer;
-    // font-family: "primary";
+@use "../../../../sass/kernel" as *;
+@use "sass:list";
+
+$badge-size: 4px;
+
+.badge-wrapper{
+    @extend .position-relative, .pointer;
 
     & .badge{
-        padding:4px;
+        padding:$badge-size;
         text-transform: uppercase;
-        // @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
-        text-align: center;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
+        @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
 
         &:has(i){
-            padding:4px !important;
-            // @extend .aspect-ratio-1x1;
-            aspect-ratio: 1/1;
-            & *{
-                // @extend .aspect-ratio-1x1;
-                aspect-ratio: 1/1;
-            }
+            padding:$badge-size !important;
+            @extend .aspect-ratio-1x1;
         }
     }
-    & .badge[class*="top"][class*="left"]{
+    & .badge.top-0.left-0{
         transform: translate(-50% , -50%);
     }
-    & .badge[class*="top"][class*="right"]{
+    & .badge.top-0.right-0{
         transform: translate(50% , -50%);
     }
-    & .badge[class*="bottom"][class*="left"]{
+    & .badge.bottom-0.left-0{
         transform: translate(-50% , 50%);
     }
-    & .badge[class*="bottom"][class*="right"]{
+    & .badge.bottom-0.right-0{
         transform: translate(50% , 50%);
+    }
+    & .badge-inside{
+        @extend .badge;
+        position: unset !important;
+        transform: unset !important;
     }
 }

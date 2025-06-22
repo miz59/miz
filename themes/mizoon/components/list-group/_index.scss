@@ -1,83 +1,85 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
 @use "../../config" as *;
 
 .list-group{
-    // @extend .d-flex, .justify-content-center, .align-items-center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .d-flex, .justify-content-center, .align-items-center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
 
     & .list-group-items{
-        // @extend .border-box;
-        // @extend .border-width-1, .border-color, .border-solid, .w-100, .p-1, .text-color;
-        box-sizing: border-box;
-        border-width: 1px;
-        border-color: get-color(border);
-        border-style: solid;
-        width: 100%;
-        // padding: ;
-        color: get-color(text);
+        @extend .border-box;
+        @extend .border-width-1, .border-color, .border-solid, .w-100, .p-1, .text-color;
+        // box-sizing: border-box;
+        // border-width: 1px;
+        // border-color: get-color(border);
+        // border-style: solid;
+        // width: 100%;
+        // // padding: ;
+        // color: get-color(text);
         &.active{
-            color: colors.get-color(on-primary);
-            background-color: colors.get-color(primary);
+            color: get-color(on-primary);
+            background-color: get-color(primary);
 
             & a{
-                color: colors.get-color(on-primary);
+                color: get-color(on-primary);
             }
         }
         &.disabled{
             user-select:none;
-            color:colors.get-color(disabled);
+            cursor: default;
+            color:get-color(disabled);
         }
         & *{
-            // @extend .pointer;
-            cursor: pointer;
+            @extend .pointer;
+            // cursor: pointer;
         }
         & a{
-            // @extend .text-color;
-            color: get-color(text);
+            @extend .text-color;
+            // color: get-color(text);
         }
     }
     &.flex-column{
         & .list-group-items{
             &:not(:first-child){
-                // @extend .border-t-none;
-                border-top: none;
+                @extend .border-t-none;
+                // border-top: none;
             }
             &:first-child{
-                // @extend .all-border-normal, .all-border-br, .all-border-bl;
-                border-bottom-right-radius: none;
-                border-bottom-left-radius: none;
-                border-radius: $all-border-normal;
+                @extend .all-border-normal, .all-border-br, .all-border-bl;
+                // border-bottom-right-radius: none;
+                // border-bottom-left-radius: none;
+                // border-radius: $all-border-normal;
             }
             &:last-child{
-                // @extend .all-border-normal, .all-border-tr, .all-border-tl;
-                border-top-right-radius: none;
-                border-top-left-radius: none;
-                border-radius: $all-border-normal;
+                @extend .all-border-normal, .all-border-tr, .all-border-tl;
+                // border-top-right-radius: none;
+                // border-top-left-radius: none;
+                // border-radius: $all-border-normal;
             }
         }
     }
     &:not(.flex-column){
-        // @extend .flex-row;
-        flex-direction: row;
+        @extend .flex-row;
+        // flex-direction: row;
         
         & .list-group-items{
             &:not(:first-child){
-                // @extend .border-l-none;
-                border-left: none;
+                @extend .border-l-none;
+                // border-left: none;
             }
             &:first-child{
-                // @extend .all-border-normal, .all-border-tr, .all-border-br;
-                border-top-right-radius: none;
-                border-bottom-right-radius: none;
-                border-radius: $all-border-normal;
+                @extend .all-border-normal, .all-border-tr, .all-border-br;
+                // border-top-right-radius: none;
+                // border-bottom-right-radius: none;
+                // border-radius: $all-border-normal;
             }
             &:last-child{
-                // @extend .all-border-normal, .all-border-tl, .all-border-bl;
-                border-top-left-radius: none;
-                border-bottom-left-radius: none;
-                border-radius: $all-border-normal;
+                @extend .all-border-normal, .all-border-tl, .all-border-bl;
+                // border-top-left-radius: none;
+                // border-bottom-left-radius: none;
+                // border-radius: $all-border-normal;
             }
         }
     }
@@ -87,35 +89,35 @@ ol.list-group{
         list-style: decimal;
 
         &.active{
-            background-color: colors.get-color(primary);
-            color: colors.get-color(on-primary);
+            background-color: get-color(primary);
+            color: get-color(on-primary);
 
             &::marker{
-                color:colors.get-color(text);
+                color:get-color(text);
             }
         }
     }
 }
 .list-group-flush{
     & .list-group-items{
-        // @extend .border-width-1, .border-color, .border-solid, .w-100, .p-1, .text-color, .border-t-none, .border-l-none, .border-r-none;
-        border-width: 1px;
-        border-color: get-color(border);
-        border-style: solid;
-        width: 100%;
-        // padding: ;
-        color: get-color(text);
-        border-top: none;
-        border-left: none;
-        border-right: none;
+        @extend .border-width-1, .border-color, .border-solid, .w-100, .p-1, .text-color, .border-t-none, .border-l-none, .border-r-none;
+        // border-width: 1px;
+        // border-color: get-color(border);
+        // border-style: solid;
+        // width: 100%;
+        // // padding: ;
+        // color: get-color(text);
+        // border-top: none;
+        // border-left: none;
+        // border-right: none;
 
         &:last-child{
-            // @extend .border-b-none;
-            border-bottom: none;
+            @extend .border-b-none;
+            // border-bottom: none;
         }
         & a{
-            // @extend .text-color;
-            color: get-color(text);
+            @extend .text-color;
+            // color: get-color(text);
         }
     }
 }

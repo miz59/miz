@@ -1,20 +1,21 @@
-@use "sass:list";
-@use "sass:string";
-@use "sass:map";
-@use 'typography';
-@use 'icon';
-@use "../functions/space";
-@use "../layouts/dims";
-@use "../layouts/displays";
-@use "../layouts/flex";
-@use "../layouts/grid";
-@use "../layouts/orders";
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:map';
+@use "typography" as *;
+@use "icon" as *;
+@use "../functions/space" as *;
+@use "../layouts/dims" as *;
+@use "../layouts/displays" as *;
+@use "../layouts/flex" as *;
+@use "../layouts/grid" as *;
+@use "../layouts/orders" as *;
+@use "border" as *;
 @use "../../../config/responsive" as *;
 
 
-$totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$height-list,flex.$flex-type,orders.$flex-orders,flex.$flex-grows,grid.$g,space.$p,space.$m,space.$gaps,typography.$font-size-responsive,typography.$generate-text-transform,typography.$generate-text-align,typography.$generate-text-decoration-line,typography.$generate-text-decoration-style,typography.$generate-font-style,typography.$letter-space,icon.$icon-size-responsive;
+$totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$padding,$margin,$gap,$letter-spacing,$font-size-responsive,$generate-text-transform,$generate-text-align,$generate-text-decoration-line,$generate-text-decoration-style,$generate-font-style,$icon-size-responsive;
 
-@function get-greatest-breakpoint(){
+@function get-greatest-break-point(){
     $max-size:0;
     @each $key , $value in $break-points{
         @if map.get($break-points, $key) > $max-size{
@@ -29,7 +30,7 @@ $totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$heig
         $break-point-values:map.values($break-points);
         $max-width-values:list.nth($break-point-values,$i);
         $space-value:list.nth($header-space-horizontally,$i);
-        @if get-greatest-breakpoint()==$max-width-values{
+        @if get-greatest-break-point()==$max-width-values{
             .header{
                 padding-left: $space-value;
                 padding-right:$space-value;
@@ -50,8 +51,8 @@ $totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$heig
         $break-point-values:map.values($break-points);
         $max-width-values:list.nth($break-point-values,$i);
         $space-value:list.nth($boxed-space-horizontally,$i);
-        $max-width:get-greatest-breakpoint();
-        @if get-greatest-breakpoint()==$max-width-values{
+        $max-width:get-greatest-break-point();
+        @if get-greatest-break-point()==$max-width-values{
             .section{
                 padding-left: $space-value;
                 padding-right:$space-value;
@@ -72,7 +73,7 @@ $totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$heig
         $break-point-values:map.values($break-points);
         $max-width-values:list.nth($break-point-values,$i);
         $space-value:list.nth($boxed-space-vertically,$i);
-        @if get-greatest-breakpoint()==$max-width-values{
+        @if get-greatest-break-point()==$max-width-values{
             .section{
                 padding-top: $space-value;
                 padding-bottom:$space-value;
@@ -178,7 +179,7 @@ $totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$heig
     }
 }
 
-@function get-greatest-breakpoint-key(){
+@function get-greatest-break-point-key(){
     $max-size-key:"";
     $max-size:0;
     @each $key , $value in $break-points{
@@ -191,8 +192,8 @@ $totalist : displays.$display-values,flex.$flex-cols,dims.$width-list,dims.$heig
 }
 @mixin check-break-point(){
     @each $key , $value in $break-points{
-        $max-break-point:get-greatest-breakpoint();
-        $max-break-point-key: get-greatest-breakpoint-key();
+        $max-break-point:get-greatest-break-point();
+        $max-break-point-key: get-greatest-break-point-key();
         @if($value != $max-break-point){
             @media screen and (max-width : $value) {
                 @include generate-classes($value);

@@ -1,13 +1,13 @@
-@use "sass:list";
-@use "sass:string";
-@use "../functions/responsive";
+@use 'sass:list';
+@use 'sass:string';
+@use "../functions/responsive" as *;
 @use "../../../config/responsive" as *;
 
 $display-value-list:(block,none,flex,grid,inline-block);
 $display-list:();
 @function generate-responsive-display-classes($prefix){
     $list:();
-    @if responsive.check-status($conf-display,responsive){
+    @if check-status($conf-display,responsive){
         @each $key , $value in $break-points{
             $base:string.unquote(".d" + "-" + $key + "-" + $prefix );
             $conf-map:(

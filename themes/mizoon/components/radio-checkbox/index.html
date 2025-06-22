@@ -1,19 +1,124 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href=./assets/css/miz.min.css>
-        <link rel="stylesheet" href="../../../../../../assets/icons/fontawesome/css/all.css">
+        <link rel="stylesheet" href="../../../../../../../../public/assets/css/document/miz.min.css">
     </head>
-    <body class="bg-secondary-dark-color px-3 py-2 font-primary">
+    <body class="px-3 py-2 font-primary d-flex flex-column gap-4">
+        <!-- Basic Checkboxes -->
+        <div class="d-flex flex-column gap-2">
+            <h3>Basic Checkboxes</h3>
+            <div class="form-check">
+                <input type="checkbox" class="primary" id="primaryCheck">
+                <label for="primaryCheck" class="text-color">Primary Checkbox</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="secondary" id="secondaryCheck">
+                <label for="secondaryCheck" class="text-color">Secondary Checkbox</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="success" id="successCheck">
+                <label for="successCheck" class="text-color">Success Checkbox</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="danger" id="dangerCheck">
+                <label for="dangerCheck" class="text-color">Danger Checkbox</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="info" id="infoCheck">
+                <label for="infoCheck" class="text-color">Info Checkbox</label>
+            </div>
+        </div>
+
+        <!-- Disabled Checkboxes -->
+        <div class="d-flex flex-column gap-2">
+            <h3>Disabled Checkboxes</h3>
+            <div class="form-check">
+                <input type="checkbox" class="primary" id="disabledCheck1" disabled>
+                <label for="disabledCheck1" class="text-color">Disabled Checkbox</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="primary" id="disabledCheck2" disabled checked>
+                <label for="disabledCheck2" class="text-color">Disabled Checked Checkbox</label>
+            </div>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div class="d-flex flex-column gap-2">
+            <h3>Radio Buttons</h3>
+            <div class="form-check">
+                <input type="radio" class="primary" name="radioGroup" id="radio1">
+                <label for="radio1" class="text-color">Primary Radio</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="secondary" name="radioGroup" id="radio2">
+                <label for="radio2" class="text-color">Secondary Radio</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="success" name="radioGroup" id="radio3">
+                <label for="radio3" class="text-color">Success Radio</label>
+            </div>
+        </div>
+
+        <!-- Switches -->
+        <div class="d-flex flex-column gap-2">
+            <h3>Switches</h3>
+            <div class="d-flex flex-column gap-3">
+                <div class="switch" style="--switch-size: 60px">
+                    <input type="checkbox" id="switch1"/>
+                    <label class="switch-label" for="switch1"></label>
+                </div>
+                <div class="switch switch-success" style="--switch-size: 60px">
+                    <input type="checkbox" id="switch2"/>
+                    <label class="switch-label" for="switch2"></label>
+                </div>
+                <div class="switch switch-danger" style="--switch-size: 60px">
+                    <input type="checkbox" id="switch3"/>
+                    <label class="switch-label" for="switch3"></label>
+                </div>
+                <div class="switch switch-info" style="--switch-size: 60px">
+                    <input type="checkbox" id="switch4"/>
+                    <label class="switch-label" for="switch4"></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Different Switch Sizes -->
+        <div class="d-flex flex-column gap-2">
+            <h3>Switch Sizes</h3>
+            <div class="d-flex flex-column gap-3">
+                <div class="switch" style="--switch-size: 40px">
+                    <input type="checkbox" id="switchSmall"/>
+                    <label class="switch-label" for="switchSmall"></label>
+                </div>
+                <div class="switch" style="--switch-size: 60px">
+                    <input type="checkbox" id="switchMedium"/>
+                    <label class="switch-label" for="switchMedium"></label>
+                </div>
+                <div class="switch" style="--switch-size: 80px">
+                    <input type="checkbox" id="switchLarge"/>
+                    <label class="switch-label" for="switchLarge"></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkbox Groups -->
+        <div class="d-flex flex-column gap-2">
+            <h3>Checkbox Groups</h3>
+            <div class="d-flex flex-column gap-1">
+                <div class="form-check">
+                    <input type="checkbox" class="primary" id="group1">
+                    <label for="group1" class="text-color">Option 1</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="primary" id="group2">
+                    <label for="group2" class="text-color">Option 2</label>
+                </div>
         <div class="form-check">
-            <input type="checkbox" class="secondary" value="" id="flexCheckDefault" >
-            <label for="flexCheckDefault" class="text-color">
-              Default checkbox
-            </label>
+                    <input type="checkbox" class="primary" id="group3">
+                    <label for="group3" class="text-color">Option 3</label>
+                </div>
         </div>  
-        <div class="switch " style="--switch-size : 70px">
-            <input type="checkbox" id="toggle"/>
-            <label class="switch-label" for="toggle"></label>  
         </div>
     </body>    
 </html>

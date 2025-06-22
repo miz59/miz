@@ -1,55 +1,39 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/structure" as *;
+
+$page-indicator-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .all-border-full, .pointer";
+$page-indicator-not-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .all-border-full, .border-width-3, .border-solid, .border-primary-color, .on-primary-color, .bg-primary-color, .pointer";
+$page-indicator-active-empty-custom-classes: ".bg-secondary-color, .aspect-ratio-2x1";
+$page-indicator-active-not-empty-custom-classes: ".bg-secondary-color";
+$page-indicator-transition: .3s;
+$page-indicator-pages-custom-classes: ".d-flex, .flex-row, .justify-content-center, .align-items-center";
 
 .page-indicator{
-    width:fit-content;
     height:var(--size);
-    // @extend .d-flex, .flex-row, .justify-content-start, .align-items-center;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
+    @extend .w-fit-content, .d-flex, .flex-row, .align-items-center;
+    
     .page{
         &.active:empty{
-            background-color: colors.get-color(specific);
-            aspect-ratio: 2/1;
+            @extend #{$page-indicator-active-empty-custom-classes};
         }
         &.active:not(:empty){
-            background-color: colors.get-color(primary-dark);
-            border-color: colors.get-color(specific);
+            @extend #{$page-indicator-active-not-empty-custom-classes};
         }
     }
 
     & .page{
-        transition: .3s; 
+        transition: $page-indicator-transition;
+        @extend #{$page-indicator-pages-custom-classes};
+        
         &:empty{
             height: var(--size);
-            background-color: colors.get-color(primary);
-            // @extend .pointer, .aspect-ratio-1x1, .all-border-full, .border-box;
-            cursor: pointer;
-            aspect-ratio: 1/1;
-            border-radius: 1000px;
-            box-sizing: border-box;
+            @extend #{$page-indicator-empty-custom-classes};
         }
 
         &:not(:empty){
-            color:colors.get-color(on-primary);
-            background-color: colors.get-color(primary-dark);
-            border-color: colors.get-color(primary);
-            border-width: 3px;
             user-select: none;
-            width: var(--size);
             height: var(--size);
-            // @extend .pointer, .d-flex, .flex-row, .justify-content-center, .align-items-center, .p-1, .border-solid, .txt-center, .all-border-full, .border-box;
-            cursor: pointer;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            // padding: ;
-            border-style: solid;
-            text-align: center;
-            border-radius: 1000px;
-            box-sizing: border-box;
+            @extend #{$page-indicator-not-empty-custom-classes};
         }
     }
 }

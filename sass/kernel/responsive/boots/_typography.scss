@@ -1,14 +1,13 @@
-@use "sass:list";
-@use "sass:map";
-@use "sass:string";
-@use "../functions/responsive";
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use "../functions/responsive" as *;
 @use "../../../structure/typography" as *;
 @use "../../../config/responsive" as *;
 @use "../../../config/paths" as *;
 
 
 $font-weight : '';
-$letter-spacing:letter-space;
 .font-weight-black{
     font-weight: 900;
 }
@@ -53,11 +52,12 @@ $letter-spacing:letter-space;
 @mixin make-font-face{
     @each $font-name , $font-details in $fonts {
       $font-folder: map.get($font-details, "folder");
+      $font-default: map.get($font-details, "defaults");
       @each $font-type, $font-files in map.get($font-details, "font-types") {
         $font-weight : font-weight-connection($font-type);
          @font-face {
             $file-src : '';
-            font-family: "#{$font-name}";
+            font-family: $font-name;
             font-weight: $font-weight;
             @each $font-file in $font-files {
               $file-name: list.nth($font-file, 1);
@@ -69,46 +69,30 @@ $letter-spacing:letter-space;
           }
       }
       .font-#{$font-name}{
-        font-family : $font-name;
+        font-family: $font-name , string.unquote($font-default);
       }
     }
 }
-@function generate-text-style($text-property , $text-value , $map-config){
-    $is-responsive: responsive.check-status($map-config , responsive);
+@function generate-text-style($property , $value , $class){
     $list : ();
     $base : ();
-    @if ($is-responsive){
-        @each $key,$value in $break-points{
-            @each $name in $text-value{
-                $base:responsive.generate-classes-responsive-on-value($font-prefix , $key , $name);
-                $map:(
-                    className: $base,
-                    propertyKeys:'#{$text-property}',
-                    propertyValues:$name
-                );
-                $list:list.append($list , $map);
-            }
-        }
-    }
-    @else{
-        @each $name in $text-value{
-            $base:responsive.generate-classes-on-value($font-prefix , $name);
-            $map:(
-                className: $base,
-                propertyKeys:'#{$text-property}',
-                propertyValues:$name
-            );
-            $list:list.append($list , $map);
-        }
+    @each $name in $value{
+        $base:generate-classes-on-value(($font-prefix + "-" + $class) , $name);
+        $map:(
+            className: $base,
+            propertyKeys:'#{$property}',
+            propertyValues:$name
+        );
+        $list:list.append($list , $map);
     }
     @return $list;
 }
 
-$font-size-responsive : responsive.generate-typography-size-classes($font-size, $font-prefix);
-$generate-text-align : generate-text-style(text-align , $text-align , $conf-text-align);
-$generate-text-transform : generate-text-style(text-transform , $text-transform , $conf-text-transform);
-$generate-text-decoration-line : generate-text-style(text-decoration-line , $text-decoration-line , $conf-text-decoration);
-$generate-text-decoration-style : generate-text-style(text-decoration-style , $text-decoration-style , $conf-text-decoration);
-$generate-font-style : generate-text-style(font-style , $font-style , $conf-font-style);
-$letter-space:responsive.generate-classes-items($letter-spacing,letter-spacing,$conf-letter-spacing);
+$font-size-responsive : generate-typography-size-classes($font-size, $font-prefix);
+$generate-text-align : generate-text-style(text-align , $text-align , align);
+$generate-text-transform : generate-text-style(text-transform , $text-transform , transform);
+$generate-text-decoration-line : generate-text-style(text-decoration-line , $text-decoration-line , decoration);
+$generate-text-decoration-style : generate-text-style(text-decoration-style , $text-decoration-style , decoration-style);
+$generate-font-style : generate-text-style(font-style , $font-style , style);
+
 @include make-font-face;

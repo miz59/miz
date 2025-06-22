@@ -1,11 +1,35 @@
-@use "../functions/responsive";
+@use "../functions/responsive" as *;
 @use "../../../config/responsive" as *;
 
 .w-100vw{
     width: 100vw;
 }
+.w-75vw{
+    width: 75vw;
+}
+.w-50vw{
+    width: 50vw;
+}
+.w-25vw{
+    width: 25vw;
+}
+.w-0vw{
+    width: 0vw;
+}
 .h-100vh{
     height: 100vh;
+}
+.h-75vh{
+    height: 75vh;
+}
+.h-50vh{
+    height: 50vh;
+}
+.h-25vh{
+    height: 25vh;
+}
+.h-0vh{
+    height: 0vh;
 }
 .w-fit-content{
     width: fit-content;
@@ -16,5 +40,5 @@
 
 $w-list:w;
 $h-list:h;
-$width-list : responsive.generate-classes-items($w-list ,width, $conf-width, true);
-$height-list : responsive.generate-classes-items($h-list ,height, $conf-height , true);
+$width-list : generate-classes-items($w-list ,width, $conf-width, true);
+$height-list : generate-classes-items($h-list ,height, $conf-height , true);

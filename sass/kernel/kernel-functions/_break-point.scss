@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 @use "../../config/responsive" as *;
 
 @function get-break-point-value($break-point){

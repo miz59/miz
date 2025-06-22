@@ -1,44 +1,49 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel" as *;
+
+$floating-label-transition: 0.2s linear;
+$floating-label-form-control-space: 10px;
+$floating-label-space-left: 10px;
+$floating-label-scale: 0.7;
+$floating-label-placeholder-opacity: 0.7;
 
 .form-floating{
-    // @extend .position-relative;
-    position: relative;
+    @extend .position-relative;
+
     .form-control{
-        height: 100%;
-        padding-top: 17px !important;
-        padding-bottom: 5px !important;
+        padding-top: calc($floating-label-form-control-space + 5px) !important;
+        color: get-color(text-fields);
+        background-color: get-color(fields);
+        @extend .h-100;
+
         &::placeholder{ 
-            // @extend .opacity-0;
-            opacity: 0;
+            color: get-color(text-fields);
             user-select: none;
+            transition: $floating-label-transition;
+            @extend .opacity-0;
         }
         & + label{
-            // @extend .position-absolute;
-            position: absolute;
             top: 50%;
             right: 100%;
-            left: 10px;
+            left: $floating-label-space-left;
             white-space: nowrap;
-            transition: 0.2s ease-in;
-            z-index: 1;
-            transform: translateY(-50%);
-            &:not([class*="color"]){
-                color: colors.get-color(text-fields);
-            }
+            transition: $floating-label-transition;
+            user-select: none;
+            transform: translateY(calc(-50% - -2px));
+            color: get-color(title-text-fields);
+            @extend .z-index-1, .position-absolute;
         }
-        & textarea + label{
-            top: 10px;
-        }
-        &:not(:placeholder-shown) , &:focus , &:disabled{
+        &:not(:placeholder-shown) , &:focus , &:disabled , &:read-only{
             & + label{
-                transform: scale(0.7);
-                top: 0px;
+                transform: scale($floating-label-scale);
                 right: 100%;
-                left: 10px;
+                @extend .top-0;
             }
+        }
+        &:focus::placeholder{
+            opacity: $floating-label-placeholder-opacity;
         }
         &:disabled + label{
-            z-index: 1;
+            @extend .z-index-1;
         }
     }
 }

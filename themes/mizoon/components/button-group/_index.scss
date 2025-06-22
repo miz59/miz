@@ -1,0 +1,35 @@
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/structure" as *;
+
+$btn-group-custom-classes:"";
+$btn-group-btn-cutsom-classes:".border-solid, .border-width-1, .border-color";
+
+.btn-group{
+    @extend .d-flex, #{$btn-group-custom-classes};
+
+    .btn{
+        @extend .d-flex, .justify-content-center, .align-items-center, #{$btn-group-btn-cutsom-classes};
+    }
+    &[class*="flex-column"] .btn{
+        &:not(:first-child,:last-child){
+            @extend .all-border-tr, .all-border-tl, .all-border-br, .all-border-bl;
+        }
+        &:first-child{
+            @extend .all-border-ee, .all-border-es, .border-b-none;
+        }
+        &:last-child{
+            @extend .all-border-se, .all-border-ss, .border-t-none;
+        }
+    }
+    &:not([class*="flex-"]) .btn{
+        &:not(:first-child,:last-child){
+            @extend .all-border-tr, .all-border-tl, .all-border-br, .all-border-bl;
+        }
+        &:first-child{
+            @extend .all-border-ee, .all-border-se, .border-ie-none;
+        }
+        &:last-child{
+            @extend .all-border-es, .all-border-ss, .border-is-none;
+        }
+    }
+}

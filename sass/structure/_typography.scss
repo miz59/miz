@@ -1,39 +1,39 @@
-@use '../global-functions/break-point';
+@use '../global-functions/break-point' as *;
 
 $font-prefix : "txt";
-$font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px, );
+$font-size:(small : 10px,subtitle : 12px,normal : 16px, title : 20px, mid-title : 24px, high-title : 32px, big-title : 48px, extra-title : 72px);
 $text-align : (center,end,start,left,right);
 $text-transform : (lowercase,none,uppercase,capitalize);
 $text-decoration-line : (line-through,none,overline,underline,wavy);
 $text-decoration-style:(dashed,dotted,double,solid);
 $font-style:(italic,);
-.#{$font-prefix}-ellipsis{
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-}
-.list-style{
-  list-style: unset;
-}
-.line-height{
-  line-height:  5;
-  @media screen and (max-width : break-point.get-break-point-value(xl)) {
-    line-height: 4;
-  }
-  @media screen and (max-width : break-point.get-break-point-value(lg)) {
-    line-height:  3;
-  }
-  @media screen and (max-width : break-point.get-break-point-value(md)) {
-    line-height:  2;
-  }
-  @media screen and (max-width : break-point.get-break-point-value(sm)) {
-    line-height:  1;
-  }
-}
+// .#{$font-prefix}-ellipsis{
+//   white-space: nowrap;
+//   overflow-x: hidden;
+//   text-overflow: ellipsis;
+// }
+// .list-style{
+//   list-style: unset;
+// }
+// .line-height{
+//   line-height:  5;
+//   @media screen and (max-width : get-break-point-value(xl)) {
+//     line-height: 4;
+//   }
+//   @media screen and (max-width : get-break-point-value(lg)) {
+//     line-height:  3;
+//   }
+//   @media screen and (max-width : get-break-point-value(md)) {
+//     line-height:  2;
+//   }
+//   @media screen and (max-width : get-break-point-value(sm)) {
+//     line-height:  1;
+//   }
+// }
 
 $fonts: (
   "primary": (
-    "defaults":"sans-serif, 'Courier New', Courier, monospace",
+    "defaults":"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     "folder": "PTSans",
     "font-types": (
       "regular": (

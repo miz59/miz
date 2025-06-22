@@ -1,18 +1,60 @@
-@use "sass:list";
-@use "sass:map";
-@use "../../../../themes/mizoon/config/dims";
+@use 'sass:list';
+@use 'sass:map';
+@use "../functions/responsive" as *;
+@use "../../../../themes/mizoon/config/dims" as *;
 
-
+$border-style-map:(
+    bl-style:border-left-style,
+    br-style:border-right-style,
+    bt-style:border-top-style,
+    bb-style:border-bottom-style,
+    bis-style:border-inline-start-style,
+    bie-style:border-inline-end-style,
+    border-style:(
+        border-top-style,
+        border-left-style,
+        border-bottom-style,
+        border-right-style
+    ),
+    bx-style:(
+        border-left-style,
+        border-right-style
+    ),
+    by-style:(
+        border-top-style,
+        border-bottom-style
+    ),
+);
+$border-style-values:(
+    solid,
+    dashed,
+    dotted,
+    none,
+    double,
+    groove,
+    outset,
+    ridge
+);
+$radius-map:(
+    tl:border-top-left-radius,
+    tr:border-top-right-radius,
+    bl:border-bottom-left-radius,
+    br:border-bottom-right-radius,
+    full:(
+        border-top-left-radius,
+        border-top-right-radius,
+        border-bottom-left-radius,
+        border-bottom-right-radius
+    ),
+);
 
 @function generate-border-class-name($map-config){
-
-    $lenght:map.get($map-config,last-width);
+    $lenght:map.get($map-config , last-width);
     $result:();
  
 
     @for $i from 0 through $lenght{
-
-       $item:"." + border-width + "-" + $i;
+        $item:"." + "bw" + "-" + $i;
         $result:list.append($result,$item)
     }
 
@@ -51,17 +93,55 @@
 
 
 
-@include generate-total-style-border(dims.$conf-border-thickness);
+@include generate-total-style-border($conf-border-thickness);
 
 
-.border-solid{
-    border-style: solid;
+
+
+
+
+
+
+@mixin generate-border-radius($radius-map , $values , $class-list){
+    @each $name , $value in $values{
+        @each $key , $property-list in $radius-map{
+            $class-item:$class-list + "-" + $key;
+            $base:generate-classes-on-value($class-item , $name);
+            #{$base}{
+                @each $property in $property-list{
+                    #{$property}:$value;
+                }
+            }
+        }
+    }
 }
 
-.border-dashed{
-    border-style: dashed;
+@include generate-border-radius($radius-map , $border-radius , radius);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin generate-border-style($border-map , $border-style-values){
+    @each $value in $border-style-values{
+        @each $border-style-class , $border-style-properties in $border-map{
+            $base:generate-classes-on-value($border-style-class , $value);
+            #{$base}{
+                @each $property in $border-style-properties{
+                    #{$property}:$value;
+                }
+            }
+        }
+    }
 }
 
-.border-dotted{
-    border-style: dotted;
-}
+@include generate-border-style($border-style-map , $border-style-values);

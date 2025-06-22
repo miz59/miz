@@ -1,52 +1,61 @@
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/structure" as *;
 @use "../../config" as *;
 
-.accordion-box {
-    min-width: 100%;
+$accordion-height-scroll: 500px;
+$accordion-rotate-icon: 180deg;
+$accordion-transition: 0.5s;
+$accordion-group-custom-classes: ".d-flex, .flex-column, .gap-1";
+$accordion-custom-classes: ".bg-primary-color, .on-primary-color, .txt-title, .all-border-small";
+$accordion-body-custom-classes:".pl-2, .txt-small";
+$accordion-header-custom-classes:".border-width-1, .border-t-none, .border-l-none, .border-r-none, .border-solid, .border-on-primary-color, .pb-1";
+$accordion-box-custom-classes: ".gap-1, .p-2";
+$accordion-zebra-custom-classes: ".bg-secondary-color";
+
+
+.accordion-group{
+    @extend #{$accordion-group-custom-classes};
+
+    .accordion {
+        @extend .w-100, #{$accordion-custom-classes};
     
-    transition: 0.5s;
-    // @extend .p-2, .all-border-small, .d-grid, .gap-1, .pointer;
-    // padding: ;
-    border-radius: $all-border-small;
-    display: grid;
-    // gap: ;
-    cursor: pointer;
+        .accordion-box {
+            transition: $accordion-transition;
+            min-width: 100%;
+            @extend .d-grid, .pointer, #{$accordion-box-custom-classes};
+        
+            grid-template-rows: 0fr 0fr;
+            .accordion-header{
+                @extend .w-100, .d-flex, .flex-row, .justify-content-space-between, .align-items-center, #{$accordion-header-custom-classes};
 
-    grid-template-rows: 0fr 0fr;
-    span{
-        border-bottom: 1px solid;
-        margin-top: 7px;
-        // @extend .pb-1, .w-100, .d-flex, .flex-row, .justify-content-space-between, .align-items-center; 
-        // padding-bottom: ;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    & > div {
-        // @extend .overflow-hidden, .pl-3;
-        // padding-left: ;
-        overflow: hidden;
-    }
-}
-
-.scroll-accordion{
-    max-height: 500px;
-    // @extend .overflow-y-scroll;
-    overflow-y: scroll;
-}
-.accordion {
-    gap: 5px;
-    width: 100%;
-    // @extend .d-flex, .flex-column, .justify-content-center, .align-items-center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &.active .accordion-box {
-        grid-template-rows: 0fr 1fr;
-        span > i{
-            transform: rotate(180deg);
+                &.accordion-header > i{
+                    transition: $accordion-transition
+                }
+            }
+            & .accordion-body {
+                @extend .overflow-hidden, #{$accordion-body-custom-classes};
+            }
+        }
+    
+        &.active .accordion-box {
+            grid-template-rows: 0fr 1fr;
+            .accordion-header > i{
+                transform: rotate($accordion-rotate-icon);
+            }
+        }
+        & .accordion-body *{
+            transition: $accordion-transition;
+            @extend .opacity-0;
+        }
+        &.active .accordion-body *{
+            opacity: 1;
         }
     }
+    &.scroll-accordion{
+        max-height: $accordion-height-scroll;
+        @extend .overflow-y-scroll;
+    }
+    &.accordion-zebra .accordion:nth-child(2n){
+        @extend #{$accordion-zebra-custom-classes};
+    }    
 }

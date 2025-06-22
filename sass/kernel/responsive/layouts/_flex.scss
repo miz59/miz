@@ -1,7 +1,7 @@
-@use "sass:list";
-@use "sass:map";
+@use 'sass:list';
+@use 'sass:map';
 @use "../../../config/responsive" as *;
-@use "../functions/responsive";
+@use "../functions/responsive" as *;
 
 .row{
     width: 100%;
@@ -74,7 +74,7 @@ $class-list:(
 @function generate-flex-classes($property-key-list , $property-value-list,$class-name){
     $list : ();
     $count : ();
-    @if responsive.check-status($conf-list, $property-key-list){
+    @if check-status($conf-list, $property-key-list){
         @each $key , $value in $break-points{
             $list:list.join($list , get-flex-break-points-classes($key,$property-key-list , $property-value-list,$class-name));
         }
@@ -88,10 +88,10 @@ $class-list:(
     $list : ();
     $base : ();
     @for $i from 1 through list.length($property-value-list){
-        @if responsive.check-status($conf-list, $property-key-list){
-            $base:responsive.generate-classes-responsive-on-value($class-name , $break-points-key , list.nth($property-value-list , $i));
+        @if check-status($conf-list, $property-key-list){
+            $base:generate-classes-responsive-on-value($class-name , $break-points-key , list.nth($property-value-list , $i));
         }@else{
-            $base:responsive.generate-classes-on-value($class-name  ,list.nth($property-value-list , $i));
+            $base:generate-classes-on-value($class-name  ,list.nth($property-value-list , $i));
         }
         $map:(
             className: $base,
@@ -105,6 +105,6 @@ $class-list:(
 
 
 
-$flex-cols : responsive.generate-classes-items($col-list ,width, $conf-cols) ;
-$flex-grows:responsive.generate-classes-items($grow-list,flex,$conf-grows);
+$flex-cols : generate-classes-items($col-list ,width, $conf-cols) ;
+$flex-grows:generate-classes-items($grow-list,flex,$conf-grows);
 $flex-type : generate-flex-list();

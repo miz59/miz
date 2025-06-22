@@ -1,6 +1,6 @@
-@use "sass:list";
-@use "sass:map";
-@use "../responsive/functions/responsive";
+@use 'sass:list';
+@use 'sass:map';
+@use "../responsive/functions/responsive" as *;
 
 @function generate-class-name-list($map-config , $property){
     $max:map.get($map-config , max);
@@ -16,9 +16,10 @@
         @if ($i == 0){
             $number:$min;
         }
-        $class-item:responsive.generate-classes-on-value($property , $number);
+        $class-item:generate-classes-on-value($property , $number);
         $class-name:list.join($class-name , $class-item , comma);
     }
+    // @debug $class-name;
     @return $class-name;
 }
 

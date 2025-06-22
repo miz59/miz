@@ -1,4 +1,43 @@
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/structure" as *;
 @use "../../config" as *;
+
+$card-custom-classes: ".bg-primary-color";
+$card-header-custom-classes: ".px-2, .py-2";
+$card-body-custom-classes: ".d-flex, .flex-column, .gap-1, .p-2";
+$card-footer-custom-classes: ".pt-2";
+$card-image-space-custom-classes: ".px-2";
+$card-scrollbar-custom-classes: ".p-2";
+
+.card{
+    @extend .d-flex, .flex-column, .overflow-hidden, .h-fit-content, #{$card-custom-classes};
+
+    .card-header{
+        @extend #{$card-header-custom-classes};
+    }
+    .card-footer{
+        @extend #{$card-footer-custom-classes};
+    }
+    .card-body{
+        @extend .d-flex, .flex-column, #{$card-body-custom-classes};
+    }
+    &:has(.card-image-space){
+        @extend #{$card-image-space-custom-classes};
+    }
+    &.card-scrollbar{
+        @extend #{$card-scrollbar-custom-classes};
+    
+        & .card-body{
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            @extend .overflow-y-scroll;
+        }
+    }
+}
+
+
+
+
 
 .multiply-ellipsis-3{
     display: -webkit-box;
@@ -6,86 +45,5 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
     -webkit-box-orient: vertical;
-    // @extend .overflow-hidden;
-    overflow: hidden;
-}
-.card{
-    // @extend .d-flex, .flex-column, .overflow-hidden;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: fit-content;
-    .card-header{
-        // @extend .px-2, .py-2;
-        // padding: ;
-        p{
-            border-bottom: 1px solid;
-        }
-    }
-    .card-footer{
-        // @extend .px-2, .py-2;
-        p{
-            border-top: 1px solid;
-        }   
-    }
-    .card-body{
-        // @extend .px-2, .py-2, .d-flex, .flex-column, .gap-1
-        display: flex;
-        flex-direction: column;
-        // gap: ;
-        // padding: ;
-        &:has(p:only-of-type){
-            p{
-                // @extend .mt-2;
-            }
-            &:has(button){
-                // @extend .align-items-end;
-                align-items: end;
-                p{
-                    // @extend .my-2;
-                }
-            }
-        }
-    }
-    &:has(.card-image-space){
-        // @extend .px-2;
-        & > div{
-            // @extend .px-0;
-            padding-left: 0px;
-            padding-right: 0px;
-        }
-        .card-image-space{
-            &:not([class^="all-border"]){
-                // @extend .all-border-medium;
-                border-radius: $all-border-medium;
-            }
-        }
-    }
-}
-.card-scrollbar{
-    & .card-body{
-        padding-top: 0 !important;
-        scrollbar-width: none;
-        // @extend .overflow-y-scroll;
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-            // @extend .d-none;
-            display: none;
-        }
-        p{
-            margin-top: 0 !important;
-        }
-    }
-    &:not(:has(.card-header)){  
-        &:has(.card-footer){
-            // @extend .pt-2;
-            // padding-top: ;
-        } 
-    }
-    &:not(:has(.card-footer)){  
-        &:has(.card-header){
-            // @extend .pb-2;
-            // padding-bottom: ;
-        } 
-    }
+    @extend .overflow-hidden;
 }

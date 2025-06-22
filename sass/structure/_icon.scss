@@ -1,22 +1,22 @@
-@use "sass:list";
-@use "sass:string";
-@use "../kernel/responsive/boots/typography" as typography2;
-@use "typography";
+@use 'sass:list';
+@use 'sass:string';
+@use "../kernel/responsive/boots/typography" as *;
+@use "typography" as *;
 
 $icon-size : (
-extra-large :32px,
-large : 24px,
-medium :20px,
-regular :16px,
-small :12px,
-extra-small :10px
+    extra-large :32px,
+    large : 24px,
+    medium :20px,
+    regular :16px,
+    small :12px,
+    extra-small :10px
 );
 $icon-prefix : "icon";
 
 // ----------------------------
 
 $folder-default:"fonts";
-typography.$fonts: (
+$fonts: (
   (
     "name": primary,
     "folder": vazir,
@@ -31,10 +31,10 @@ typography.$fonts: (
 
 // $font-family:"";
 $font-folder:"";
-typography2.$font-weight:"";
+$font-weight:"";
 $url:();
 
-@each $font-info in typography.$fonts{
+@each $font-info in $fonts{
     @each $key , $value in $font-info{
         @if ($key == "name"){
             $font-family:$value;

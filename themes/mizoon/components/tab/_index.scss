@@ -1,114 +1,91 @@
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
 @use "../../config" as *;
 
 .tab-container {
-    margin: 0 auto;
-    // @extend .d-flex, .position-relative; 
-    display: flex;
-    position: relative;
-    
+  @extend .d-flex, .position-relative, .w-100;
 }
 
-.tab {
-  flex-basis: 100%;
-  border-bottom: 1px solid;
-  &:not([class^="border-"][class$="-color"]){
-      border-color: #ddd;
-  }
+.tab-labels {
+  display: flex;
+  // flex-direction: column;
+  // min-width: 180px; 
+  // border-right: 1px solid #ddd;
+  // background: #f7f7f7;
+
   .tab-label {
-    // @extend .w-100, .d-inline-block, .p-2;
-    width: 100%;
-    display: inline-block;
-    cursor: pointer;
-    &:not([class^="bg-"][class$="-color"]){
-      background-color: #f7f7f7;
+    @extend .w-100, .d-inline-block, .p-2, .pointer;
+    // background-color: #f7f7f7;
+    // border-bottom: 1px solid #ddd;
+    // change colors
+    text-align: center;
+    transition: all 0.2s;
+    // color: #6b7280;
+    &:hover:not(.active) {
+      // background-color: #e7e7e7;
+      // color: #2563eb;
+
+      // change colors
+    }
+    &.active {
+      // background-color: #fff;
+      // color: #2563eb;
+      // border-right: 3px solid #2563eb;
+      // font-weight: bold;
+      // z-index: 2;
+
+      // change colors
     }
   }
 }
 
-.tab-content {
-    // @extend .w-100, .p-2;
-    width: 100%;
-    cursor: pointer;
-    left: 0;
-    transition: .2s;
-    &:not([class^="bg-"][class$="-color"]){
-      background-color: #fff;
-    }
-  }
-  
-  .tab-container {
-    display: flex;
-  }
-
-.tab {
-  flex-basis: 33.33%;
-  border-bottom: none;
-  border-right: 1px solid #ddd;
-  input[type="radio"] {
-    // @extend .d-none;
-    display: none;
-  }
-
-}
-.tab-label {
-  background-color: #e7e7e7;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-.tab-content {
-  display: block;
-  border: 1px solid #ddd;
-  width: 100%;
-  padding: 20px;
-  position: absolute;
-  transition: 400ms linear;
+.tab-contents {
+  flex: 1;
   height: fit-content;
-}
-.tab-container{
-    @for $i from 1 through $tab-count{ 
-        @for $j from 1 through $tab-count{
-            @if ($i == $j){
-                & .tab input#tabCheck#{$i}:checked ~ .tab-content{
-                    // @extend .w-100;
-                    width: 100%;
-                    transform: translateX(0%);
-                }
-            }
-            @else{
-                &:has(input#tabCheck#{$i}:checked) .tab:nth-child(#{$j}) .tab-content{
-                    // @extend .w-100, .h-100, .position-absolute, .opacity-0; 
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    opacity: 0;
-    
-                    @if ($j > $i){
-                        transform: translateX(100%);
-                    }
-                    @else{
-                        transform: translateX(-100%);
-                    }
-                }
-            }
-        }
-    }
-}
-@media (max-width: 600px) {
-  .tab-container {
-    flex-direction: column;
-  }
-
+  // position: relative;
+  // background: #fff;
+  // border-radius: 0 12px 12px 0;
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
   .tab-content {
-    height: 0px; 
-    opacity: 0;
-    position: unset;
-    transform: translate(0) !important;
-    z-index: -1;
-    transition: 0s !important;
+    display: none;
+    width: 100%;
+    // padding: 32px 24px;
+    color: #222;
+    animation: fadeIn 0.4s;
+    // background: #fff;
+  
+    &.active {
+      display: unset;
+    }
   }
+}
 
-  input[type="radio"]:checked + .tab-label + .tab-content {
-    height: fit-content !important;
-    opacity: 1;
-  }
+
+// @media (max-width: 600px) {
+//   .tab-container {
+//     flex-direction: column;
+//   }
+//   .tab-labels {
+//     flex-direction: row;
+//     min-width: unset;
+//     border-right: none;
+//     border-bottom: 1px solid #ddd;
+//   }
+//   .tab-label {
+//     border-bottom: none;
+//     border-right: 1px solid #ddd;
+//     border-radius: 0;
+//   }
+//   .tab-label.active {
+//     border-right: none;
+//     border-bottom: 3px solid #2563eb;
+//   }
+//   .tab-contents {
+//     border-radius: 0 0 12px 12px;
+//   }
+// }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }

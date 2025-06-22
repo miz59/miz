@@ -1,12 +1,9 @@
-@use "../config/responsive";
-
 @use "sass:map";
-
-
+@use "../config/responsive" as *;
 
 @function get-break-point-value($break-point){
 
-    $value: map.get(responsive.$break-points,$break-point);
+    $value: map.get($break-points,$break-point);
 
     @return $value;
 }

@@ -1,5 +1,5 @@
-@use "../functions/responsive";
+@use "../functions/responsive" as *;
 @use "../../../config/responsive" as *;
 
 $order-list:order;
-$flex-orders:responsive.generate-classes-items($order-list,order,$conf-orders);
+$flex-orders:generate-classes-items($order-list,order,$conf-orders);

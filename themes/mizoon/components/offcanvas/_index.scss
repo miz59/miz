@@ -1,62 +1,38 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/structure" as *;
+@use "../../../../sass/kernel" as *;
 
-body:has(.offcanvas-static.offcanvas-scroll div[id*="offcanvasCheck"].active){
-    overflow: unset;
-}
+$offcanvas-static-custom-classes:".d-flex, .flex-row, .justify-content-center, .align-items-center";
+$offcanvas-close-custom-classes:".w-fit-content, .d-flex, .justify-content-start, .pointer, .mb-2";
+$offcanvas-backdrop-custom-classes:".bg-secondary-color, .visibility-hidden, .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0, .pointer";
+$offcanvas-backdrop-transition:all 300ms linear;
+$offcanvas-backdrop-active-custom-classes:".opacity-8, .visibility-visible";
+$offcanvas-z-index:1000;
 
-body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active){
-    overflow: hidden;
-}
 
 .offcanvas-static{
-    // @extend .d-flex,.flex-row,.justify-content-center,.align-items-center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    &.offcanvas-backdrop div[id*="offcanvasCheck"] + div.backdrop{
-        background-color: colors.get-color(secondary);
-        visibility:hidden;
-        transition: 250ms linear;
-        // @extend .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        opacity: 0;
+    @extend #{$offcanvas-static-custom-classes};
+
+    & div.backdrop{
+        transition: $offcanvas-backdrop-transition;
+        @extend #{$offcanvas-backdrop-custom-classes};
     }
-    div[id*="offcanvasCheck"],div[id*="dropdown-toggle"]{
-        & + div.backdrop{
-            // @extend .pointer;
-            cursor: pointer;
-        }
+
+    .offcanvas-toggle{
         & ~ .offcanvas-top{
             height:37%;
-            background-color: colors.get-color(primary);
-            color: colors.get-color(on-primary);
-            box-sizing:border-box;
             transform: translateY(-100%);
             transition: 250ms linear;
             z-index:1000;
-            // @extend .w-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
-            width: 100%;
-            position: fixed;
-            left: 0;
-            top: 0;
-            // padding: ;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: start;
+
+            @extend .w-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
-                height: 25% !important;
+                height: 25%;
                 @media screen and (max-width:get-break-point-value(md)){
-                    height: 37% !important;
+                    height: 37%;
                 }
                 @media screen and (max-width:get-break-point-value(sm)){
-                    height: 50% !important;
+                    height: 50%;
                 }
             }
             @media screen and (max-width:get-break-point-value(md)) {
@@ -65,42 +41,22 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             @media screen and (max-width:get-break-point-value(sm)) {
                 height: 100%;
             }
-
-            & div.offcanvas-close{
-                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
-                width: 100%;
-                display: flex;
-                justify-content: start;
-                cursor: pointer;
-                // margin-bottom: ;
-            }
         }
+
         & ~ .offcanvas-bottom{
             height:37%;
-            background-color: colors.get-color(primary);
-            color: colors.get-color(on-primary);
-            box-sizing:border-box;
             transform: translateY(100%);
             transition: 250ms linear;
-            z-index:1000;
-            // @extend .w-100, .position-fixed, .left-0, .bottom-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
-            width: 100%;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            // padding: ;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: start;
+            z-index:$offcanvas-z-index;
+            @extend .w-100, .position-fixed, .left-0, .bottom-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
 
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
-                height: 25% !important;
+                height: 25%;
                 @media screen and (max-width:get-break-point-value(md)){
-                    height: 37% !important;
+                    height: 37%;
                 }
                 @media screen and (max-width:get-break-point-value(sm)){
-                    height: 50% !important;
+                    height: 50%;
                 }
             }
             @media screen and (max-width:get-break-point-value(md)) {
@@ -109,41 +65,22 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             @media screen and (max-width:get-break-point-value(sm)) {
                 height: 100%;
             }
-
-            & div.offcanvas-close{
-                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
-                width: 100%;
-                display: flex;
-                justify-content: start;
-                cursor: pointer;
-                // margin-bottom: ;
-            }
         }
+
         & ~ .offcanvas-left{
             width:37%;
-            background-color: colors.get-color(primary);
-            color: colors.get-color(on-primary);
-            box-sizing:border-box;
             transform: translateX(-100%);
             transition: 250ms linear;
             z-index:1000;
-            // @extend .h-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
-            height: 100%;
-            position: fixed;
-            left:0;
-            top: 0;
-            // padding: ;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: start;
+            @extend .h-100, .position-fixed, .left-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
+
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
-                width: 25% !important;
+                width: 25%;
                 @media screen and (max-width:get-break-point-value(md)){
-                    width: 37% !important;
+                    width: 37%;
                 }
                 @media screen and (max-width:get-break-point-value(sm)){
-                    width: 50% !important;
+                    width: 50%;
                 }
             }
             @media screen and (max-width:get-break-point-value(md)) {
@@ -152,81 +89,43 @@ body:has(.offcanvas-static.offcanvas-no-scroll div[id*="offcanvasCheck"].active)
             @media screen and (max-width:get-break-point-value(sm)) {
                 width: 100%;
             }
-
-            & div.offcanvas-close{
-                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
-                width: 100%;
-                display: flex;
-                justify-content: start;
-                cursor: pointer;
-                // margin-bottom: ;
-            }
         }
+
         & ~ .offcanvas-right{
             width:37% ;
-            background-color: colors.get-color(primary);
-            color: colors.get-color(on-primary);
-            box-sizing:border-box;
             transform: translateX(100%);
             transition: 250ms linear;
             z-index:1000;
-            // @extend .h-100, .position-fixed, .right-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
-            height: 100%;
-            position: fixed;
-            right: 0;
-            top: 0;
-            // padding: ;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: start;
+            @extend .h-100, .position-fixed, .right-0, .top-0, .p-1, .d-flex, .flex-column, .justify-content-start, .align-items-start;
             
             &:has(~ [class*="offcanvas-"]),&~ [class*="offcanvas-"]{
-                width: 25% !important;
+                width: 25%;
                 @media screen and (max-width:get-break-point-value(md)){
-                    width: 37% !important;
+                    width: 37%;
                 }
                 @media screen and (max-width:get-break-point-value(sm)){
-                    width: 50% !important;
+                    width: 50%;
                 }
             }
             @media screen and (max-width:get-break-point-value(md)) {
-                width: 750 ;
+                width: 50%;
             }
             @media screen and (max-width:get-break-point-value(sm)) {
-                width: 100% ;
-            }
-
-            & div.offcanvas-close{
-                // @extend .w-100, .d-flex, .justify-content-start, .pointer, .mb-1;
                 width: 100%;
-                display: flex;
-                justify-content: start;
-                cursor: pointer;
-                // margin-bottom: ;
             }
         }
+
         &.active{
-            & ~ .offcanvas{
-                transform:translateX(0%);
-            }
-            & ~ .offcanvas-top{
-                transform:translateY(0%);
-            }
-            & ~ .offcanvas-bottom{
-                transform:translateY(0%);
-            }
-            & ~ .offcanvas-left{
-                transform:translateX(0%);
-            }
-            & ~ .offcanvas-right{
-                transform:translateX(0%);
+            & ~:where(.offcanvas-top , .offcanvas-bottom , .offcanvas-left , .offcanvas-right){
+                transform:translateX(0%) translateY(0%);
             }
             & + div.backdrop{
-                opacity: 0.8 !important;
-                visibility:visible !important;
-                z-index:999;
+                z-index: calc($offcanvas-z-index - 1);
+                @extend #{$offcanvas-backdrop-active-custom-classes}
             }
         }
+    }
+    .offcanvas-close{
+        @extend #{$offcanvas-close-custom-classes};
     }
 }

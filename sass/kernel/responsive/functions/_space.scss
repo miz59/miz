@@ -1,35 +1,37 @@
-@use "sass:list";
-@use "sass:meta";
-@use "sass:map";
-@use "sass:string";
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:string';
 @use "../../../config/responsive" as *;
-@use "responsive";
+@use "responsive" as *;
 
-$paddings-list:p,pt,pb,pl,pr,px,py;
-$margins-list:m,mt,mb,ml,mr,mx,my;
-$gap-list:gap;
+$paddings-list-class:"p","pt","pb","pl","pr","px","py","pis","pie";
+$margin-list-class:"m","mt","mb","ml","mr","mx","my","mis","mie";
+$gap-list-class:gap;
+$letter-spacing-list-class:"ls";
 
-$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom));
-$map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom));
+$map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom) , pis:padding-inline-start , pie:padding-inline-end);
+$map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom) , mis:margin-inline-start , mie:margin-inline-end);
 $map-gap:(gap:gap);
+$map-letter-spacing:(ls:letter-spacing);
 
 @function generate-class-name-list-space($name-list, $map-config) {
-    $is-responsive: responsive.check-status($map-config , responsive);
+    $is-responsive: check-status($map-config , responsive);
     $class-name-list: ();
-    $count:map.get($map-config , count) + 1;
+    $count:map.get($map-config , count);
 
-    @if ($count == 1){
+    @if ($count == 0){
         @return ();
     }
     @if($is-responsive) {
         @for $i from 1 through list.length($name-list){
-            $class-name-list: list.join($class-name-list, responsive.generate-responsive-classes(list.nth($name-list , $i) , $count, true , true));
-          }
+            $class-name-list: list.join($class-name-list, generate-responsive-classes(list.nth($name-list , $i) , $count, true , true));
+        }
     }
 
     @else {
         @for $i from 1 through list.length($name-list){
-            $class-name-list: list.join($class-name-list, responsive.generate-classes(list.nth($name-list , $i) , $count , true));
+            $class-name-list: list.join($class-name-list, generate-classes(list.nth($name-list , $i) , $count , true));
         }
     }
     @return $class-name-list;
@@ -49,7 +51,7 @@ $map-gap:(gap:gap);
     $key:generate-key($name , $map-property);
     $split-class:string.split($name , "-");
     $number:list.nth($split-class , list.length($split-class));
-    $value:$factor * responsive.cast-string-number($number);
+    $value:$factor * cast-string-number($number);
     $value:$value + $unit;
     $value-list:();
 
@@ -81,6 +83,7 @@ $map-gap:(gap:gap);
     @return $list;
 }
 
-$p : generate-total-map-list($paddings-list , $map-padding , $conf-paddings);
-$m : generate-total-map-list($margins-list , $map-margin , $conf-margins);
-$gaps : generate-total-map-list($gap-list , $map-gap , $conf-gaps);
+$padding : generate-total-map-list($paddings-list-class , $map-padding , $conf-paddings);
+$margin : generate-total-map-list($margin-list-class , $map-margin , $conf-margins);
+$gap : generate-total-map-list($gap-list-class , $map-gap , $conf-gaps);
+$letter-spacing: generate-total-map-list($letter-spacing-list-class , $map-letter-spacing , $conf-letter-spacing);

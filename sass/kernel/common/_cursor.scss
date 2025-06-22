@@ -1,3 +1,10 @@
-.pointer{
-    cursor:pointer;
+@use "_functions" as *;
+// .pointer{
+//     cursor:pointer;
+// }
+
+@function generate-cursor($a){
+    // @return $;
 }
+
+// @debug generate-class-name-list();

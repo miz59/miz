@@ -1,30 +1,30 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href=./assets/css/miz.min.css>
-        <link rel="stylesheet" href="../../../../../../assets/icons/fontawesome/css/all.css">
+        <link rel="stylesheet" href="../../../../../../../../public/assets/css/document/miz.min.css">
+        <link rel="stylesheet" href="../../../../../../../../public/assets/icons/fontawesome/css/all.css">
     </head>
-    <body class="font-primary w-100 h-100 d-flex flex-row justify-content-space-between align-items-start bg-secondary-color p-4 border-box">
+    <body class="font-primary w-100 d-flex flex-row justify-content-space-between align-items-start bg-secondary-color p-4 border-box">
         <div class="d-flex flex-column justify-content-center align-items-start h-100">
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <label for="exampleFormControlInput1" class="form-label">@</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <label for="exampleFormControlInput2" class="form-label">$</label>
                 <input type="text" class="form-control" id="exampleFormControlInput2">
                 <label for="exampleFormControlInput2" class="form-label">0.00</label>
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <input type="text" class="form-control" id="exampleFormControlInput3">
                 <label for="exampleFormControlInput3" class="form-label">@</label>
                 <input type="text" class="form-control" id="exampleFormControlInput3">
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <label for="exampleFormControlInput4" class="form-label">Example textarea</label>
                 <textarea name="" id="exampleFormControlInput4" class="form-control"></textarea>
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <label for="exampleFormControlInput5" class="form-label">
                     <input type="checkbox" name="" id="">
                 </label>
@@ -33,76 +33,81 @@
                     <input type="radio" name="" id="">
                 </label>
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <label for="exampleFormControlInput6" class="form-label">First and last name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput6">
                 <input type="text" class="form-control" id="exampleFormControlInput6">
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <label for="exampleFormControlInput7" class="form-label">$</label>
                 <label for="exampleFormControlInput7" class="form-label">0.00</label>
                 <input type="text" class="form-control" id="exampleFormControlInput7">
             </div>
-            <div class="mb-3 input-group">
-                <button type="button" class="btn btn-warning px-2 py-1">warning</button>
+            <div class="mb-3 input-group form-field">
+                <button type="button" class="btn btn-warning border-solid border-color border-width-1">warning</button>
                 <input type="text" class="form-control" id="exampleFormControlInput8">
-                <button type="button" class="btn btn-primary px-2 py-1">Primary</button>
+                <button type="button" class="btn btn-primary border-solid border-color border-width-1">Primary</button>
             </div>
-            <div class="mb-3 input-group">
-                <button type="button" class="btn btn-warning px-2 py-1">warning</button>
-                <button type="button" class="btn btn-primary px-2 py-1">Primary</button>
+            <div class="mb-3 input-group form-field">
+                <button type="button" class="btn btn-warning border-solid border-color border-width-1">warning</button>
+                <button type="button" class="btn btn-primary border-solid border-color border-width-1">Primary</button>
                 <input type="text" class="form-control" id="exampleFormControlInput8">
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <div class="dropdown dropdown-bottom">
-                    <div class="btn btn-success px-2 py-1 gap-1" for="dropdown-1">
-                        <span>Dropdown button</span>
-                        <i class="fa-solid fa-chevron-down on-primary-color"></i>
-                    </div> 
-                    <ul class="bg-success-regular-color all-border-small px-1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                    </ul>       
+                    <div class="dropdown-box">
+                        Bottom Dropdown
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Item 1</a></li>
+                        <li><a href="#">Item 2</a></li>
+                        <li class="dropdown-submenu dropdown-left">
+                            <a href="#" class="dropdown-submenu-toggle">
+                                Submenu
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Submenu Item 1</a></li>
+                                <li><a href="#">Submenu Item 2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
                 <div class="dropdown dropdown-bottom">
-                    <input class="d-none" type="checkbox" id="dropdown-2">
-                    <label class="btn btn-success px-2 py-1 gap-1" for="dropdown-2">
-                        <span>Dropdown button</span>
-                        <i class="fa-solid fa-chevron-down on-primary-color"></i>
-                    </label> 
-                    <ul class="bg-success-regular-color all-border-small px-1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                    </ul>       
+                    <div class="dropdown-box">
+                        Bottom Dropdown
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Item 1</a></li>
+                        <li><a href="#">Item 2</a></li>
+                        <li class="dropdown-submenu dropdown-left">
+                            <a href="#" class="dropdown-submenu-toggle">
+                                Submenu
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Submenu Item 1</a></li>
+                                <li><a href="#">Submenu Item 2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
                 <input type="text" class="form-control" id="exampleFormControlInput9">
-                <div class="dropdown dropdown-bottom">
-                    <input class="d-none" type="checkbox" id="dropdown-3">
-                    <label class="btn btn-success px-2 py-1 gap-1" for="dropdown-3">
-                        <span>Dropdown button</span>
-                        <i class="fa-solid fa-chevron-down on-primary-color"></i>
-                    </label> 
-                    <ul class="bg-success-regular-color all-border-small px-1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                    </ul>       
-                </div>
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <div class="offcanvas-static offcanvas-scroll offcanvas-backdrop">
-                    <div id="offcanvasCheck" class="btn btn-primary px-2 py-1">offcanvas</div>
+                    <div id="offcanvasCheck" class="btn btn-primary border-solid border-color border-width-1">offcanvas</div>
                     <div class="backdrop"></div>
                     <div class="offcanvas-left gap-1">
                         <div class="offcanvas-close">
                             <i class="fa-solid fa-close on-primary-color icon-medium"></i>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A tenetur vel corrupti? Maxime, fugiat temporibus harum</p>
-                        <button class="btn btn-secondary px-2 py-1 on-primary-color">btn</button>
+                        <button class="btn btn-secondary border-solid border-color border-width-1 on-primary-color">btn</button>
                         <div class="dropdown dropdown-bottom active">
-                            <div class="btn btn-secondary px-2 py-1 on-primary-color gap-1">
+                            <div class="btn btn-secondary border-solid border-color border-width-1 on-primary-color gap-1">
                                 Dropdown button
                                 <i class="fa-solid fa-chevron-down on-primary-color"></i>
                             </div> 
@@ -118,9 +123,9 @@
                             <i class="fa-solid fa-close on-primary-color icon-medium"></i>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A tenetur vel corrupti? Maxime, fugiat temporibus harum</p>
-                        <button class="btn btn-secondary px-2 py-1 on-primary-color">btn</button>
+                        <button class="btn btn-secondary border-solid border-color border-width-1 on-primary-color">btn</button>
                         <div class="dropdown dropdown-bottom">
-                            <div class="btn btn-secondary px-2 py-1 on-primary-color gap-1" >
+                            <div class="btn btn-secondary border-solid border-color border-width-1 on-primary-color gap-1" >
                                 Dropdown button
                                 <i class="fa-solid fa-chevron-down on-primary-color"></i>
                             </div> 
@@ -135,7 +140,7 @@
                 </div>
                 <input type="text" class="form-control" id="exampleFormControlInput10">
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <select class="form-select">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
@@ -144,7 +149,7 @@
                 </select>
                 <span>select</span>
             </div>
-            <div class="mb-3 input-group">
+            <div class="mb-3 input-group form-field">
                 <span>select</span>
                 <select class="form-select">
                     <option selected>Open this select menu</option>
@@ -154,22 +159,22 @@
                 </select>
                 <span>span</span>
             </div>
-            <div class="mb-3 input-group">
-                <button class="btn bg-on-primary-color">btn</button>
-                <select class="form-select">
+            <div class="mb-3 input-group form-field">
+                <button class="btn bg-on-primary-color px-2 py-1 border-solid border-width-1 border-color">btn</button>
+                <select class="form-select border-solid border-width-1 border-color">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <button class="btn btn-secondary px-2 py-1 on-primary-color">btn</button>
+                <button class="btn btn-secondary border-solid border-color border-width-1 on-primary-color">btn</button>
             </div>
-            <div class="mb-3 input-group">
-                <button class="btn btn-secondary px-2 py-1 on-primary-color">btn</button>
+            <div class="mb-3 input-group form-field">
+                <button class="btn btn-secondary border-solid border-color border-width-1 on-primary-color">btn</button>
                 <input class="form-control" type="file" id="formFile1">
             </div>
-            <div class="mb-3 input-group">
-                <button class="btn btn-secondary px-2 py-1 on-primary-color">btn</button>
+            <div class="mb-3 input-group form-field">
+                <button class="btn btn-secondary border-solid border-color border-width-1 on-primary-color">btn</button>
                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     <option value="San Francisco">
@@ -179,17 +184,14 @@
                     <option value="Chicago">
                 </datalist>
             </div>
-        </div>
-        <div class="d-flex flex-row justify-content-center align-items-center h-100">
-            <div class=""></div>
-            <div class="d-flex flex-column py-2 px-4 gap-2 h-100">
-                <div class="input-group">
-                    <label for="userName">
-                        <i class="fa-solid fa-user on-primary-color"></i>
-                    </label>
-                    <input id="userName" class="form-control" type="text" placeholder="name">
-                </div>
+            <div class="input-group form-field">
+                <label for="userName">
+                    <i class="fa-solid fa-user on-primary-color"></i>
+                </label>
+                <input id="userName" class="form-control" type="text" placeholder="name">
             </div>
         </div>
+
+        <script src="../../../../../../../../public/assets/js/mizchin.min.js"></script>
     </body>
 </html>

@@ -1,6 +1,5 @@
-@use "../config/colors";
-
 @use "sass:map";
+@use "../config/colors" as *;
 
 @function get-color($key){
 
