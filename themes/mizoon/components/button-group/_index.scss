@@ -2,7 +2,7 @@
 @use "../../../../sass/structure" as *;
 
 $btn-group-custom-classes:"";
-$btn-group-btn-cutsom-classes:".border-solid, .border-width-1, .border-color";
+$btn-group-btn-cutsom-classes:".border-style-solid, .bw-1, .border-color";
 
 .btn-group{
     @extend .d-flex, #{$btn-group-custom-classes};
@@ -12,24 +12,24 @@ $btn-group-btn-cutsom-classes:".border-solid, .border-width-1, .border-color";
     }
     &[class*="flex-column"] .btn{
         &:not(:first-child,:last-child){
-            @extend .all-border-tr, .all-border-tl, .all-border-br, .all-border-bl;
+            @extend .radius-all-none;
         }
         &:first-child{
-            @extend .all-border-ee, .all-border-es, .border-b-none;
+            @extend .radius-ee-none, .radius-es-none, .border-b-none;
         }
         &:last-child{
-            @extend .all-border-se, .all-border-ss, .border-t-none;
+            @extend .radius-se-none, .radius-ss-none, .border-t-none;
         }
     }
     &:not([class*="flex-"]) .btn{
         &:not(:first-child,:last-child){
-            @extend .all-border-tr, .all-border-tl, .all-border-br, .all-border-bl;
+            @extend .radius-all-none;
         }
         &:first-child{
-            @extend .all-border-ee, .all-border-se, .border-ie-none;
+            @extend .radius-ee-none, .radius-se-none, .border-ie-none;
         }
         &:last-child{
-            @extend .all-border-es, .all-border-ss, .border-is-none;
+            @extend .radius-es-none, .radius-ss-none, .border-is-none;
         }
     }
 }

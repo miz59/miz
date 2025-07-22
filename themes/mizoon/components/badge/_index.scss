@@ -1,15 +1,16 @@
+@use "../../../../sass/structure/_typography" as *;
 @use "../../../../sass/kernel" as *;
 @use "sass:list";
 
 $badge-size: 4px;
 
 .badge-wrapper{
-    @extend .position-relative, .pointer;
+    @extend .position-relative, .cursor-pointer;
 
     & .badge{
         padding:$badge-size;
         text-transform: uppercase;
-        @extend .txt-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
+        @extend .#{$font-prefix}-align-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
 
         &:has(i){
             padding:$badge-size !important;

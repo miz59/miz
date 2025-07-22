@@ -2,34 +2,40 @@
 @use "../../../../sass/kernel" as *;
 @use "../../config" as *;
 
-$input-group-items-border-class:".all-border-small";
-$input-group-label-custom-classes:".border-color, .border-width-1, .border-solid, .p-1";
+$input-group-items-border-class:".radius-all-small";
+$input-group-label-custom-classes:".border-color, .bw-1, .border-style-solid, .p-1";
 
 .input-group{
     @extend .d-flex, .flex-row, .justify-content-start, .align-items-stretch;
 
     & > label , & > span{
-        @extend .pointer, .d-flex, .justify-content-center, .align-items-center, #{$input-group-label-custom-classes};
+        @extend .cursor-pointer, .d-flex, .justify-content-center, .align-items-center, #{$input-group-label-custom-classes};
         
     }
-    & > :first-child , & > :first-child > .btn , & > :first-child .dropdown-box{
-        @extend .all-border-tr, .all-border-br, #{$input-group-items-border-class};
+    & > :first-child , & > :first-child > .btn , & > :first-child .dropdown-box , & > input[type="file"]:first-child::file-selector-button{
+        @extend .radius-se-none, .radius-ee-none, #{$input-group-items-border-class};
     }
     & > :last-child , & > :last-child > .btn , & > :last-child .dropdown-box{
-        @extend .all-border-bl, .all-border-tl, #{$input-group-items-border-class};
+        @extend .radius-es-none, .radius-ss-none, #{$input-group-items-border-class};
     }
     & > :nth-child(n){
         &:not(:last-child,:first-child){
-            &.btn , &.dropdown .dropdown-box , &:not(:has(+ datalist:last-child)){
-                @extend .all-border-tr, .all-border-br, .all-border-tl, .all-border-bl;
+            &.btn , &.dropdown .dropdown-box , &:not(:has(+ datalist:last-child)) , & input[type="file"]::file-selector-button{
+                @extend .radius-all-none;
             }
         }
         &:not(:last-child) , &:not(:last-child) .btn , &:not(:last-child) .dropdown-box{
             @extend .border-ie-none;
         }
         &:has(+ datalist:last-child){
-            @extend .all-border-es, .all-border-ss;
+            @extend .radius-es-none, .radius-ss-none;
         }
 
+    }
+    &:has(input[type="file"]){
+        @extend .align-items-center;
+    }
+    & input[type="file"]::file-selector-button {
+        @extend .p-1, .cursor-pointer, .bg-primary-color, .border-style-none;
     }
 }

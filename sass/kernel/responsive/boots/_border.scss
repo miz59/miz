@@ -35,12 +35,17 @@ $border-style-values:(
     outset,
     ridge
 );
+
 $radius-map:(
     tl:border-top-left-radius,
     tr:border-top-right-radius,
     bl:border-bottom-left-radius,
     br:border-bottom-right-radius,
-    full:(
+    ss:border-start-start-radius,
+    se:border-start-end-radius,
+    es:border-end-start-radius,
+    ee:border-end-end-radius,
+    all:(
         border-top-left-radius,
         border-top-right-radius,
         border-bottom-left-radius,
@@ -68,8 +73,6 @@ $radius-map:(
  
 
     @for $i from 0 through $lenght{
-
-       
         $result:list.append($result,$i + px)
     }
 

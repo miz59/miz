@@ -1,174 +1,217 @@
 @use "../../../../sass/kernel" as *;
 @use "../../../../sass/structure" as *;
 
-.form-check {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+// Variables
+$checkbox-bom-size: 24px;
+$checkbox-bom-border-width: 2px;
+$checkbox-bom-border-color: "border";
+$checkbox-bom-checked-bg-color-checked: "primary";
+$checkbox-bom-checkmark-bg-color: "on-primary";
 
-    input[type="checkbox"],
-    input[type="radio"] {
-        appearance: none;
-        -webkit-appearance: none;
-        width: 20px;
-        height: 20px;
-        border: 2px solid get-color(primary);
-        border-radius: 4px;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.3s ease;
+$checkbox-magic-size: 17px;
+$checkbox-magic-border-width: 1px;
+$checkbox-magic-border-color: "border";
+$checkbox-magic-checked-bg-color:"primary";
+$checkbox-magic-checkmark: "on-primary";
 
-        &:checked {
-            background-color: get-color(primary);
-            border-color: get-color(primary);
+$switch-width: 60px;
+$switch-height: 34px;
+$switch-slider-bg-color: "disabled-regular";
+$switch-slider-checked-bg-color: "primary";
+$switch-slider-knob-bg-color: "on-primary";
+$switch-transition:0.4s;
 
-            &::after {
-                content: '';
-                position: absolute;
-                left: 6px;
-                top: 2px;
-                width: 5px;
-                height: 10px;
-                border: solid white;
-                border-width: 0 2px 2px 0;
-                transform: rotate(45deg);
-            }
-        }
+$radio-modern-size: 1.5rem;
+$radio-modern-border: 1px;
+$radio-modern-border-color: "border";
+$radio-modern-checked-bg-color: "primary";
 
-        &:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        // Color variants
-        &.primary {
-            border-color: get-color(primary);
-            &:checked {
-                background-color: get-color(primary);
-            }
-        }
-
-        &.secondary {
-            border-color: get-color(secondary);
-            &:checked {
-                background-color: get-color(secondary);
-            }
-        }
-
-        &.success {
-            border-color: get-color(success-regular);
-            &:checked {
-                background-color: get-color(success-regular);
-            }
-        }
-
-        &.danger {
-            border-color: get-color(danger-regular);
-            &:checked {
-                background-color: get-color(danger-regular);
-            }
-        }
-
-        &.info {
-            border-color: get-color(information-regular);
-            &:checked {
-                background-color: get-color(information-regular);
-            }
-        }
-    }
-
-    // Radio button specific styles
-    input[type="radio"] {
-        border-radius: 50%;
-
-        &:checked::after {
-            content: '';
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: white;
-            border: none;
-        }
-    }
-
-    label {
-        cursor: pointer;
-        user-select: none;
-    }
-}
-
-// Switch styles
+/* --- Switch --- */
 .switch {
-    width: var(--switch-size, 60px);
-    aspect-ratio: 2/1;
-    @extend .position-relative;
-
-    input {
-        @extend .w-0, .h-0, .opacity-0;
+  width: $switch-width;
+  @extend .d-inline-block, .position-relative, .aspect-ratio-1x1;
+  label {
+    @extend .d-block, .h-100, .w-100, .position-relative, .cursor-pointer;
+  }
+  input {
+    @extend .d-none;
+  }
+  .switch-slider {
+    @extend .position-absolute, .w-100, .cursor-pointer, .radius-all-full;
+    background-color: get-color($switch-slider-bg-color);
+    height: $switch-height;
+    transition: $switch-transition;
+    &:before {
+      content: "";
+      left: 4px;
+      bottom: 4px;
+      width: 26px;
+      background-color: get-color($switch-slider-knob-bg-color);
+      transition: $switch-transition;
+      @extend .radius-all-full, .aspect-ratio-1x1, .position-absolute;
     }
-
-    .switch-label {
-        background-color: get-color(secondary-dark);
-        transition: .4s;
-        // border-radius: calc(var(--switch-size, 60px) / 2);
-        @extend .top-0, .left-0, .right-0, .bottom-0, .position-absolute, .pointer, .all-border-full;
-        display: flex;
-        align-items: center;
-        height: calc(var(--switch-size, 60px) / 2);
-
-        &:before {
-            // position: absolute;
-            content: "";
-            // height: calc(var(--switch-size, 60px) / 2 - 4px);
-            width: calc(var(--switch-size, 60px) / 2 - 7px);
-            aspect-ratio: 1;
-
-            // left: 2px;
-            // bottom: 2px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-    }
-
-        input:checked + .switch-label {
-        background-color: get-color(primary);
-    }
-
-    input:checked + .switch-label:before {
-        transform: translateX(calc(var(--switch-size, 60px) / 2));
-    }
-
-    // Color variants
-    &.switch-success {
-        .switch-label {
-            background-color: get-color(success-regular);
-        }
-    }
-
-    &.switch-danger {
-        .switch-label {
-            background-color: get-color(danger-regular);
-        }
-    }
-
-    &.switch-info {
-        .switch-label {
-            background-color: get-color(information-regular);
-        }
-    }
+  }
+  input:checked + .switch-slider {
+    background-color: get-color($switch-slider-checked-bg-color);
+  }
+  input:checked + .switch-slider:before {
+    transform: translateX(26px);
+  }
 }
 
-// Group styles
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-    border: 1px solid get-color(border);
-    border-radius: 4px;
+/* --- Checkbox BOM (Animated) --- */
+.checkbox-bom {
+  @extend .position-relative;
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: $checkbox-bom-size;
+    aspect-ratio: 1;
+    border: $checkbox-bom-border-width solid get-color($checkbox-bom-border-color);
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    margin: 0;
+    @extend .position-relative;
+    @extend .d-inline-block;
+    &:focus { outline: 0; }
+    &:checked + label {
+      animation: bom-splash 0.6s ease forwards;
+    }
+    &:checked + label + .checkbox-bom-checkmark {
+      .checkbox-bom-checkmark {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+  label {
+    width: $checkbox-bom-size;
+    height: $checkbox-bom-size;
+    background: none;
+    border-radius: 50%;
+    @extend .position-absolute;
+    @extend .top-0;
+    @extend .left-0;
+    -webkit-filter: url("#bom-goo");
+    filter: url("#bom-goo");
+    transform: translate3d(0, 0, 0);
+    pointer-events: none;
+  }
+  .checkbox-bom-checkmark {
+    @extend .position-absolute, .z-index-1;
+    pointer-events: none;
+    top: 5px;
+    left: 4px;
+    stroke: get-color($checkbox-bom-checkmark-bg-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 19;
+    stroke-dashoffset: 19;
+    transition: stroke-dashoffset 0.3s ease;
+    transition-delay: 0.2s;
+  }
+}
+@keyframes bom-splash {
+  40% {
+    background: get-color($checkbox-bom-checked-bg-color-checked);
+    box-shadow: 0 -18px 0 -8px get-color($checkbox-bom-checked-bg-color-checked), 16px -8px 0 -8px get-color($checkbox-bom-checked-bg-color-checked), 16px 8px 0 -8px get-color($checkbox-bom-checked-bg-color-checked), 0 18px 0 -8px get-color($checkbox-bom-checked-bg-color-checked), -16px 8px 0 -8px get-color($checkbox-bom-checked-bg-color-checked), -16px -8px 0 -8px get-color($checkbox-bom-checked-bg-color-checked);
+  }
+  100% {
+    background: get-color($checkbox-bom-checked-bg-color-checked);
+    box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent, 32px 16px 0 -10px transparent, 0 36px 0 -10px transparent, -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+  }
+}
+
+/* --- Checkbox Magi --- */
+.checkbox-magic {
+  input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+    &:checked + label {
+      border-color: transparent;
+      background: get-color($checkbox-magic-checked-bg-color);
+      animation: magic-jelly 0.6s ease;
+      &:after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+    }
+  }
+  label {
+    @extend .d-inline-block;
+    @extend .position-relative;
+    top: 1px;
+    width: $checkbox-magic-size;
+    height: $checkbox-magic-size;
+    border: $checkbox-magic-border-width solid get-color($checkbox-magic-border-color);
+    border-radius: 3px;
+    vertical-align: middle;
+    transition: background 0.1s ease;
+    cursor: pointer;
+    &:after {
+      content: '';
+      @extend .position-absolute;
+      top: 1px;
+      left: 5px;
+      width: 5px;
+      height: 11px;
+      opacity: 0;
+      transform: rotate(45deg) scale(0);
+      border-right: 2px solid get-color($checkbox-magic-checkmark);
+      border-bottom: 2px solid get-color($checkbox-magic-checkmark);
+      transition: all 0.3s ease;
+      transition-delay: 0.15s;
+    }
+  }
+}
+@keyframes magic-jelly {
+  from { transform: scale(1, 1); }
+  30% { transform: scale(1.25, 0.75); }
+  40% { transform: scale(0.75, 1.25); }
+  50% { transform: scale(1.15, 0.85); }
+  65% { transform: scale(0.95, 1.05); }
+  75% { transform: scale(1.05, 0.95); }
+  to { transform: scale(1, 1); }
+}
+
+/* --- Radio Modern --- */
+.radio-modern {
+  @extend .d-flex, .align-items-center;
+  label {
+    padding-left: .6em;
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+  input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: $radio-modern-size;
+    border-width: $radio-modern-border;
+    border-color: get-color($radio-modern-border-color);
+    @extend .radius-all-full, .cursor-pointer, .aspect-ratio-1x1, .border-style-dashed, .d-inline-block;
+    &:checked,
+    &[aria-checked=true] {
+      background-color: get-color($radio-modern-checked-bg-color);
+      background-image: none;
+      animation: radio-modern-mark var(--animation-input, .2s) ease-out;
+      box-shadow: 0 0 0 4px get-color($radio-modern-checked-bg-color) inset, 0 0 0 4px get-color($radio-modern-checked-bg-color) inset;
+      border-color: get-color($radio-modern-checked-bg-color);
+    }
+  }
+}
+@keyframes radio-modern-mark {
+  0% {
+    box-shadow: 0 0 0 12px get-color($radio-modern-checked-bg-color) inset, 0 0 0 12px get-color($radio-modern-checked-bg-color) inset;
+  }
+  50% {
+    box-shadow: 0 0 0 3px get-color($radio-modern-checked-bg-color) inset, 0 0 0 3px get-color($radio-modern-checked-bg-color) inset;
+  }
+  100% {
+    box-shadow: 0 0 0 4px get-color($radio-modern-checked-bg-color) inset, 0 0 0 4px get-color($radio-modern-checked-bg-color) inset;
+  }
 }

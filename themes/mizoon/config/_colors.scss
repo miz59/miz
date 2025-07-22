@@ -1,9 +1,5 @@
-@use 'sass:map';
+@use "sass:map";
 @use "../../../sass/config/colors" as *;
-
-$backgrounds:(primary,on-primary,primary-light,primary-dark,secondary,on-secondary,secondary-light,secondary-dark,specific,button-text,button,text,title-text,secondary-text,section-title-text,border,divider,shadow,icon,menu,card,background,section,hover,button-hover,text-hover,button-text-hover,danger-regular,disabled-regular,warning-regular,warning-light,warning-dark,success-regular,success-light,success-dark,danger-dark,danger-light,disabled-light,disabled-dark,information-regular,information-light,information-dark,border-secondary,unCommon);
-$colors:(primary,on-primary,primary-light,primary-dark,secondary,on-secondary,secondary-light,secondary-dark,specific,button-text,button,text,title-text,secondary-text,section-title-text,border,divider,shadow,icon,menu,card,background,section,hover,button-hover,text-hover,button-text-hover,danger-regular,disabled-regular,warning-regular,warning-light,warning-dark,success-regular,success-light,success-dark,danger-dark,danger-light,disabled-light,disabled-dark,information-regular,information-light,information-dark,border-secondary,unCommon);
-$borders:(border,primary);
 
 $color-palette-themes:(
     primary: #3761EB,
@@ -33,21 +29,21 @@ $color-palette-themes:(
     hover: #9E9E9E,
     button-hover: #FFFFFF,
     text-hover: #FFFFFF,
-    fields: #F3F3F5,
-    border-fields: #D7D7D7,
+    fields: #22539c,
+    border-fields: #21b8d6,
     title-text-fields: #FFFFFF,
-    text-fields: #64748B,
+    text-fields: #ffffff,
     black: #000000,
     white: #FFFFFF,
     danger-regular: #D70D0D,
     disabled-regular: #B1B1B1,
     warning-regular: #FFB800,
     warning-light: #FDD368,
-    warning-dark: #E4A400,
+    warning-dark: #CA9200,
     success-regular: #02B74A,
     success-light: #C0FCD8,
-    success-dark: #009C3F,
-    danger-dark: #D70D0D,
+    success-dark: #007A31,
+    danger-dark: #AA0D0D,
     danger-light: #F8D0D0,
     disabled-light: #E2E2E2,
     disabled-dark: #575857,
@@ -55,7 +51,6 @@ $color-palette-themes:(
     information-light: #7393FF,
     information-dark: #2145BC,
     border-secondary: #FFFFFF,
-    unCommon: #FFFFFF
+    unCommon: #FFFFFF,
 );
-
 $color-palette:map.merge($color-palette , $color-palette-themes);

@@ -1,19 +1,16 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel" as *;
+
+$range-thumb-custom-classes:".bg-primary-color, .bw-0";
 
 .range{
     width: 100%;
     height:var(--height-range);
-    cursor: pointer;
-    appearance: none;
-    background-color: colors.get-color(primary);
-    // @extend .all-border-full;
-    border-radius: 1000px;
+    @extend .radius-all-full;
 
-    &.appearance{
-        appearance: auto;
-        accent-color: colors.get-color(primary);
+    &:disabled{
+        background-color: get-color(disabled-regular);
     }
-    &:not(.appearance):disabled{
-        background-color: colors.get-color(disabled-regular);
+    &::-moz-range-thumb , &::-webkit-slider-thumb{
+        @extend #{$range-thumb-custom-classes};
     }
 }

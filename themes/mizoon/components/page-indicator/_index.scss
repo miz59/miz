@@ -1,8 +1,8 @@
 @use "../../../../sass/kernel" as *;
 @use "../../../../sass/structure" as *;
 
-$page-indicator-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .all-border-full, .pointer";
-$page-indicator-not-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .all-border-full, .border-width-3, .border-solid, .border-primary-color, .on-primary-color, .bg-primary-color, .pointer";
+$page-indicator-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .radius-all-full";
+$page-indicator-not-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .radius-all-full, .bw-3, .border-style-solid, .border-primary-color, .on-primary-color, .bg-primary-color";
 $page-indicator-active-empty-custom-classes: ".bg-secondary-color, .aspect-ratio-2x1";
 $page-indicator-active-not-empty-custom-classes: ".bg-secondary-color";
 $page-indicator-transition: .3s;
@@ -26,6 +26,7 @@ $page-indicator-pages-custom-classes: ".d-flex, .flex-row, .justify-content-cent
         @extend #{$page-indicator-pages-custom-classes};
         
         &:empty{
+            cursor: pointer;
             height: var(--size);
             @extend #{$page-indicator-empty-custom-classes};
         }
@@ -33,6 +34,7 @@ $page-indicator-pages-custom-classes: ".d-flex, .flex-row, .justify-content-cent
         &:not(:empty){
             user-select: none;
             height: var(--size);
+            cursor: pointer;
             @extend #{$page-indicator-not-empty-custom-classes};
         }
     }

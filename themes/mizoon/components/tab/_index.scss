@@ -1,91 +1,65 @@
+@use "../../../../sass/structure/_typography" as *;
 @use "../../../../sass/structure" as *;
 @use "../../../../sass/kernel" as *;
-@use "../../config" as *;
+
+$tab-labels:".border-style-solid, .border-color, .bw-1, .border-t-none, .border-b-none, .border-l-none, .bg-primary-color";
+$tab-label:".bg-primary-color, .bw-0, .border-style-solid, .border-t-none, .border-b-none, .border-l-none, .border-color, .on-primary-color";
+$tab-label-flex-direction-column:".border-r-none";
+$tab-label-transition:0.2s linear;
+$tab-label-hover-custom-classes:".bg-on-primary-color, .secondary-color";
+$tab-label-active-custom-classes:".bw-2, .bg-secondary-color, .on-primary-color, .font-weight-bold, .z-index-2";
+$tab-label-active-last-child-custom-classes:".bw-0";
+$tab-contents:".w-100, .position-relative, .bg-on-primary-color, .py-3, .px-2";
+$tab-content:".d-none, .w-100, .py-3, .px-2, .text-color, .bg-on-primary-color";
+$tab-content-active:".d-inline-block";
 
 .tab-container {
-  @extend .d-flex, .position-relative, .w-100;
+    @extend .d-flex, .position-relative, .w-100;
 }
-
 .tab-labels {
-  display: flex;
-  // flex-direction: column;
-  // min-width: 180px; 
-  // border-right: 1px solid #ddd;
-  // background: #f7f7f7;
+    @extend .w-100, .d-flex, #{$tab-labels};
 
-  .tab-label {
-    @extend .w-100, .d-inline-block, .p-2, .pointer;
-    // background-color: #f7f7f7;
-    // border-bottom: 1px solid #ddd;
-    // change colors
-    text-align: center;
-    transition: all 0.2s;
-    // color: #6b7280;
-    &:hover:not(.active) {
-      // background-color: #e7e7e7;
-      // color: #2563eb;
+    .tab-label {
+        transition: $tab-label-transition;
+        @extend .w-100, .d-flex, .align-items-center, .p-2, .cursor-pointer, .txt-align-center, #{$tab-label};
 
-      // change colors
+        &:hover:not(.active) {
+            @extend #{$tab-label-hover-custom-classes};
+        }
+        &.active {
+            @extend #{$tab-label-active-custom-classes};
+        }
+        &.active:last-child{
+            @extend #{$tab-label-active-last-child-custom-classes};
+        }
     }
-    &.active {
-      // background-color: #fff;
-      // color: #2563eb;
-      // border-right: 3px solid #2563eb;
-      // font-weight: bold;
-      // z-index: 2;
-
-      // change colors
+    &[class*="flex-column"]{
+        .tab-label{
+            @extend #{$tab-label-flex-direction-column};
+        }
     }
-  }
 }
 
 .tab-contents {
-  flex: 1;
-  height: fit-content;
-  // position: relative;
-  // background: #fff;
-  // border-radius: 0 12px 12px 0;
-  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  .tab-content {
-    display: none;
-    width: 100%;
-    // padding: 32px 24px;
-    color: #222;
-    animation: fadeIn 0.4s;
-    // background: #fff;
-  
-    &.active {
-      display: unset;
+    @extend #{$tab-contents};
+    .tab-content {
+        animation: fadeIn 0.4s;
+        @extend #{$tab-content};
+
+        &.active {
+            @extend #{$tab-content-active};
+        }
     }
-  }
 }
 
 
-// @media (max-width: 600px) {
-//   .tab-container {
-//     flex-direction: column;
-//   }
-//   .tab-labels {
-//     flex-direction: row;
-//     min-width: unset;
-//     border-right: none;
-//     border-bottom: 1px solid #ddd;
-//   }
-//   .tab-label {
-//     border-bottom: none;
-//     border-right: 1px solid #ddd;
-//     border-radius: 0;
-//   }
-//   .tab-label.active {
-//     border-right: none;
-//     border-bottom: 3px solid #2563eb;
-//   }
-//   .tab-contents {
-//     border-radius: 0 0 12px 12px;
-//   }
-// }
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

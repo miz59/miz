@@ -2,84 +2,59 @@
 @use "../../../../sass/kernel" as *;
 @use "../../config" as *;
 
+$list-group-active-custom-classes: ".bg-primary-color, .on-primary-color";
+
 .list-group{
-    @extend .d-flex, .justify-content-center, .align-items-center;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+    @extend .d-flex, .justify-content-center, .align-items-stretch;
 
     & .list-group-items{
         @extend .border-box;
-        @extend .border-width-1, .border-color, .border-solid, .w-100, .p-1, .text-color;
-        // box-sizing: border-box;
-        // border-width: 1px;
-        // border-color: get-color(border);
-        // border-style: solid;
-        // width: 100%;
-        // // padding: ;
-        // color: get-color(text);
+        @extend .d-flex, .justify-content-start, .align-items-center, .bw-1, .border-color, .border-style-solid, .w-100, .p-1, .text-color;
+
         &.active{
-            color: get-color(on-primary);
-            background-color: get-color(primary);
+            @extend #{$list-group-active-custom-classes};
 
             & a{
-                color: get-color(on-primary);
+                @extend .on-primary-color;
             }
         }
-        &.disabled{
+        &:disabled{
             user-select:none;
             cursor: default;
             color:get-color(disabled);
         }
         & *{
-            @extend .pointer;
-            // cursor: pointer;
+            @extend .cursor-pointer;
         }
         & a{
             @extend .text-color;
-            // color: get-color(text);
         }
     }
     &.flex-column{
         & .list-group-items{
             &:not(:first-child){
                 @extend .border-t-none;
-                // border-top: none;
             }
             &:first-child{
-                @extend .all-border-normal, .all-border-br, .all-border-bl;
-                // border-bottom-right-radius: none;
-                // border-bottom-left-radius: none;
-                // border-radius: $all-border-normal;
+                @extend .radius-tr-small, .radius-tl-small;
             }
             &:last-child{
-                @extend .all-border-normal, .all-border-tr, .all-border-tl;
-                // border-top-right-radius: none;
-                // border-top-left-radius: none;
-                // border-radius: $all-border-normal;
+                @extend .radius-br-small, .radius-bl-small;
             }
         }
     }
     &:not(.flex-column){
         @extend .flex-row;
-        // flex-direction: row;
         
         & .list-group-items{
             &:not(:first-child){
                 @extend .border-l-none;
-                // border-left: none;
             }
             &:first-child{
-                @extend .all-border-normal, .all-border-tr, .all-border-br;
-                // border-top-right-radius: none;
-                // border-bottom-right-radius: none;
-                // border-radius: $all-border-normal;
+                @extend .radius-tl-small, .radius-bl-small;
             }
             &:last-child{
-                @extend .all-border-normal, .all-border-tl, .all-border-bl;
-                // border-top-left-radius: none;
-                // border-bottom-left-radius: none;
-                // border-radius: $all-border-normal;
+                @extend .radius-tr-small, .radius-br-small;
             }
         }
     }
@@ -87,10 +62,10 @@
 ol.list-group{
     & li{
         list-style: decimal;
+        @extend .d-flex, .gap-1;
 
         &.active{
-            background-color: get-color(primary);
-            color: get-color(on-primary);
+            @extend #{$list-group-active-custom-classes};
 
             &::marker{
                 color:get-color(text);
@@ -100,24 +75,24 @@ ol.list-group{
 }
 .list-group-flush{
     & .list-group-items{
-        @extend .border-width-1, .border-color, .border-solid, .w-100, .p-1, .text-color, .border-t-none, .border-l-none, .border-r-none;
-        // border-width: 1px;
-        // border-color: get-color(border);
-        // border-style: solid;
-        // width: 100%;
-        // // padding: ;
-        // color: get-color(text);
-        // border-top: none;
-        // border-left: none;
-        // border-right: none;
+        @extend .d-flex, .gap-1, .bw-1, .border-color, .border-style-solid, .w-100, .p-1, .text-color, .border-t-none, .border-l-none, .border-r-none;
 
         &:last-child{
             @extend .border-b-none;
-            // border-bottom: none;
         }
         & a{
             @extend .text-color;
-            // color: get-color(text);
+        }
+        & li{
+            list-style: decimal;
+    
+            &.active{
+                @extend #{$list-group-active-custom-classes};
+    
+                &::marker{
+                    color:get-color(text);
+                }
+            }
         }
     }
 }

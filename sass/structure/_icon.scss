@@ -1,20 +1,14 @@
-@use 'sass:list';
-@use 'sass:string';
-@use "../kernel/responsive/boots/typography" as *;
-@use "typography" as *;
-
 $icon-size : (
-    extra-large :32px,
-    large : 24px,
-    medium :20px,
-    regular :16px,
-    small :12px,
-    extra-small :10px
+extra-large :32px,
+large : 24px,
+medium :20px,
+regular :16px,
+small :12px,
+extra-small :10px
 );
 $icon-prefix : "icon";
 
 // ----------------------------
-
 $folder-default:"fonts";
 $fonts: (
   (
@@ -36,20 +30,20 @@ $url:();
 
 @each $font-info in $fonts{
     @each $key , $value in $font-info{
-        @if ($key == "name"){
+        @if $key == "name"{
             $font-family:$value;
         }
 
-        @else if ($key == "folder"){
+        @else if $key == "folder"{
             $font-folder:$value;
         }
 
-        @else if ($key == "font-types"){
+        @else if $key == "font-types"{
             @each $weight , $file-name in $value{
                     $url:();
                     @each $name in $file-name{
-                        $url-path:string.unquote('url("#{$fonts-path}/#{$font-folder}/#{$name}")');
-                        $url:list.append($url , $url-path , comma);
+                        $url-path:unquote('url("#{$fonts-path}/#{$font-folder}/#{$name}")');
+                        $url:append($url , $url-path , comma);
                     }
                 $font-weight:map.get($weight-type , $weight);
                 @font-face {

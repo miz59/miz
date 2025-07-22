@@ -14,10 +14,5 @@ $mason-break-point:(xl:5 , lg:3 , md:2 , sm:1);
     .mason-item{
         background-color: get-color(primary);
         @extend .d-inline-block, .w-100, .mb-1, .p-1;
-        // display: inline-block;
-        // width: 100%;
-        // margin-bottom: ;
-        // padding: ;
-        // box-sizing: border-box;
     }
 }

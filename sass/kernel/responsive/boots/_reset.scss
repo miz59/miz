@@ -1,0 +1,29 @@
+@use "../../../config/_reset" as *;
+@mixin reset-file($reset){
+    @if $reset{
+        *{
+            box-sizing: border-box;
+            margin:0px;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-weight: normal;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        button,select{
+            border:none;
+        }
+        ul,li,ol{
+            padding:0px;
+            margin:0px;
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+    }
+}
+
+
+@include reset-file($reset);

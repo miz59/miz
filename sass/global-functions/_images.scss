@@ -1,8 +1,10 @@
-@use "../config/paths" as *;
+@use "../config/paths";
+
+
 
 @function image-asset($name){
 
-    $url:$images-path + $name;
+    $url:paths.$images-path + $name;
 
     @return $url;
 }

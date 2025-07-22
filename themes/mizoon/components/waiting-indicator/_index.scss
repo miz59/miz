@@ -1,91 +1,39 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel/" as *;
+
+$loader-spinner-fade-bg-color:"primary";
+$loader-bars-bg-color:"primary";
+$loader-multi-border-color:"primary";
+$loader-spinner-border-top-color:"primary";
+$loader-spinner-border-color:"on-primary";
+$loader-liquid-bg-color:"primary";
 
 .loader-spinner-border {
-  aspect-ratio: 1/1;
-  border-radius: 10000px;
-  border-style: solid;
-  display: flex;
-  width: 50px;
-  border-color: colors.get-color(primary);
+  // border-color: get-color(primary);
+  width: var(--loader-spinner-border-size);
   animation:
   spinner-border-1 0.8s infinite linear alternate,
   spinner-border-2 1.6s infinite linear;
+  @extend .d-flex, .aspect-ratio-1x1, .radius-all-full, .border-style-solid;
 }
-.loader-spinner-border-sm{
-  width: 20px;
-  &:not([class*="border-width"]){ 
-    border-width: 5px;
-  }
-}
-.loader-spinner-border-md{
-  width: 30px;
-   &:not([class*="border-width"]){ 
-     border-width: 6px;
-   }
-}
-.loader-spinner-border-lg{
-  width: 50px;
-   &:not([class*="border-width"]){ 
-    border-width: 8px;
-   }
-}
-.loader-spinner-border-xl{
-  width: 70px;
-   &:not([class*="border-width"]){ 
-    border-width: 9px;
-   }
-}
-.loader-spinner-border-danger{
-  border-color: colors.get-color(danger-regular) !important;
-}
-.loader-spinner-border-warning{
-  border-color: colors.get-color(warning-regular) !important;
-}
-.loader-spinner-border-success{
-  border-color: colors.get-color(success-regular) !important;
-}
-.loader-spinner-border-information{
-  border-color: colors.get-color(information-regular) !important;
-}
-
 .loader-grow{
-  display: flex;
-  aspect-ratio: 1/1;
-  border-radius: 1000px;
-  --loader-grow-size : 50px;
-  background-color: colors.get-color(primary);
   animation: grow .75s linear infinite;
-  width: 50px;
+  width: var(--loader-grow-size);
+  @extend .d-flex, .aspect-ratio-1x1, .radius-all-full;
 }
-.loader-grow-danger{
-  background-color: colors.get-color(danger-regular) !important;
-}
-.loader-grow-warning{
-  background-color: colors.get-color(warning-regular) !important;
-}
-.loader-grow-success{
-  background-color: colors.get-color(success-regular) !important;
-}
-.loader-grow-information{
-  background-color: colors.get-color(information-regular) !important;
-}
-.loader-grow-sm{
-  width: 20px;
-}
-.loader-grow-md{
-  width: 30px;
-}
-.loader-grow-lg{
-  width: 50px;
-}
-.loader-grow-xl{
-  width: 70px;
+.loader-spinner-fade{
+  width: var(--loader-spinner-fade-size);
+  @extend .aspect-ratio-1x1, .radius-all-full;
+  background: 
+    radial-gradient(farthest-side,#{get-color($loader-spinner-fade-bg-color)} 94%,transparent) top/8px 8px no-repeat,
+    conic-gradient(transparent 30%,#{get-color($loader-spinner-fade-bg-color)});
+  -webkit-mask: radial-gradient(farthest-side,transparent calc(100% - 8px),#000 0);
+  mask: radial-gradient(farthest-side,transparent calc(100% - 8px),#000 0);
+  animation: spinner-fade 1s infinite linear;
 }
 .loader-bars{
-  width: 45px;
+  width: var(--loader-bars-size);
   aspect-ratio: .75;
-  $color-bars:colors.get-color(primary);
-  --color-bars: no-repeat linear-gradient(#{$color-bars} 0 0);
+  --color-bars: no-repeat linear-gradient(#{get-color($loader-bars-bg-color)} 0 0);
   background: 
     var(--color-bars) 0%   50%,
     var(--color-bars) 50%  50%,
@@ -93,197 +41,50 @@
   background-size: 20% 50%;
   animation: bars 1s infinite linear;
 }
-.loader-bars-danger{
-  background-color: colors.get-color(danger-regular) !important;
-}
-.loader-bars-warning{
-  background-color: colors.get-color(warning-regular) !important;
-}
-.loader-bars-success{
-  background-color: colors.get-color(success-regular) !important;
-}
-.loader-bars-information{
-  background-color: colors.get-color(information-regular) !important;
-}
-.loader-bars-sm{
-  width: 20px;
-}
-.loader-bars-md{
-  width: 30px;
-}
-.loader-bars-lg{
-  width: 50px;
-}
-.loader-bars-xl{
-  width: 70px;
-}
 .loader-multi {
-  width: 50px;
-  aspect-ratio: 1;
-  display: grid;
-  border: 4px solid transparent;
-  border-radius: 50%;
-  border-right-color: colors.get-color(primary);
+  width: var(--loader-multi-size);
+  border-color: transparent;
+  border-right-color: get-color($loader-multi-border-color);
   animation: multi 1s infinite linear;
-}
-.loader-multi::before,
-.loader-multi::after {    
-  content: "";
-  grid-area: 1/1;
-  margin: 2px;
-  border: inherit;
-  border-radius: 50%;
-  animation: multi 2s infinite;
-}
-.loader-multi::after {
-  margin: 8px;
-  animation-duration: 3s;
-}
-.loader-multi-danger{
-  background-color: colors.get-color(danger-regular) !important;
-}
-.loader-multi-warning{
-  background-color: colors.get-color(warning-regular) !important;
-}
-.loader-multi-success{
-  background-color: colors.get-color(success-regular) !important;
-}
-.loader-multi-information{
-  background-color: colors.get-color(information-regular) !important;
-}
-.loader-multi-sm{
-  width: 20px;
-}
-.loader-multi-md{
-  width: 30px;
-}
-.loader-multi-lg{
-  width: 50px;
-}
-.loader-multi-xl{
-  width: 70px;
-}
-.loader-spinner-fade{
-  width: 50px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: 
-    radial-gradient(farthest-side,#{colors.get-color(primary)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{colors.get-color(primary)});
-  -webkit-mask: radial-gradient(farthest-side,transparent calc(100% - 8px),#000 0);
-  animation: spinner-fade 1s infinite linear;
-}
-.loader-spinner-fade-danger{
-  background: 
-    radial-gradient(farthest-side,#{colors.get-color(danger-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{colors.get-color(danger-regular)}) !important;
-}
-.loader-spinner-fade-warning{
-  background: 
-    radial-gradient(farthest-side,#{colors.get-color(warning-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{colors.get-color(warning-regular)}) !important;
-}
-.loader-spinner-fade-success{
-  background: 
-    radial-gradient(farthest-side,#{colors.get-color(success-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{colors.get-color(success-regular)}) !important;
-}
-.loader-spinner-fade-information{
-  background: 
-    radial-gradient(farthest-side,#{colors.get-color(information-regular)} 94%,transparent) top/8px 8px no-repeat,
-    conic-gradient(transparent 30%,#{colors.get-color(information-regular)}) !important;
-}
-.loader-spinner-fade-sm{
-  width: 20px;
-}
-.loader-spinner-fade-md{
-  width: 30px;
-}
-.loader-spinner-fade-lg{
-  width: 50px;
-}
-.loader-spinner-fade-xl{
-  width: 70px;
+  @extend .radius-all-full, .bw-4, .border-style-solid, .d-grid, .aspect-ratio-1x1;
+
+  &::before, &::after {    
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    animation: multi 2s infinite;
+    @extend .radius-all-full;
+  }
+  &::after {
+    margin: 8px;
+    animation-duration: 3s;
+  }
 }
 .loader-spinner {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid colors.get-color(on-primary);
-  border-radius: 50%;
-  border-top-color: colors.get-color(primary);
+  width: var(--loader-spinner-size);
+  border-color:get-color($loader-spinner-border-color);
+  border-top-color: get-color($loader-spinner-border-top-color);
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
+  @extend .aspect-ratio-1x1, .bw-3, .radius-all-full, .border-style-solid, .d-inline-block;
 }
-.loader-spinner-danger{
-  border-color:colors.get-color(disabled-regular);
-  border-top-color:colors.get-color(danger-regular);
-}
-.loader-spinner-warning{
-  border-color:colors.get-color(disabled-regular);
-  border-top-color:colors.get-color(warning-regular);
-}
-.loader-spinner-success{
-  border-color:colors.get-color(disabled-regular);
-  border-top-color:colors.get-color(success-regular);
-}
-.loader-spinner-information{
-  border-color:colors.get-color(disabled-regular);
-  border-top-color:colors.get-color(information-regular);
-}
-.loader-spinner-sm{
-  width: 20px;
-}
-.loader-spinner-md{
-  width: 30px;
-}
-.loader-spinner-lg{
-  width: 50px;
-}
-.loader-spinner-xl{
-  width: 70px;
-}
-.loader-liquid {    
-  width: 50px;
-  aspect-ratio: 1/1;
-  box-sizing: border-box;
-  display: grid;
+.loader-liquid {
+  width: var(--loader-liquid-size);
   filter:contrast(2);
-}
-.loader-liquid:before,
-.loader-liquid:after {
-  content:"";
-  grid-area: 1/1;
-  animation: liquid 3s infinite linear;
-  background-color:colors.get-color(primary);
-  border-radius: 50%;
-}
-.loader-liquid:after {
-  animation-delay: -.8s;
-}
-.loader-liquid-danger::after,.loader-liquid-danger::before{
-  background-color: colors.get-color(danger-regular);
-}
-.loader-liquid-warning::after,.loader-liquid-warning::before{
-  background-color: colors.get-color(warning-regular);
-}
-.loader-liquid-success::after,.loader-liquid-success::before{
-  background-color: colors.get-color(success-regular);
-}
-.loader-liquid-information::after,.loader-liquid-information::before{
-  background-color: colors.get-color(information-regular);
-}
-.loader-liquid-sm{
-  width: 20px;
-}
-.loader-liquid-md{
-  width: 30px;
-}
-.loader-liquid-lg{
-  width: 50px;
-}
-.loader-liquid-xl{
-  width: 70px;
+  @extend .aspect-ratio-1x1, .d-grid;
+
+  &::before,
+  &::after {
+    content:"";
+    grid-area: 1/1;
+    animation: liquid 3s infinite linear;
+    background-color:get-color($loader-liquid-bg-color);
+    @extend .radius-all-full;
+  }
+  &::after{
+    animation-delay: -.8s;
+  }
 }
 @keyframes spinner-border-1{
   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}

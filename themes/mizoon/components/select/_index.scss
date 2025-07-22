@@ -1,32 +1,21 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
-@use "../../config" as *;
+@use "../../../../sass/kernel" as *;
+
+$select-custom-classes:".p-1, .bg-primary-color, .on-primary-color, .radius-all-small";
+$select-disabled-custom-classes:".bg-disabled-regular-color, .text-color";
+$select-option-custom-classes:".bg-secondary-color, .on-secondary-color";
+$select-option-selected-custom-classes:".bg-primary-color, .on-primary-color";
 
 .form-select{
-    // @extend .p-1;
-    // padding:;
-    &:not([class^="all-border"]){
-        // @extend .all-border-small;
-        border-radius: $all-border-small;
+    @extend #{$select-custom-classes};
+
+    &:disabled{
+        @extend #{$select-disabled-custom-classes};
     }
-    &:not([class^="bg-"][class$="-color"]){
-        background-color: colors.get-color(primary);
-        color:colors.get-color(on-primary);
-        border:none;
+
+    & option{
+        @extend #{$select-option-custom-classes};
     }
-    option:not([class^="bg-"][class$="-color"]) {
-        background-color: colors.get-color(on-primary);
-        color: colors.get-color(text);
-    }
-    &.small{
-        font-size: 12px;
-        padding: 5px;
-    }
-    &.medium{
-        font-size: 16px;
-        padding: 7px;
-    }
-    &.large{
-        font-size: 22px;
-        padding: 10px;
+    & option[selected]{
+        @extend #{$select-option-selected-custom-classes};
     }
 }

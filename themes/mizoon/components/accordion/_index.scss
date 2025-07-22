@@ -1,3 +1,4 @@
+@use "../../../../sass/structure/_typography" as *;
 @use "../../../../sass/kernel" as *;
 @use "../../../../sass/structure" as *;
 @use "../../config" as *;
@@ -6,9 +7,9 @@ $accordion-height-scroll: 500px;
 $accordion-rotate-icon: 180deg;
 $accordion-transition: 0.5s;
 $accordion-group-custom-classes: ".d-flex, .flex-column, .gap-1";
-$accordion-custom-classes: ".bg-primary-color, .on-primary-color, .txt-title, .all-border-small";
-$accordion-body-custom-classes:".pl-2, .txt-small";
-$accordion-header-custom-classes:".border-width-1, .border-t-none, .border-l-none, .border-r-none, .border-solid, .border-on-primary-color, .pb-1";
+$accordion-custom-classes: ".bg-primary-color, .on-primary-color, .#{$font-prefix}-title, .radius-all-small";
+$accordion-body-custom-classes:".pl-2, .#{$font-prefix}-small";
+$accordion-header-custom-classes:".bw-1, .border-t-none, .border-l-none, .border-r-none, .border-style-solid, .border-on-primary-color, .pb-1";
 $accordion-box-custom-classes: ".gap-1, .p-2";
 $accordion-zebra-custom-classes: ".bg-secondary-color";
 
@@ -22,7 +23,7 @@ $accordion-zebra-custom-classes: ".bg-secondary-color";
         .accordion-box {
             transition: $accordion-transition;
             min-width: 100%;
-            @extend .d-grid, .pointer, #{$accordion-box-custom-classes};
+            @extend .d-grid, .cursor-pointer, #{$accordion-box-custom-classes};
         
             grid-template-rows: 0fr 0fr;
             .accordion-header{

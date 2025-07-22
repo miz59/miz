@@ -1,3 +1,4 @@
+@use "../../../../sass/structure/_typography" as *;
 @use "../button" as *;
 @use "../../../../sass/structure" as *;
 @use "../../../../sass/kernel" as *;
@@ -6,13 +7,13 @@
 $form-field-custom-classes:"";
 $form-control-bg-color:"fields";
 $form-control-color:"text-fields";
-$form-control-custom-classes:".p-1, .border-width-1, .border-color, .border-solid";
+$form-control-custom-classes:".p-1, .bw-1, .border-color, .border-style-solid";
 $form-label-bg-color:"transparent";
 $form-label-color:"title-text-fields";
 $form-text-color:"text";
-$form-text-custom-classes:".txt-normal";
+$form-text-custom-classes:".#{$font-prefix}-normal";
 $form-title-color:"title-text";
-$form-title-custom-classes:".txt-title";
+$form-title-custom-classes:".#{$font-prefix}-title";
 $from-control-disabled-bg-color:"fields";
 $from-control-disabled-color:"text-fields";
 $from-control-disabled-placeholder-opacity: 0.7;
@@ -21,11 +22,11 @@ $form-control-read-only-color:"text-fields";
 $form-control-colorpicker-bg-color:"fields";
 
 .form-field{
-    @extend .d-flex, #{$form-field-custom-classes};
+    @extend .d-flex, .gap-1, #{$form-field-custom-classes};
 
 
     &[class*="flex-row"]{
-        @extend .justify-content-start , .align-items-start, .gap-1;
+        @extend .justify-content-start , .align-items-center;
     }
     .form-label{
         color: get-color($form-label-color);
@@ -36,11 +37,11 @@ $form-control-colorpicker-bg-color:"fields";
         background-color:get-color($form-control-bg-color);
         @extend #{$form-control-custom-classes};
 
-        @if string.index($form-control-custom-classes , "border-width-") == null {
+        @if string.index($form-control-custom-classes , "bw-") == null {
             border:none;
         }
-        @if string.index($form-control-custom-classes , "all-border-") == null {
-            @extend .all-border-small;
+        @if string.index($form-control-custom-classes , "radius-") == null {
+            @extend .radius-all-small;
         }
 
         &:focus {
@@ -49,7 +50,7 @@ $form-control-colorpicker-bg-color:"fields";
         }
         &[type="file"]::file-selector-button{
             border:none;
-            @extend .btn, .btn-secondary, .border-width-1, .border-solid, .border-color;
+            @extend .btn, .btn-secondary, .bw-1, .border-style-solid, .border-color;
         }
     }
     textarea.form-control{

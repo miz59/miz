@@ -9,7 +9,7 @@ $btn-outline-transition: 0.2s linear;
 $btn-has-icon-and-span:".gap-1";
 $btn-not-has-span:".p-1";
 $btn-custom-classes:".py-1, .px-2";
-$btn-outline-custom-classes:".border-solid, .border-width-1, .py-1, .px-2";
+$btn-outline-custom-classes:".border-style-solid, .bw-1, .py-1, .px-2";
 
 $btn:(
     primary:(
@@ -109,7 +109,7 @@ $btn-outline:(
 );
 
 .btn{
-    @extend .all-border-small, .pointer, .border-box;
+    @extend .radius-all-small, .cursor-pointer, .border-box;
     user-select: none;
     &:has(i){
         &:not(:has(span)){
@@ -127,18 +127,18 @@ $btn-outline:(
     $btn-list-item:list.nth($btn , $i);
     $btn-class:list.nth($btn-list-item , 1);
     $btn-color:map.get(list.nth($btn-list-item , 2) , color);
-    $btn-bg:map.get(list.nth($btn-list-item , 2) , background);
-    $btn-bg-hover:map.get(list.nth($btn-list-item , 2) , background-hover);
+    $btn-bg-color:map.get(list.nth($btn-list-item , 2) , background);
+    $btn-bg-color-hover:map.get(list.nth($btn-list-item , 2) , background-hover);
     $btn-color-hover:map.get(list.nth($btn-list-item , 2) , color-hover);
 
     .btn-#{$btn-class}{
         color: get-color($btn-color);
-        background-color: get-color($btn-bg);
+        background-color: get-color($btn-bg-color);
         transition: $btn-transition;
         @extend #{$btn-custom-classes};
     }
     .btn-#{$btn-class}:hover{
-        background-color: get-color($btn-bg-hover);
+        background-color: get-color($btn-bg-color-hover);
         color: get-color($btn-color-hover);
     }
 }
@@ -150,7 +150,7 @@ $btn-outline:(
     $btn-outline-class:list.nth($btn-outline-list-item , 1);
     $btn-outline-color:map.get(list.nth($btn-outline-list-item , 2) , color);
     $btn-outline-border:map.get(list.nth($btn-outline-list-item , 2) , border);
-    $btn-outline-bg-hover:map.get(list.nth($btn-outline-list-item , 2) , background-hover);
+    $btn-outline-bg-color-hover:map.get(list.nth($btn-outline-list-item , 2) , background-hover);
     $btn-outline-color-hover:map.get(list.nth($btn-outline-list-item , 2) , color-hover);
     $btn-outline-border-hover:map.get(list.nth($btn-outline-list-item , 2) , border-hover);
 
@@ -162,14 +162,14 @@ $btn-outline:(
         @extend #{$btn-outline-custom-classes};
     }
     .btn-outline-#{$btn-outline-class}:hover{
-        background-color: get-color($btn-outline-bg-hover);
+        background-color: get-color($btn-outline-bg-color-hover);
         color: get-color($btn-outline-color-hover);
         border-color: get-color($btn-outline-border-hover);
     }
 }
 
 .btn-round{
-    @extend .all-border-full;
+    @extend .radius-all-full;
 }
 
 .btn-sm{

@@ -1,15 +1,16 @@
 $border-radius:(
-    none:0px,
     extra-small:2px,
     small:5px,
     normal:10px,
     medium:16px,
     large:25px,
-    extra-large:50px
+    extra-large:50px,
+    full:1000px,
+    none:0px,
 );
 
 $conf-opacity:(
-    factor:0.5,
+    factor:0.1
 );
 
 $conf-z-index:(
@@ -26,4 +27,4 @@ $conf-aspect-ratio:(
 
 $conf-border-thickness:(
     last-width:10
-);
+)

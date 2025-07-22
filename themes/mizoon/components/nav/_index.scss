@@ -3,10 +3,9 @@
 
 $nav-transition:all 150ms linear;
 $nav-item-active:".bg-primary-color, .on-primary-color";
-$nav-item-custom-classes:".p-1, .all-border-small";
-$nav-item-child-custom-classes:".pointer, .text-color";
+$nav-item-custom-classes:".p-1, .radius-all-small";
+$nav-item-child-custom-classes:".cursor-pointer, .text-color";
 $nav-item-child-active-custom-classes:".on-primary-color";
-
 
 .nav{
     @extend .w-100, .d-flex, .flex-row, .gap-1;
@@ -18,7 +17,7 @@ $nav-item-child-active-custom-classes:".on-primary-color";
             @extend #{$nav-item-child-custom-classes};
         }
 
-        &.disabled , &.disabled *{
+        &:disabled , &:disabled *{
             user-select:none;
             cursor: default;
             color:get-color(disabled-regular);

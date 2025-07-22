@@ -2,7 +2,7 @@
 @use "../../../../sass/structure" as *;
 
 $progress-bg-color:"disabled-light";
-$progress-custom-classes:".w-100, .d-flex, .flex-row, .all-border-full, .overflow-hidden";
+$progress-custom-classes:".w-100, .d-flex, .flex-row, .radius-all-full, .overflow-hidden";
 $progress-bar-custom-classes:".d-flex, .align-items-center, .justify-content-center, .overflow-hidden";
 $progress-bar-default-bg-color:"information-regular";
 $progress-bar-default-font-size:12px;
@@ -14,7 +14,7 @@ $progress-bar-default-padding:".p-1";
 }
 
 .progress-bar {
-    width: var(--percentage);
+    width: calc(var(--percentage) * 1%);
     user-select: none;
     @extend #{$progress-bar-custom-classes};
 
@@ -37,14 +37,33 @@ $progress-bar-default-padding:".p-1";
         animation-delay: var(--progress-animation-delay, 0s);
         @extend .w-0, .pl-0, .pr-0;
     }
+}
 
-    // &:last-child{
+.progress-striped {
+    background-image: repeating-linear-gradient(45deg , rgba(255,255,255,0.15) 0 , rgba(255,255,255,0.15) 10px , transparent 10px , transparent 20px);
+    background-size: 57px;
+    background-clip: border-box;
+}
 
-    // }
+.progress-animattion-striped {
+    animation: progress-bar-stripes 2s linear infinite;
+}
+
+.progress-bar.progress-animation.progress-animattion-striped{
+    animation: progress-bar-stripes 2s linear infinite , progress-animation var(--progress-animation-duration) forwards ease-in-out;
+}
+
+@keyframes progress-bar-stripes {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 57px;
+    }
 }
 
 @keyframes progress-animation {
     100% {
-        width: var(--percentage);
+        width: calc(var(--percentage) * 1%);
     }
 }

@@ -36,3 +36,6 @@
 .content-box{
     box-sizing: content-box;
 }
+*{
+    @extend .border-box;
+}

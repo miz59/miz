@@ -1,124 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../../../../../../public/assets/css/document/miz.min.css">
-    </head>
-    <body class="px-3 py-2 font-primary d-flex flex-column gap-4">
-        <!-- Basic Checkboxes -->
-        <div class="d-flex flex-column gap-2">
-            <h3>Basic Checkboxes</h3>
-            <div class="form-check">
-                <input type="checkbox" class="primary" id="primaryCheck">
-                <label for="primaryCheck" class="text-color">Primary Checkbox</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="secondary" id="secondaryCheck">
-                <label for="secondaryCheck" class="text-color">Secondary Checkbox</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="success" id="successCheck">
-                <label for="successCheck" class="text-color">Success Checkbox</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="danger" id="dangerCheck">
-                <label for="dangerCheck" class="text-color">Danger Checkbox</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="info" id="infoCheck">
-                <label for="infoCheck" class="text-color">Info Checkbox</label>
-            </div>
-        </div>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../../../../../public/assets/css/document/miz.min.css">
+</head>
+<body class="d-flex gap-5">
+  <div class="switch">
+    <label for="switch-demo">
+      <input type="checkbox" id="switch-demo" />
+      <div class="switch-slider"></div>
+    </label>
+  </div>
 
-        <!-- Disabled Checkboxes -->
-        <div class="d-flex flex-column gap-2">
-            <h3>Disabled Checkboxes</h3>
-            <div class="form-check">
-                <input type="checkbox" class="primary" id="disabledCheck1" disabled>
-                <label for="disabledCheck1" class="text-color">Disabled Checkbox</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="primary" id="disabledCheck2" disabled checked>
-                <label for="disabledCheck2" class="text-color">Disabled Checked Checkbox</label>
-            </div>
-        </div>
+  <div class="checkbox-bom">
+    <input id="checkbox-bom-demo" type="checkbox"/>
+    <label for="checkbox-bom-demo"></label>
+    <svg class="checkbox-bom-checkmark" width="15" height="14" viewBox="0 0 15 14" fill="none">
+      <path class="checkbox-bom-checkmark" d="M2 8.36364L6.23077 12L13 2"></path>
+    </svg>
+    <!-- Gooey-->
+    <svg style="width:0;height:0;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="bom-goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" result="bom-goo"></feColorMatrix>
+          <feBlend in="SourceGraphic" in2="bom-goo"></feBlend>
+        </filter>
+      </defs>
+    </svg>
+  </div>
 
-        <!-- Radio Buttons -->
-        <div class="d-flex flex-column gap-2">
-            <h3>Radio Buttons</h3>
-            <div class="form-check">
-                <input type="radio" class="primary" name="radioGroup" id="radio1">
-                <label for="radio1" class="text-color">Primary Radio</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="secondary" name="radioGroup" id="radio2">
-                <label for="radio2" class="text-color">Secondary Radio</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="success" name="radioGroup" id="radio3">
-                <label for="radio3" class="text-color">Success Radio</label>
-            </div>
-        </div>
+  <div class="checkbox-magic">
+    <input id="checkbox-magic-demo" type="checkbox" />
+    <label for="checkbox-magic-demo"></label>
+  </div>
 
-        <!-- Switches -->
-        <div class="d-flex flex-column gap-2">
-            <h3>Switches</h3>
-            <div class="d-flex flex-column gap-3">
-                <div class="switch" style="--switch-size: 60px">
-                    <input type="checkbox" id="switch1"/>
-                    <label class="switch-label" for="switch1"></label>
-                </div>
-                <div class="switch switch-success" style="--switch-size: 60px">
-                    <input type="checkbox" id="switch2"/>
-                    <label class="switch-label" for="switch2"></label>
-                </div>
-                <div class="switch switch-danger" style="--switch-size: 60px">
-                    <input type="checkbox" id="switch3"/>
-                    <label class="switch-label" for="switch3"></label>
-                </div>
-                <div class="switch switch-info" style="--switch-size: 60px">
-                    <input type="checkbox" id="switch4"/>
-                    <label class="switch-label" for="switch4"></label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Different Switch Sizes -->
-        <div class="d-flex flex-column gap-2">
-            <h3>Switch Sizes</h3>
-            <div class="d-flex flex-column gap-3">
-                <div class="switch" style="--switch-size: 40px">
-                    <input type="checkbox" id="switchSmall"/>
-                    <label class="switch-label" for="switchSmall"></label>
-                </div>
-                <div class="switch" style="--switch-size: 60px">
-                    <input type="checkbox" id="switchMedium"/>
-                    <label class="switch-label" for="switchMedium"></label>
-                </div>
-                <div class="switch" style="--switch-size: 80px">
-                    <input type="checkbox" id="switchLarge"/>
-                    <label class="switch-label" for="switchLarge"></label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Checkbox Groups -->
-        <div class="d-flex flex-column gap-2">
-            <h3>Checkbox Groups</h3>
-            <div class="d-flex flex-column gap-1">
-                <div class="form-check">
-                    <input type="checkbox" class="primary" id="group1">
-                    <label for="group1" class="text-color">Option 1</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="primary" id="group2">
-                    <label for="group2" class="text-color">Option 2</label>
-                </div>
-        <div class="form-check">
-                    <input type="checkbox" class="primary" id="group3">
-                    <label for="group3" class="text-color">Option 3</label>
-                </div>
-        </div>  
-        </div>
-    </body>    
+  <div class="radio-modern">
+    <input id="radio-modern-demo" type="radio" name="radio-modern"/>
+    <label for="radio-modern-demo">hossein</label>
+  </div>
+</body>
 </html>

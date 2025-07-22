@@ -2,12 +2,11 @@
 @use "../../../../sass/kernel" as *;
 
 $offcanvas-static-custom-classes:".d-flex, .flex-row, .justify-content-center, .align-items-center";
-$offcanvas-close-custom-classes:".w-fit-content, .d-flex, .justify-content-start, .pointer, .mb-2";
-$offcanvas-backdrop-custom-classes:".bg-secondary-color, .visibility-hidden, .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0, .pointer";
+$offcanvas-close-custom-classes:".w-fit-content, .d-flex, .justify-content-start, .cursor-pointer, .mb-2";
+$offcanvas-backdrop-custom-classes:".bg-secondary-color, .visibility-hidden, .w-100, .h-100, .position-fixed, .top-0, .left-0, .opacity-0, .cursor-pointer";
 $offcanvas-backdrop-transition:all 300ms linear;
 $offcanvas-backdrop-active-custom-classes:".opacity-8, .visibility-visible";
 $offcanvas-z-index:1000;
-
 
 .offcanvas-static{
     @extend #{$offcanvas-static-custom-classes};
@@ -15,6 +14,7 @@ $offcanvas-z-index:1000;
     & div.backdrop{
         transition: $offcanvas-backdrop-transition;
         @extend #{$offcanvas-backdrop-custom-classes};
+        cursor: pointer;
     }
 
     .offcanvas-toggle{

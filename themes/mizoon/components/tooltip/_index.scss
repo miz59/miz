@@ -1,7 +1,13 @@
-@use "../../../../sass/kernel/kernel-functions/colors";
+@use "../../../../sass/kernel/" as *;
+
+$tooltip-custom-classes:".px-2, .py-1, .on-primary-color, .radius-all-small";
+$tooltip-bg-color:"primary";
+$tooltip-triangle-color:"primary";
+$tooltip-transition:0.2s linear;
 
 .tooltip{
-    position: relative;
+    @extend .position-relative;
+
     &.tooltip-top{
         span{
             bottom: 150%;
@@ -10,7 +16,7 @@
             &::after{
                 border-top-color: inherit !important;
                 left: 50%;
-                bottom: -30%;
+                top: 100%;
             }
         }
     }
@@ -22,65 +28,53 @@
             &::after{
                 border-bottom-color: inherit !important;
                 left: 50%;
-                top: -28%;
+                bottom: 100%;
             }
         }
     }
     &.tooltip-right{
         span{
-            left: 50%;
-            top: 0%;
-            transform: translateX(50%);
+            left: 100%;
+            top: 50%;
+            transform: translateX(25%) translateY(-50%);
             &::after{
                 border-right-color: inherit !important;
-                left: 0%;
+                right: 100%;
                 top: 50%;
-                transform: translateX(-50%) translateY(-50%);
+                transform: translateX(0%) translateY(-50%);
             }
         }
     }
     &.tooltip-left{
         span{
-            right: 50%;
-            top: 0%;
-            transform: translateX(-50%);
+            right: 100%;
+            top: 50%;
+            transform: translateX(-25%) translateY(-50%);
             &::after{
                 border-left-color: inherit !important;
-                right: 0%;
+                left: 100%;
                 top: 50%;
-                transform: translateX(100%) translateY(-50%);
+                transform: translateX(50%) translateY(-50%);
             }
         }
     }
     span{
-        opacity: 0;
-        width: fit-content; 
-        height: fit-content;
-        color: #fff;
-        border-radius: 6px;
-        position: absolute;
-        z-index: 1;
-        transition: .2s;
+        background-color: get-color($tooltip-bg-color);
+        border-color: get-color($tooltip-triangle-color);
+        transition: $tooltip-transition;
         white-space: nowrap;
-        // @extend .px-2, .py-1, .txt-center;
-        text-align: center;
-        &:not([class^="bg-"][class$="-color"]){
-            background-color: colors.get-color(secondary);
-        }
-         &:not([class^="border-"][class$="-color"]){
-            border-color: colors.get-color(secondary);
-        }
+        pointer-events: none;
+        @extend .txt-align-center, .position-absolute, .z-index-1, .w-fit-content, .h-fit-content, .opacity-0, #{$tooltip-custom-classes};
+
         &::after {
             content: ""; 
-            // @extend .position-absolute, .border-solid;
-            position: absolute;
-            border-style: solid;
             margin-left: -5px;  
             border-width: 5px;
             border-top-color: transparent;
             border-right-color: transparent;
             border-bottom-color: transparent;
             border-left-color: transparent;
+            @extend .position-absolute, .border-style-solid;
         }
     }
     &:hover span{

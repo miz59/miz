@@ -1,7 +1,10 @@
 @use 'sass:list';
 @use 'sass:string';
 @use "../../../config/colors" as *;
+@use "../../../../themes/mizoon/config/colors" as *;
 @use "responsive" as *;
+
+
 
 @mixin detect-color--palette(
   $keyword,

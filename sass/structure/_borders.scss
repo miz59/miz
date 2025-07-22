@@ -1,6 +1,4 @@
 @use "../../themes/mizoon/config/dims" as *;
-@use 'sass:list';
-
 
 .border-t-none{
     border-top:none !important;
@@ -13,6 +11,12 @@
 }
 .border-l-none{
     border-left:none !important;
+}
+.border-is-none{
+    border-inline-start: none !important;
+}
+.border-ie-none{
+    border-inline-end: none !important;
 }
 .border-none{
     border:none !important;
