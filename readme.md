@@ -12,8 +12,8 @@ If you're using frameworks like React, Laravel, or Vue, you can install Miz usin
 ### 2. Installation without NPM
 For users not using these frameworks, you can download and run the setup files based on your operating system:
 
-- **Windows:** Download and run the [`windows-installer.bat`](#) file.
-- **macOS/Linux:** Download and run the [`linux-mac-installer.sh`](#) file.
+- **Windows:** Download and run the [`windows-installer.bat`](https://eazymizy.com/installation/windows-installer.bat) file.
+- **macOS/Linux:** Download and run the [`linux-mac-installer.sh`](https://eazymizy.com/installation/linux-mac-installer.sh) file.
 
 ## Documentation and Tutorials
 
