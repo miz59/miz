@@ -1,4 +1,4 @@
 export const config = {
     theme: 'mizoon',
-    output: 'public/assets/js/mizchin.js' 
+    output: 'assets/js/mizchin.js' 
 };
