@@ -63,11 +63,11 @@ const classPatterns = [
  
 function readIgnoreFile() { 
     const ignoreFilePath = path.join('.mizignore'); 
- 
-    if (fs.existsSync(ignoreFilePath)) { 
+
+    if (!fs.existsSync(ignoreFilePath)) { 
         return []; 
     } 
- 
+
     try { 
         const data = fs.readFileSync(ignoreFilePath, 'utf8'); 
         return data 
@@ -93,7 +93,8 @@ function findPackageJsonDir(startDir) {
  
 function findAllFiles(directory) { 
     let filesToProcess = []; 
-    const ignoredPaths = readIgnoreFile().map(ignorePath => path.resolve(ignorePath)); 
+    const projectRoot = findPackageJsonDir(__dirname) || process.cwd();
+    const ignoredPaths = readIgnoreFile().map(ignorePath => path.resolve(projectRoot, ignorePath)); 
  
     const files = fs.readdirSync(directory); 
  
@@ -130,25 +131,30 @@ function extractFontFacesFromCSS(cssData) {
     return fontFaces.join('\n'); 
 } 
  
-function extractClassesFromFiles(files) { 
-    let classes = new Set(); 
-    files.forEach(file => { 
-        const content = fs.readFileSync(file, 'utf8'); 
-        classPatterns.forEach(pattern => { 
-            const matches = content.match(pattern); 
-            if (matches) { 
-                matches.forEach(match => { 
-                    match.replace(pattern, (m, cls) => { 
-                        cls.split(' ').forEach(c => { 
-                            classes.add(`.${c.trim()}`); 
-                        }); 
-                    }); 
-                }); 
-            } 
-        }); 
-    }); 
-    return classes; 
-} 
+function extractClassesFromFiles(files, projectRoot) {
+    let classMap = new Map();
+    files.forEach(file => {
+        const content = fs.readFileSync(file, 'utf8');
+        classPatterns.forEach(pattern => {
+            const matches = content.match(pattern);
+            if (matches) {
+                matches.forEach(match => {
+                    match.replace(pattern, (m, cls) => {
+                        cls.split(' ').forEach(c => {
+                            const className = `.${c.trim()}`;
+                            const relPath = path.relative(projectRoot, file);
+                            if (!classMap.has(className)) {
+                                classMap.set(className, new Set());
+                            }
+                            classMap.get(className).add(relPath);
+                        });
+                    });
+                });
+            }
+        });
+    });
+    return classMap;
+}
  
 function shouldAddResetCss() { 
     if (fs.existsSync(resetSassFile)) { 
@@ -190,10 +196,15 @@ function processCssFile() {
         throw new Error('package.json not found in any parent directory.');
     }
     const files = findAllFiles(packageJsonDir);
-    const classes = extractClassesFromFiles(files); 
-    const classesString = Array.from(classes).join('\n'); 
- 
-    fs.writeFileSync(textFilePath, classesString, 'utf8'); 
+    const classMap = extractClassesFromFiles(files, packageJsonDir);
+    const addressVar = ' (address)';
+    const classesString = Array.from(classMap.entries())
+        .map(([cls, paths]) => Array.from(paths)
+            .map(address => `${cls}${addressVar.replace('address', address)}`)
+            .join('\n')
+        )
+        .join('\n');
+    fs.writeFileSync(textFilePath, classesString, 'utf8');
  
     const cssData = fs.readFileSync(cssFilePath, 'utf8'); 
  
@@ -228,7 +239,7 @@ function processCssFile() {
             const selectorsList = selectors.split(',').map(sel => sel.trim()); 
  
             const validSelectors = selectorsList.filter(selector => { 
-                return Array.from(classes).includes(selector); 
+                return Array.from(classMap.keys()).includes(selector); 
             }); 
  
             if (validSelectors.length > 0) { 

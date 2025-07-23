@@ -115,14 +115,12 @@ function updateUseStatements(files) {
         try {
             const originalContent = readFileSync(filePath, 'utf8');
 
-            // جایگزینی @use
             let updatedContent = originalContent.replace(useRegex, (match, prefix, oldThemeName, suffix) => {
                 if (oldThemeName === config.theme) return match;
                 const updatedPath = `"${prefix}${config.theme}${suffix}"`;
                 return `@use ${updatedPath} as *;`;
             });
 
-            // جایگزینی @forward
             updatedContent = updatedContent.replace(forwardRegex, (match, oldForwardPath) => {
                 if (oldForwardPath === config.theme) return match;
                 return `@forward "${config.theme}";`;
