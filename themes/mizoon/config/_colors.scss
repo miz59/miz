@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../../../sass/config/colors" as *;
 
-$light-color-palette-theme:(
+$light-color-palette-themes:(
     primary:#A11D1D,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
@@ -64,7 +64,7 @@ $light-color-palette-theme:(
     "transparent":#00000000
 );
 
-$dark-color-palette-theme:(
+$dark-color-palette-themes:(
     primary: #eb4545,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
