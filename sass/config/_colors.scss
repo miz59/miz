@@ -2,7 +2,7 @@ $backgrounds:(primary,on-primary,primary-light,primary-dark,secondary,on-seconda
 $colors:(icon,text,specific,primary,secondary);
 $borders:(border,primary,on-primary);
 
-$color-palette:(
+$light-color-palette:(
     primary:#A11D1D,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
@@ -66,7 +66,7 @@ $color-palette:(
 );
 
 $dark-color-palette:(
-    primary: #A11D1D,
+    primary: #eb4545,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
     primary-dark: #FFFFFF,
@@ -128,4 +128,12 @@ $dark-color-palette:(
     information-dark: #2145BC,
     border-secondary: #B1B1B1,
     unCommon: #FFFFFF
+);
+
+$color-palette:(
+    default : $light-color-palette ,
+    colors : (
+        light : $light-color-palette ,
+        dark : $dark-color-palette ,
+    )
 );

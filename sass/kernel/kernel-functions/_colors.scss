@@ -1,9 +1,18 @@
 @use "../../config/colors" as *;
 @use 'sass:map';
 
-@function get-color($key){
+@function get-color($key , $mode:null){
+    $code:null;
 
-    $code:map.get($color-palette,$key);
-    
+    @if ($mode == null) {
+        $list-palette:map.get($color-palette , "default");
+        $code:map.get($list-palette , $key);
+    }
+    @if ($mode != null) {
+        $list-palette:map.get($color-palette , "colors");
+        $color-mode:map.get($list-palette , $mode);
+        $code:map.get($color-mode , $key);
+    }
+
     @return $code;
 }

@@ -1,0 +1,8 @@
+@use "../../../../themes/mizoon/config/_colors" as *;
+@use "../../../config/_colors" as *;
+@use "../../../kernel/responsive/boots/_colors" as *;
+
+
+:root{
+    @include generate-color-variables($color-palette); 
+}

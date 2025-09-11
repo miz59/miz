@@ -4,52 +4,73 @@
 @use "../../../../themes/mizoon/config/colors" as *;
 @use "responsive" as *;
 
+@mixin detect-color-palette($keyword, $key-palette-color, $value-palette-color) {
+    @if ($keyword ==$borders) {
+        $result : str-replace("border-#{$key-palette-color}-color", "-border", "");
 
-
-@mixin detect-color--palette(
-  $keyword,
-  $key-palette-color,
-  $value-palette-color
-) {
-  @if ($keyword==$borders) {
-    $result : str-replace("border-#{$key-palette-color}-color","-border","");
-    .#{$result} {
-      border-color: $value-palette-color;
+        .#{$result} {
+            border-color: string.unquote("var(--#{$key-palette-color})");
+        }
     }
-  }
 
-  @if ($keyword==$backgrounds) {
-    $result : str-replace("bg-#{$key-palette-color}-color","-background","");
-    .#{$result} {
-      background-color: $value-palette-color;
-    }
-  }
+    @if ($keyword ==$backgrounds) {
+        $result : str-replace("bg-#{$key-palette-color}-color", "-background", "");
 
-  @if ($keyword==$colors) {
-    .#{$key-palette-color}-color {
-      color: $value-palette-color;
+        .#{$result} {
+            background-color: string.unquote("var(--#{$key-palette-color})");
+        }
     }
-  }
+
+    @if ($keyword ==$colors) {
+        .#{$key-palette-color}-color {
+            color: string.unquote("var(--#{$key-palette-color})");
+        }
+    }
 }
 
 @mixin compare-palette-key($key-palette-color, $value-palette-color, $keyword) {
-  @for $i from 1 through list.length($keyword) {
-    $item-list: list.nth($keyword, $i);
-    @if (string.index(#{$key-palette-color}, $item-list)) {
-      @include detect-color--palette(
-        $keyword,
-        $key-palette-color,
-        $value-palette-color
-      );
+    @for $i from 1 through list.length($keyword) {
+        $item-list: list.nth($keyword, $i);
+
+        @if (string.index(#{$key-palette-color}, $item-list)) {
+            @include detect-color-palette($keyword, $key-palette-color, $value-palette-color);
+        }
     }
-  }
 }
-@mixin generate-color-classes($palette) {
-  @each $key, $value in $palette {
-    @include compare-palette-key($key, $value, $borders);
-    @include compare-palette-key($key, $value, $colors);
-    @include compare-palette-key($key, $value, $backgrounds);
-  }
+
+@mixin generate-color-classes($color-palette) {
+    @each $key, $value in $color-palette {
+        @each $key-color-property , $value-color-property in $value {
+            @include compare-palette-key($key-color-property, $value-color-property, $borders);
+            @include compare-palette-key($key-color-property, $value-color-property, $colors);
+            @include compare-palette-key($key-color-property, $value-color-property, $backgrounds);
+        }
+
+        @if $key =="colors" {
+            @include generate-color-variables-mode($value);
+        }
+    }
+}
+
+
+@mixin generate-color-variables-mode($property-mode) {
+    @each $class , $colors in $property-mode {
+        .#{$class} {
+            @each $key-color-property , $value-color-property in $colors {
+                #{"--" + $key-color-property}: $value-color-property;
+            }
+        }
+    }
 }
 
 @include generate-color-classes($color-palette);
+
+@mixin generate-color-variables($color-palette) {
+    @each $key, $value in $color-palette {
+        @if $key =="default" {
+            @each $key-color-property , $value-color-property in $value {
+                #{"--" + $key-color-property}: $value-color-property;
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
 @use "../../../config/_reset" as *;
+
 @mixin reset-file($reset){
     @if $reset{
         *{
@@ -24,6 +25,5 @@
         }
     }
 }
-
 
 @include reset-file($reset);
