@@ -1,4 +1,4 @@
-import { readdirSync, statSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readdirSync, statSync, readFileSync, writeFileSync, mkdirSync , existsSync } from 'fs';
 import { join, relative, dirname } from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
@@ -13,7 +13,6 @@ const themeDependencyPath = [
     "../sass/kernel/common/_aspect-ratio.scss",
     "../sass/kernel/common/_opacity.scss",
     "../sass/kernel/common/_z-index.scss",
-    "../sass/kernel/responsive/mixins/_variables.scss",
     "../sass/kernel/kernel-functions/_colors.scss",
     "../sass/kernel/responsive/boots/_border.scss",
     "../sass/kernel/responsive/boots/_colors.scss",
@@ -75,6 +74,9 @@ function mergeJsFiles() {
 }
 
 function writeMergedContent() {
+    if (!verifyTheme()){
+        return
+    }
     const outputPath = join(projectRoot, config.output);
     console.log(`🚀 Starting merge process...`);
     ensureDirectoryExists(dirname(outputPath));
@@ -85,27 +87,29 @@ function writeMergedContent() {
     console.log(`🎉 All component scripts have been merged successfully to ${config.output}!`);
 }
 
+function verifyTheme() {
+    if (!config.theme || config.theme.trim() === '') {
+        console.error("❌ config.theme is empty. Please provide a valid theme name.");
+        return false;
+    }
+
+    const themeDir = join(__dirname, '..', 'themes', config.theme);
+
+    if (!existsSync(themeDir)) {
+        console.warn(`⚠️ Theme directory does not exist: ${themeDir}. Skipping updateUseStatements.`);
+        return false;
+    }
+
+    return true;
+}
+
 const isWatchMode = process.argv.includes('--watch');
 const isBuildMode = process.argv.includes('--build');
-
-// if (isWatchMode) {
-//     console.log('👀 Watching for changes in component scripts and config...');
-//     const componentsDir = join(__dirname, '..', 'themes', config.theme, 'components');
-
-//     // chokidar.watch([componentsDir, join(__dirname, '..', 'themes', 'scripts.js')], {
-//     //     ignored: /(^|[\/\\])\../,
-//     //     persistent: true
-//     // }).on('change', (path) => {
-//     //     console.log(`📝 File changed: ${path}`);
-//     //     console.log('🔄 Re-merging components...');
-//     //     // چون تغییر config نیاز به reload داره، بهتره process رو ریست کنی
-//     //     process.exit(0);
-//     // });
-// }
 
 
 if (isWatchMode) {
     console.log('👀 Watching for changes in component scripts...');
+
     const componentsDir = join(__dirname, '..', 'themes', config.theme, 'components');
 
     chokidar.watch([componentsDir, join(__dirname, '..', 'themes', 'scripts.js')], {
@@ -126,7 +130,7 @@ if (isWatchMode) {
     try {
         writeMergedContent();
         const outputPath = join(projectRoot, config.output);
-        execSync(`terser ${outputPath} -o ${outputPath}`);
+        execSync(`terser "${outputPath}" -o "${outputPath}"`);
         console.log(`🧪 Minified file created at: ${outputPath}`);
     } catch (error) {
         console.error(`❌ Error during minification:`, error);
@@ -136,8 +140,19 @@ if (isWatchMode) {
     writeMergedContent();
 }
 
-
 function updateUseStatements(files) {
+    if (!config.theme || config.theme.trim() === '') {
+        console.error("❌ config.theme is empty. Please provide a valid theme name.");
+        return;
+    }
+
+    const themeDir = join(__dirname, '..', 'themes', config.theme);
+
+    if (!existsSync(themeDir)) {
+        console.warn(`⚠️ Theme directory does not exist: ${themeDir}. Skipping updateUseStatements.`);
+        return;
+    }
+
     const useRegex = /@use ["']([^"']*themes\/)([^\/]+)(\/[^"']*)["'] as \*;/g;
     const forwardRegex = /@forward ["']([^"']+)["'];/g;
 
@@ -148,7 +163,7 @@ function updateUseStatements(files) {
             const originalContent = readFileSync(filePath, 'utf8');
 
             let updatedContent = originalContent.replace(useRegex, (match, prefix, oldThemeName, suffix) => {
-                if (oldThemeName === config.theme) return match;
+                if (oldThemeName === config.theme) return match; // هیچ تغییری نیاز نیست
                 const updatedPath = `"${prefix}${config.theme}${suffix}"`;
                 return `@use ${updatedPath} as *;`;
             });

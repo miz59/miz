@@ -78,7 +78,7 @@ function writeMergedContent(config) {
 
 function updateUseStatements(files, config) {
     const themeDir = join(__dirname, '..', 'themes', config.theme);
-    
+
     if (!existsSync(themeDir)) {
         console.warn(`⚠️ Theme directory does not exist: ${themeDir}. Skipping updateUseStatements.`);
         return;
@@ -147,18 +147,37 @@ function runCommands() {
 let watchers = [];
 
 async function rebuildAllDynamic() {
+    if (!verifyTheme()) {
+        return
+    }
     try {
         const config = await loadConfig();
         console.log(`🔁 Rebuilding with theme: ${config.theme}`);
-        
-        updateUseStatements(themeDependencyPath, config);  // به config پاس بده
+
+        updateUseStatements(themeDependencyPath, config);
         writeMergedContent(config);
         runCommands();
-        restartWatchers(config); // اینجا Watcherها رو ری‌استارت می‌کنیم
+        restartWatchers(config);
         console.log('✅ Rebuild complete.\n');
     } catch (err) {
         console.error('❌ Error during rebuild:', err);
     }
+}
+
+function verifyTheme() {
+    if (!config.theme || config.theme.trim() === '') {
+        console.error("❌ config.theme is empty. Please provide a valid theme name.");
+        return false;
+    }
+
+    const themeDir = join(__dirname, '..', 'themes', config.theme);
+
+    if (!existsSync(themeDir)) {
+        console.warn(`⚠️ Theme directory does not exist: ${themeDir}. Skipping updateUseStatements.`);
+        return false;
+    }
+
+    return true;
 }
 
 function clearWatchers() {
@@ -168,7 +187,7 @@ function clearWatchers() {
 
 function restartWatchers(config) {
     clearWatchers();
-    
+
     const themeBase = join(__dirname, '..', 'themes', config.theme);
     const themeComponents = join(themeBase, 'components');
     const configFile = join(__dirname, '..', 'themes', 'scripts.js');
