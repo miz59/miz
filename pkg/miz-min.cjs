@@ -14,42 +14,28 @@ if (variable === 'laravel') {
     cssFilePath = path.join('public', 'assets', 'css', 'miz-clean.css');
     outputFilePath = path.join('public', 'assets', 'css', 'miz.min.css');
     fontFaceFilePath = path.join('public', 'assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('resources', 'sass', 'config', '_reset.scss');
-}
-else if (variable === 'laravel-document') {
-    textFilePath = path.join('classes.txt');
-    cssFilePath = path.join('public', 'assets', 'css', 'document', 'miz-clean.css');
-    outputFilePath = path.join('public', 'assets', 'css', 'document', 'miz.min.css');
-    fontFaceFilePath = path.join('public', 'assets', 'css', 'document', 'font-faces.css');
-    resetSassFile = path.join('resources', 'sass', 'document', 'miz', 'sass', 'config', '_reset.scss');
-}
-else if (variable === 'laravel-landing') {
-    textFilePath = path.join('classes.txt');
-    cssFilePath = path.join('public', 'assets', 'css', 'landing', 'miz-clean.css');
-    outputFilePath = path.join('public', 'assets', 'css', 'landing', 'miz.min.css');
-    fontFaceFilePath = path.join('public', 'assets', 'css', 'landing', 'font-faces.css');
-    resetSassFile = path.join('resources', 'sass', 'landing', 'miz', 'sass', 'config', '_reset.scss');
+    resetSassFile = path.join('resources', 'miz', 'sass', 'config', '_reset.scss');
 }
 else if (variable === 'react') {
     textFilePath = path.join('classes.txt');
     cssFilePath = path.join('src', 'assets', 'css', 'miz-clean.css');
     outputFilePath = path.join('src', 'assets', 'css', 'miz.min.css');
     fontFaceFilePath = path.join('src', 'assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('src', 'sass', 'config', '_reset.scss');
+    resetSassFile = path.join('src', 'miz', 'sass', 'config', '_reset.scss');
 }
 else if (variable === 'vue') {
     textFilePath = path.join('classes.txt');
     cssFilePath = path.join('src', 'assets', 'css', 'miz-clean.css');
     outputFilePath = path.join('src', 'assets', 'css', 'miz.min.css');
     fontFaceFilePath = path.join('src', 'assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('src', 'sass', 'config', '_reset.scss');
+    resetSassFile = path.join('src', 'miz', 'sass', 'config', '_reset.scss');
 }
 else {
     textFilePath = path.join('classes.txt');
     cssFilePath = path.join('assets', 'css', 'miz-clean.css');
     outputFilePath = path.join('assets', 'css', 'miz.min.css');
     fontFaceFilePath = path.join('assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('sass', 'miz', 'sass', 'config', '_reset.scss');
+    resetSassFile = path.join('miz', 'sass', 'config', '_reset.scss');
 }
 
 const extensions = ['.html', '.blade.php', '.js', '.jsx', '.vue'];
@@ -217,7 +203,7 @@ function processCssFile() {
     let match;
     let outsideMedia = cssData.split(mediaRegex).filter((_, i) => i % 2 === 0).join('');
     let mediaQueries = [];
-    while ((match = mediaRegex.exec(cssData)) == null) {
+    while ((match = mediaRegex.exec(cssData)) !== null) {
         mediaQueries.push(match[0]);
     }
 
