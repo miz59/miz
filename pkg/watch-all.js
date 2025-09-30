@@ -147,11 +147,13 @@ function runCommands() {
 let watchers = [];
 
 async function rebuildAllDynamic() {
-    if (!verifyTheme()) {
-        return
-    }
     try {
         const config = await loadConfig();
+
+        if (!verifyTheme(config)) {
+            return;
+        }
+
         console.log(`🔁 Rebuilding with theme: ${config.theme}`);
 
         updateUseStatements(themeDependencyPath, config);
@@ -164,7 +166,7 @@ async function rebuildAllDynamic() {
     }
 }
 
-function verifyTheme() {
+function verifyTheme(config) {
     if (!config.theme || config.theme.trim() === '') {
         console.error("❌ config.theme is empty. Please provide a valid theme name.");
         return false;
@@ -194,10 +196,18 @@ function restartWatchers(config) {
     const sassDir = join(__dirname, '..', '..', 'miz');
 
     watchers.push(
+        // chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
+            // console.log(`⚙️ config file changed: ${path}`);
+            // await rebuildAllDynamic();
+        // }),
+
         chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
             console.log(`⚙️ config file changed: ${path}`);
+            const newConfig = await loadConfig();
+            restartWatchers(newConfig);
             await rebuildAllDynamic();
         }),
+
 
         chokidar.watch(themeBase, { ignored: /(^|[\/\\])\../, persistent: true })
             .on('change', async (path) => {
@@ -226,7 +236,6 @@ function restartWatchers(config) {
 }
 
 if (isWatchMode) {
-    // بقیه موارد خودش در restartWatchers مدیریت می‌شن
     loadConfig().then(restartWatchers);
 } else {
     console.log('🚀 Running tasks once...');
