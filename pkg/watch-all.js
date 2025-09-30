@@ -187,6 +187,54 @@ function clearWatchers() {
     watchers = [];
 }
 
+// function restartWatchers(config) {
+//     clearWatchers();
+
+//     const themeBase = join(__dirname, '..', 'themes', config.theme);
+//     const themeComponents = join(themeBase, 'components');
+//     const configFile = join(__dirname, '..', 'themes', 'scripts.js');
+//     const sassDir = join(__dirname, '..', '..', 'miz');
+
+//     watchers.push(
+//         // chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
+//             // console.log(`⚙️ config file changed: ${path}`);
+//             // await rebuildAllDynamic();
+//         // }),
+
+//         chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
+//             console.log(`⚙️ config file changed: ${path}`);
+//             const newConfig = await loadConfig();
+//             restartWatchers(newConfig);
+//             await rebuildAllDynamic();
+//         }),
+
+
+//         chokidar.watch(themeBase, { ignored: /(^|[\/\\])\../, persistent: true })
+//             .on('change', async (path) => {
+//                 if (path.endsWith('.html')) {
+//                     console.log(`📄 HTML changed: ${path}`);
+//                     await rebuildAllDynamic();
+//                 }
+//             }),
+
+//         chokidar.watch(sassDir, { ignored: /(^|[\/\\])\../, persistent: true })
+//             .on('change', async (path) => {
+//                 if (path.endsWith('.scss') || path.endsWith('.sass')) {
+//                     console.log(`🎨 Sass changed: ${path}`);
+//                     await rebuildAllDynamic();
+//                 }
+//             }),
+
+//         chokidar.watch(themeComponents, { ignored: /(^|[\/\\])\../, persistent: true })
+//             .on('change', async (path) => {
+//                 if (path.endsWith('.js')) {
+//                     console.log(`🧩 JS component changed: ${path}`);
+//                     await rebuildAllDynamic();
+//                 }
+//             })
+//     );
+// }
+
 function restartWatchers(config) {
     clearWatchers();
 
@@ -196,18 +244,12 @@ function restartWatchers(config) {
     const sassDir = join(__dirname, '..', '..', 'miz');
 
     watchers.push(
-        // chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
-            // console.log(`⚙️ config file changed: ${path}`);
-            // await rebuildAllDynamic();
-        // }),
-
         chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
             console.log(`⚙️ config file changed: ${path}`);
             const newConfig = await loadConfig();
             restartWatchers(newConfig);
             await rebuildAllDynamic();
         }),
-
 
         chokidar.watch(themeBase, { ignored: /(^|[\/\\])\../, persistent: true })
             .on('change', async (path) => {
@@ -223,16 +265,51 @@ function restartWatchers(config) {
                     console.log(`🎨 Sass changed: ${path}`);
                     await rebuildAllDynamic();
                 }
-            }),
-
-        chokidar.watch(themeComponents, { ignored: /(^|[\/\\])\../, persistent: true })
-            .on('change', async (path) => {
-                if (path.endsWith('.js')) {
-                    console.log(`🧩 JS component changed: ${path}`);
-                    await rebuildAllDynamic();
-                }
             })
     );
+
+    const componentWatcher = chokidar.watch(themeComponents, {
+        ignored: /(^|[\/\\])\../,
+        persistent: true,
+    });
+
+    let isReady = false;
+
+    componentWatcher
+        .on('add', async path => {
+            if (!isReady) return; // ignore initial add events
+            if (path.endsWith('.js')) {
+                console.log(`➕ JS file added: ${path}`);
+                await rebuildAllDynamic();
+            }
+        })
+        .on('addDir', async path => {
+            if (!isReady) return; // ignore initial addDir events
+            console.log(`📂 Directory added: ${path}`);
+            await rebuildAllDynamic();
+        })
+        .on('unlink', async path => {
+            if (path.endsWith('.js')) {
+                console.log(`➖ JS file removed: ${path}`);
+                await rebuildAllDynamic();
+            }
+        })
+        .on('unlinkDir', async path => {
+            console.log(`📁 Directory removed: ${path}`);
+            await rebuildAllDynamic();
+        })
+        .on('change', async path => {
+            if (path.endsWith('.js')) {
+                console.log(`🧩 JS file changed: ${path}`);
+                await rebuildAllDynamic();
+            }
+        })
+        .on('ready', () => {
+            console.log('🎯 Component watcher is ready and watching for changes...');
+            isReady = true;
+        });
+
+    watchers.push(componentWatcher);
 }
 
 if (isWatchMode) {
