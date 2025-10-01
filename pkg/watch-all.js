@@ -2,7 +2,7 @@ import chokidar from 'chokidar';
 import { join, relative, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { exec } from 'child_process';
-// import { config } from '../themes/scripts.js';
+// import { config } from '../themes/config.js';
 import {
     readdirSync,
     statSync,
@@ -13,7 +13,7 @@ import {
 } from 'fs';
 
 async function loadConfig() {
-    const configModule = await import(`../themes/scripts.js?update=${Date.now()}`);
+    const configModule = await import(`../themes/config.js?update=${Date.now()}`);
     return configModule.config;
 }
 
@@ -192,7 +192,7 @@ function clearWatchers() {
 
 //     const themeBase = join(__dirname, '..', 'themes', config.theme);
 //     const themeComponents = join(themeBase, 'components');
-//     const configFile = join(__dirname, '..', 'themes', 'scripts.js');
+//     const configFile = join(__dirname, '..', 'themes', 'config.js');
 //     const sassDir = join(__dirname, '..', '..', 'miz');
 
 //     watchers.push(
@@ -240,7 +240,7 @@ function restartWatchers(config) {
 
     const themeBase = join(__dirname, '..', 'themes', config.theme);
     const themeComponents = join(themeBase, 'components');
-    const configFile = join(__dirname, '..', 'themes', 'scripts.js');
+    const configFile = join(__dirname, '..', 'themes', 'config.js');
     const sassDir = join(__dirname, '..', '..', 'miz');
 
     watchers.push(

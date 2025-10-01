@@ -2,7 +2,7 @@ import { readdirSync, statSync, readFileSync, writeFileSync, mkdirSync , existsS
 import { join, relative, dirname } from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { config } from '../themes/scripts.js';
+import { config } from '../themes/config.js';
 import chokidar from 'chokidar';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -112,7 +112,7 @@ if (isWatchMode) {
 
     const componentsDir = join(__dirname, '..', 'themes', config.theme, 'components');
 
-    chokidar.watch([componentsDir, join(__dirname, '..', 'themes', 'scripts.js')], {
+    chokidar.watch([componentsDir, join(__dirname, '..', 'themes', 'config.js')], {
         ignored: /(^|[\/\\])\../,
         persistent: true
     }).on('change', (path) => {
