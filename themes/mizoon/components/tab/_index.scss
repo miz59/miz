@@ -1,5 +1,4 @@
-@use "../../../../sass/structure/_typography" as *;
-@use "../../../../sass/structure" as *;
+@use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
 
 $tab-labels:".border-style-solid, .border-color, .bw-1, .border-t-none, .border-b-none, .border-l-none, .bg-primary-color";

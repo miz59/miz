@@ -1,11 +1,11 @@
+@use "../../kernel-functions/_break-point" as *;
+@use "../functions/responsive" as *;
+@use "../../../config/paths" as *;
+@use "../../../../themes/mizoon/config/typography" as *;
+@use "../../../config/_typography" as *;
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
-@use "../functions/responsive" as *;
-@use "../../../structure/typography" as *;
-@use "../../../config/responsive" as *;
-@use "../../../config/paths" as *;
-
 
 $font-weight : '';
 .font-weight-black{
@@ -35,42 +35,67 @@ $font-weight : '';
 .font-weight-thin{
     font-weight: 100;
 }
-@function font-weight-connection($weight){
-    $list : 0;
-    @if ($weight == "black"){$list: 900;}
-    @else if ($weight == "extra-bold"){$list: 800;}
-    @else if ($weight == "bold"){$list: 700;}
-    @else if ($weight == "semi-bold"){$list: 600;}
-    @else if ($weight == "medium"){$list: 500;}
-    @else if ($weight == "regular"){$list: 400;}
-    @else if ($weight == "light"){$list: 300;}
-    @else if ($weight == "extra-light"){$list: 200;}
-    @else if ($weight == "thin"){$list: 100;}
 
-    @return $list;
+.#{$font-prefix}-ellipsis{
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+.list-style{
+  list-style: unset;
+}
+.line-height{
+  line-height:  1.7;
+  @media screen and (max-width : get-break-point-value(xl)) {
+    line-height: 1.5;
+  }
+  @media screen and (max-width : get-break-point-value(lg)) {
+    line-height:  1.4;
+  }
+  @media screen and (max-width : get-break-point-value(md)) {
+    line-height:  1.4;
+  }
+  @media screen and (max-width : get-break-point-value(sm)) {
+    line-height:  1.3;
+  }
+}
+
+@function font-weight-connection($weight-string){
+    $weight-number : 0;
+    @if ($weight-string == "black"){$weight-number: 900;}
+    @else if ($weight-string == "extra-bold"){$weight-number: 800;}
+    @else if ($weight-string == "bold"){$weight-number: 700;}
+    @else if ($weight-string == "semi-bold"){$weight-number: 600;}
+    @else if ($weight-string == "medium"){$weight-number: 500;}
+    @else if ($weight-string == "regular"){$weight-number: 400;}
+    @else if ($weight-string == "light"){$weight-number: 300;}
+    @else if ($weight-string == "extra-light"){$weight-number: 200;}
+    @else if ($weight-string == "thin"){$weight-number: 100;}
+
+    @return $weight-number;
 }
 @mixin make-font-face{
     @each $font-name , $font-details in $fonts {
-      $font-folder: map.get($font-details, "folder");
-      $font-default: map.get($font-details, "defaults");
-      @each $font-type, $font-files in map.get($font-details, "font-types") {
+        $font-folder: map.get($font-details, "folder");
+        $font-default: map.get($font-details, "defaults");
+        @each $font-type, $font-files in map.get($font-details, "font-types") {
         $font-weight : font-weight-connection($font-type);
-         @font-face {
+            @font-face {
             $file-src : '';
             font-family: $font-name;
             font-weight: $font-weight;
             @each $font-file in $font-files {
-              $file-name: list.nth($font-file, 1);
-              $file-format: string.slice($file-name, string.index($file-name, ".") + 1);
-              $file-path: $font-folder + "/" + $file-name;
-              $file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
+                $file-name: list.nth($font-file, 1);
+                $file-format: string.slice($file-name, string.index($file-name, ".") + 1);
+                $file-path: $font-folder + "/" + $file-name;
+                $file-src :$file-src + #{url("#{$fonts-path + $file-path}")} + ",";
             }
             src: string.unquote($file-src);
-          }
-      }
-      .font-#{$font-name}{
-        font-family: $font-name , string.unquote($font-default);
-      }
+            }
+        }
+        .font-#{$font-name}{
+            font-family: string.unquote("var(--font-#{$font-name})") , string.unquote($font-default);
+        }
     }
 }
 @function generate-text-style($property , $value , $class){

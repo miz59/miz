@@ -1,12 +1,20 @@
-@use 'sass:list';
-@use 'sass:string';
 @use "../../../config/colors" as *;
 @use "../../../../themes/mizoon/config/colors" as *;
-@use "responsive" as *;
+@use 'sass:list';
+@use 'sass:string';
+
+@function str-replace-color($string, $search, $replace: '') {
+    $index: string.index($string, $search);
+    @if ($index){
+        @return string.slice($string, 1, $index - 1) + $replace + str-replace-color(string.slice($string, $index + string.length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
 
 @mixin detect-color-palette($keyword, $key-palette-color, $value-palette-color) {
     @if ($keyword ==$borders) {
-        $result : str-replace("border-#{$key-palette-color}-color", "-border", "");
+        $result : str-replace-color("border-#{$key-palette-color}-color", "-border", "");
 
         .#{$result} {
             border-color: string.unquote("var(--#{$key-palette-color})");
@@ -14,7 +22,7 @@
     }
 
     @if ($keyword ==$backgrounds) {
-        $result : str-replace("bg-#{$key-palette-color}-color", "-background", "");
+        $result : str-replace-color("bg-#{$key-palette-color}-color", "-background", "");
 
         .#{$result} {
             background-color: string.unquote("var(--#{$key-palette-color})");
@@ -64,13 +72,3 @@
 }
 
 @include generate-color-classes($color-palette);
-
-@mixin generate-color-variables($color-palette) {
-    @each $key, $value in $color-palette {
-        @if $key =="default" {
-            @each $key-color-property , $value-color-property in $value {
-                #{"--" + $key-color-property}: $value-color-property;
-            }
-        }
-    }
-}

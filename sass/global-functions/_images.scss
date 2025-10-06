@@ -1,10 +1,6 @@
 @use "../config/paths";
 
-
-
-@function image-asset($name){
-
+@function get-image($name){
     $url:paths.$images-path + $name;
-
     @return $url;
 }

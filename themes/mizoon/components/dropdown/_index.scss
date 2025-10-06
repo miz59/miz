@@ -1,6 +1,5 @@
-@use "../../../../sass/structure/_typography" as *;
 @use "../../../../sass/kernel" as *;
-@use "../../../../sass/structure" as *;
+@use "../../../../sass/config/_typography" as *;
 @use "sass:map";
 
 $dropdown-box-transition: 0.2s linear;

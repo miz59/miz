@@ -2,7 +2,6 @@ import chokidar from 'chokidar';
 import { join, relative, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { exec } from 'child_process';
-// import { config } from '../themes/config.js';
 import {
     readdirSync,
     statSync,
@@ -30,7 +29,8 @@ const themeDependencyPath = [
     `${projectRoot}/miz/sass/kernel/responsive/mixins/_variables.scss`,
     `${projectRoot}/miz/sass/kernel/responsive/boots/_border.scss`,
     `${projectRoot}/miz/sass/kernel/responsive/boots/_colors.scss`,
-    `${projectRoot}/miz/sass/structure/_borders.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/boots/_typography.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/functions/_space.scss`,
     `${projectRoot}/miz/themes/_index.scss`,
 ]
 

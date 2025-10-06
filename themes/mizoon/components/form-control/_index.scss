@@ -1,8 +1,7 @@
-@use "../../../../sass/structure/_typography" as *;
-@use "../button" as *;
-@use "../../../../sass/structure" as *;
-@use "../../../../sass/kernel" as *;
 @use "sass:string";
+@use "../button" as *;
+@use "../../../../sass/config/_typography" as *;
+@use "../../../../sass/kernel" as *;
 
 $form-field-custom-classes:"";
 $form-control-bg-color:"fields";

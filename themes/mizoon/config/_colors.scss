@@ -1,7 +1,7 @@
-@use "sass:map";
 @use "../../../sass/config/colors" as *;
+@use "sass:map";
 
-$light-color-palette-themes:(
+$light-color-palette-mizoon:(
     primary:#A11D1D,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
@@ -64,7 +64,7 @@ $light-color-palette-themes:(
     "transparent":#00000000
 );
 
-$dark-color-palette-themes:(
+$dark-color-palette-mizoon:(
     primary: #eb4545,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
@@ -129,10 +129,10 @@ $dark-color-palette-themes:(
     unCommon: #FFFFFF
 );
 
-$light-color-palette:map.merge($light-color-palette , $light-color-palette-themes);
-$dark-color-palette:map.merge($dark-color-palette , $dark-color-palette-themes);
+$light-color-palette:map.merge($light-color-palette , $light-color-palette-mizoon);
+$dark-color-palette:map.merge($dark-color-palette , $dark-color-palette-mizoon);
 
-$color-palette-themes:(
+$color-palette-mizoon:(
     default : $light-color-palette ,
     colors : (
         light : $light-color-palette ,
@@ -140,4 +140,4 @@ $color-palette-themes:(
     )
 );
 
-$color-palette:map.merge($color-palette , $color-palette-themes);
+$color-palette:map.merge($color-palette , $color-palette-mizoon);

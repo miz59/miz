@@ -1,18 +1,21 @@
+@use "../../../../themes/mizoon/config/responsive" as *;
+@use "../../../config/responsive" as *;
+@use "responsive" as *;
 @use 'sass:list';
 @use 'sass:meta';
 @use 'sass:map';
 @use 'sass:string';
-@use "../../../config/responsive" as *;
-@use "responsive" as *;
 
 $paddings-list-class:"p","pt","pb","pl","pr","px","py","pis","pie";
 $margin-list-class:"m","mt","mb","ml","mr","mx","my","mis","mie";
 $gap-list-class:gap;
+$col-gap-list-class:"g","gx","gy";
 $letter-spacing-list-class:"ls";
 
 $map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom) , pis:padding-inline-start , pie:padding-inline-end);
 $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom) , mis:margin-inline-start , mie:margin-inline-end);
 $map-gap:(gap:gap);
+$map-col-gap:(g:(column-gap , row-gap , "--gx" , "--gy") , gx:(column-gap , "--gx") , gy:(row-gap , "--gy"));
 $map-letter-spacing:(ls:letter-spacing);
 
 @function generate-class-name-list-space($name-list, $map-config) {
@@ -31,7 +34,7 @@ $map-letter-spacing:(ls:letter-spacing);
 
     @else {
         @for $i from 1 through list.length($name-list){
-            $class-name-list: list.join($class-name-list, generate-classes(list.nth($name-list , $i) , $count , true));
+            $class-name-list: list.join($class-name-list, generate-classes(list.nth($name-list , $i) , $count , true , true));
         }
     }
     @return $class-name-list;
@@ -86,4 +89,5 @@ $map-letter-spacing:(ls:letter-spacing);
 $padding : generate-total-map-list($paddings-list-class , $map-padding , $conf-paddings);
 $margin : generate-total-map-list($margin-list-class , $map-margin , $conf-margins);
 $gap : generate-total-map-list($gap-list-class , $map-gap , $conf-gaps);
+$col-gap : generate-total-map-list($col-gap-list-class , $map-col-gap , $conf-gaps);
 $letter-spacing: generate-total-map-list($letter-spacing-list-class , $map-letter-spacing , $conf-letter-spacing);

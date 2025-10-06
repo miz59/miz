@@ -1,5 +1,5 @@
 @use "../../../../sass/kernel" as *;
-@use "../../../../sass/structure" as *;
+@use "../../../../sass/config/_typography" as *;
 
 $progress-bg-color:"disabled-light";
 $progress-custom-classes:".w-100, .d-flex, .flex-row, .radius-all-full, .overflow-hidden";

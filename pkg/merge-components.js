@@ -10,15 +10,16 @@ const __dirname = dirname(__filename);
 const projectRoot = process.cwd();
 
 const themeDependencyPath = [
-    "../sass/kernel/common/_aspect-ratio.scss",
-    "../sass/kernel/common/_opacity.scss",
-    "../sass/kernel/common/_z-index.scss",
-    "../sass/kernel/kernel-functions/_colors.scss",
-    "../sass/kernel/responsive/boots/_border.scss",
-    "../sass/kernel/responsive/boots/_colors.scss",
-    "../sass/structure/_borders.scss",
-    "../themes/_index.scss",
-].map(p => join(__dirname, p));
+    `${projectRoot}/miz/sass/kernel/common/_aspect-ratio.scss`,
+    `${projectRoot}/miz/sass/kernel/common/_opacity.scss`,
+    `${projectRoot}/miz/sass/kernel/common/_z-index.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/mixins/_variables.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/boots/_border.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/boots/_colors.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/boots/_typography.scss`,
+    `${projectRoot}/miz/sass/kernel/responsive/functions/_space.scss`,
+    `${projectRoot}/miz/themes/_index.scss`,
+];
 
 function ensureDirectoryExists(dirPath) {
     try {

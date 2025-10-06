@@ -108,7 +108,6 @@
     @each $key , $value in $break-points{
         @for $i from $counter-reset through $count{
             @if ($type == w or $type == h){
-                // $value:0;
                 $value:(math.round($much-size * $i));
             }
             @else{
@@ -165,12 +164,12 @@
 @function set-property-values($counter-reset,$type,$space-width){
 
     @if ($type==col){
-        @return calc(100 / map.get($conf-cols,'count') * $counter-reset * 1%);
+        @return calc(calc(100 / map.get($conf-cols,'count') * $counter-reset * 1%) - var(--gx));
     }
     @else if ($type==w or $type==h){
         @return $space-width * $counter-reset;
     }
-    @else if ($type==g){
+    @else if ($type==grid){
         @return repeat($counter-reset, 1fr);
     }
     @else{

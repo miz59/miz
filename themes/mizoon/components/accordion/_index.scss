@@ -1,6 +1,5 @@
-@use "../../../../sass/structure/_typography" as *;
+@use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
-@use "../../../../sass/structure" as *;
 @use "../../config" as *;
 
 $accordion-height-scroll: 500px;

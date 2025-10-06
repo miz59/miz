@@ -3,12 +3,17 @@
 @use "../../../config/responsive" as *;
 @use "../functions/responsive" as *;
 
+*:has( > .row){
+    overflow-x: hidden;
+}
+
 .row{
-    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-inline-end: calc(-1 * var(--gx));
 }
+
 $col-list:col;
 $grow-list:grow;
 $conf-list:(

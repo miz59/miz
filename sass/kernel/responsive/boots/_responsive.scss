@@ -1,6 +1,6 @@
-@use 'sass:list';
-@use 'sass:string';
-@use 'sass:map';
+@use "../mixins/_variables" as *;
+@use "_typography" as *;
+@use "_colors" as *;
 @use "typography" as *;
 @use "icon" as *;
 @use "../functions/space" as *;
@@ -11,9 +11,11 @@
 @use "../layouts/orders" as *;
 @use "border" as *;
 @use "../../../config/responsive" as *;
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:map';
 
-
-$totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$padding,$margin,$gap,$letter-spacing,$font-size-responsive,$generate-text-transform,$generate-text-align,$generate-text-decoration-line,$generate-text-decoration-style,$generate-font-style,$icon-size-responsive;
+$totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex-orders,$flex-grows,$g,$padding,$margin,$gap,$col-gap,$letter-spacing,$font-size-responsive,$generate-text-transform,$generate-text-align,$generate-text-decoration-line,$generate-text-decoration-style,$generate-font-style,$icon-size-responsive;
 
 @function get-greatest-break-point(){
     $max-size:0;
