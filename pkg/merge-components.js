@@ -21,21 +21,20 @@ if (match && match[1] !== '') {
 } else {
     var address = "";
 }
-console.log(join(process.cwd() , address))
 
-
-const projectRoot = join(process.cwd() , address);
+const mizRoot = join(process.cwd() , address);
+const projectRoot = process.cwd();
 
 const themeDependencyPath = [
-    `${projectRoot}/miz/sass/kernel/common/_aspect-ratio.scss`,
-    `${projectRoot}/miz/sass/kernel/common/_opacity.scss`,
-    `${projectRoot}/miz/sass/kernel/common/_z-index.scss`,
-    `${projectRoot}/miz/sass/kernel/responsive/mixins/_variables.scss`,
-    `${projectRoot}/miz/sass/kernel/responsive/boots/_border.scss`,
-    `${projectRoot}/miz/sass/kernel/responsive/boots/_colors.scss`,
-    `${projectRoot}/miz/sass/kernel/responsive/boots/_typography.scss`,
-    `${projectRoot}/miz/sass/kernel/responsive/functions/_space.scss`,
-    `${projectRoot}/miz/themes/_index.scss`,
+    `${mizRoot}/miz/sass/kernel/common/_aspect-ratio.scss`,
+    `${mizRoot}/miz/sass/kernel/common/_opacity.scss`,
+    `${mizRoot}/miz/sass/kernel/common/_z-index.scss`,
+    `${mizRoot}/miz/sass/kernel/responsive/mixins/_variables.scss`,
+    `${mizRoot}/miz/sass/kernel/responsive/boots/_border.scss`,
+    `${mizRoot}/miz/sass/kernel/responsive/boots/_colors.scss`,
+    `${mizRoot}/miz/sass/kernel/responsive/boots/_typography.scss`,
+    `${mizRoot}/miz/sass/kernel/responsive/functions/_space.scss`,
+    `${mizRoot}/miz/themes/_index.scss`,
 ];
 
 function ensureDirectoryExists(dirPath) {
