@@ -7,7 +7,24 @@ import chokidar from 'chokidar';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const projectRoot = process.cwd();
+
+
+const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
+const watchCommand = packageJson.scripts.watch;
+
+const regex = /(?:^|\s)([\w\/\.\-]+)\/miz\/[^:\s]+\.scss/;
+const match = watchCommand.match(regex);
+var address = null;
+
+if (match && match[1] !== '') {
+    var address = match[1];
+} else {
+    var address = "";
+}
+console.log(join(process.cwd() , address))
+
+
+const projectRoot = join(process.cwd() , address);
 
 const themeDependencyPath = [
     `${projectRoot}/miz/sass/kernel/common/_aspect-ratio.scss`,
@@ -164,7 +181,7 @@ function updateUseStatements(files) {
             const originalContent = readFileSync(filePath, 'utf8');
 
             let updatedContent = originalContent.replace(useRegex, (match, prefix, oldThemeName, suffix) => {
-                if (oldThemeName === config.theme) return match; // هیچ تغییری نیاز نیست
+                if (oldThemeName === config.theme) return match;
                 const updatedPath = `"${prefix}${config.theme}${suffix}"`;
                 return `@use ${updatedPath} as *;`;
             });
