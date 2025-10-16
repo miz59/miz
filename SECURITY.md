@@ -1,21 +1,35 @@
-# Security Policy
-
-## Supported Versions
-
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+# Security Policy for EazyMizy
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in the EazyMizy project or website, please report it responsibly by contacting us directly:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+- **Email:** mizframework59@gmail.com 
+
+Please include:
+
+- A detailed description of the vulnerability
+- Steps to reproduce the issue
+- Any relevant screenshots or proof-of-concept code
+
+We ask that you do **not** publicly disclose the vulnerability until we have had a chance to address it.
+
+## Response Process
+
+- Upon receiving your report, we will acknowledge it within 2 business days.
+- We will investigate the issue and work to fix it as quickly as possible.
+- Once the vulnerability is resolved, we may publicly disclose the issue, crediting the reporter if they wish.
+
+## Supported Versions
+
+We actively support the latest stable release of EazyMizy. If you are using an outdated version, please consider upgrading to receive security fixes.
+
+## Security Best Practices for Users
+
+- Always use the latest version of EazyMizy.
+- Follow best practices when deploying your website.
+- Report any suspicious activity or potential security issues promptly.
+
+---
+
+Thank you for helping us keep EazyMizy secure!
