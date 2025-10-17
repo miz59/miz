@@ -2,8 +2,8 @@ $backgrounds:(primary,on-primary,primary-light,primary-dark,secondary,on-seconda
 $colors:(on-primary,on-secondary,icon,text,specific,primary,secondary,highlight-text, library-icon,title-text,button-text);
 $borders:(border,primary,on-primary);
 
-$document-light-color-palette:(
-    primary:#A11D1D,
+$light-color-palette:(
+    primary:blue,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
     primary-dark: #FFFFFF,
@@ -66,8 +66,8 @@ $document-light-color-palette:(
     unCommon: #FFFFFF,
 );
 
-$document-dark-color-palette:(
-    primary: #A11D1D,
+$dark-color-palette:(
+    primary: red,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
     primary-dark: #FFFFFF,
@@ -132,85 +132,10 @@ $document-dark-color-palette:(
     unCommon: #FFFFFF
 );
 
-$landing-dark-color-palette:(
-    primary: #89001A,
-    on-primary: #c97d7d,
-    primary-light: #c97d7d8a,
-    primary-dark: #FFFFFF,
-    on-primary-light: #a11d1d2b,
-    secondary: #FFFFFF,
-    on-secondary: #495057,
-    secondary-light: #FFFFFF,
-    secondary-dark: #FFFFFF,
-    specific: #FFFFFF,
-    button-text: #fff,
-    button: #ff5050,
-    library-icon : #94A3B8,
-    secondary-button: #2e1f45,
-    text: #7E7E7E,
-    title-text: #ffffff,
-    highlight-text : #FF5050,
-    header-text: #DDCDFE,
-    header-title-text: #b80000,
-    secondary-text: #FF0839,
-    section-title-text: #CECECE,
-    border: #dee2e6,
-    divider: #ffffff,
-    shadow: #ffffff,
-    icon: #7E7E7E,
-    icon-hover: #fff,
-    demo-icon : #9E4CF4,
-    menu: #1F1D1D,
-    transparent-color : #00000000,
-    card: #120F10,
-    footer:#2B3035,
-    footer-text : #B1B5B9,
-    footer-link : #DEE2E6,
-    footer-link-hover : #8BB9FE,
-    link-sidebar-text : #212529bf,
-    background: #160F21,
-    section: #262626,
-    hover: #FFFFFF,
-    button-hover: #C7A453,
-    bg-list-hover: #c97d7d3d,
-    button-text-hover: #C5B395,
-    discount-price: #FFFFFF,
-    gradient: #FFFFFF,
-    fields: #FFFFFF,
-    border-fields: #E4E4E7,
-    title-text-fields: #FFFFFF,
-    text-fields: #FFFFFF,
-    black: #000000,
-    code : #FAFAFA,
-    white: #FFFFFF,
-    danger-regular: #D70D0D, 
-    disabled-regular: #B1B1B1,
-    warning-regular: #FFB800,
-    warning-light: #FDD368,
-    warning-dark: #CA9200,
-    success-regular: #02B74A,
-    success-light: #C0FCD8,
-    success-dark: #007A31,
-    danger-dark: #AA0D0D,
-    danger-light: #F8D0D0,
-    disabled-light: #E2E2E2,
-    disabled-dark: #575857,
-    information-regular: #3761EB,
-    information-light: #7393FF,
-    information-dark: #2145BC,
-    border-secondary: #B1B1B1,
-    unCommon: #FFFFFF,
-    template-background : #fff,
-    template-primary : #3A7DFF,
-    template-title-text : #1E2229,
-    template-text : #505972,
-);
-
 $color-palette:(
-    default : $landing-dark-color-palette ,
+    default : $dark-color-palette ,
     colors : (
-        document-light-palette : $document-light-color-palette ,
-        document-dark-palette : $document-dark-color-palette ,
-        landing-dark-palette : $landing-dark-color-palette ,
+        light-palette : $light-color-palette ,
+        dark-palette : $dark-color-palette ,
     )
 );
