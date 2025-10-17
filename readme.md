@@ -1,33 +1,81 @@
-# Miz
+<p align="center">
+  <a href="https://eazymizy.com"><img src="https://eazymizy.com/assets/media/images/video-cover-teaser.png" alt="MIZ Banner" width="100%"></a>
+</p>
 
-Miz is a CSS and SASS framework designed for frontend developers, offering a wide range of classes to simplify and speed up your web development process.
+<h1 align="center" style="color:#89001A;"><a href="https://eazymizy.com">MIZ CSS Framework</a></h1>
+<p align="center"><strong>Speed meets Strength in web design, with MIZ</strong></p>
 
-## Installation
+<p align="center">
+  <a href="https://www.npmjs.com/package/miz-59"><img src="https://img.shields.io/npm/v/miz-59?color=%2389001A&label=npm" alt="npm version"></a>
+  <a href="https://eazymizy.com/docs/about/license"><img src="https://img.shields.io/badge/License-MIT-%2389001A" alt="MIT License"></a>
+  <a href="https://github.com/miz59/miz/stargazers"><img src="https://img.shields.io/github/stars/eazymizy/miz?style=social" alt="GitHub stars"></a>
+</p>
 
-You can install Miz in two ways:
+## 📌 Introduction
 
-### 1. Installation via NPM
-If you're using frameworks like React, Laravel, or Vue, you can install Miz using NPM. Please refer to [this link](https://github.com/miz59/npm) for the installation guide.
+MIZ is a **powerful frontend CSS framework** built with **Sass**, designed to give developers **speed and full control** over their projects.  
 
-### 2. Installation without NPM
-For users not using these frameworks, you can download and run the setup files based on your operating system:
+It combines:  
+- a **page builder (Mizban)** 🏗️  
+- **css cleaner base on used classes** 🎈
+- a **component library (Mizoon)** 🧩  
+- **custom theme creation** 🎨  
+- **structured design & full Sass-based customization** ⚡
 
-- **Windows:** Download and run the [`windows-installer.bat`](https://eazymizy.com/installation/windows-installer.bat) file.
-- **macOS/Linux:** Download and run the [`linux-mac-installer.sh`](https://eazymizy.com/installation/linux-mac-installer.sh) file.
+MIZ is **open-source**, lightweight, and fully **customizable**, allowing you to create **efficient and maintainable front-end projects**.
 
-## Documentation and Tutorials
+## 🛠 Features
 
-To learn more about how to use Miz, check out the following links:
+| Feature | Description |
+|---------|-------------|
+| 🏗️ Mizban Page Builder | Visual page builder for fast prototyping |
+| 🎈 Css Cleaner | Clean unused classes from output css |
+| 🧩 Mizoon Components | Reusable UI components library |
+| ⚡ Sass-based framework | Fully Sass-based, flexible, and customizable |
+| 🎨 Customizable themes | Create your own themes easily |
+| 🚀 Lightweight & optimized | Fast, minimal, and efficient CSS output |
+| 🌍 Open-source | Community-driven and MIT licensed |
 
-<!-- - [Miz Official Website](#) -->
-<!-- - [Video Tutorial on Aparat](#) -->
-<!-- - [Video Tutorial on YouTube](#) -->
-- [Miz NPM Page](https://github.com/miz59/npm)
+## 📘 Documentation
 
-<!-- ## License -->
+Whether you're a beginner or expert, MIZ offers clear and practical documentation to guide you through installation, structure, and customization.  
 
-<!-- Add your license type here (e.g., MIT). -->
+Explore the docs to start building with MIZ:  
+👉 [**Get Started with MIZ**](https://eazymizy.com/docs/get-started/install)
 
----
+You’ll find detailed guides on:
 
-Thank you for using Miz!
+- [**Framework setup & usage**](https://eazymizy.com/docs/get-started/install)  
+- [**Mizoon components**](https://eazymizy.com/docs/components/accordion)  
+- [**Mizban page builder**](https://eazymizy.com/mizban-studio)  
+- [**Theme customization and structure**](https://eazymizy.com/docs/customize/color)
+
+## 🧩 Components & Page Builder
+
+MIZ includes:
+
+- **Mizoon Components**: Reusable UI elements for faster development. [Learn more](https://eazymizy.com/docs/components/accordion)  
+- **Mizban Page Builder**: Visual page builder for fast prototyping and structured design. [Learn more](https://eazymizy.com/mizban-studio)
+
+## 🧾 Changelog
+
+Stay updated with the latest improvements, features, and fixes via the [MIZ Changelog](https://eazymizy.com/changelog).
+
+## 🤝 About FAP Group
+
+With the motto **"Don't start from zero"**, the **FAP group** set out to build a front-end framework called **MIZ** —  
+making front-end development more **enjoyable**, **structured**, and **simple**.  
+
+Help us in the challenging journey of **simplification** 🙂
+
+## 🌐 Connect & Follow
+
+Follow us for updates, news, and demos:  
+[X](#) | [Linkedin](https://www.linkedin.com/company/miz59/‏) | [YouTube](#) | [GitHub](https://github.com/eazymizy/miz) | [Npm](https://www.npmjs.com/package/miz-59)
+
+Visit our official website: [**eazymizy.com**](https://eazymizy.com)
+
+## 📄 License
+
+MIZ is released under the **MIT License**.  
+[View license](https://eazymizy.com/docs/about/license)
