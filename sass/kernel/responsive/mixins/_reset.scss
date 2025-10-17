@@ -2,18 +2,19 @@
 
 @mixin reset-file($reset) {
     @if $reset {
-
         *, *::after, *::before {
             box-sizing: border-box;
-            margin: 0px;
+            margin: 0;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-weight: normal;
         }
 
-        ul, ol {
+        ul, ol , li{
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         button, select {
@@ -22,10 +23,6 @@
 
         input, button, select, textarea ul, li{
             font-family: inherit;
-        }
-        ol {
-            padding: 0px;
-            margin: 0px;
         }
 
         a {

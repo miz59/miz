@@ -13,7 +13,7 @@
 }
 
 @mixin detect-color-palette($keyword, $key-palette-color, $value-palette-color) {
-    @if ($keyword ==$borders) {
+    @if ($keyword == $borders) {
         $result : str-replace-color("border-#{$key-palette-color}-color", "-border", "");
 
         .#{$result} {
@@ -21,7 +21,7 @@
         }
     }
 
-    @if ($keyword ==$backgrounds) {
+    @if ($keyword == $backgrounds) {
         $result : str-replace-color("bg-#{$key-palette-color}-color", "-background", "");
 
         .#{$result} {
@@ -29,7 +29,7 @@
         }
     }
 
-    @if ($keyword ==$colors) {
+    @if ($keyword == $colors) {
         .#{$key-palette-color}-color {
             color: string.unquote("var(--#{$key-palette-color})");
         }
@@ -40,7 +40,8 @@
     @for $i from 1 through list.length($keyword) {
         $item-list: list.nth($keyword, $i);
 
-        @if (string.index(#{$key-palette-color}, $item-list)) {
+        @if (#{$key-palette-color} == $item-list) {
+            // @debug #{$key-palette-color} , $item-list , $keyword;
             @include detect-color-palette($keyword, $key-palette-color, $value-palette-color);
         }
     }

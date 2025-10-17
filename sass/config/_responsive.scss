@@ -1,6 +1,7 @@
 $break-points:(xxl:1920px , xl:1280px , lg:1024px , md:767px , sm:478px);
 // number of boxed space around should be equal with break points
 $header-space-horizontally:(81px,70px,50px,25px,20px);
+$header-space-vertically:(5rem,4.5rem,4rem,3rem,3rem);
 $boxed-space-horizontally:(81px,70px,50px,25px,20px);
 $boxed-space-vertically:(5rem,4.5rem,4rem,3rem,3rem);
 
@@ -13,16 +14,15 @@ $conf-width:(
     responsive:true
 );
 $conf-height:(
-    count:40,
+    count:50,
     responsive:true
 );
 $conf-grids:(
     count:14,
     responsive:true
 );
-
 $conf-gaps:(
-    count:20,
+    count:25,
     unit:rem,
     factor:0.5,
     responsive:true
@@ -46,7 +46,7 @@ $conf-letter-spacing:(
     responsive:true
 );
 $conf-orders:(
-    count:12,
+    count:10,
     responsive:true
 );
 $conf-display:(

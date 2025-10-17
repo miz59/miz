@@ -1,306 +1,641 @@
-const fs = require('fs');
+const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
 
-const variable = process.argv[2];
+// ===================================================
+// MODULE 1: CONFIGURATION
+// ===================================================
 
-let textFilePath = '';
-let cssFilePath = '';
-let outputFilePath = '';
-let fontFaceFilePath = '';
-let resetSassFile = '';
-
-if (variable === 'laravel') {
-    textFilePath = path.join('classes.txt');
-    cssFilePath = path.join('public', 'assets', 'css', 'miz-clean.css');
-    outputFilePath = path.join('public', 'assets', 'css', 'miz.min.css');
-    fontFaceFilePath = path.join('public', 'assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('resources', 'miz', 'sass', 'config', '_reset.scss');
-}
-else if (variable === 'react') {
-    textFilePath = path.join('classes.txt');
-    cssFilePath = path.join('src', 'assets', 'css', 'miz-clean.css');
-    outputFilePath = path.join('src', 'assets', 'css', 'miz.min.css');
-    fontFaceFilePath = path.join('src', 'assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('src', 'miz', 'sass', 'config', '_reset.scss');
-}
-else if (variable === 'vue') {
-    textFilePath = path.join('classes.txt');
-    cssFilePath = path.join('src', 'assets', 'css', 'miz-clean.css');
-    outputFilePath = path.join('src', 'assets', 'css', 'miz.min.css');
-    fontFaceFilePath = path.join('src', 'assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('src', 'miz', 'sass', 'config', '_reset.scss');
-}
-else {
-    textFilePath = path.join('classes.txt');
-    cssFilePath = path.join('assets', 'css', 'miz-clean.css');
-    outputFilePath = path.join('assets', 'css', 'miz.min.css');
-    fontFaceFilePath = path.join('assets', 'css', 'font-faces.css');
-    resetSassFile = path.join('miz', 'sass', 'config', '_reset.scss');
+async function readPackageJson() {
+    try {
+        const raw = await fs.readFile('package.json', 'utf8');
+        return JSON.parse(raw);
+    } catch {
+        return null;
+    }
 }
 
-const extensions = ['.html', '.blade.php', '.js', '.jsx', '.vue'];
+async function getMizRoot() {
+    const pkg = await readPackageJson();
+    if (!pkg) return process.cwd();
+    const watchCommand = pkg.scripts?.watch || '';
+    const match = watchCommand.match(/([\w\/.\-]+)\/miz\/[^:\s]+\.scss/);
+    return match && match[1] ? path.join(process.cwd(), match[1]) : process.cwd();
+}
 
-const classPatterns = [
+async function getPathsConfig(projectType = 'default') {
+    const mizRoot = await getMizRoot();
+    const configs = {
+        laravel: {
+            textFile: 'classes.txt',
+            cssFile: path.join('public', 'assets', 'css', 'miz-clean.css'),
+            outputFile: path.join('public', 'assets', 'css', 'miz.min.css'),
+        },
+        react: {
+            textFile: 'classes.txt',
+            cssFile: path.join('src', 'assets', 'css', 'miz-clean.css'),
+            outputFile: path.join('src', 'assets', 'css', 'miz.min.css'),
+        },
+        vue: {
+            textFile: 'classes.txt',
+            cssFile: path.join('src', 'assets', 'css', 'miz-clean.css'),
+            outputFile: path.join('src', 'assets', 'css', 'miz.min.css'),
+        },
+        default: {
+            textFile: 'classes.txt',
+            cssFile: path.join('assets', 'css', 'miz-clean.css'),
+            outputFile: path.join('assets', 'css', 'miz.min.css'),
+        },
+    };
+
+    const cfg = configs[projectType] || configs.default;
+
+    return {
+        textFilePath: path.resolve(cfg.textFile),
+        cssFilePath: path.resolve(cfg.cssFile),
+        outputFilePath: path.resolve(cfg.outputFile),
+        resetSassFile: path.join(mizRoot, 'miz', 'sass', 'config', '_reset.scss'),
+        resetCssFilePath: path.join(mizRoot, 'miz', 'sass', 'kernel', 'responsive', 'mixins', '_reset.scss'),
+    };
+}
+
+// ===================================================
+// MODULE 2: FILE UTILITIES
+// ===================================================
+
+async function readIgnoreFile() {
+    const ignorePath = path.resolve('.mizignore');
+    try {
+        const data = await fs.readFile(ignorePath, 'utf8');
+        return data.split('\n').map(l => l.trim()).filter(Boolean).map(p => path.resolve(p));
+    } catch {
+        return [];
+    }
+}
+
+function findPackageJsonDir(startDir = __dirname) {
+    let dir = path.resolve(startDir);
+    while (dir !== path.parse(dir).root) {
+        if (fsSync.existsSync(path.join(dir, 'package.json'))) return dir;
+        dir = path.dirname(dir);
+    }
+    return null;
+}
+
+async function findAllFiles(directory, ignoredPaths = [], validExt = ['.html', '.blade.php', '.js', '.jsx', '.vue']) {
+    const results = [];
+    const entries = await fs.readdir(directory, { withFileTypes: true });
+
+    for (const entry of entries) {
+        const fullPath = path.join(directory, entry.name);
+        const resolved = path.resolve(fullPath);
+
+        if (ignoredPaths.some(ip => resolved.startsWith(ip))) continue;
+
+        if (entry.isDirectory()) {
+            try {
+                const nested = await findAllFiles(fullPath, ignoredPaths, validExt);
+                results.push(...nested);
+            } catch (e) {
+                // ignore permission errors etc.
+            }
+        } else if (validExt.some(ext => fullPath.endsWith(ext))) {
+            results.push(fullPath);
+        }
+    }
+
+    return results;
+}
+
+// ===================================================
+// MODULE 3: CLASS EXTRACTION
+// ===================================================
+
+const CLASS_PATTERNS = [
     /class\s*=\s*'([^']+)'/g,
     /class\s*=\s*"([^"]+)"/g,
     /className\s*=\s*'([^']+)'/g,
     /className\s*=\s*"([^"]+)"/g,
 ];
 
-function readIgnoreFile() {
-    const ignoreFilePath = path.join('.mizignore');
-
-    if (!fs.existsSync(ignoreFilePath)) {
-        return [];
-    }
-
-    try {
-        const data = fs.readFileSync(ignoreFilePath, 'utf8');
-        return data
-            .split('\n')
-            .map(line => line.trim())
-            .filter(line => line.length > 0);
-    } catch (err) {
-        console.error('Error reading .mizignore file:', err);
-        return [];
-    }
-}
-
-function findPackageJsonDir(startDir) {
-    let dir = path.resolve(startDir);
-    while (dir !== path.parse(dir).root) {
-        if (fs.existsSync(path.join(dir, 'package.json'))) {
-            return dir;
-        }
-        dir = path.dirname(dir);
-    }
-    return null;
-}
-
-function findAllFiles(directory) {
-    let filesToProcess = [];
-    const projectRoot = findPackageJsonDir(__dirname) || process.cwd();
-    const ignoredPaths = readIgnoreFile().map(ignorePath => path.resolve(projectRoot, ignorePath));
-
-    const files = fs.readdirSync(directory);
-
-    files.forEach(file => {
-        const filePath = path.join(directory, file);
-        const resolvedPath = path.resolve(filePath);
-
-        if (ignoredPaths.some(ignoredPath => resolvedPath.startsWith(ignoredPath))) {
-            return;
+async function extractClassesFromFiles(files, projectRoot) {
+    const classMap = new Map();
+    for (const file of files) {
+        let content;
+        try {
+            content = await fs.readFile(file, 'utf8');
+        } catch {
+            continue;
         }
 
-        const stat = fs.statSync(filePath);
-        if (stat.isDirectory()) {
-            filesToProcess = filesToProcess.concat(findAllFiles(filePath));
-        } else {
-            if (extensions.some(ext => filePath.endsWith(ext))) {
-                filesToProcess.push(filePath);
+        for (const pattern of CLASS_PATTERNS) {
+            let m;
+            while ((m = pattern.exec(content)) !== null) {
+                const classes = m[1].split(/\s+/).map(c => c.trim()).filter(Boolean);
+                for (const c of classes) {
+                    const className = `.${c}`;
+                    const rel = path.relative(projectRoot, file);
+                    if (!classMap.has(className)) classMap.set(className, new Set());
+                    classMap.get(className).add(rel);
+                }
             }
         }
-    });
-
-    return filesToProcess;
-}
-
-function extractFontFacesFromCSS(cssData) {
-    const fontFaceRegex = /@font-face\s*{[^}]*}/g;
-    let match;
-    let fontFaces = [];
-
-    while ((match = fontFaceRegex.exec(cssData)) !== null) {
-        fontFaces.push(match[0]);
     }
-
-    return fontFaces.join('\n');
-}
-
-function extractClassesFromFiles(files, projectRoot) {
-    let classMap = new Map();
-    files.forEach(file => {
-        const content = fs.readFileSync(file, 'utf8');
-        classPatterns.forEach(pattern => {
-            const matches = content.match(pattern);
-            if (matches) {
-                matches.forEach(match => {
-                    match.replace(pattern, (m, cls) => {
-                        cls.split(' ').forEach(c => {
-                            const className = `.${c.trim()}`;
-                            const relPath = path.relative(projectRoot, file);
-                            if (!classMap.has(className)) {
-                                classMap.set(className, new Set());
-                            }
-                            classMap.get(className).add(relPath);
-                        });
-                    });
-                });
-            }
-        });
-    });
     return classMap;
 }
 
-function shouldAddResetCss() {
-    if (fs.existsSync(resetSassFile)) {
-        const sassData = fs.readFileSync(resetSassFile, 'utf8');
-        const resetPattern = /\$reset\s*:\s*(true|false)\s*;/;
-        const match = sassData.match(resetPattern);
-        if (match && match[1] === 'true') {
-            return true;
+async function writeClassesFile(classMap, textFilePath) {
+    const addressVar = ' (address)';
+    const lines = [];
+    for (const [cls, paths] of classMap.entries()) {
+        for (const p of paths) {
+            lines.push(`${cls}${addressVar.replace('address', p)}`);
         }
     }
-    return false;
+    await fs.writeFile(textFilePath, lines.join('\n'), 'utf8');
 }
 
-function addResetCss() {
-    const resetCss = '*{box-sizing:border-box;}body,p,h1,h2,h3,h4,h5,h6,hr{margin:0px;}h1,h2,h3,h4,h5,h6{font-weight: normal;}li{list-style: none;}button{border:none;}ul,li{padding:0px;margin:0px;}a{text-decoration: none;color:black;}';
-    const filePath = outputFilePath;
+// ===================================================
+// MODULE 4: RESET HANDLING
+// ===================================================
 
-    fs.readFile(filePath, 'utf8', (err, data) => {
+function extractResetMixinContent(scssContent) {
+    const ifIndex = scssContent.indexOf('@if $reset');
+    if (ifIndex === -1) return '';
+    const startBraceIndex = scssContent.indexOf('{', ifIndex);
+    if (startBraceIndex === -1) return '';
 
-        const combinedContent = resetCss + (data || '');
+    let open = 1;
+    let i = startBraceIndex + 1;
+    while (open > 0 && i < scssContent.length) {
+        if (scssContent[i] === '{') open++;
+        else if (scssContent[i] === '}') open--;
+        i++;
+    }
+    return scssContent.substring(startBraceIndex + 1, i - 1).trim() + '\n';
+}
 
-        fs.writeFile(filePath, combinedContent, (err) => {
-            if (err) {
-                console.error('Error writing to file:', err);
-                return;
+async function shouldAddResetCss(resetSassFile) {
+    try {
+        const sassData = await fs.readFile(resetSassFile, 'utf8');
+        const match = sassData.match(/\$reset\s*:\s*(true|false)\s*;/);
+        return !!(match && match[1] === 'true');
+    } catch {
+        return false;
+    }
+}
+
+async function getResetCssContent(resetCssFilePath) {
+    try {
+        const raw = await fs.readFile(resetCssFilePath, 'utf8');
+        return extractResetMixinContent(raw);
+    } catch {
+        return '';
+    }
+}
+
+async function prependResetCssToOutput(outputFilePath, resetContent) {
+    try {
+        const existing = await fs.readFile(outputFilePath, 'utf8').catch(() => '');
+        const combined = resetContent + existing;
+        await fs.writeFile(outputFilePath, combined, 'utf8');
+    } catch (e) {
+        // ignore write errors for now but log
+        console.error('Error prepending reset css:', e.message || e);
+    }
+}
+
+// ===================================================
+// MODULE 5: CSS PARSING HELPERS
+// ===================================================
+
+function safeSplitSelectors(selectorString) {
+    const selectors = [];
+    let current = '';
+    let openParens = 0;
+    for (let i = 0; i < selectorString.length; i++) {
+        const ch = selectorString[i];
+        if (ch === '(') {
+            openParens++;
+            current += ch;
+        } else if (ch === ')') {
+            openParens--;
+            current += ch;
+        } else if (ch === ',' && openParens === 0) {
+            selectors.push(current.trim());
+            current = '';
+        } else {
+            current += ch;
+        }
+    }
+    if (current.trim()) selectors.push(current.trim());
+    return selectors;
+}
+
+function mergeLevel(css) {
+    const ruleMap = new Map();
+    const keyframesBlocks = [];
+    let i = 0;
+
+    while (i < css.length) {
+        const start = css.indexOf('{', i);
+        if (start === -1) break;
+
+        const header = css.slice(i, start).trim();
+        let depth = 1;
+        let j = start + 1;
+
+        while (j < css.length && depth > 0) {
+            if (css[j] === '{') depth++;
+            else if (css[j] === '}') depth--;
+            j++;
+        }
+
+        const body = css.slice(start + 1, j - 1).trim();
+
+        if (header.startsWith('@keyframes')) {
+            keyframesBlocks.push(`${header} { ${body} }`);
+        } else {
+            if (!ruleMap.has(body)) ruleMap.set(body, []);
+            ruleMap.get(body).push(header);
+        }
+
+        i = j;
+    }
+
+    const combined = [];
+    for (const [body, selectors] of ruleMap.entries()) {
+        combined.push(`${selectors.join(', ')} { ${body} }`);
+    }
+
+    return [...combined, ...keyframesBlocks].join('\n');
+}
+
+function combineDuplicateRules(css) {
+    const blocks = [];
+    let i = 0;
+
+    while (i < css.length) {
+        const atIndex = css.indexOf('@', i);
+        if (atIndex === -1) {
+            blocks.push({ type: 'normal', content: css.slice(i).trim() });
+            break;
+        }
+
+        if (atIndex > i) {
+            blocks.push({ type: 'normal', content: css.slice(i, atIndex).trim() });
+        }
+
+        const braceIndex = css.indexOf('{', atIndex);
+        if (braceIndex === -1) break;
+
+        let depth = 1;
+        let j = braceIndex + 1;
+        while (j < css.length && depth > 0) {
+            if (css[j] === '{') depth++;
+            else if (css[j] === '}') depth--;
+            j++;
+        }
+
+        const header = css.slice(atIndex, braceIndex).trim();
+        const inner = css.slice(braceIndex + 1, j - 1).trim();
+
+        const type = header.startsWith('@keyframes') ? 'keyframes' : 'atrule';
+        blocks.push({ type, header, inner });
+
+        i = j;
+    }
+
+    const normalRules = [];
+    const atRules = [];
+
+    for (const block of blocks) {
+        if (block.type === 'normal') {
+            normalRules.push(block.content);
+        } else if (block.type === 'keyframes') {
+            atRules.push(`${block.header} { ${block.inner} }`);
+        } else if (block.type === 'atrule') {
+            const innerMerged = mergeLevel(block.inner); // merge فقط داخل media
+            if (innerMerged.trim()) {
+                atRules.push(`${block.header} { ${innerMerged} }`);
             }
-            console.log('Content successfully prepended to file.');
-        });
-    });
+        }
+    }
+
+    const mergedNormal = mergeLevel(normalRules.join('\n'));
+    return [...mergedNormal ? [mergedNormal] : [], ...atRules].join('\n');
 }
 
-function processCssFile() {
-    if (shouldAddResetCss()) {
-        addResetCss();
+// ===================================================
+// MODULE 6: ANIMATION / FONT MAPS
+// ===================================================
+
+function buildAnimationAndFontMaps(cssContent, classMap) {
+    const animationMap = new Map();
+    const fontMap = new Map();
+
+    const rules = cssContent.split('}').map(r => r.trim()).filter(Boolean);
+    for (const rule of rules) {
+        const braceIndex = rule.indexOf('{');
+        if (braceIndex === -1) continue;
+
+        const selectors = rule.slice(0, braceIndex).trim();
+        const body = rule.slice(braceIndex + 1).trim();
+
+        const selectorsArr = selectors.split(',').map(s => s.trim());
+        const allClasses = new Set();
+        for (const sel of selectorsArr) {
+            const matches = sel.match(/\.[a-zA-Z0-9_-]+/g);
+            if (matches) {
+                for (const m of matches) {
+                    if (classMap.has(m)) allClasses.add(m);
+                }
+            }
+        }
+
+        if (allClasses.size === 0) continue;
+
+        const animMatch = body.match(/animation-name\s*:\s*([^;]+);/) || body.match(/animation\s*:\s*([^;]+);/);
+        if (animMatch) {
+            const animNames = animMatch[1]
+                .split(',')
+                .map(a => a.trim().split(/\s+/)[0])
+                .filter(Boolean);
+
+            for (const cls of allClasses) {
+                if (!animationMap.has(cls)) animationMap.set(cls, []);
+                animationMap.get(cls).push(...animNames);
+            }
+        }
+
+        const fontMatch = body.match(/font-family\s*:\s*([^;]+);/);
+        if (fontMatch) {
+            const fonts = fontMatch[1].split(',').map(f => f.trim().replace(/['"]/g, ''));
+            for (const cls of allClasses) {
+                if (!fontMap.has(cls)) fontMap.set(cls, []);
+                fontMap.get(cls).push(...fonts);
+            }
+        }
     }
 
-    const packageJsonDir = findPackageJsonDir(__dirname);
-    if (!packageJsonDir) {
-        throw new Error('package.json not found in any parent directory.');
+    return { animationMap, fontMap };
+}
+
+function clsHasAnimation(cls, animationName, animationMap) {
+    const arr = animationMap.get(cls) || [];
+    return arr.includes(animationName);
+}
+
+// ===================================================
+// MODULE 7: AT-RULE EXTRACTION & FILTERING
+// ===================================================
+
+function filterCssByClasses(cssContent, classMap) {
+    const parts = cssContent.split('}').map(r => r.trim()).filter(Boolean);
+    const filtered = [];
+    for (const part of parts) {
+        const idx = part.indexOf('{');
+        if (idx === -1) continue;
+        const selectors = part.slice(0, idx).trim();
+        const body = part.slice(idx + 1).trim();
+        const selectorsArr = safeSplitSelectors(selectors);
+        const validSelectors = selectorsArr.filter(sel => {
+            const classMatches = sel.match(/\.[a-zA-Z0-9_-]+/g);
+            if (!classMatches) return false;
+            return classMatches.every(cls => classMap.has(cls));
+        });
+        if (validSelectors.length > 0) {
+            filtered.push(`${validSelectors.join(', ')} { ${body} }`);
+        }
     }
-    const files = findAllFiles(packageJsonDir);
-    const classMap = extractClassesFromFiles(files, packageJsonDir);
-    const addressVar = ' (address)';
-    const classesString = Array.from(classMap.entries())
-        .map(([cls, paths]) => Array.from(paths)
-            .map(address => `${cls}${addressVar.replace('address', address)}`)
-            .join('\n')
-        )
-        .join('\n');
-    fs.writeFileSync(textFilePath, classesString, 'utf8');
+    return filtered.join('\n');
+}
 
-    const cssData = fs.readFileSync(cssFilePath, 'utf8');
+function extractRootBlock(cssData) {
+    const rootRegex = /:root\s*\{[^}]*\}/g;
+    const roots = [];
+    let m;
+    while ((m = rootRegex.exec(cssData)) !== null) roots.push(m[0]);
+    return roots.join('\n');
+}
 
-    const fontFaces = extractFontFacesFromCSS(cssData);
-
-    fs.writeFileSync(fontFaceFilePath, fontFaces, 'utf8');
-    console.log("Font-face CSS file created successfully");
-
-    const mediaRegex = /@media[^{]+\{([\s\S]+?})\s*}/g;
+function extractAtBlocks(css, classMap) {
+    const regex = /@(media|supports)[^{]+\{([\s\S]*?\})\s*\}/g;
+    const atBlocks = [];
     let match;
-    let outsideMedia = cssData.split(mediaRegex).filter((_, i) => i % 2 === 0).join('');
-    let mediaQueries = [];
-    while ((match = mediaRegex.exec(cssData)) !== null) {
-        mediaQueries.push(match[0]);
+
+    while ((match = regex.exec(css)) !== null) {
+        const type = match[1];
+        const condition = match[0].match(/@(media|supports)\s*([^{]+)/)[2].trim();
+        const inner = match[2];
+        const filtered = filterCssByClasses(inner, classMap);
+        if (filtered.trim()) {
+            atBlocks.push(`@${type} ${condition} {${filtered}}`);
+        }
     }
 
-    let outputCss = [];
+    return atBlocks;
+}
 
-    outputCss.push(fontFaces);
+function extractKeyframes(cssData, classMap, animationMap) {
+    const keyframesRules = [];
+    const regex = /@keyframes\s+([\w-]+)\s*{/g;
+    let match;
+
+    while ((match = regex.exec(cssData)) !== null) {
+        const name = match[1];
+        let start = regex.lastIndex;
+        let depth = 1;
+        let i = start;
+
+        while (i < cssData.length && depth > 0) {
+            if (cssData[i] === '{') depth++;
+            else if (cssData[i] === '}') depth--;
+            i++;
+        }
+
+        const block = cssData.slice(match.index, i);
+        const isUsed = Array.from(classMap.keys()).some(cls =>
+            clsHasAnimation(cls, name, animationMap)
+        );
+
+        if (isUsed) keyframesRules.push(block);
+    }
+
+    return keyframesRules;
+}
+
+function extractFontFace(cssData, classMap, fontMap) {
+    const fontFaceRules = [];
+    const regex = /@font-face\s*{([\s\S]*?)}/g;
+    let match;
+
+    while ((match = regex.exec(cssData)) !== null) {
+        const block = match[0];
+        const body = match[1];
+
+        const fontFamilyMatch = /font-family\s*:\s*['"]?([^,'";}]+)['"]?/i.exec(body);
+        if (!fontFamilyMatch) continue;
+
+        const fontName = fontFamilyMatch[1].trim();
+
+        const isUsed = Array.from(classMap.keys()).some(cls => {
+            const fonts = fontMap.get(cls) || [];
+            return fonts.some(f => {
+                const cleaned = f.replace(/^var\(--font-/, '').replace(/\)$/, '');
+                return cleaned === fontName;
+            });
+        });
+
+        if (isUsed) fontFaceRules.push(block);
+    }
+
+    return fontFaceRules;
+}
+
+function extractAtRules(cssData, classMap, animationMap, fontMap) {
+    const charsetImports = cssData.match(/@(charset|import)[^;]+;/g) || [];
+    const supportsMediaRules = extractAtBlocks(cssData, classMap);
+    const keyframesRules = extractKeyframes(cssData, classMap, animationMap);
+    const fontFaceRules = extractFontFace(cssData, classMap, fontMap);
+
+    return [
+        ...charsetImports,
+        ...supportsMediaRules,
+        ...keyframesRules,
+        ...fontFaceRules
+    ].join('\n\n');
+}
+
+// ===================================================
+// MODULE 8: MAIN PROCESS
+// ===================================================
+
+async function processCssFile(projectType = 'default') {
+    const paths = await getPathsConfig(projectType);
+
+    const packageRoot = findPackageJsonDir(__dirname) || process.cwd();
+    const ignoredFromFile = await readIgnoreFile();
+    const ignoredResolved = ignoredFromFile.map(ip => path.resolve(packageRoot, path.relative(process.cwd(), ip)));
+
+    const files = await findAllFiles(packageRoot, ignoredResolved);
+
+    const classMap = await extractClassesFromFiles(files, packageRoot);
+    await writeClassesFile(classMap, paths.textFilePath);
+
+    let cssData = '';
+    try {
+        cssData = await fs.readFile(paths.cssFilePath, 'utf8');
+    } catch (e) {
+        console.error('Error reading css file:', paths.cssFilePath);
+        throw e;
+    }
+
+    const { animationMap, fontMap } = buildAnimationAndFontMaps(cssData, classMap);
 
     const processRules = (cssContent) => {
-        let validRules = [];
-        const rules = cssContent.trim().split('}');
+    const results = [];
 
-        rules.forEach(rule => {
-            rule = rule.trim();
-            if (!rule) return;
+    let i = 0;
+    while (i < cssContent.length) {
+        const braceIndex = cssContent.indexOf('{', i);
+        if (braceIndex === -1) break;
 
-            const atIndex = rule.indexOf('{');
-            const selectors = rule.substring(0, atIndex).trim();
-            const properties = rule.substring(atIndex + 1).trim();
-            const selectorsList = selectors.split(',').map(sel => sel.trim());
+        const header = cssContent.slice(i, braceIndex).trim();
+        let depth = 1;
+        let j = braceIndex + 1;
 
-            const validSelectors = selectorsList.filter(selector => {
-                return Array.from(classMap.keys()).includes(selector);
-            });
-
-            if (validSelectors.length > 0) {
-                validSelectors.forEach(selector => {
-                    validRules.push(`${selector} { ${properties} }`);
-                });
-            }
-        });
-
-        return validRules;
-    };
-
-    outputCss.push(...processRules(outsideMedia));
-    mediaQueries.forEach(query => {
-        const atIndex = query.indexOf('{');
-        const mediaCondition = query.substring(0, atIndex).trim();
-        const insideMedia = query.substring(atIndex + 1, query.length - 1);
-        const validRules = processRules(insideMedia);
-
-        if (validRules.length > 0) {
-            outputCss.push(`${mediaCondition} {`);
-            outputCss.push(...validRules);
-            outputCss.push('}');
+        while (j < cssContent.length && depth > 0) {
+            if (cssContent[j] === '{') depth++;
+            else if (cssContent[j] === '}') depth--;
+            j++;
         }
-    });
 
-    const finalCss = outputCss.join('\n');
+        const body = cssContent.slice(braceIndex + 1, j - 1).trim();
 
-    let desiredClasses = new Set();
+        const isAtRule = header.startsWith('@media') || header.startsWith('@supports');
 
-    try {
-        const data = fs.readFileSync(textFilePath, 'utf8');
-        const lines = data.split('\n');
-        lines.forEach(line => {
-            const className = line.trim();
-            if (className) {
-                desiredClasses.add(className);
+        if (!isAtRule) {
+            const selectorsList = safeSplitSelectors(header);
+            for (const sel of selectorsList) {
+                const classMatches = sel.match(/\.[a-zA-Z0-9_-]+/g);
+                if (!classMatches) continue;
+
+                if (classMatches.every(cls => classMap.has(cls))) {
+                    results.push(`${sel} { ${body} }`);
+                }
             }
-        });
-    } catch (err) {
-        console.error('Error reading classes file:', err);
+        }
+
+        i = j;
     }
 
-    fs.writeFileSync(outputFilePath, finalCss, 'utf8');
-    console.log("miz-min is ready");
-
-    fs.unlink(textFilePath, (err) => {
-        if (err) {
-            console.error('Error deleting text file:', err);
-        }
-    });
-    fs.unlink(fontFaceFilePath, (err) => {
-        if (err) {
-            console.error('Error deleting text file:', err);
-        }
-
-    });
-    fs.unlink(cssFilePath, (err) => {
-        if (err) {
-            console.error('Error deleting text file:', err);
-        }
-    });
-
-    minifyCss();
-}
-
-const minifyCss = () => {
-    let cssContent = fs.readFileSync(outputFilePath, 'utf8');
-
-    cssContent = cssContent.replace(/\s+/g, ' ');
-    cssContent = cssContent.replace(/\/\*[\s\S]*?\*\//g, '');
-    cssContent = cssContent.replace(/\s*([{}:;,])\s*/g, '$1');
-
-    fs.writeFileSync(outputFilePath, cssContent, 'utf8');
-    console.log('CSS file minified successfully.');
+    return results;
 };
 
-processCssFile();
+
+    const atRules = extractAtRules(cssData, classMap, animationMap, fontMap);
+    const rootBlock = extractRootBlock(cssData);
+    const normalRules = processRules(cssData);
+    const outputParts = [];
+    if (atRules.trim()) outputParts.push(atRules);
+    if (rootBlock.trim()) outputParts.push(rootBlock);
+    outputParts.push(...normalRules);
+
+    let finalCss = combineDuplicateRules(outputParts.join('\n\n'), true);
+
+    await fs.writeFile(paths.outputFilePath, finalCss, 'utf8');
+
+    try {
+        if (await shouldAddResetCss(paths.resetSassFile)) {
+            const resetContent = await getResetCssContent(paths.resetCssFilePath);
+            if (resetContent && resetContent.trim()) {
+                await prependResetCssToOutput(paths.outputFilePath, resetContent);
+            }
+        }
+    } catch (e) {
+        console.error('Reset handling error:', e.message || e);
+    }
+
+    try {
+        await fs.unlink(paths.cssFilePath).catch(() => { });
+        await fs.unlink(paths.textFilePath).catch(() => { });
+    } catch { }
+
+    console.log('✅ miz-min is ready:', paths.outputFilePath);
+}
+
+// ===================================================
+// MODULE 9: MINIFY UTILITY (optional)
+// ===================================================
+
+async function minifyCss(outputFilePath) {
+    try {
+        let css = await fs.readFile(outputFilePath, 'utf8');
+        css = css.replace(/\s+/g, ' ');
+        css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+        css = css.replace(/\s*([{}:;,])\s*/g, '$1');
+        await fs.writeFile(outputFilePath, css, 'utf8');
+        console.log('CSS file minified successfully.');
+    } catch (e) {
+        console.error('Minify error:', e.message || e);
+    }
+}
+
+// ===================================================
+// CLI EXECUTION
+// ===================================================
+
+if (require.main === module) {
+    (async () => {
+        const projectType = process.argv[2] || 'default';
+        try {
+            await processCssFile(projectType);
+            const paths = await getPathsConfig(projectType);
+            await minifyCss(paths.outputFilePath);
+        } catch (e) {
+            console.error('Error:', e.message || e);
+            process.exit(1);
+        }
+    })();
+}
