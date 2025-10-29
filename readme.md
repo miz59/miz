@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://eazymizy.com"><img src="https://eazymizy.com/assets/media/images/video-cover-teaser.png" alt="MIZ Banner" width="100%"></a>
+  <a href="https://eazymizy.com"><img src="https://eazymizy.com/assets/media/images/miz-framework-banner.png" alt="MIZ Banner" width="100%"></a>
 </p>
 
 <h1 align="center" style="color:#89001A;"><a href="https://eazymizy.com">MIZ CSS Framework</a></h1>
