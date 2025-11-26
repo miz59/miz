@@ -10,9 +10,7 @@ $border-radius:(
 );
 
 $conf-opacity:(
-    max:10,
-    min:0,
-    step:1
+    factor:0.1
 );
 
 $conf-z-index:(
