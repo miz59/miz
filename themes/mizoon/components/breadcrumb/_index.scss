@@ -1,8 +1,8 @@
 @use "../../../../sass/kernel" as *;
 
-$breadcrumb-items-color: "on-secondary";
-$breadcrumb-items-active-color:"primary";
-$breadcrumb-items-after-margin-inline-end: 0.5rem;
+$breadcrumb-items-custom-classes: ".on-secondary-color";
+$breadcrumb-items-active-custom-classes:".primary-color";
+$breadcrumb-items-after-custom-classes: ".mie-1";
 
 .breadcrumb{
     @extend .w-fit-content;
@@ -11,20 +11,17 @@ $breadcrumb-items-after-margin-inline-end: 0.5rem;
         @extend .d-flex, .flex-row, .flex-wrap, .justify-content-center, .align-items-center;
     }
 
-    &[style*="--content"],&[style*="--content-image"]{
+    &[data-breadcrumb-content-image], &[data-breadcrumb-content]{
         & li, & .breadcrumb-item{
-            color:get-color($breadcrumb-items-color);
-            @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center;
+            @extend .d-flex, .flex-row, .gap-1, .justify-content-center, .align-items-center, #{$breadcrumb-items-custom-classes};
             
             & a{
-                // @extend #{$breadcrumb-items};
-                color:get-color($breadcrumb-items-color);
+                @extend #{$breadcrumb-items-custom-classes};
             }
 
             &::after{
                 content: var(--content);
-                margin-inline-end: $breadcrumb-items-after-margin-inline-end;
-                @extend .d-inline-block;
+                @extend .d-inline-block, #{$breadcrumb-items-after-custom-classes};
             }
 
             &:last-child::after{
@@ -32,26 +29,28 @@ $breadcrumb-items-after-margin-inline-end: 0.5rem;
             }
 
             &.active{
-                color:get-color($breadcrumb-items-active-color) !important;
+                @extend #{$breadcrumb-items-active-custom-classes};
 
                 & a{
-                    color:get-color($breadcrumb-items-active-color) !important;
+                    @extend #{$breadcrumb-items-active-custom-classes};
                 }
             }
         }
     }
-    &[style*="--content-image"]{
-        & li::after{
-            content: '';
-            width: var(--content-image-size);
-            background-image: var(--content-image);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            @extend .aspect-ratio-1x1;
-        }
-        & li:last-child::after{
-            content: none;
+    &[data-breadcrumb-content-image]{
+        & li, & .breadcrumb-item{
+            &::after{
+                content: '';
+                width: var(--content-image-size);
+                background-image: var(--content-image);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                @extend .aspect-ratio-1x1;
+            }
+            &:last-child::after{
+                content: none;
+            }
         }
     }
 }

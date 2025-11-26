@@ -1,31 +1,32 @@
 class Dropdown {
-    constructor(element) {
-        this.dropdown = element;
-        this.box = this.dropdown.querySelector('.dropdown-box');
-        this.menu = this.dropdown.querySelector('.dropdown-menu');
-        this.submenus = this.dropdown.querySelectorAll('.dropdown-submenu');
-        this.isHoverEnabled = this.dropdown.classList.contains('dropdown-hover') || 
-        this.menu.classList.contains('dropdown-hover');
-        
+    constructor() {
         this.init();
     }
 
     init() {
-        // Add click event to button only if hover is not enabled
-        if (!this.isHoverEnabled) {
-            this.box.addEventListener('click', (e) => {
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            this.setupDropdown(dropdown);
+        });
+    }
+
+    setupDropdown(dropdown) {
+        const box = dropdown.querySelector('.dropdown-box');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        const submenus = dropdown.querySelectorAll('.dropdown-submenu');
+        const isHoverEnabled = dropdown.classList.contains('dropdown-hover') || 
+            (menu && menu.classList.contains('dropdown-hover'));
+
+        if (!isHoverEnabled) {
+            box.addEventListener('click', (e) => {
                 e.stopPropagation();
-                this.toggle();
+                this.toggle(dropdown);
             });
         }
 
-        // Handle submenu hover
-        this.submenus.forEach(submenu => {
+        submenus.forEach(submenu => {
             const toggle = submenu.querySelector('.dropdown-submenu-toggle');
-            const submenuList = submenu.querySelector('.dropdown-menu');
 
-            // Handle click on submenu toggle only if hover is not enabled
-            if (!this.isHoverEnabled) {
+            if (!isHoverEnabled && toggle) {
                 toggle.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -33,65 +34,53 @@ class Dropdown {
                 });
             }
 
-            // Handle hover on submenu
             submenu.addEventListener('mouseenter', () => {
-                if (window.innerWidth > 768) { // Only on desktop
-                    if (this.isHoverEnabled) {
-                        this.openSubmenu(submenu);
-                    }
+                if (window.innerWidth > 768 && isHoverEnabled) {
+                    this.openSubmenu(submenu);
                 }
             });
 
             submenu.addEventListener('mouseleave', () => {
-                if (window.innerWidth > 768) { // Only on desktop
-                    if (this.isHoverEnabled) {
-                        this.closeSubmenu(submenu);
-                    }
+                if (window.innerWidth > 768 && isHoverEnabled) {
+                    this.closeSubmenu(submenu);
                 }
             });
         });
 
-        // Close dropdown when clicking outside (only if hover is not enabled)
-        if (!this.isHoverEnabled) {
+        if (!isHoverEnabled) {
             document.addEventListener('click', (e) => {
-                if (!this.dropdown.contains(e.target)) {
-                    this.close();
+                if (!dropdown.contains(e.target)) {
+                    this.close(dropdown);
                 }
             });
 
-            // Handle escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    this.close();
+                    this.close(dropdown);
                 }
             });
         }
     }
 
-    toggle() {
-        if (this.dropdown.classList.contains('active')) {
-            this.close();
+    toggle(dropdown) {
+        if (dropdown.classList.contains('active')) {
+            this.close(dropdown);
         } else {
-            this.open();
+            this.open(dropdown);
         }
     }
 
-    open() {
-        // Close all other dropdowns first
-        document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-            if (dropdown !== this.dropdown) {
-                dropdown.classList.remove('active');
-            }
+    open(dropdown) {
+        document.querySelectorAll('.dropdown.active').forEach(d => {
+            if (d !== dropdown) d.classList.remove('active');
         });
-
-        this.dropdown.classList.add('active');
+        dropdown.classList.add('active');
     }
 
-    close() {
-        this.dropdown.classList.remove('active');
-        // Close all submenus
-        this.submenus.forEach(submenu => {
-            this.closeSubmenu(submenu);
+    close(dropdown) {
+        dropdown.classList.remove('active');
+        dropdown.querySelectorAll('.dropdown-submenu').forEach(sub => {
+            this.closeSubmenu(sub);
         });
     }
 
@@ -104,29 +93,18 @@ class Dropdown {
     }
 
     openSubmenu(submenu) {
-        // Close other submenus at the same level
         const siblings = Array.from(submenu.parentElement.children)
             .filter(child => child !== submenu && child.classList.contains('dropdown-submenu'));
-        
-        siblings.forEach(sibling => {
-            this.closeSubmenu(sibling);
-        });
-
+        siblings.forEach(sib => this.closeSubmenu(sib));
         submenu.classList.add('active');
     }
 
     closeSubmenu(submenu) {
         submenu.classList.remove('active');
-        // Close all child submenus
         submenu.querySelectorAll('.dropdown-submenu').forEach(child => {
             this.closeSubmenu(child);
         });
     }
 }
 
-// Initialize all dropdowns when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        new Dropdown(dropdown);
-    });
-});
+new Dropdown();

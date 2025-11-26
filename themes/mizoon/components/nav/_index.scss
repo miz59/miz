@@ -2,7 +2,8 @@
 @use "../../../../sass/kernel" as *;
 
 $nav-transition:all 150ms linear;
-$nav-item-active:".bg-primary-color, .on-primary-color";
+$nav-item-active-custom-classes:".bg-primary-color, .on-primary-color";
+$nav-item-disabled-custom-classes:".bg-primary-color, .on-primary-color";
 $nav-item-custom-classes:".p-1, .radius-all-small";
 $nav-item-child-custom-classes:".cursor-pointer, .text-color";
 $nav-item-child-active-custom-classes:".on-primary-color";
@@ -11,20 +12,21 @@ $nav-item-child-active-custom-classes:".on-primary-color";
     @extend .w-100, .d-flex, .flex-row, .gap-1;
 
     & .nav-item{
-        @extend #{$nav-item-custom-classes};
         transition: $nav-transition;
+        @extend #{$nav-item-custom-classes};
+
         & > *{
             @extend #{$nav-item-child-custom-classes};
         }
-
+        
         &:disabled , &:disabled *{
             user-select:none;
-            cursor: default;
-            color:get-color(disabled-regular);
+            cursor: not-allowed;
+            @extend #{$nav-item-disabled-custom-classes};
         }
 
         &.active{
-            @extend #{$nav-item-active};
+            @extend #{$nav-item-active-custom-classes};
 
             & > *{
                 @extend #{$nav-item-child-active-custom-classes};

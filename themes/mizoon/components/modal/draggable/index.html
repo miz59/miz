@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/miz.min.css">
+    <link rel="stylesheet" href="/assets/icons/fontawesome/css/all.min.css">
+    <title>modal</title>
+</head>
+
+<body class="font-primary d-flex justify-content-center align-items-center w-100 h-100vh" style="background-color: black;">
+    <button class="modal-toggle btn bg-secondary-color on-secondary-color py-1 px-2" data-modal-id="draggableModal">open</button>
+    <dialog id="draggableModal" class="modal-container modal-draggable modal-bounds">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="modal-close text-color fa-solid fa-close w-fit-content"></i>
+            </div>
+            <div class="modal-body">
+                <p class="txt-high-title secondary-color">Modal Title</p>
+                <p class="txt-normal text-color ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar</p>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-outline-danger modal-close">close</button>
+                    <button class="btn btn-secondary">link</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>Modal Footer</p>
+            </div>
+        </div>
+    </dialog>
+    <script src="/assets/js/mizchin.min.js"></script>
+</body>
+
+</html>

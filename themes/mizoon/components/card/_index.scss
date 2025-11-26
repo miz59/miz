@@ -1,16 +1,44 @@
 @use "../../../../sass/kernel" as *;
 @use "../../../../sass/config/_typography" as *;
 @use "../../config" as *;
+@use "sass:string";
 
-$card-custom-classes: ".bg-primary-color";
-$card-header-custom-classes: ".px-2, .py-2";
-$card-body-custom-classes: ".d-flex, .flex-column, .gap-1, .p-2";
-$card-footer-custom-classes: ".pt-2";
+$card-custom-classes: ".bg-card-color, .radius-all-normal, .p-2, .w-fit-content";
+$card-header-custom-classes: ".d-flex, .gap-1, .pb-2";
+$card-body-custom-classes: ".d-flex, .gap-2, .py-2";
+$card-footer-custom-classes: ".d-flex, .gap-2, .pt-2";
 $card-image-space-custom-classes: ".px-2";
-$card-scrollbar-custom-classes: ".p-2";
+$card-scrollbar-custom-classes: ".p-2"; 
+$card-divider-custom-classes: ".border-divider-color, .bw-1, .bb-style-solid";
+$enable-card-full-divider : true;
+$card-content-space-divider: ".px-2";
+$card-blurred-filter: "blur(15px) saturate(150%)"; 
+$card-blurred-item: ".px-2, .py-1, .m-1, .radius-all-normal, .bw-1, .border-style-solid";
+$card-blurred-item-border-color: color-mix(in srgb, get-color(border) 30% , transparent);
+
+@if ($enable-card-full-divider){
+    .card.divider{
+        @extend .px-0;
+
+        .card-header, .card-body{
+            @extend #{$card-divider-custom-classes}, #{$card-content-space-divider};
+        }
+        .card-footer{
+            @extend .bb-style-none, #{$card-divider-custom-classes}, #{$card-content-space-divider};
+        }
+    }
+}
+.card.divider{
+    .card-header, .card-body{
+        @extend #{$card-divider-custom-classes};
+    }
+    .card-footer{
+        @extend .bb-style-none, #{$card-divider-custom-classes};
+    }
+}
 
 .card{
-    @extend .d-flex, .flex-column, .overflow-hidden, .h-fit-content, #{$card-custom-classes};
+    @extend .d-flex, .flex-column, .overflow-hidden, .h-fit-content, .position-relative, #{$card-custom-classes};
 
     .card-header{
         @extend #{$card-header-custom-classes};
@@ -19,19 +47,36 @@ $card-scrollbar-custom-classes: ".p-2";
         @extend #{$card-footer-custom-classes};
     }
     .card-body{
-        @extend .d-flex, .flex-column, #{$card-body-custom-classes};
+        @extend #{$card-body-custom-classes};    
     }
     &:has(.card-image-space){
         @extend #{$card-image-space-custom-classes};
     }
     &.card-scrollbar{
         @extend #{$card-scrollbar-custom-classes};
-    
+
         & .card-body{
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-            @extend .overflow-y-scroll;
+            @extend .overflow-y-scroll, .py-0;
         }
+    }
+
+    &.covered-image{
+        @extend .p-0;
+
+        .card-header, .card-footer{
+            @extend .position-absolute;
+        }
+    } 
+    & .blurred {
+        backdrop-filter: string.unquote($card-blurred-filter);
+        border-color: $card-blurred-item-border-color;
+        @extend .d-flex, .align-items-center, .w-fit-content, .flex-wrap, .position-absolute, #{$card-blurred-item};
+    }
+    &:has(.card-body){
+        @extend .justify-content-center;
+    }
+    &:has(.card-footer){
+        @extend .justify-content-end;
     }
 }
 

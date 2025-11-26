@@ -8,7 +8,7 @@ $conf-gaps:map.merge($conf-gaps ,(
     responsive:true
 ));
 $conf-paddings:map.merge($conf-paddings ,(
-    count:4,
+    count:10,
     unit:rem,
     factor:0.5,
     responsive:false

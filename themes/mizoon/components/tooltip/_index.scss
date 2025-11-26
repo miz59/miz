@@ -1,7 +1,8 @@
+@use "../../../../sass/config/_dims" as *;
 @use "../../../../sass/kernel/" as *;
+@use 'sass:map';
 
-$tooltip-custom-classes:".px-2, .py-1, .on-primary-color, .radius-all-small";
-$tooltip-bg-color:"primary";
+$tooltip-custom-classes:".px-2, .py-1, .on-primary-color, .radius-all-small, .bg-primary-color";
 $tooltip-triangle-color:"primary";
 $tooltip-transition:0.2s linear;
 
@@ -59,7 +60,6 @@ $tooltip-transition:0.2s linear;
         }
     }
     span{
-        background-color: get-color($tooltip-bg-color);
         border-color: get-color($tooltip-triangle-color);
         transition: $tooltip-transition;
         white-space: nowrap;
@@ -78,6 +78,6 @@ $tooltip-transition:0.2s linear;
         }
     }
     &:hover span{
-        opacity: 1;
+        @extend .opacity-#{calc(1 / map.get($conf-opacity , factor))}
     }
 }

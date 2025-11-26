@@ -79,6 +79,4 @@ class Offcanvas {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    window.offcanvas = new Offcanvas();
-});
+new Offcanvas();

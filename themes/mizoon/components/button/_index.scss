@@ -1,8 +1,10 @@
+@use "../../../../sass/kernel/responsive/functions/_responsive" as *;
 @use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
 @use "../../config" as *;
 @use "sass:list";
 @use "sass:map";
+@use "sass:string";
 
 $btn-transition: 0.2s linear;
 $btn-outline-transition: 0.2s linear;
@@ -13,99 +15,105 @@ $btn-outline-custom-classes:".border-style-solid, .bw-1, .py-1, .px-2";
 
 $btn:(
     primary:(
-        background:"primary", 
-        color:"on-primary", 
-        background-hover:"primary-dark", 
-        color-hover:"on-primary"
+        background:get-color(primary), 
+        color:get-color(on-primary), 
+        background-hover:get-color(primary-dark), 
+        color-hover:get-color(on-primary)
     ),
     secondary:(
-        background:"secondary", 
-        color:"on-secondary", 
-        background-hover:"secondary-dark", 
-        color-hover:"on-secondary"
+        background:get-color(secondary), 
+        color:get-color(on-secondary), 
+        background-hover:get-color(secondary-dark), 
+        color-hover:get-color(on-secondary)
     ),
     success:(
-        background:"success-regular", 
-        color:"button-text", 
-        background-hover:"success-dark", 
-        color-hover:"button-text"
+        background:get-color(success-regular), 
+        color:get-color(white), 
+        background-hover:get-color(success-dark), 
+        color-hover:get-color(white)
     ),
     danger:(
-        background:"danger-regular", 
-        color:"button-text", 
-        background-hover:"danger-dark", 
-        color-hover:"button-text"
+        background:get-color(danger-regular), 
+        color:get-color(white), 
+        background-hover:get-color(danger-dark), 
+        color-hover:get-color(white)
     ),
     warning:(
-        background:"warning-regular", 
-        color:"button-text", 
-        background-hover:"warning-dark", 
-        color-hover:"button-text"
+        background:get-color(warning-regular), 
+        color:get-color(white), 
+        background-hover:get-color(warning-dark), 
+        color-hover:get-color(white)
     ),
     info:(
-        background:"information-regular", 
-        color:"button-text", 
-        background-hover:"information-dark", 
-        color-hover:"button-text"
+        background:get-color(information-regular), 
+        color:get-color(white), 
+        background-hover:get-color(information-dark), 
+        color-hover:get-color(white)
     ),
     link:(
-        background:"transparent", 
-        color:"information-light", 
-        background-hover:"transparent", 
-        color-hover:"information-dark"
+        background:get-color(transparent), 
+        color:get-color(information-light), 
+        background-hover:get-color(transparent), 
+        color-hover:get-color(information-dark)
+    ),
+    blur:(
+        background:color-mix(in srgb, var(--card) 40%, transparent), 
+        color:color-mix(in srgb , var(--secondary) 60% , transparent), 
+        background-hover:get-color(transparent), 
+        color-hover:get-color(secondary)
     )
 );
 
 $btn-outline:(
     primary:(
-        border:"primary", 
-        color:"primary",
-        border-hover:"primary",
-        color-hover:"on-primary",
-        background-hover:"primary", 
+        border:get-color(primary), 
+        color:get-color(primary),
+        border-hover:get-color(primary),
+        color-hover:get-color(on-primary),
+        background-hover:get-color(primary), 
     ),
     secondary:(
-        border:"secondary", 
-        color:"secondary", 
-        border-hover:"secondary",
-        color-hover:"on-secondary",
-        background-hover:"secondary", 
+        border:get-color(secondary), 
+        color:get-color(secondary), 
+        border-hover:get-color(secondary),
+        color-hover:get-color(on-secondary),
+        background-hover:get-color(secondary), 
     ),
     success:(
-        border:"success-regular", 
-        color:"success-regular", 
-        border-hover:"success-regular",
-        color-hover:"button-text",
-        background-hover:"success-regular", 
+        border:get-color(success-regular), 
+        color:get-color(success-regular), 
+        border-hover:get-color(success-regular),
+        color-hover:get-color(white),
+        background-hover:get-color(success-regular), 
     ),
     danger:(
-        border:"danger-regular", 
-        color:"danger-regular", 
-        border-hover:"danger-regular",
-        color-hover:"button-text",
-        background-hover:"danger-regular", 
+        border:get-color(danger-regular), 
+        color:get-color(danger-regular), 
+        border-hover:get-color(danger-regular),
+        color-hover:get-color(white),
+        background-hover:get-color(danger-regular), 
     ),
     warning:(
-        border:"warning-regular", 
-        color:"warning-regular", 
-        border-hover:"warning-regular",
-        color-hover:"button-text",
-        background-hover:"warning-regular", 
+        border:get-color(warning-regular), 
+        color:get-color(warning-regular), 
+        border-hover:get-color(warning-regular),
+        color-hover:get-color(white),
+        background-hover:get-color(warning-regular), 
     ),
     info:(
-        border:"information-regular", 
-        color:"information-regular", 
-        border-hover:"information-regular",
-        color-hover:"button-text",
-        background-hover:"information-regular", 
+        border:get-color(information-regular), 
+        color:get-color(information-regular), 
+        border-hover:get-color(information-regular),
+        color-hover:get-color(white),
+        background-hover:get-color(information-regular), 
     ),
     link:(
-        border:"transparent", 
-        color:"information-light", 
-        border-hover:"transparent", 
-        color-hover:"information-light",
-        background-hover:"transparent", 
-    )
+        border:get-color(transparent), 
+        color:get-color(information-light), 
+        border-hover:get-color(transparent), 
+        color-hover:get-color(information-light),
+        background-hover:get-color(transparent), 
+    ),
 );
 
 .btn{
@@ -132,14 +140,14 @@ $btn-outline:(
     $btn-color-hover:map.get(list.nth($btn-list-item , 2) , color-hover);
 
     .btn-#{$btn-class}{
-        color: get-color($btn-color);
-        background-color: get-color($btn-bg-color);
+        color: $btn-color;
+        background-color: $btn-bg-color;
         transition: $btn-transition;
         @extend #{$btn-custom-classes};
     }
     .btn-#{$btn-class}:hover{
-        background-color: get-color($btn-bg-color-hover);
-        color: get-color($btn-color-hover);
+        background-color: $btn-bg-color-hover;
+        color: $btn-color-hover;
     }
 }
 
@@ -155,27 +163,15 @@ $btn-outline:(
     $btn-outline-border-hover:map.get(list.nth($btn-outline-list-item , 2) , border-hover);
 
     .btn-outline-#{$btn-outline-class}{
-        color: get-color($btn-outline-color);
-        border-color: get-color($btn-outline-border);
+        color: $btn-outline-color;
+        border-color: $btn-outline-border;
         background-color:transparent;
         transition: $btn-outline-transition;
         @extend #{$btn-outline-custom-classes};
     }
     .btn-outline-#{$btn-outline-class}:hover{
-        background-color: get-color($btn-outline-bg-color-hover);
-        color: get-color($btn-outline-color-hover);
-        border-color: get-color($btn-outline-border-hover);
+        background-color: $btn-outline-bg-color-hover;
+        color: $btn-outline-color-hover;
+        border-color: $btn-outline-border-hover;
     }
-}
-
-.btn-round{
-    @extend .radius-all-full;
-}
-
-.btn-sm{
-    font-size: 10px;
-}
-
-.btn-lg{
-    font-size: 20px;
 }

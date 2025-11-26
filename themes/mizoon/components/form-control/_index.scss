@@ -3,45 +3,21 @@
 @use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
 
-$form-field-custom-classes:"";
-$form-control-bg-color:"fields";
-$form-control-color:"text-fields";
-$form-control-custom-classes:".p-1, .bw-1, .border-color, .border-style-solid";
-$form-label-bg-color:"transparent";
-$form-label-color:"title-text-fields";
-$form-text-color:"text";
-$form-text-custom-classes:".#{$font-prefix}-normal";
-$form-title-color:"title-text";
-$form-title-custom-classes:".#{$font-prefix}-title";
-$from-control-disabled-bg-color:"fields";
-$from-control-disabled-color:"text-fields";
-$from-control-disabled-placeholder-opacity: 0.7;
-$form-control-read-only-bg-color:"fields";
-$form-control-read-only-color:"text-fields";
-$form-control-colorpicker-bg-color:"fields";
+$form-field-custom-classes:".position-relative";
+$form-control-custom-classes:".text-fields-color, .bg-fields-color, .p-2, .bw-1, .border-color, .border-style-solid, .radius-all-normal, .#{$font-prefix}-subtitle";
+$from-control-color-custom-classes:".p-1, .aspect-ratio-1x1, .h-10";
+$from-control-disabled-custom-classes: ".opacity-7";
 
 .form-field{
     @extend .d-flex, .gap-1, #{$form-field-custom-classes};
 
 
-    &[class*="flex-row"]{
+    &[class*="flex-row"]{ 
         @extend .justify-content-start , .align-items-center;
     }
-    .form-label{
-        color: get-color($form-label-color);
-        background-color: get-color($form-label-bg-color);
-    }
-    .form-control{
-        color:get-color($form-control-color);
-        background-color:get-color($form-control-bg-color);
-        @extend #{$form-control-custom-classes};
 
-        @if string.index($form-control-custom-classes , "bw-") == null {
-            border:none;
-        }
-        @if string.index($form-control-custom-classes , "radius-") == null {
-            @extend .radius-all-small;
-        }
+    .form-control{
+        @extend #{$form-control-custom-classes};
 
         &:focus {
             outline: none;
@@ -55,31 +31,14 @@ $form-control-colorpicker-bg-color:"fields";
     textarea.form-control{
         resize: vertical;
     }
-    .form-text{
-        color: get-color($form-text-color);
-        @extend #{$form-text-custom-classes};
-    }
-    .form-title{
-        color: get-color($form-title-color);
-        @extend #{$form-title-custom-classes};
-    }
     .form-control:disabled{
-        background-color: get-color($from-control-disabled-bg-color);
-        color: get-color($from-control-disabled-color);
-
-        &::placeholder{
-            opacity: $from-control-disabled-placeholder-opacity;
-        }
-    }
-    .form-control:read-only{
-        background-color: get-color($form-control-read-only-bg-color);
-        color: get-color($form-control-read-only-color);
+        @extend #{$from-control-disabled-custom-classes};
 
         &::placeholder{
             opacity: 1;
         }
     }
     .form-control[type="color"]{
-        background-color:get-color($form-control-colorpicker-bg-color);
+        @extend #{$from-control-color-custom-classes};
     }
 }

@@ -1,21 +1,78 @@
+@use "../../../../sass/config/_responsive" as *;
+@use "../../../../sass/config/_dims" as *;
 @use "../../../../sass/kernel" as *;
+@use 'sass:map';
+@use 'sass:string';
 
-$select-custom-classes:".p-1, .bg-primary-color, .on-primary-color, .radius-all-small";
-$select-disabled-custom-classes:".bg-disabled-regular-color, .text-color";
-$select-option-custom-classes:".bg-secondary-color, .on-secondary-color";
-$select-option-selected-custom-classes:".bg-primary-color, .on-primary-color";
+$select-custom-classes: ".px-1, .py-2, .bg-card-color, .text-color, .radius-all-medium, .w-20, .h-2";
+$select-transition-duration: .3s;
+$select-min-height: 65px;
 
-.form-select{
-    @extend #{$select-custom-classes};
+$select-list-max-height: 250px;
+$select-list-custom-classes: ".w-100, .radius-all-small, .p-0, .z-index-10";
+$select-list-space: string.unquote("#{map.get($conf-margins, factor) * 3}#{map.get($conf-margins, unit)}");
 
-    &:disabled{
-        @extend #{$select-disabled-custom-classes};
+$select-label-custom-classes: ".txt-normal, .pl-2";
+$select-label-active-custom-classes: ".txt-subtitle, .opacity-8";
+
+$select-option-disabled-custom-classes: ".bg-disabled-regular-color, .text-color";
+$select-option-custom-classes: ".p-2, .txt-normal, .cursor-pointer";
+$select-option-hover-custom-classes: ".bg-on-secondary-color";
+$select-option-selected-custom-classes: ".title-text-color, .pl-2, .mt-1, .cursor-pointer";
+
+.select {
+    @extend .position-relative, .d-flex, .align-items-center, #{$select-custom-classes};
+    min-height: $select-min-height;
+
+    & .select-label {
+        transform: translateY(50%);
+        transition: $select-transition-duration;
+        @extend .position-absolute, .top-0, #{$select-label-custom-classes};
     }
 
-    & option{
-        @extend #{$select-option-custom-classes};
+    &.active .select-label,
+    &.has-value .select-label {
+        @extend #{$select-label-active-custom-classes};
     }
-    & option[selected]{
+
+    .selected-option {
+        user-select: none;
         @extend #{$select-option-selected-custom-classes};
+    }
+
+    .select-list {
+        transition: all 0.2s ease;
+        @extend .position-absolute, .opacity-0, .overflow-y-scroll, .visibility-hidden, .overflow-x-hidden, #{$select-list-custom-classes};
+
+        &::-webkit-scrollbar {
+            @extend .d-none;
+        }
+    }
+
+    &.open-down .select-list {
+        top: calc(100% + $select-list-space);
+    }
+
+    &.open-up .select-list {
+        bottom: calc(100% + $select-list-space);
+    }
+
+    &.active .select-list {
+        max-height: $select-list-max-height;
+        @extend .opacity-#{calc(1 / map.get($conf-opacity, factor))}, .visibility-visible;
+    }
+
+    & .select-option {
+        transition: $select-transition-duration;
+        @extend #{$select-option-custom-classes};
+
+        &:hover {
+            @extend #{$select-option-hover-custom-classes};
+        }
+
+        &.disable {
+            cursor: not-allowed;
+            @extend #{$select-option-disabled-custom-classes};
+        }
     }
 }

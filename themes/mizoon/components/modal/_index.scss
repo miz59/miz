@@ -1,0 +1,87 @@
+@use "../../../../sass/config/_dims" as *;
+@use "../../../../sass/kernel/" as *;
+@use 'sass:map';
+
+$modal-container-custom-classes: ".bg-transparent-color, .justify-content-center, .align-items-center";
+$modal-content-custom-classes: ".d-flex, .flex-column, .bg-section-color, .radius-all-small, .overflow-hidden, .w-30";
+$modal-content-header-custom-classes: ".d-flex, .flex-column, .gap-2, .p-2, .bg-on-secondary-color";
+$modal-content-body-custom-classes: ".d-flex, .flex-column, .gap-2, .p-2";
+$modal-content-footer-custom-classes: ".d-flex, .flex-column, .gap-2, .p-2";
+$modal-close-custom-classes: ".cursor-pointer";
+$modal-content-animation: 0.3s ease-out forwards;
+$modal-dragging-transition: 0.07s ease-out;
+
+.modal-container {
+    min-width: 100%;
+    min-height: 100%;
+    pointer-events: none;
+    @extend .d-none, .position-fixed, .top-0, .left-0, .overflow-hidden, #{$modal-container-custom-classes};
+
+    &.show {
+        pointer-events: all;
+
+        & .modal-content {
+            display: block;
+            animation: modal-open $modal-content-animation;
+        }
+    }
+
+    &.hide {
+        pointer-events: none;
+
+        & .modal-content {
+            display: block;
+            animation: modal-close $modal-content-animation;
+        }
+    }
+
+    .modal-content {
+        @extend .d-none, #{$modal-content-custom-classes};
+
+        .modal-header {
+            @extend #{$modal-content-header-custom-classes};
+        }
+
+        .modal-body {
+            @extend #{$modal-content-body-custom-classes};
+        }
+
+        .modal-footer {
+            @extend #{$modal-content-footer-custom-classes};
+        }
+    }
+
+    .modal-close {
+        @extend #{$modal-close-custom-classes};
+    }
+
+    & .dragging {
+        transition: $modal-dragging-transition;
+        user-select: none;
+        cursor: move;
+    }
+}
+
+@keyframes modal-open {
+    from {
+        opacity: 0;
+        transform: scale(2) rotateY(-180deg);
+    }
+    
+    to {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+
+@keyframes modal-close {
+    from {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+    
+    to {
+        opacity: 0;
+        transform: scale(2) rotateY(180deg);
+    }
+}

@@ -1,4 +1,7 @@
-$border-radius:(
+@use "../../../sass/config/_dims" as *;
+@use 'sass:map';
+
+$border-radius:map.merge($border-radius ,(
     extra-small:2px,
     small:5px,
     normal:10px,
@@ -7,24 +10,24 @@ $border-radius:(
     extra-large:50px,
     full:1000px,
     none:0px,
-);
+));
 
-$conf-opacity:(
+$conf-opacity:map.merge($conf-opacity ,(
     factor:0.1
-);
+));
 
-$conf-z-index:(
+$conf-z-index:map.merge($conf-z-index ,(
     max:10,
     min:0,
     step:1
-);
+));
 
-$conf-aspect-ratio:(
+$conf-aspect-ratio:map.merge($conf-aspect-ratio ,(
     nominator:3,
     denominator:3,
     step:1
-);
+));
 
-$conf-border-thickness:(
+$conf-border-thickness:map.merge($conf-border-thickness ,(
     last-width:10
-)
+));

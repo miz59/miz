@@ -42,6 +42,4 @@ class Accordion {
 }
 
 // Initialize accordion when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new Accordion();
-});
+new Accordion();

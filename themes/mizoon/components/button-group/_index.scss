@@ -2,13 +2,13 @@
 @use "../../../../sass/config/_typography" as *;
 
 $btn-group-custom-classes:"";
-$btn-group-btn-cutsom-classes:".border-style-solid, .bw-1, .border-color";
+$btn-group-btn-custom-classes:".border-style-solid, .bw-1, .border-color";
 
 .btn-group{
     @extend .d-flex, #{$btn-group-custom-classes};
 
     .btn{
-        @extend .d-flex, .justify-content-center, .align-items-center, #{$btn-group-btn-cutsom-classes};
+        @extend .d-flex, .justify-content-center, .align-items-center, #{$btn-group-btn-custom-classes};
     }
     &[class*="flex-column"] .btn{
         &:not(:first-child,:last-child){

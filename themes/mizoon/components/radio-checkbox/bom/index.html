@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/assets/css/miz.min.css">
+</head>
+<body class="d-flex gap-5">
+    <div class="checkbox-bom">
+        <input id="checkbox-bom-demo" type="checkbox"/>
+        <label for="checkbox-bom-demo"></label>
+        <svg class="checkbox-bom-checkmark" width="15" height="14" viewBox="0 0 15 14" fill="none">
+            <path class="checkbox-bom-checkmark" d="M2 8.36364L6.23077 12L13 2"></path>
+        </svg>
+        <!-- Gooey-->
+        <svg style="width:0;height:0;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="bom-goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0    0 1 0 0 0   0 0 1 0 0    0 0 0 22 -7" result="bom-goo"></feColorMatrix>
+                    <feBlend in="SourceGraphic" in2="bom-goo"></feBlend>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+</body>
+</html>

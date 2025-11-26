@@ -1,0 +1,56 @@
+@use "../../../../sass/kernel" as *;
+@use "../../../../sass/config/_typography" as *;
+
+$pagination-transition: .3s;
+$pagination-pages-custom-classes: ".d-flex, .flex-row, .justify-content-center, .align-items-center";
+$pagination-empty-custom-classes: ".bg-primary-color, .aspect-ratio-1x1, .radius-all-full";
+$pagination-not-empty-custom-classes: " .aspect-ratio-1x1, .bw-1, .radius-all-normal, .title-text-color, .bg-primary-color";
+$pagination-active-empty-custom-classes: ".bg-secondary-light-color, .aspect-ratio-2x1";
+$pagination-hover-custom-classes: ".bg-on-secondary-color";    
+$pagination-active-not-empty-custom-classes: ".bg-secondary-light-color, .border-style-solid, .border-color";
+$pagination-button-custom-classes: ".title-text-color,.gap-1";
+
+.pagination{
+    height:var(--pagination-size);
+    @extend .w-fit-content, .d-flex, .flex-row, .align-items-center;
+
+    .previous-button , .next-button{
+        cursor: pointer;
+        transition: $pagination-transition;
+        @extend .align-items-center, #{$pagination-button-custom-classes};
+
+        &:hover{
+            @extend #{$pagination-hover-custom-classes}; 
+        }
+    } 
+    
+    .page{
+        &:hover{
+            @extend #{$pagination-hover-custom-classes}; 
+        }
+        &.active:empty{
+            @extend #{$pagination-active-empty-custom-classes};
+        }
+        &.active:not(:empty){
+            @extend #{$pagination-active-not-empty-custom-classes};
+        }
+    }
+
+    & .page{
+        transition: $pagination-transition;
+        @extend #{$pagination-pages-custom-classes};
+        
+        &:empty{
+            cursor: pointer;
+            height: var(--pagination-size);
+            @extend #{$pagination-empty-custom-classes};
+        }
+
+        &:not(:empty){
+            user-select: none;
+            height: var(--pagination-size);
+            cursor: pointer;
+            @extend #{$pagination-not-empty-custom-classes};
+        }
+    }
+}

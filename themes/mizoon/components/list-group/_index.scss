@@ -1,37 +1,34 @@
 @use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
-@use "../../config" as *;
 
-$list-group-active-custom-classes: ".bg-primary-color, .on-primary-color";
+$list-group-custom-classes: ".d-flex, .justify-content-center, .align-items-center";
+$list-group-transition:0.2s linear;
+$list-group-item-custom-classes: ".bw-1, .border-color, .border-style-solid, .w-100, .p-1, .text-color";
+$list-group-item-active-custom-classes: ".bg-primary-color, .on-primary-color";
+$list-group-item-disabled-custom-classes: ".bg-primary-color, .on-primary-color";
+$list-group-list-item-marker-custom-classes: ".text-color";
+$list-group-flush-list-item-active-custom-classes: ".on-primary-color";
+$list-group-flush-list-item-marker-custom-classes: ".text-color";
 
 .list-group{
-    @extend .d-flex, .justify-content-center, .align-items-stretch;
+    @extend #{$list-group-custom-classes};
 
-    & .list-group-items{
+    & .list-group-item{
+        transition: $list-group-transition;
         @extend .border-box;
-        @extend .d-flex, .justify-content-start, .align-items-center, .bw-1, .border-color, .border-style-solid, .w-100, .p-1, .text-color;
+        @extend .d-flex, .justify-content-start, .align-items-center, #{$list-group-item-custom-classes};
 
         &.active{
-            @extend #{$list-group-active-custom-classes};
-
-            & a{
-                @extend .on-primary-color;
-            }
+            @extend #{$list-group-item-active-custom-classes};
         }
         &:disabled{
             user-select:none;
             cursor: default;
-            color:get-color(disabled);
-        }
-        & *{
-            @extend .cursor-pointer;
-        }
-        & a{
-            @extend .text-color;
+            @extend #{$list-group-item-disabled-custom-classes};
         }
     }
     &.flex-column{
-        & .list-group-items{
+        & .list-group-item{
             &:not(:first-child){
                 @extend .border-t-none;
             }
@@ -45,8 +42,8 @@ $list-group-active-custom-classes: ".bg-primary-color, .on-primary-color";
     }
     &:not(.flex-column){
         @extend .flex-row;
-        
-        & .list-group-items{
+
+        & .list-group-item{
             &:not(:first-child){
                 @extend .border-l-none;
             }
@@ -59,22 +56,31 @@ $list-group-active-custom-classes: ".bg-primary-color, .on-primary-color";
         }
     }
 }
+
 ol.list-group{
-    & li{
-        list-style: decimal;
+    & li , & .list-group-item{
         @extend .d-flex, .gap-1;
 
         &.active{
-            @extend #{$list-group-active-custom-classes};
+            @extend #{$list-group-item-active-custom-classes};
+        }
+        &:disabled{
+            user-select:none;
+            cursor: default;
+            @extend #{$list-group-item-disabled-custom-classes};
+        }
+    }
+    & li{
+        list-style: decimal;
 
-            &::marker{
-                color:get-color(text);
-            }
+        &.active::marker{
+            @extend #{$list-group-list-item-marker-custom-classes};
         }
     }
 }
+
 .list-group-flush{
-    & .list-group-items{
+    & .list-group-item{
         @extend .d-flex, .gap-1, .bw-1, .border-color, .border-style-solid, .w-100, .p-1, .text-color, .border-t-none, .border-l-none, .border-r-none;
 
         &:last-child{
@@ -83,16 +89,26 @@ ol.list-group{
         & a{
             @extend .text-color;
         }
-        & li{
-            list-style: decimal;
-    
-            &.active{
-                @extend #{$list-group-active-custom-classes};
-    
-                &::marker{
-                    color:get-color(text);
-                }
+        &:disabled{
+            user-select:none;
+            cursor: default;
+            @extend #{$list-group-item-disabled-custom-classes};
+        }
+    }
+    & li.list-group-item{
+        list-style: decimal;
+
+        &.active{
+            @extend #{$list-group-flush-list-item-active-custom-classes};
+
+            &::marker{
+                @extend #{$list-group-flush-list-item-marker-custom-classes};
             }
+        }
+        &:disabled{
+            user-select:none;
+            cursor: default;
+            @extend #{$list-group-item-disabled-custom-classes};
         }
     }
 }

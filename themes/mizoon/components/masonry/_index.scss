@@ -3,15 +3,15 @@
 
 $mason-break-point:(xl:5 , lg:3 , md:2 , sm:1);
 
-.mason{
-    column-count: var(--column-count);
+.masonry{
+    column-count: var(--masonry-column-count);
 
     @each $column-break-point , $column-count in $mason-break-point{
         @media screen and (max-width:get-break-point-value($column-break-point)) {
             column-count: $column-count;
         }
     }
-    .mason-item{
+    .masonry-item{
         background-color: get-color(primary);
         @extend .d-inline-block, .w-100, .mb-1, .p-1;
     }

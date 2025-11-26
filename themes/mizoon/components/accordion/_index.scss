@@ -1,61 +1,85 @@
+@use "../../../../sass/config/_dims" as *;
 @use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
 @use "../../config" as *;
+@use 'sass:map';
 
 $accordion-height-scroll: 500px;
 $accordion-rotate-icon: 180deg;
-$accordion-transition: 0.5s;
+$accordion-transition: 0.3s;
 $accordion-group-custom-classes: ".d-flex, .flex-column, .gap-1";
-$accordion-custom-classes: ".bg-primary-color, .on-primary-color, .#{$font-prefix}-title, .radius-all-small";
-$accordion-body-custom-classes:".pl-2, .#{$font-prefix}-small";
-$accordion-header-custom-classes:".bw-1, .border-t-none, .border-l-none, .border-r-none, .border-style-solid, .border-on-primary-color, .pb-1";
+$accordion-custom-classes: ".bg-primary-color, .secondary-color, .#{$font-prefix}-normal, .radius-all-small";
+$accordion-body-custom-classes: ".pl-2, .#{$font-prefix}-subtitle";
+$accordion-header-custom-classes: ".bw-1, .border-t-none, .secondary-color, .border-l-none, .border-r-none, .border-style-solid, .border-color, .pb-1";
 $accordion-box-custom-classes: ".gap-1, .p-2";
-$accordion-zebra-custom-classes: ".bg-secondary-color";
+$accordion-zebra-custom-classes: ".bg-secondary-light-color, .secondary-color";
+$accordion-zebra-nth-child: "2n-1";
 
-
-.accordion-group{
+.accordion-group {
     @extend #{$accordion-group-custom-classes};
+
+    &.accordion-compact{
+        gap: 0;
+        overflow: hidden;
+        @extend .gap-0, .overflow-hidden;
+
+        .accordion{
+            @extend .radius-all-none;
+        }
+    }
+
+    &.accordion-outline {
+        .accordion {
+            background-color: transparent !important;
+        }
+    }
 
     .accordion {
         @extend .w-100, #{$accordion-custom-classes};
-    
+
         .accordion-box {
             transition: $accordion-transition;
             min-width: 100%;
-            @extend .d-grid, .cursor-pointer, #{$accordion-box-custom-classes};
-        
             grid-template-rows: 0fr 0fr;
-            .accordion-header{
+            @extend .d-grid, .cursor-pointer, #{$accordion-box-custom-classes};
+
+            .accordion-header {
                 @extend .w-100, .d-flex, .flex-row, .justify-content-space-between, .align-items-center, #{$accordion-header-custom-classes};
 
-                &.accordion-header > i{
-                    transition: $accordion-transition
+                &.accordion-header>i {
+                    transition: $accordion-transition;
                 }
             }
+
             & .accordion-body {
                 @extend .overflow-hidden, #{$accordion-body-custom-classes};
             }
         }
-    
+
         &.active .accordion-box {
             grid-template-rows: 0fr 1fr;
-            .accordion-header > i{
+
+            .accordion-header>i {
                 transform: rotate($accordion-rotate-icon);
             }
         }
-        & .accordion-body *{
+
+        & .accordion-body * {
             transition: $accordion-transition;
             @extend .opacity-0;
         }
-        &.active .accordion-body *{
-            opacity: 1;
+
+        &.active .accordion-body * {
+            @extend .opacity-#{calc(1 / map.get($conf-opacity, factor))};
         }
     }
-    &.scroll-accordion{
+
+    &.scroll-accordion {
         max-height: $accordion-height-scroll;
         @extend .overflow-y-scroll;
     }
-    &.accordion-zebra .accordion:nth-child(2n){
+
+    &.accordion-zebra .accordion:nth-child(#{$accordion-zebra-nth-child}) {
         @extend #{$accordion-zebra-custom-classes};
-    }    
+    }
 }

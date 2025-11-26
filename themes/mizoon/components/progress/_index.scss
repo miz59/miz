@@ -1,32 +1,17 @@
 @use "../../../../sass/kernel" as *;
 @use "../../../../sass/config/_typography" as *;
 
-$progress-bg-color:"disabled-light";
-$progress-custom-classes:".w-100, .d-flex, .flex-row, .radius-all-full, .overflow-hidden";
-$progress-bar-custom-classes:".d-flex, .align-items-center, .justify-content-center, .overflow-hidden";
-$progress-bar-default-bg-color:"information-regular";
-$progress-bar-default-font-size:12px;
-$progress-bar-default-padding:".p-1";
+$progress-custom-classes:".radius-all-full, .bg-disabled-light-color";
+$progress-bar-custom-classes:".bg-primary-color, .p-1, .txt-small, .secondary-color";
 
 .progress {
-    background-color: get-color($progress-bg-color);
-    @extend #{$progress-custom-classes};
+    @extend .w-100, .d-flex, .flex-row, .overflow-hidden, #{$progress-custom-classes};
 }
 
 .progress-bar {
-    width: calc(var(--percentage) * 1%);
+    width: var(--percentage);
     user-select: none;
-    @extend #{$progress-bar-custom-classes};
-
-    &:not([class*="bg-"]){
-        background-color: get-color($progress-bar-default-bg-color);
-    }
-    &:not([class*="txt-"]){
-        font-size: $progress-bar-default-font-size;
-    }
-    &:not([class*="p-"]){
-        @extend #{$progress-bar-default-padding};
-    }
+    @extend .d-flex, .align-items-center, .justify-content-center, .overflow-hidden, #{$progress-bar-custom-classes};
 
     &[style*="--content-place"] {
         justify-content: var(--content-place);
@@ -45,12 +30,12 @@ $progress-bar-default-padding:".p-1";
     background-clip: border-box;
 }
 
-.progress-animattion-striped {
+.progress-animation-striped {
     animation: progress-bar-stripes 2s linear infinite;
 }
 
-.progress-bar.progress-animation.progress-animattion-striped{
-    animation: progress-bar-stripes 2s linear infinite , progress-animation var(--progress-animation-duration) forwards ease-in-out;
+.progress-bar.progress-animation.progress-animation-striped{
+    animation: progress-bar-stripes 2s linear infinite, progress-animation var(--progress-animation-duration) var(--progress-animation-delay, 0s) forwards ease-in-out;
 }
 
 @keyframes progress-bar-stripes {
@@ -64,6 +49,6 @@ $progress-bar-default-padding:".p-1";
 
 @keyframes progress-animation {
     100% {
-        width: calc(var(--percentage) * 1%);
+        width: var(--percentage);
     }
-}
+} 

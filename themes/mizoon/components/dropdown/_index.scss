@@ -74,25 +74,25 @@ $dropdown-submenu-toggle-custom-classes: ".py-1, .px-2, .on-secondary-color, .#{
         opacity: 1;
         visibility: visible;
     }
-    &.dropdown-bottom > .dropdown-menu , .dropdown-bottom > .dropdown-menu{
+    & .dropdown-menu.dropdown-bottom{
         top: 100%;
         bottom: unset;
         right: unset;
         @extend .left-0, .mt-1;
     }
-    &.dropdown-top > .dropdown-menu , .dropdown-top > .dropdown-menu{
+    & .dropdown-menu.dropdown-top{
         top: unset;
         bottom: 100%;
         right: unset;
         @extend .left-0, .mb-1;
     }
-    &.dropdown-right > .dropdown-menu , .dropdown-right > .dropdown-menu{
+    & .dropdown-menu.dropdown-right{
         bottom: unset;
         left: 100%;
         right: unset;
         @extend .top-0, .ml-1, .mt-1;
     }
-    &.dropdown-left > .dropdown-menu , .dropdown-left > .dropdown-menu{
+    & .dropdown-menu.dropdown-left{
         bottom: unset;
         left: unset;
         right: 100%;

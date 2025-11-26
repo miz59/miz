@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown</title>
+    <link rel="stylesheet" href="/assets/css/miz.min.css">
+    <link rel="stylesheet" href="/assets/icons/fontawesome/css/all.min.css">
+</head>
+<body class="bg-color d-flex flex-column justify-content-center align-items-center gap-14">
+    <div class="dropdown dropdown-bottom dropdown-hover">
+        <div class="dropdown-box bg-primary-color">
+            Dropdown custom
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="#">Large Item 1</a></li>
+            <li><a href="#">Large Item 2</a></li>
+
+            <li class="dropdown-submenu dropdown-hover">
+                <a class="dropdown-submenu-toggle">Large Item 3</a>
+                <ul class="dropdown-menu dropdown-left">
+                    <li><a href="#">Large Item 2</a></li>
+                    <li class="dropdown-submenu dropdown-right">
+                        <p class="dropdown-submenu-toggle">Large Item 1</p>
+                        <ul class="dropdown-menu">
+                            <li><p>Large Item 1</p></li>
+                            <li><a href="#">Large Item 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="/assets/js/mizchin.min.js"></script>
+</body>
+</html>

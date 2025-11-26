@@ -63,6 +63,4 @@ class Nav {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    window.nav = new Nav();
-});
+new Nav();

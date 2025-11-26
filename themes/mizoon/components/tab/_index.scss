@@ -1,52 +1,75 @@
 @use "../../../../sass/config/_typography" as *;
 @use "../../../../sass/kernel" as *;
 
-$tab-labels:".border-style-solid, .border-color, .bw-1, .border-t-none, .border-b-none, .border-l-none, .bg-primary-color";
-$tab-label:".bg-primary-color, .bw-0, .border-style-solid, .border-t-none, .border-b-none, .border-l-none, .border-color, .on-primary-color";
-$tab-label-flex-direction-column:".border-r-none";
-$tab-label-transition:0.2s linear;
-$tab-label-hover-custom-classes:".bg-on-primary-color, .secondary-color";
-$tab-label-active-custom-classes:".bw-2, .bg-secondary-color, .on-primary-color, .font-weight-bold, .z-index-2";
-$tab-label-active-last-child-custom-classes:".bw-0";
-$tab-contents:".w-100, .position-relative, .bg-on-primary-color, .py-3, .px-2";
-$tab-content:".d-none, .w-100, .py-3, .px-2, .text-color, .bg-on-primary-color";
-$tab-content-active:".d-inline-block";
+$tab-custom-classes : ".gap-2";
+$tab-list: ".bg-secondary-color, .text-color, .w-fit-content, .radius-all-normal, .py-1, .px-1, .gap-1";
+$tab-label: ".p-1, .radius-all-small, .z-index-2";
+$tab-list-slider : ".bg-on-secondary-color, .h-70, .w-80";
+$tab-label-transition: 0.2s linear;
+$tab-label-hover-custom-classes: ".opacity-5";
+$tab-label-active-custom-classes: ".title-text-color";
+$tab-contents: ".w-100, .bg-on-secondary-color, .py-3, .px-2, .radius-all-medium";
+$tab-content: ".w-100, .py-3, .px-2, .title-text-color";
+$tab-content-active: ""; 
 
-.tab-container {
-    @extend .d-flex, .position-relative, .w-100;
-}
-.tab-labels {
-    @extend .w-100, .d-flex, #{$tab-labels};
 
-    .tab-label {
-        transition: $tab-label-transition;
-        @extend .w-100, .d-flex, .align-items-center, .p-2, .cursor-pointer, .txt-align-center, #{$tab-label};
-
-        &:hover:not(.active) {
-            @extend #{$tab-label-hover-custom-classes};
-        }
-        &.active {
-            @extend #{$tab-label-active-custom-classes};
-        }
-        &.active:last-child{
-            @extend #{$tab-label-active-last-child-custom-classes};
-        }
+.tab {
+    @extend .d-flex,.flex-column, .position-relative, .w-70, #{$tab-custom-classes}; 
+   &[data-tab-list-position='bottom']{
+    .tab-list{
+        order: 2;
+    } 
+   }
+   &[data-tab-list-position='right']{
+    .tab-list{
+        order: 2;
     }
-    &[class*="flex-column"]{
-        .tab-label{
-            @extend #{$tab-label-flex-direction-column};
+   }
+    .tab-list {
+        @extend .d-flex, .position-relative, #{$tab-list};
+
+        .tab-label {
+            transition: $tab-label-transition;
+            @extend .w-100, .d-flex, .align-items-center, .cursor-pointer, .txt-align-center, #{$tab-label};
+
+            &:hover:not(.active) {
+                @extend #{$tab-label-hover-custom-classes};
+            }
+
+            &.active {
+                @extend #{$tab-label-active-custom-classes};
+            }
+
+            // &.active:last-child{
+            //     @extend #{$tab-label-active-last-child-custom-classes};
+            // }
         }
+
+        .tab-slider {
+            @extend .position-absolute, .radius-all-small, .z-index-1, #{$tab-list-slider};
+            // top: 50%; 
+            // left: 0;
+            // width: 0;
+            transition: $tab-label-transition;
+        }
+
+        // &[class*="flex-column"]{
+        //     .tab-label{
+        //         @extend #{$tab-label-flex-direction-column};
+        //     }
+        // }
     }
-}
 
-.tab-contents {
-    @extend #{$tab-contents};
-    .tab-content {
-        animation: fadeIn 0.4s;
-        @extend #{$tab-content};
+    .tab-contents {
+        @extend .position-relative, #{$tab-contents};
 
-        &.active {
-            @extend #{$tab-content-active};
+        .tab-content {
+            animation: fadeIn 0.4s;
+            @extend .d-none,  #{$tab-content};
+
+            &.active {
+                @extend .d-inline-block, #{$tab-content-active};
+            }
         }
     }
 }
@@ -57,6 +80,7 @@ $tab-content-active:".d-inline-block";
         opacity: 0;
         transform: translateY(16px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
