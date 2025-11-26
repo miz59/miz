@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
+@use "../../config/dims" as *;
 @use "../../../themes/mizoon/config/dims" as *;
 @use "../responsive/functions/responsive" as *;
 

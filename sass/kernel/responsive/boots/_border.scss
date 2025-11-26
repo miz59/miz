@@ -1,5 +1,5 @@
-@use 'sass:list';
-@use 'sass:map';
+@use'sass:list';
+@use'sass:map';
 @use "../functions/responsive" as *;
 @use "../../../config/dims" as *;
 @use "../../../../themes/mizoon/config/dims" as *;
@@ -55,10 +55,11 @@ $radius-map:(
 );
 
 @function generate-border-class-name($map-config){
-    $length:map.get($map-config , last-width);
+    $lenght:map.get($map-config , last-width);
     $result:();
+ 
 
-    @for $i from 0 through $length{
+    @for $i from 0 through $lenght{
         $item:"." + "bw" + "-" + $i;
         $result:list.append($result,$item)
     }
@@ -68,10 +69,11 @@ $radius-map:(
 
 @function generate-border-class-value($map-config){
 
-    $length:map.get($map-config,last-width);
+    $lenght:map.get($map-config,last-width);
     $result:();
+ 
 
-    @for $i from 0 through $length{
+    @for $i from 0 through $lenght{
         $result:list.append($result,$i + px)
     }
 

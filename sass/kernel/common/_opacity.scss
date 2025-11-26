@@ -1,12 +1,10 @@
+@use "../../config/dims" as *;
 @use "../../../themes/mizoon/config/dims" as *;
 @use "functions" as *;
-@use 'sass:list';
-@use 'sass:map';
+@use'sass:list';
+@use'sass:map';
 
 @mixin generate-total-style-opacity($map-config , $property){
-    // $class-name-list:generate-class-name-list($map-config , $property);
-    // $value-list:generate-value($map-config);
-    // $class-name:;
     $factor : map.get($map-config, factor);
     $map:();
     $list:();

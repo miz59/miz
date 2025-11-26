@@ -1,7 +1,7 @@
 @use "../../../config/colors" as *;
 @use "../../../../themes/mizoon/config/colors" as *;
-@use 'sass:list';
-@use 'sass:string';
+@use'sass:list';
+@use'sass:string';
 
 @function str-replace-color($string, $search, $replace: '') {
     $index: string.index($string, $search);
