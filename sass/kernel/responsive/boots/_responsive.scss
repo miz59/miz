@@ -178,7 +178,7 @@ $totalist : $display-values,$flex-cols,$width-list,$height-list,$flex-type,$flex
     $total-list-member:list.nth($totalist,$totalist-item);
     @if (check-config-count($totalist-item)){
         $class-name:map.get(list.nth($total-list-member,$total-list-member-item),className);
-        $class-name-greatest : str-replace($class-name,'-xxl');
+        $class-name-greatest : str-replace($class-name,"-#{get-greatest-break-point-key()}");
 
         $result : ();
         @each $item1 in $class-name{
