@@ -2,7 +2,6 @@
 
 $range-custom-classes:".bg-on-secondary-color, .radius-all-full, .cursor-pointer";
 $range-disabled-custom-classes:".bg-disabled-regular-color";
-$range-thumb-custom-classes:".radius-all-full, .bg-secondary-color, .bw-0";
 $range-thumb-width: 15px;
 $range-thumb-height: 15px;
 
@@ -13,9 +12,18 @@ $range-thumb-height: 15px;
     &:disabled{
         @extend #{$range-disabled-custom-classes};
     }
-    &::-moz-range-thumb , &::-webkit-slider-thumb{
+    &::-moz-range-thumb{
         width: $range-thumb-width;
         height: $range-thumb-height;
-        @extend #{$range-thumb-custom-classes};
+        background-color: get-color(secondary-color);
+        border-width: 0;
+        border-radius: 50%;
+    }
+    &::-webkit-slider-thumb{
+        width: $range-thumb-width;
+        height: $range-thumb-height;
+        background-color: get-color(secondary-color);
+        border-width: 0;
+        border-radius: 50%;
     }
 }
