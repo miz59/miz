@@ -1,5 +1,4 @@
 $border-radius:(
-    none:0px,
     extra-small:2px,
     small:5px,
     normal:10px,
@@ -7,6 +6,7 @@ $border-radius:(
     large:25px,
     extra-large:50px,
     full:1000px,
+    none:0px,
 );
 
 $conf-opacity:(
