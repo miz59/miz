@@ -44,11 +44,11 @@ switch (lastArg) {
 const isWatchMode = process.argv.includes('--watch');
 const isBuildMode = process.argv.includes('--build');
 const projectRoot = process.cwd();
-// const assetsRoot = join(process.cwd(), 'public');
-// const mizRoot = join(process.cwd(), 'resources');
 
 const themeDependencyPath = [
     `${mizRoot}/miz/sass/kernel/common/_aspect-ratio.scss`,
+    `${mizRoot}/miz/sass/kernel/common/_cursor.scss`,
+    `${mizRoot}/miz/sass/kernel/common/_ellipsis.scss`,
     `${mizRoot}/miz/sass/kernel/common/_opacity.scss`,
     `${mizRoot}/miz/sass/kernel/common/_z-index.scss`,
     `${mizRoot}/miz/sass/kernel/responsive/mixins/_variables.scss`,
@@ -151,7 +151,7 @@ function runCommands() {
     }
 
     console.log('📂 Running listFiles.js ...');
-    execSync(`node ${listFilesPath}`, (error) => {
+    execSync(`node "${listFilesPath}"`, (error) => {
         if (error) {
             return console.error(`💥 listFiles.js failed: ${error.message}`);
         }
@@ -163,7 +163,7 @@ function runCommands() {
         }
 
         console.log('🪄 Running extractVariables.js ...');
-        execSync(`node ${extractVariablesPath}`, (error) => {
+        execSync(`node "${extractVariablesPath}"`, (error) => {
             if (error) {
                 return console.error(`💥 extractVariables.js failed: ${error.message}`);
             }

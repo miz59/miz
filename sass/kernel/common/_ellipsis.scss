@@ -1,0 +1,26 @@
+// .ellipsis-1{
+//     display: -webkit-box;
+//     -webkit-line-clamp: 1;
+//     -webkit-box-orient: vertical;
+//     overflow: hidden;
+// }
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
+@use "../../config/dims" as *;
+@use "../../../themes/mizoon/config/dims" as *;
+
+@mixin generate-total-style-ellipsis($map-config , $class){
+    $count : map.get($map-config, count);
+    @for $i from 1 through $count{
+        .#{$class}-#{$i}{
+            display: -webkit-box;
+            -webkit-line-clamp: $i;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+}
+
+@include generate-total-style-ellipsis($conf-ellipsis, ellipsis);

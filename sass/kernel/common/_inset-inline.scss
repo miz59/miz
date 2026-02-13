@@ -1,0 +1,9 @@
+@use "../responsive/functions/responsive" as *;
+@use "../../config/responsive" as *;
+
+$top-list : generate-classes-items(top ,top, $conf-top, true, "percentage");
+$bottom-list : generate-classes-items(bottom ,bottom, $conf-bottom, true, "percentage");
+$left-list : generate-classes-items(left ,left, $conf-left, true, "percentage");
+$right-list : generate-classes-items(right ,right, $conf-right, true, "percentage");
+$inset-inline-start-list : generate-classes-items(inset-start ,inset-inline-start, $conf-inset-inline-start, true, "percentage");
+$inset-inline-end-list : generate-classes-items(inset-end ,inset-inline-end, $conf-inset-inline-end, true, "percentage");

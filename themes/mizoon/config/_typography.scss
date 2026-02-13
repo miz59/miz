@@ -1,7 +1,7 @@
 @use "../../../sass/config/_typography" as *;
 @use "sass:map";
 
-$fonts-mizoon: (
+$conf-fonts-mizoon: (
     "primary": (
         "defaults":"sans-serif, 'Courier New', Courier, monospace",
         "folder": "vazir",
@@ -58,4 +58,4 @@ $fonts-mizoon: (
     )
 );
 
-$fonts:map.merge($fonts , $fonts-mizoon);
+$conf-fonts:map.merge($conf-fonts , $conf-fonts-mizoon);

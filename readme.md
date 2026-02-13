@@ -71,7 +71,7 @@ Help us in the challenging journey of **simplification** 🙂
 ## 🌐 Connect & Follow
 
 Follow us for updates, news, and demos:  
-[X](#) | [Linkedin](https://www.linkedin.com/company/miz59/‏) | [YouTube](#) | [GitHub](https://github.com/eazymizy/miz) | [Npm](https://www.npmjs.com/package/miz-59)
+[X](#) | [Linkedin](https://www.linkedin.com/company/miz59/‏) | [YouTube](#) | [GitHub](https://github.com/miz59/miz) | [Npm](https://www.npmjs.com/package/miz-59)
 
 Visit our official website: [**eazymizy.com**](https://eazymizy.com)
 

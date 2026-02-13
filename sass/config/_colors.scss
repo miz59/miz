@@ -3,7 +3,7 @@ $colors:(primary-light,on-primary,on-secondary,icon,text,specific,primary,second
 $borders:(divider,border,primary,on-primary);
 
 $light-color-palette:(
-    primary:blue,
+    primary:#A11D1D,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
     primary-dark: #FFFFFF,
@@ -67,7 +67,7 @@ $light-color-palette:(
 );
 
 $dark-color-palette:(
-    primary: red,
+    primary: #eb4545,
     on-primary: #c97d7d,
     primary-light: #c97d7d8a,
     primary-dark: #FFFFFF,
@@ -97,7 +97,6 @@ $dark-color-palette:(
     footer-link : #DEE2E6,
     footer-link-hover : #8BB9FE,
     link-sidebar-text : #AEB2B6,
-    // background: #212529,
     background: #160F21,
     section: #262626,
     hover: #FFFFFF,

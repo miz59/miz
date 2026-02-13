@@ -12,11 +12,11 @@ $select-list-max-height: 250px;
 $select-list-custom-classes: ".w-100, .radius-all-small, .p-0, .z-index-10";
 $select-list-space: string.unquote("#{map.get($conf-margins, factor) * 3}#{map.get($conf-margins, unit)}");
 
-$select-label-custom-classes: ".txt-normal, .pl-2";
-$select-label-active-custom-classes: ".txt-subtitle, .opacity-8";
+$select-label-custom-classes: ".txt-size-normal, .pl-2";
+$select-label-active-custom-classes: ".txt-size-subtitle, .opacity-8";
 
 $select-option-disabled-custom-classes: ".bg-disabled-regular-color, .text-color";
-$select-option-custom-classes: ".p-2, .txt-normal, .cursor-pointer";
+$select-option-custom-classes: ".p-2, .txt-size-normal, .cursor-pointer";
 $select-option-hover-custom-classes: ".bg-on-secondary-color";
 $select-option-selected-custom-classes: ".title-text-color, .pl-2, .mt-1, .cursor-pointer";
 

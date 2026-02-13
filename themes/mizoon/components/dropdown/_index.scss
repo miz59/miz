@@ -3,12 +3,12 @@
 @use "sass:map";
 
 $dropdown-box-transition: 0.2s linear;
-$dropdown-box-custom-classes: ".bg-secondary-color, .on-secondary-color, .radius-all-small, .#{$font-prefix}-normal, .border-style-solid, .border-on-primary-color, .bw-1";
+$dropdown-box-custom-classes: ".bg-secondary-color, .on-secondary-color, .radius-all-small, .#{$conf-font-prefix}-size-normal, .border-style-solid, .border-on-primary-color, .bw-1";
 $dropdown-menu-transition: 0.2s linear;
-$dropdown-menu-custom-classes: ".bg-secondary-color, .on-secondary-color, .radius-all-small, .#{$font-prefix}-normal, .border-style-solid, .border-on-primary-color, .bw-1";
-$dropdown-menu-item-custom-classes: ".py-1, .px-2, .on-secondary-color, .#{$font-prefix}-normal";
+$dropdown-menu-custom-classes: ".bg-secondary-color, .on-secondary-color, .radius-all-small, .#{$conf-font-prefix}-size-normal, .border-style-solid, .border-on-primary-color, .bw-1";
+$dropdown-menu-item-custom-classes: ".py-1, .px-2, .on-secondary-color, .#{$conf-font-prefix}-size-normal";
 $dropdown-menu-item-transition: 0.2s linear;
-$dropdown-submenu-toggle-custom-classes: ".py-1, .px-2, .on-secondary-color, .#{$font-prefix}-normal";
+$dropdown-submenu-toggle-custom-classes: ".py-1, .px-2, .on-secondary-color, .#{$conf-font-prefix}-size-normal";
 
 .dropdown {
     @extend .d-inline-block, .position-relative;

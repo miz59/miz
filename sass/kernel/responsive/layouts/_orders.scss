@@ -2,4 +2,4 @@
 @use "../../../config/responsive" as *;
 
 $order-list:order;
-$flex-orders:generate-classes-items($order-list,order,$conf-orders);
+$flex-orders:generate-classes-items($order-list, order, $conf-orders);

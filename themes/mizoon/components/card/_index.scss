@@ -79,16 +79,3 @@ $card-blurred-item-border-color: color-mix(in srgb, get-color(border) 30% , tran
         @extend .justify-content-end;
     }
 }
-
-
-
-
-
-.multiply-ellipsis-3{
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    @extend .overflow-hidden;
-}

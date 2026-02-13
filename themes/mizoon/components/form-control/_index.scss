@@ -4,7 +4,7 @@
 @use "../../../../sass/kernel" as *;
 
 $form-field-custom-classes:".position-relative";
-$form-control-custom-classes:".text-fields-color, .bg-fields-color, .p-2, .bw-1, .border-color, .border-style-solid, .radius-all-normal, .#{$font-prefix}-subtitle";
+$form-control-custom-classes:".text-fields-color, .bg-fields-color, .p-2, .bw-1, .border-color, .border-style-solid, .radius-all-normal, .#{$conf-font-prefix}-size-subtitle";
 $from-control-color-custom-classes:".p-1, .aspect-ratio-1x1, .h-10";
 $from-control-disabled-custom-classes: ".opacity-7";
 

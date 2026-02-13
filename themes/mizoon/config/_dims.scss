@@ -12,6 +12,10 @@ $border-radius:map.merge($border-radius ,(
     none:0px,
 ));
 
+$conf-ellipsis:map.merge($conf-ellipsis ,(
+    count:5
+));
+
 $conf-opacity:map.merge($conf-opacity ,(
     factor:0.1
 ));

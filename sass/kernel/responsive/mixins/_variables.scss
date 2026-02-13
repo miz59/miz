@@ -10,7 +10,7 @@
 }
 
 @mixin generate-font-variables(){
-    @each $font-name , $font-details in $fonts {
+    @each $font-name , $font-details in $conf-fonts {
         #{"--" + "font-" + $font-name}: $font-name;
     }
 }

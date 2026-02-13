@@ -2,7 +2,7 @@
 @use "../../../../sass/config/_typography" as *;
 
 $progress-custom-classes:".radius-all-full, .bg-disabled-light-color";
-$progress-bar-custom-classes:".bg-primary-color, .p-1, .txt-small, .secondary-color";
+$progress-bar-custom-classes:".bg-primary-color, .p-1, .txt-size-small, .secondary-color";
 
 .progress {
     @extend .w-100, .d-flex, .flex-row, .overflow-hidden, #{$progress-custom-classes};

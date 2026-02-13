@@ -13,6 +13,10 @@ $conf-opacity:(
     factor:0.1
 );
 
+$conf-ellipsis:(
+    count:10
+);
+
 $conf-z-index:(
     max:10,
     min:0,
@@ -27,4 +31,16 @@ $conf-aspect-ratio:(
 
 $conf-border-thickness:(
     last-width:10
-)
+);
+
+$conf-cursor:(
+    default,
+    pointer,
+    text,
+    not-allowed,
+    move,
+    grab,
+    grabbing,
+    wait,
+    progress,
+);

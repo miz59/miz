@@ -5,9 +5,9 @@
 @use 'sass:map';
 
 $table-custom-classes : ".bg-primary-color, .w-50, .radius-all-normal, .p-3";
-$table-head-th-custom-classes : ".bg-on-primary-color, .secondary-color, .py-2, .px-2, .txt-normal";
+$table-head-th-custom-classes : ".bg-on-primary-color, .secondary-color, .py-2, .px-2, .txt-size-normal";
 $table-head-border-radius : map.get($border-radius, normal);   
-$table-body-td-custom-classes : ".txt-align-start, .title-text-color, .py-2, .pl-2, .txt-normal";
+$table-body-td-custom-classes : ".txt-align-start, .title-text-color, .py-2, .pl-2, .txt-size-normal";
 $table-scroll-max-height:300px;
 $table-striped-custom-classes : ".bg-on-primary-color";
 $table-striped-on : even;

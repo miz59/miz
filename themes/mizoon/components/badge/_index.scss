@@ -10,7 +10,7 @@ $badge-size: 4px;
     & .badge{
         padding:$badge-size;
         text-transform: uppercase;
-        @extend .#{$font-prefix}-align-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
+        @extend .#{$conf-font-prefix}-align-center, .d-flex, .flex-row, .justify-content-center, .align-items-center, .position-absolute;
 
         &:has(i){
             padding:$badge-size !important;

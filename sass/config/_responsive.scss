@@ -4,6 +4,7 @@ $header-space-horizontally:(81px,70px,50px,25px,20px);
 $header-space-vertically:(5rem,4.5rem,4rem,3rem,3rem);
 $boxed-space-horizontally:(81px,70px,50px,25px,20px);
 $boxed-space-vertically:(5rem,4.5rem,4rem,3rem,3rem);
+$conf-font-size-responsive:(1rem, 1rem, 0.8rem, 0.7rem, 0.7rem);
 
 $conf-cols:(
     count:12,
@@ -15,6 +16,36 @@ $conf-width:(
 );
 $conf-height:(
     count:50,
+    responsive:true
+);
+$conf-inset-inline-start:(
+    count:50,
+    responsive:true
+);
+$conf-inset-inline-end:(
+    count:50,
+    responsive:true
+);
+$conf-top:(
+    count:50,
+    responsive:true
+);
+$conf-bottom:(
+    count:50,
+    responsive:true
+);
+$conf-left:(
+    count:4,
+    responsive:true
+);
+$conf-right:(
+    count:4,
+    responsive:true
+);
+$conf-line-height:(
+    count:25,
+    unit:rem,
+    factor:0.25,
     responsive:true
 );
 $conf-grids:(

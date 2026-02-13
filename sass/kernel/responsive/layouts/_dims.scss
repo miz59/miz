@@ -38,7 +38,6 @@
     height: fit-content;
 }
 
-$w-list:w;
-$h-list:h;
-$width-list : generate-classes-items($w-list ,width, $conf-width, true);
-$height-list : generate-classes-items($h-list ,height, $conf-height , true);
+
+$width-list : generate-classes-items("w" ,width, $conf-width, true, "percentage");
+$height-list : generate-classes-items("h" ,height, $conf-height, true, "percentage");

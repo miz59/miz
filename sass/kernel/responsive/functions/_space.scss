@@ -11,12 +11,14 @@ $margin-list-class:"m","mt","mb","ml","mr","mx","my","mis","mie";
 $gap-list-class:gap;
 $col-gap-list-class:"g","gx","gy";
 $letter-spacing-list-class:"ls";
+$line-height-list-class:"lh";
 
 $map-padding:(p:padding , pt:padding-top , pb:padding-bottom , pl:padding-left , pr:padding-right , px:(padding-left , padding-right) , py:(padding-top , padding-bottom) , pis:padding-inline-start , pie:padding-inline-end);
 $map-margin:(m:margin , mt:margin-top , mb:margin-bottom , ml:margin-left , mr:margin-right , mx:(margin-left , margin-right) , my:(margin-top , margin-bottom) , mis:margin-inline-start , mie:margin-inline-end);
 $map-gap:(gap:gap);
 $map-col-gap:(g:(column-gap , row-gap , "--gx" , "--gy") , gx:(column-gap , "--gx") , gy:(row-gap , "--gy"));
 $map-letter-spacing:(ls:letter-spacing);
+$map-line-height:(lh:line-height);
 
 @function generate-class-name-list-space($name-list, $map-config) {
     $is-responsive: check-status($map-config , responsive);
@@ -28,13 +30,13 @@ $map-letter-spacing:(ls:letter-spacing);
     }
     @if($is-responsive) {
         @for $i from 1 through list.length($name-list){
-            $class-name-list: list.join($class-name-list, generate-responsive-classes(list.nth($name-list , $i) , $count, true , true));
+            $class-name-list: list.join($class-name-list, generate-responsive-classes(list.nth($name-list , $i) , $count, "number", true));
         }
     }
 
     @else {
         @for $i from 1 through list.length($name-list){
-            $class-name-list: list.join($class-name-list, generate-classes(list.nth($name-list , $i) , $count , true , true));
+            $class-name-list: list.join($class-name-list, generate-classes(list.nth($name-list , $i), $count, "number", true));
         }
     }
     @return $class-name-list;
@@ -91,3 +93,4 @@ $margin : generate-total-map-list($margin-list-class , $map-margin , $conf-margi
 $gap : generate-total-map-list($gap-list-class , $map-gap , $conf-gaps);
 $col-gap : generate-total-map-list($col-gap-list-class , $map-col-gap , $conf-gaps);
 $letter-spacing: generate-total-map-list($letter-spacing-list-class , $map-letter-spacing , $conf-letter-spacing);
+$line-height: generate-total-map-list($line-height-list-class , $map-line-height , $conf-line-height);

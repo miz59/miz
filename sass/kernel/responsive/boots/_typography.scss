@@ -1,3 +1,4 @@
+@use "../../../config/_responsive" as *;
 @use "../../kernel-functions/_break-point" as *;
 @use "../functions/responsive" as *;
 @use "../../../config/paths" as *;
@@ -7,7 +8,18 @@
 @use 'sass:map';
 @use 'sass:string';
 
-$font-weight : '';
+$font-family-prefix:"font-";
+$font-size-prefix: $conf-font-prefix + "-size";
+$values-text-align:(center,end,start,left,right,justify);
+$values-text-transform:(lowercase,none,uppercase,capitalize);
+$values-text-decoration-line:(line-through,none,overline,underline,wavy);
+$values-text-decoration-style:(dashed,dotted,double,solid);
+$values-font-style:(italic,);
+$values-white-space:(unset, pre, pre-wrap, pre-line, wrap, nowrap);
+$values-text-wrap:(unset, balance, nowrap, wrap);
+$values-list-style-type:(disc, circle, square, decimal, georgian, trad-chinese-informal, kannada);
+$values-list-style-position:(inside, outside);
+
 .font-weight-black{
     font-weight: 900;
 }
@@ -36,30 +48,6 @@ $font-weight : '';
     font-weight: 100;
 }
 
-.#{$font-prefix}-ellipsis{
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-}
-.list-style{
-  list-style: unset;
-}
-.line-height{
-  line-height:  1.7;
-  @media screen and (max-width : get-break-point-value(xl)) {
-    line-height: 1.5;
-  }
-  @media screen and (max-width : get-break-point-value(lg)) {
-    line-height:  1.4;
-  }
-  @media screen and (max-width : get-break-point-value(md)) {
-    line-height:  1.4;
-  }
-  @media screen and (max-width : get-break-point-value(sm)) {
-    line-height:  1.3;
-  }
-}
-
 @function font-weight-connection($weight-string){
     $weight-number : 0;
     @if ($weight-string == "black"){$weight-number: 900;}
@@ -74,8 +62,9 @@ $font-weight : '';
 
     @return $weight-number;
 }
+
 @mixin make-font-face{
-    @each $font-name , $font-details in $fonts {
+    @each $font-name , $font-details in $conf-fonts {
         $font-folder: map.get($font-details, "folder");
         $font-default: map.get($font-details, "defaults");
         @each $font-type, $font-files in map.get($font-details, "font-types") {
@@ -93,16 +82,17 @@ $font-weight : '';
             src: string.unquote($file-src);
             }
         }
-        .font-#{$font-name}{
+        .#{$font-family-prefix}#{$font-name}{
             font-family: string.unquote("var(--font-#{$font-name})") , string.unquote($font-default);
         }
     }
 }
+
 @function generate-text-style($property , $value , $class){
     $list : ();
     $base : ();
     @each $name in $value{
-        $base:generate-classes-on-value(($font-prefix + "-" + $class) , $name);
+        $base:generate-classes-on-value(($conf-font-prefix + "-" + $class) , $name);
         $map:(
             className: $base,
             propertyKeys:'#{$property}',
@@ -113,11 +103,37 @@ $font-weight : '';
     @return $list;
 }
 
-$font-size-responsive : generate-typography-size-classes($font-size, $font-prefix);
-$generate-text-align : generate-text-style(text-align , $text-align , align);
-$generate-text-transform : generate-text-style(text-transform , $text-transform , transform);
-$generate-text-decoration-line : generate-text-style(text-decoration-line , $text-decoration-line , decoration);
-$generate-text-decoration-style : generate-text-style(text-decoration-style , $text-decoration-style , decoration-style);
-$generate-font-style : generate-text-style(font-style , $font-style , style);
+@mixin generate-font-size-responsive(){
+    $break-point-values:map.values($break-points);
+    @for $i from 1 through list.length($conf-font-size-responsive){
+        $break-point-value:list.nth($break-point-values,$i);
+        $font-value:list.nth($conf-font-size-responsive,$i);
+        @if get-greatest-break-point() == $break-point-value{
+            html{
+                --html-font-size: #{$font-value};
+                font-size:var(--html-font-size);
+            }
+        }
 
-@include make-font-face;
+        @else{
+            @media screen and (max-width:$break-point-value){
+                html{
+                    --html-font-size: #{$font-value};
+                }
+            }
+        }
+    }
+}
+
+@include make-font-face();
+@include generate-font-size-responsive();
+$font-size : generate-typography-size-classes($conf-font-size, $font-size-prefix);
+$text-align : generate-text-style(text-align , $values-text-align , align);
+$text-transform : generate-text-style(text-transform , $values-text-transform , transform);
+$text-decoration-line : generate-text-style(text-decoration-line , $values-text-decoration-line , decoration);
+$text-decoration-style : generate-text-style(text-decoration-style , $values-text-decoration-style , decoration-style);
+$font-style : generate-text-style(font-style , $values-font-style , style);
+$white-space : generate-text-style(white-space , $values-white-space , white-space);
+$text-wrap : generate-text-style(text-wrap , $values-text-wrap , wrap);
+$list-style-type : generate-text-style(list-style-type , $values-list-style-type , list-type);
+$list-style-position : generate-text-style(list-style-position , $values-list-style-position , list-position);
