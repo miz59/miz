@@ -1,0 +1,10 @@
+@use "../../config/_typography" as *;
+
+@function get-font-size($value){
+    $result : map.get(map.get($conf-font-size, "size"), $value);
+    @return $result;
+}
+
+@function get-font-prefix(){
+    @return $conf-font-prefix;
+}
