@@ -1,3 +1,4 @@
+import browserSync from "browser-sync";
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
@@ -8,6 +9,7 @@ import * as cheerio from 'cheerio';
 
 const app = express();
 const PORT = 5501;
+browserSync.create();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
