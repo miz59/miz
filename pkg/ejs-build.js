@@ -112,4 +112,4 @@ for (const lang of languages) {
 	await copyComponents(componentsDir, outComponentsDir, langDataRaw, lang)
 }
 
-console.log("✅ Build completed successfully!")
+console.log("✅ compile ejs completed successfully!");

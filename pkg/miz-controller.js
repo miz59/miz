@@ -388,11 +388,8 @@ if (isWatchMode) {
 
         writeMergedContent(config);
 
-        const outputPath = join(projectRoot, config.output);
-        console.log('⚙️ Running terser for minification...');
-        exec(`terser "${outputPath}" -o "${outputPath}" --compress --mangle`, { stdio: 'inherit' });
-
-        console.log(`✅ Build complete! Minified file created at: ${outputPath}`);
+        exec(`node "${join(mizRoot, 'miz', 'pkg/ejs-build.js')}"`, { stdio: 'inherit' });
+        console.log("✅ compile ejs completed successfully!");
     })();
 } else {
     console.log('🚀 Running tasks once...');
