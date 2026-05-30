@@ -1,7 +1,7 @@
 import chokidar from 'chokidar';
 import { join, relative, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { exec } from 'child_process';
 import {
     readdirSync,
     statSync,
@@ -18,8 +18,9 @@ async function loadConfig() {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const projectRoot = process.cwd();
 
-const packageJson = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
+const packageJson = JSON.parse(readFileSync(join(projectRoot, 'package.json'), 'utf-8'));
 const cleanScript = packageJson.scripts?.clean;
 const lastArg = cleanScript.trim().split(/\s+/).pop();
 
@@ -27,23 +28,21 @@ let assetsRoot, mizRoot;
 
 switch (lastArg) {
     case 'laravel':
-        assetsRoot = join(process.cwd(), 'public');
-        mizRoot = join(process.cwd(), 'resources');
+        assetsRoot = join(projectRoot, 'public');
+        mizRoot = join(projectRoot, 'resources');
         break;
     case 'react':
     case 'vue':
-        assetsRoot = join(process.cwd(), 'src');
-        mizRoot = join(process.cwd(), 'src');
+        assetsRoot = join(projectRoot, 'src');
+        mizRoot = join(projectRoot, 'src');
         break;
     default:
-        assetsRoot = process.cwd();
-        mizRoot = process.cwd();
+        assetsRoot = projectRoot;
+        mizRoot = projectRoot;
 }
-
 
 const isWatchMode = process.argv.includes('--watch');
 const isBuildMode = process.argv.includes('--build');
-const projectRoot = process.cwd();
 
 const themeDependencyPath = [
     `${mizRoot}/miz/sass/kernel/common/_aspect-ratio.scss`,
@@ -76,7 +75,8 @@ function findJsFiles(dir) {
 function mergeJsFiles(config) {
     const componentsDir = join(__dirname, '..', 'themes', config.theme, 'components');
     const jsFiles = findJsFiles(componentsDir);
-    let mergedContent = '// Mizoon Theme Scripts\n// Auto-generated file\n\n';
+
+    let mergedContent = `// ${config.theme} Theme Scripts\n// Auto-generated file\n\n`;
 
     console.log(`🔍 Found ${jsFiles.length} JS files to merge...`);
 
@@ -103,7 +103,7 @@ function writeMergedContent(config) {
     if (isBuildMode) {
         try {
             console.log('⚙️ Running terser for minification...');
-            execSync(`terser "${outputPath}" -o "${outputPath}" --compress --mangle`, { stdio: 'inherit' });
+            exec(`terser "${outputPath}" -o "${outputPath}" --compress --mangle`, { stdio: 'inherit' });
             console.log('✅ Minification complete.');
         } catch (err) {
             console.error('❌ Error during terser execution:', err.message);
@@ -151,27 +151,25 @@ function runCommands() {
     }
 
     console.log('📂 Running listFiles.js ...');
-    execSync(`node "${listFilesPath}"`, (error) => {
-        if (error) {
-            return console.error(`💥 listFiles.js failed: ${error.message}`);
-        }
 
-        console.log('✅ listFiles.js completed.');
+    try {
+        console.log("🚀 Running listFiles.js ...");
+        exec(`node "${listFilesPath}"`, { stdio: "inherit" });
+        console.log("✅ listFiles.js completed.");
 
         if (!existsSync(extractVariablesPath)) {
-            return console.error(`❌ Missing file: ${extractVariablesPath}`);
+            console.error(`❌ Missing file: ${extractVariablesPath}`);
         }
 
-        console.log('🪄 Running extractVariables.js ...');
-        execSync(`node "${extractVariablesPath}"`, (error) => {
-            if (error) {
-                return console.error(`💥 extractVariables.js failed: ${error.message}`);
-            }
+        console.log("🪄 Running extractVariables.js ...");
+        exec(`node "${extractVariablesPath}"`, { stdio: "inherit" });
+        console.log("✨ extractVariables.js completed.");
 
-            console.log('✨ extractVariables.js completed.');
-            console.log('🎉 All commands finished!\n');
-        });
-    });
+        console.log("🎉 All commands finished!");
+    } catch (error) {
+        console.error(`💥 Script failed: ${error.message}`);
+    }
+
 }
 
 let watchers = [];
@@ -230,7 +228,18 @@ function restoreThemeReferences(filePaths) {
 }
 
 
-
+async function buildEjs() {
+	return new Promise((resolve, reject) => {
+		exec(`node ${join(mizRoot, 'miz', 'pkg/ejs-build.js')}`, (err, stdout, stderr) => {
+			if (stderr.trim() !== "") {
+				console.error(stderr)
+			} else {
+				console.log(stdout)
+				resolve()
+			}
+		})
+	})
+}
 
 
 function verifyTheme(config) {
@@ -262,11 +271,10 @@ async function rebuildAllDynamic() {
         if (isThemeValid) {
             updateUseStatements(themeDependencyPath, config);
         }
-            
         writeMergedContent(config);
         runCommands();
         restartWatchers(config);
-        console.log('✅ Rebuild complete.\n');
+        // console.log('✅ Rebuild complete.\n');
     } catch (err) {
         // console.error('❌ Error during rebuild:', err);
     }
@@ -283,7 +291,8 @@ function restartWatchers(config) {
     const themeBase = join(__dirname, '..', 'themes', config.theme);
     const themeComponents = join(themeBase, 'components');
     const configFile = join(__dirname, '..', 'themes', 'config.js');
-    const sassDir = join(__dirname, '..', '..', 'miz');
+    const sassDir = join(mizRoot);
+    const ejsDir = join(__dirname, '..', '..', 'app');
 
     watchers.push(
         chokidar.watch(configFile, { persistent: true }).on('change', async (path) => {
@@ -293,21 +302,29 @@ function restartWatchers(config) {
             await rebuildAllDynamic();
         }),
 
-        chokidar.watch(themeBase, { ignored: /(^|[\/\\])\../, persistent: true })
-            .on('change', async (path) => {
-                if (path.endsWith('.html')) {
-                    console.log(`📄 HTML changed: ${path}`);
-                    await rebuildAllDynamic();
-                }
-            }),
+        chokidar.watch(themeBase, { ignored: /(^|[\/\\])\../, persistent: true }).on('change', async (path) => {
+            if (path.endsWith('.html')) {
+                console.log(`📄 HTML changed: ${path}`);
+                await rebuildAllDynamic();
+            }
+        }),
 
-        chokidar.watch(sassDir, { ignored: /(^|[\/\\])\../, persistent: true })
-            .on('change', async (path) => {
-                if (path.endsWith('.scss') || path.endsWith('.sass')) {
-                    console.log(`🎨 Sass changed: ${path}`);
-                    await rebuildAllDynamic();
-                }
-            })
+        chokidar.watch(ejsDir, { ignored: /(^|[\/\\])\../, persistent: true }).on('change', async (path) => {
+            if (path.endsWith('.ejs')) {
+                console.log(`🗃️ ejs changed: ${path}`);
+            } else if (path.endsWith('.json')){
+                console.log(`🌐 json changed: ${path}`);
+            }
+            await buildEjs();
+            await rebuildAllDynamic();
+        }),
+
+        chokidar.watch(sassDir, { ignored: /(^|[\/\\])\../, persistent: true }).on('change', async (path) => {
+            if (path.endsWith('.scss') || path.endsWith('.sass')) {
+                console.log(`🎨 Sass changed: ${path}`);
+                await rebuildAllDynamic();
+            }
+        })
     );
 
     const componentWatcher = chokidar.watch(themeComponents, {
@@ -317,8 +334,7 @@ function restartWatchers(config) {
 
     let isReady = false;
 
-    componentWatcher
-        .on('add', async path => {
+    componentWatcher.on('add', async path => {
             if (!isReady) return;
             if (path.endsWith('.js')) {
                 console.log(`➕ JS file added: ${path}`);
@@ -374,7 +390,7 @@ if (isWatchMode) {
 
         const outputPath = join(projectRoot, config.output);
         console.log('⚙️ Running terser for minification...');
-        execSync(`terser "${outputPath}" -o "${outputPath}" --compress --mangle`, { stdio: 'inherit' });
+        exec(`terser "${outputPath}" -o "${outputPath}" --compress --mangle`, { stdio: 'inherit' });
 
         console.log(`✅ Build complete! Minified file created at: ${outputPath}`);
     })();
