@@ -186,7 +186,7 @@ $total-list : (
     $result:();
     $i:1;
     @each $key , $value in $break-points{
-        @if string.index($class-name , $key) != null{
+        @if string.index($class-name , $key + "-") != null{
             $result:$value;
             @return $value;
         }
